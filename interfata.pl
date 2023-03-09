@@ -31,10 +31,11 @@ Unele camere sunt periculoase. Ele contin capcane si pot pune in pericol viata j
 Prin comanda viata poti vedea care este starea ta curenta.
 Butoanele numerotate de la 1 la 9 sunt pentru jocul de x si 0 impotriva calculatorului. 
 Initial jucatorul trebuie sa selecteze dificultatea. Exista 4 nivele disponibile usor mediu dificil si imposibil. 
+Dificultatea e selectata prin comanda nivel cu un argument, acesta fiind nivelul ales.
 Obiectele sunt plasate in inventar cu comanda pastreaza. 
 Pentru a afla nivelul de energie exista comanda energie iar pentru listarea inventarului inventar. 
 Obiectele comestibile pot fi consumate prin comanda mananca 
-Atunci cand dorest sa incepi un joc utilizeaza incepeJoc urmat de jocul respectiv. 
+Atunci cand se doreste inceperea unui joc se utilizeaza comanda joc urmata de jocul respectiv ca argument. 
 Imediat dupa inceperea unui joc vor fi prezentate si regulile si restrictiile acestuia. 
 Prima caseta de input este pentru comenzi iar cea de a doua pentru eventualele argumente ale acestora. 
 Comenzile energie, viata si inventar nu necesita un argument anume. 
@@ -135,7 +136,7 @@ run:-
     !.
 
 executor(X,A1,A2,F):-
-        X = dificultate ->
+        X = nivel ->
         dificultate(A1),
         atom_concat("Ai selectat nivelul de dificultate : ", A1,R),
         modificareTextPrezentat(F,R)
@@ -159,7 +160,12 @@ executor(X,A1,A2,F):-
         pastreaza(A1,R12),
         modificareTextPrezentat(F,R12),
         !;
-        X = incepeJoc ->
+        X = joc, A1 = sudoku ->
+        incepeJoc(A1,R3),
+        modificareTextPrezentat(F,R3),
+        ecransudoku(R3),
+        !;
+        X = joc ->
         incepeJoc(A1,R3),
         modificareTextPrezentat(F,R3),
         !;
@@ -175,7 +181,11 @@ executor(X,A1,A2,F):-
         inspecteaza(A1,R3),
         modificareTextPrezentat(F,R3),
         !;
-        X = sudoku ->
+        atom_number(A1,A111),
+        X = sudoku, A111 < 10 ->
+        modificareTextPrezentat(F,'Mutare ilegala. Nu este permisa modificarea acestei pozitii\n'),!;
+        atom_number(A1,A111),
+        X = sudoku, A111  > 9 ->
         atom_number(A1, A11),
         atom_number(A2, A21),
         sudoku(A11,A21,R),
@@ -353,4 +363,29 @@ zoom():-
         send(F, display, T, point(100, 50)),
         send(F, open).
 
-
+ ecransudoku(R3):-
+        new(W2,  window('Sudoku', size(900, -1))),
+        new(E, dialog),
+        new(F, dialog),
+        new(T, text(R3)),
+        send(E, append, new(InputText, text_item(input, 'Comanda'))),
+        send(E, append, new(Argument, text_item(input, 'Argument1'))),
+        send(E, append, new(Argument2, text_item(input, 'Argument2'))),
+        send(E, append, new(A,button(executor, message(@prolog, executor, InputText?selection, Argument?selection,Argument2?selection, F)))),
+        send(E, append, new(B,button(inapoi, message(@prolog, inapoi, F)))),
+        send(InputText, right, Argument),
+        send(Argument2, left, Argument),
+        send(T, colour, orange),
+        send(F, size, size(900,600)),
+        send(T, font, font(times, bold, 18)),
+        send(F, above, W2),
+        send(E, below, F),
+        send(F, scrollbars, both),
+        send(F, background, black),
+        send(E, background, black),
+        send(A, size, size(100, 50)), % set the size of button A to be 100 pixels wide and 50 pixels tall
+        send(B, size, size(100, 50)), 
+        send(A, center_x, E?center_x),
+        send(B, center_x, E?center_x),
+        send(F, display, T, point(100, 5)),
+        send(F, open).

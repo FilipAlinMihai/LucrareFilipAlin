@@ -77,7 +77,7 @@ afisare(T10):-
         scrieLinie(G,7,G1),
         scrieLinie(H,8,H1),
         scrieLinie(I,9,I1),
-        atom_concat('=========|=========|=========\n','',T1),
+        atom_concat('=========||========||=========\n','',T1),
         atom_concat(T1,A1,T2),
         atom_concat(T2,B1,T3),
         atom_concat(T3,C1,T4),
@@ -117,7 +117,7 @@ scrieLinie([A,B,C,D,E,F,G,H,I],P,T20):-
             atom_concat(T16,' | ',T17),
             atom_concat(T17,I1,T18),
             atom_concat(T18,' |\n',T19),
-            atom_concat(T19,'=========|=========|=========\n',T20),!.
+            atom_concat(T19,'=========||========||=========\n',T20),!.
 
 scrieLinie([A,B,C,D,E,F,G,H,I],P,T21):-
             P=3,
@@ -148,8 +148,8 @@ scrieLinie([A,B,C,D,E,F,G,H,I],P,T21):-
             atom_concat(T16,' | ',T17),
             atom_concat(T17,I1,T18),
             atom_concat(T18,' |\n',T19),
-            atom_concat(T19,'______________________________\n',T20),
-            atom_concat(T20,'-------------------------------------------\n',T21),!.
+            atom_concat(T19,'=========||========||=========\n',T20),
+            atom_concat(T20,'=========||========||=========\n',T21),!.
 
 scrieLinie([A,B,C,D,E,F,G,H,I],P,T21):-
             P=6,
@@ -180,8 +180,8 @@ scrieLinie([A,B,C,D,E,F,G,H,I],P,T21):-
             atom_concat(T16,' | ',T17),
             atom_concat(T17,I1,T18),
             atom_concat(T18,' |\n',T19),
-            atom_concat(T19,'______________________________\n',T20),
-            atom_concat(T20,'-------------------------------------------\n',T21),!.
+            atom_concat(T19,'=========||========||=========\n',T20),
+            atom_concat(T20,'=========||========||=========\n',T21),!.
 
 scrieLinie([A,B,C,D,E,F,G,H,I],_,T20):-
             scrie(A,A1),
@@ -211,7 +211,7 @@ scrieLinie([A,B,C,D,E,F,G,H,I],_,T20):-
             atom_concat(T16,' | ',T17),
             atom_concat(T17,I1,T18),
             atom_concat(T18,' |\n',T19),
-            atom_concat(T19,'--------------|--------------|--------------\n',T20),!.
+            atom_concat(T19,'=========||========||=========\n',T20),!.
 
 
 eliminarePozitie(I):-
@@ -267,10 +267,10 @@ sudoku(_,_,X):-status(oprit),atom_concat('Jocul nu a inceput','',X),!.
 sudoku(X,Y,Scriere3):-
         stareCurenta(S),
         modifica(X,Y,S,R),
+        verifica(0,R),nl,
         retract(stareCurenta(_)),
         assert(stareCurenta(R)),
         afisare(Scriere),
-        verifica(0,R),nl,
         numaraSpatiiGoale(R,Rez),
         decizie(Rez,Scriere2),
         atom_concat(Scriere,Scriere2,Scriere3),!.

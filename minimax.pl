@@ -74,33 +74,34 @@ stariUrmatoare(Jucator, [X|T], [X|R]) :-
     stariUrmatoare(Jucator, T, R).
 
 
-minimax(A,B,Pozitie, PozitieCastigatoare, Valoare) :-                  
-    bagof(UrmatoareaPozitie, mutari(Pozitie, UrmatoareaPozitie), PozitiiUrmatoare),
-    celMaiBun(A,B,PozitiiUrmatoare, PozitieCastigatoare, Valoare), !.
+minimax(A,B,Pozitie, PozitieCastigatoare, Valoare) :-     
+    mutariDerivate(Pozitie,PozitiiUrmatoare),             
+    ceaMaiBunaMutare(A,B,PozitiiUrmatoare, PozitieCastigatoare, Valoare), !.
 
-minimax(_,_,Pozitie, _, Valoare) :-                      
-    evaluarePozitie(Pozitie, Valoare).
+minimax(_,_,[Pion,Status,_], _, Valoare) :-                      
+    evaluarePozitie(Status,Pion, Valoare).
 
 
-celMaiBun(A,B,[Pozitie], Pozitie, Valoare) :-
+mutariDerivate(Pozitie,PozitiiUrmatoare):-
+        bagof(UrmatoareaPozitie, mutari(Pozitie, UrmatoareaPozitie), PozitiiUrmatoare).
+
+ceaMaiBunaMutare(A,B,[Pozitie], Pozitie, Valoare) :-
     minimax(A,B,Pozitie, _, Valoare), !.
 
-celMaiBun(A,B,[[Pion,Status,Lista] | _], [Pion,Status,Lista], A) :-
+ceaMaiBunaMutare(A,B,[[Pion,Status,Lista] | _], [Pion,Status,Lista], A) :-
     Pion =:= 0,
     A>B,!.
 
-celMaiBun(A,B,[[Pion,Status,Lista] | _], [Pion,Status,Lista], B) :-
+ceaMaiBunaMutare(A,B,[[Pion,Status,Lista] | _], [Pion,Status,Lista], B) :-
     Pion =:= 2,
     A>B,!.
 
 
-celMaiBun(A,B,[[Pion,Status,Lista] | ListaPozitii], PozitieCastigatoare, ValoareCastigatoare) :-
+ceaMaiBunaMutare(A,B,[[Pion,Status,Lista] | ListaPozitii], PozitieCastigatoare, ValoareCastigatoare) :-
     minimax(A,B,[Pion,Status,Lista], _, Valoare0),
     determinaModificari(Pion,A,B,Valoare0,ANou,BNou),
-    celMaiBun(ANou,BNou,ListaPozitii, Pozitie1, Valoare1),
-    maiBuna(Pion,[Pion,Status,Lista], Valoare0, Pozitie1, Valoare1, PozitieCastigatoare, ValoareCastigatoare),!.
-
-
+    ceaMaiBunaMutare(ANou,BNou,ListaPozitii, Pozitie1, Valoare1),
+    comparare(Pion,[Pion,Status,Lista], Valoare0, Pozitie1, Valoare1, PozitieCastigatoare, ValoareCastigatoare),!.
 
 determinaModificari(Pion,A,B,Valoare0,ANou,BNou):-
         Pion = 0 , Valoare0 > A ->
@@ -112,15 +113,19 @@ determinaModificari(Pion,A,B,Valoare0,ANou,BNou):-
         ANou is A,
         BNou is B,!.
 
-maiBuna(Pion,Pozitie0, Valoare0, _, Valoare1, Pozitie0, Valoare0) :-   
+comparare(Pion,Pozitie1, Valoare1, Pozitie2, Valoare2, PozitiePreferata, ValoarePreferata) :-   
     Pion =:= 2,                        
-    Valoare0 < Valoare1, !;
+    Valoare1 < Valoare2,
+    PozitiePreferata = Pozitie1,
+    ValoarePreferata = Valoare1, !;
     Pion =:= 0,                        
-    Valoare0 > Valoare1, !.                            
+    Valoare1 > Valoare2,
+    PozitiePreferata = Pozitie1,
+    ValoarePreferata = Valoare1, !;
+    PozitiePreferata = Pozitie2,
+    ValoarePreferata = Valoare2,!.                              
 
-maiBuna(_,_, _, Pozitie1, Valoare1, Pozitie1, Valoare1).       
 
-
-evaluarePozitie([0, victorie, _], 0).       
-evaluarePozitie([2, victorie, _], 100).      
-evaluarePozitie([_, egalitate, _], 50).
+evaluarePozitie(victorie,0, 0).       
+evaluarePozitie(victorie,2, 100).      
+evaluarePozitie(egalitate,_, 50).

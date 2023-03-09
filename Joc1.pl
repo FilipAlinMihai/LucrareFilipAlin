@@ -328,7 +328,7 @@ codReal(aaaaa).
 
 mutaJucator(_,R):-
     amInceput(nu),
-    atom_concat('Nu ai selectat nivelul de dificultate!\n','Utilizeaza comanda dificultate(nivel).\n',T1),
+    atom_concat('Nu ai selectat nivelul de dificultate!\n','Utilizeaza comanda nivel(nivelul ales).\n',T1),
     atom_concat(T1,'Ai patru optoini: usor, mediu, dificil, imposibil\n',R),!.
 
 % Daca jucatorul e mort el nu se mai poate deplasa intre camere
