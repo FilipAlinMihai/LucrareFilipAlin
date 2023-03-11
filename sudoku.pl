@@ -1,6 +1,7 @@
 :- module(sudoku,[startS/1,
                 stopS/0,
-                sudoku/3
+                sudoku/3,
+                afisare/1
                   ]).
 
 :- use_module(castigare).
@@ -263,6 +264,14 @@ scrie(X,T2):-
         atom_concat(X,'',T2),!.
 
 sudoku(_,_,X):-status(oprit),atom_concat('Jocul nu a inceput','',X),!.
+sudoku(A,_,X):-
+        status(pornit),
+        A < 10,
+        atom_concat('Acaeasta pozitie nu poate fi modificata!','',X),!.
+sudoku(_,B,X):-
+        status(pornit),
+        B > 9,
+        atom_concat('Valoarea introdusa nu este corecta','',X),!.
 
 sudoku(X,Y,Scriere3):-
         stareCurenta(S),

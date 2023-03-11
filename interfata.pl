@@ -93,9 +93,12 @@ run:-
     send(F, size, size(425,250)),
     send(F2, scrollbars, both),
     send(F2, size, size(425,250)),
-    send(E, append, new(InputText, text_item(input, 'Comanda'))),
-    send(E, append, new(Argument, text_item(input, 'Argument1'))),
-    send(E, append, new(Argument2, text_item(input, 'Argument2'))),
+    send(E, append, new(InputText, text_item(input, 'Comanda')),right),
+    send(E, append, new(Argument, text_item(input, 'Argument1')),right),
+    send(E, append, new(Argument2, text_item(input, 'Argument2')),right),
+    send(InputText, width,20),
+    send(Argument, width,20),
+    send(Argument2, width,20),
     send(InputText, left, Argument),
     %send(E ,display, text(''),point(200, 10)),
     send(E, append, new(_,button(executor, message(@prolog, executor, InputText?selection, Argument?selection,Argument2?selection, F2)))),
@@ -181,11 +184,19 @@ executor(X,A1,A2,F):-
         inspecteaza(A1,R3),
         modificareTextPrezentat(F,R3),
         !;
-        atom_number(A1,A111),
-        X = sudoku, A111 < 10 ->
-        modificareTextPrezentat(F,'Mutare ilegala. Nu este permisa modificarea acestei pozitii\n'),!;
-        atom_number(A1,A111),
-        X = sudoku, A111  > 9 ->
+        X = salveaza ->
+        salveaza(A1),
+        atom_concat("Joc salvat!\n",'',R),
+        modificareTextPrezentat(F,R),
+        !;
+        X = incarca ->
+        incarca(A1),
+        locatieJucator(Juc),
+        descrie(Juc,R1),
+        atom_concat("Joc incarcat!\n",R1,R),
+        modificareTextPrezentat(F,R),
+        !;
+        X = sudoku->
         atom_number(A1, A11),
         atom_number(A2, A21),
         sudoku(A11,A21,R),
@@ -364,17 +375,18 @@ zoom():-
         send(F, open).
 
  ecransudoku(R3):-
-        new(W2,  window('Sudoku', size(900, -1))),
+        new(W2,  window('Sudoku', size(1100, -1))),
         new(E, dialog),
         new(F, dialog),
         new(T, text(R3)),
-        send(E, append, new(InputText, text_item(input, 'Comanda'))),
-        send(E, append, new(Argument, text_item(input, 'Argument1'))),
-        send(E, append, new(Argument2, text_item(input, 'Argument2'))),
-        send(E, append, new(A,button(executor, message(@prolog, executor, InputText?selection, Argument?selection,Argument2?selection, F)))),
+        send(E, append, new(Argument, text_item(input, 'Argument1')),right),
+        send(E, append, new(Argument2, text_item(input, 'Argument2')),right),
+        send(E, append, new(A,button(executor, message(@prolog, plaseaza, Argument?selection,Argument2?selection, F)))),
         send(E, append, new(B,button(inapoi, message(@prolog, inapoi, F)))),
-        send(InputText, right, Argument),
-        send(Argument2, left, Argument),
+        send(E, append, new(_,button(inainte, message(@prolog, inainte, F)))),
+        send(E, append, new(_,button(tabla, message(@prolog, tabla, F)))),
+        send(Argument, width,20),
+        send(Argument2, width,20),
         send(T, colour, orange),
         send(F, size, size(900,600)),
         send(T, font, font(times, bold, 18)),
@@ -389,3 +401,14 @@ zoom():-
         send(B, center_x, E?center_x),
         send(F, display, T, point(100, 5)),
         send(F, open).
+
+tabla(F):-
+        afisare(R),
+        modificareTextPrezentat(F,R),!.
+
+
+plaseaza(A1,A2,F):-
+        atom_number(A1, A11),
+        atom_number(A2, A21),
+        sudoku(A11,A21,R),
+        modificareTextPrezentat(F,R),!.

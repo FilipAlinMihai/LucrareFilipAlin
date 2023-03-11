@@ -31,7 +31,12 @@
               viata/1,
               nivelSelectat/1,
               alege/2,
-              restart/1]).
+              restart/1,
+              afisare/1,
+              salveaza/1,
+              incarca/1,
+              descrie/2,
+              locatieJucator/1]).
 
 
 :- use_module(sliding).
@@ -44,6 +49,7 @@
 :- include('dilema_prizonierilor.pl').
 :- include('hunter.pl').
 :- include('descriere.pl').
+:- include('salvare.pl').
 
 :- dynamic locatieJucator/1,
     locatieObiect/2,
