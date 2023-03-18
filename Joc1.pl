@@ -50,6 +50,7 @@
 :- include('hunter.pl').
 :- include('descriere.pl').
 :- include('salvare.pl').
+:- include('distribuireObiecte.pl').
 
 :- dynamic locatieJucator/1,
     locatieObiect/2,
@@ -90,6 +91,9 @@ legatura(s,hol,iesire).
 
 legatura(e,cameraE,cameraEE).
 legatura(w,cameraE,hol).
+legatura(s,cameraE,cameraES).
+
+legatura(n,cameraES,cameraE).
 
 legatura(w,cameraEE,cameraE).
 legatura(n,cameraEE,cameraNE).
@@ -121,6 +125,9 @@ legatura(e,cameraCapcana2,cameraNW).
 
 legatura(w,cameraW,cameraWW).
 legatura(e,cameraW,hol).
+legatura(s,cameraW,cameraWS).
+
+legatura(n,cameraWS,cameraW).
 
 legatura(e,cameraWW,cameraW).
 
@@ -328,7 +335,8 @@ dificultate(X):-
     retract(codReal(_)),
     assert(codReal(C1)),
     retract(nivelSelectat(_)),
-    assert(nivelSelectat(X)),!.
+    assert(nivelSelectat(X)),
+    distribuieObiecte(),!.
 
 codReal(aaaaa).
 
