@@ -1,3 +1,4 @@
+:- use_module(library(dcg/basics)).
 :- use_module(joc1).
 :- use_module(library(pce)).
 :- use_module(sudoku).
@@ -15,36 +16,8 @@ mesajCurent(****).
 mesajAnterior(****).
 mesajAnteriorAnterior(****).
 
+:- include('reguli.pl').
 
-regiulile('Esti captiv in casa X. Usa de la iesire este incuiata. 
-Din fericire ai gasit o harta a casei. Aceasta nu este foarte clara in unele parti.
-Poti cerceta casa dar fiecare tranzitie intre camere te costa energie. 
-Vei gasi obiecte aceste pot fi folosite pentru a castiga energie sau pentru alte activitati. 
-Accesul in unele canere este restrictionat. 
-Cel mai probail cheia se afla in birou dar acest aste blocat de un lacat. 
-Lacatul are o parola de cinci litere. Este posibil sa gasesti parola in camerele casei. 
-Atunci cand ai aflat toate literele parolei traverseaza harta pana in biblioteca.
-Aici poti utiliza comanda scrie cod urmata de literele descoperite ca argument. 
-Vei avea posibilitatea de a juca mini jocuri. Daca reusesti sa castigi vei primi recompense. 
-Pentru navigare utilizeaza butoanele N S E V. 
-Unele camere sunt periculoase. Ele contin capcane si pot pune in pericol viata jucatorului.
-Prin comanda viata poti vedea care este starea ta curenta.
-Butoanele numerotate de la 1 la 9 sunt pentru jocul de x si 0 impotriva calculatorului. 
-Initial jucatorul trebuie sa selecteze dificultatea. Exista 4 nivele disponibile usor mediu dificil si imposibil. 
-Dificultatea e selectata prin comanda nivel cu un argument, acesta fiind nivelul ales.
-Obiectele sunt plasate in inventar cu comanda pastreaza. 
-Pentru a afla nivelul de energie exista comanda energie iar pentru listarea inventarului inventar. 
-Obiectele comestibile pot fi consumate prin comanda mananca 
-Atunci cand se doreste inceperea unui joc se utilizeaza comanda joc urmata de jocul respectiv ca argument. 
-Imediat dupa inceperea unui joc vor fi prezentate si regulile si restrictiile acestuia. 
-Prima caseta de input este pentru comenzi iar cea de a doua pentru eventualele argumente ale acestora. 
-Comenzile energie, viata si inventar nu necesita un argument anume. 
-Pentru A pastra cheia din seif trebuie sa raspunzi corect la o ghicitoare gasita in camerele casei. 
-Scrie raspunsul cu comanda ghicitoare si raspunsul ca argument. 
-Pentru a determina continutul unor obiecte precum cartile sau biletele
-poate fi utilizata comanda inspecteaza urmata de obiectul ce trebuie evaluat.
-
-                            ').
 
 reguli():-
     new(F, dialog),
@@ -55,10 +28,12 @@ reguli():-
     send(Text, colour, orange),
     send(F, display, Text, point(100, 50)),
     send(F, background, black),
+    send(F, scrollbars, both),
     send(F, above, W),
     send(F, open),!.
 
 run:-
+    restart(_),
     new(D, dialog),
     new(F, dialog),
     new(E, dialog),
@@ -101,7 +76,7 @@ run:-
     send(Argument2, width,20),
     send(InputText, left, Argument),
     %send(E ,display, text(''),point(200, 10)),
-    send(E, append, new(_,button(executor, message(@prolog, executor, InputText?selection, Argument?selection,Argument2?selection, F2)))),
+    send(E, append, new(_,button(executor, message(@prolog, taiere, InputText?selection, Argument?selection,Argument2?selection, F2)))),
     send(E, append, new(_,button(inapoi, message(@prolog, inapoi, F2)))),
     send(E, append, new(_,button(inainte, message(@prolog, inainte, F2)))),
     send(E, append, new(_,button(zoom, message(@prolog, zoom)))),
@@ -138,8 +113,14 @@ run:-
     send(F2, open),
     !.
 
+taiere(X,A1,A2,F):-
+        trim(X, X1),
+        trim(A1, A11),
+        trim(A2, A22),
+        executor(X1,A11,A22,F),!.
+
 executor(X,A1,A2,F):-
-        X = nivel ->
+        apartine(X,[nivel,dificultate,level]) ->
         dificultate(A1),
         atom_concat("Ai selectat nivelul de dificultate : ", A1,R),
         modificareTextPrezentat(F,R)
@@ -159,20 +140,20 @@ executor(X,A1,A2,F):-
         atom_concat(R8,R10,R11),
         modificareTextPrezentat(F,R11),
         !;
-        X = pastreaza ->
+        apartine(X,[pastreaza,ridica,colecteaza])  ->
         pastreaza(A1,R12),
         modificareTextPrezentat(F,R12),
         !;
-        X = joc, A1 = sudoku ->
+        apartine(X,[joc,joaca,incepeJoc,incepejoc,play,incepe,start]) , A1 = sudoku ->
         incepeJoc(A1,R3),
         modificareTextPrezentat(F,R3),
         ecransudoku(R3),
         !;
-        X = joc ->
+        apartine(X,[joc,joaca,incepeJoc,incepejoc,play,incepe,start]) ->
         incepeJoc(A1,R3),
         modificareTextPrezentat(F,R3),
         !;
-        X = mananca ->
+        apartine(X,[mananca,consuma])->
         mananca(A1,R31),
         modificareTextPrezentat(F,R31),
         !;
@@ -180,20 +161,29 @@ executor(X,A1,A2,F):-
         alege(A1,R),
         modificareTextPrezentat(F,R),
         !;
-        X = inspecteaza ->
+        apartine(X,[inspecteaza,citeste,analizeaza]) ->
         inspecteaza(A1,R3),
         modificareTextPrezentat(F,R3),
         !;
-        X = salveaza ->
+        apartine(X,[salveaza,salvare,save]) ->
         salveaza(A1),
         atom_concat("Joc salvat!\n",'',R),
         modificareTextPrezentat(F,R),
         !;
-        X = incarca ->
-        incarca(A1),
+        X = incarca, incarca(A1)->
         locatieJucator(Juc),
         descrie(Juc,R1),
         atom_concat("Joc incarcat!\n",R1,R),
+        modificareTextPrezentat(F,R),
+        !;
+        X = incarca, \+ incarca(A1) ->
+        atom_concat("Aceasta versiune nu a putut fi incarcata!\n",'',R),
+        modificareTextPrezentat(F,R),
+        !;
+        X = optiuni ->
+        directory_files('C:\\Users\\lenovo\\Documents\\Prolog\\LucrareFilipAlin\\salvari',[_,_|Fisiere]),
+        scriefisiere(Fisiere,Scriere),
+        atom_concat("Versiuni salvate!\n",Scriere,R),
         modificareTextPrezentat(F,R),
         !;
         X = sudoku->
@@ -234,7 +224,7 @@ executor(X,A1,A2,F):-
         raspunde_la_Ghicitoare(A1,R21),
         modificareTextPrezentat(F,R21)
         ,!;
-        atom_concat('Comanda inexistenta!\n','',R),
+        atom_concat('Comanda inexistenta!\n', X,R),
         modificareTextPrezentat(F,R),!.
 
 mutareInterfata(X,F):-
@@ -412,3 +402,27 @@ plaseaza(A1,A2,F):-
         atom_number(A2, A21),
         sudoku(A11,A21,R),
         modificareTextPrezentat(F,R),!.
+
+scriefisiere([],'').
+scriefisiere([X|T],S):-
+        scriefisiere(T,S1),
+        atom_concat(X,'\n',S2),
+        atom_concat(S2,S1,S),!.
+        
+apartine(G,[G|_]).
+apartine(G,[_|T]):-apartine(G,T).
+
+trim(Text, SisCuratat) :-
+    atom_codes(Text, CoduriTextIntrare),
+    trim_aux(CoduriTextIntrare, Curatare1),
+    reverse(Curatare1, Curatare11),
+    trim_aux(Curatare11, Curatare2),
+    reverse(Curatare2, CoduriTextFinal),
+    atom_codes(SisCuratat, CoduriTextFinal).
+
+trim_aux([], []).
+trim_aux([X|T], CuvantCurat) :-
+    is_space(X),
+    trim_aux(T, CuvantCurat),!.
+trim_aux([X|T], [X|CuvantCurat]) :- 
+     trim_aux(T, CuvantCurat),!.

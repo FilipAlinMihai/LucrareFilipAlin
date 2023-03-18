@@ -5,14 +5,17 @@
                   ]).
 
 :- use_module(castigare).
-:- dynamic stareCurenta/1,status/1.
+:- dynamic stareCurenta/1,status/1,vieti/1.
 
 stareCurenta([]).
 
 status(oprit).
 
+vieti(4).
+
 tabele([
-    [[9,4,2,1,6,3,8,5,4],
+    [
+    [9,4,2,1,6,3,8,5,7],
     [5,3,6,2,8,7,9,4,1],
     [8,7,1,9,5,4,2,3,6],
     [3,2,7,8,1,9,4,6,5],
@@ -21,7 +24,8 @@ tabele([
     [2,6,5,4,7,1,3,8,9],
     [7,8,9,6,3,2,5,1,4],
     [4,1,3,5,9,8,6,7,2]],
-    [[5,3,4,6,7,8,9,1,2],
+    [
+    [5,3,4,6,7,8,9,1,2],
     [6,7,2,1,9,5,3,4,8],
     [1,9,8,3,4,2,5,6,7],
     [8,5,9,7,6,1,4,2,3],
@@ -30,7 +34,8 @@ tabele([
     [9,6,1,5,3,7,2,8,4],
     [2,8,7,4,1,9,6,3,5],
     [3,4,5,2,8,6,1,7,9]],
-    [[3,8,7,4,5,6,1,2,9],
+    [
+    [3,8,7,4,5,6,1,2,9],
     [6,1,4,2,9,7,5,3,8],
     [2,5,9,1,8,3,6,7,4],
     [9,6,2,8,4,5,3,1,7],
@@ -38,7 +43,47 @@ tabele([
     [7,4,8,6,3,1,2,9,5],
     [8,2,1,7,6,9,4,5,3],
     [4,9,3,5,1,8,7,6,2],
-    [5,7,6,3,2,4,9,8,1]]
+    [5,7,6,3,2,4,9,8,1]],
+    [
+    [4,3,5,2,6,9,7,8,1],
+    [6,8,2,5,7,1,4,9,3],
+    [1,9,7,8,3,4,5,6,2],
+    [8,2,6,1,9,5,3,4,7],
+    [3,7,4,6,8,2,9,1,5],
+    [9,5,1,7,4,3,6,2,8],
+    [5,1,9,3,2,6,8,7,4],
+    [2,4,8,9,5,7,1,3,6],
+    [7,6,3,4,1,8,2,5,9]],
+    [
+    [1,5,2,4,8,9,3,7,6],
+    [7,3,9,2,5,6,8,4,1],
+    [4,6,8,3,7,1,2,9,5],
+    [3,8,7,1,2,4,6,5,9],
+    [5,9,1,7,6,3,4,2,8],
+    [2,4,6,8,9,5,7,1,3],
+    [9,1,4,6,3,7,5,8,2],
+    [6,2,5,9,4,8,1,3,7],
+    [8,7,3,5,1,2,9,6,4]],
+    [
+    [6,3,9,5,7,4,1,8,2],
+    [5,4,1,8,2,9,3,7,6],
+    [7,8,2,6,1,3,9,5,4],
+    [1,9,8,4,6,7,5,2,3],
+    [3,6,5,9,8,2,4,1,7],
+    [4,2,7,1,3,5,8,6,9],
+    [9,5,6,7,4,8,2,3,1],
+    [8,1,3,2,9,6,7,4,5],
+    [2,7,4,3,5,1,6,9,8]],
+    [
+    [8,2,7,1,5,4,3,9,6],
+    [9,6,5,3,2,7,1,4,8],
+    [3,4,1,6,8,9,7,5,2],
+    [5,9,3,4,6,8,2,7,1],
+    [4,7,2,5,1,3,6,8,9],
+    [6,1,8,9,7,2,4,3,5],
+    [7,8,6,2,3,5,9,1,4],
+    [1,5,4,7,9,6,8,2,3],
+    [2,3,9,8,4,1,5,6,7]]
 ]).
 
 
@@ -62,7 +107,9 @@ startS(S):-
         assert(stareCurenta(X)),
         retract(status(_)),
         assert(status(pornit)),
-        creareJoc(S).
+        creareJoc(S),
+        retract(vieti(_)),
+        assert(vieti(4)).
 stopS():-
         retract(status(_)),
         assert(status(pornit)).
@@ -89,71 +136,8 @@ afisare(T10):-
         atom_concat(T8,H1,T9),
         atom_concat(T9,I1,T10),!.
 
-scrieLinie([A,B,C,D,E,F,G,H,I],P,T20):-
-            P=9,
-            scrie(A,A1),
-            scrie(B,B1),
-            scrie(C,C1),
-            scrie(D,D1),
-            scrie(E,E1),
-            scrie(F,F1),
-            scrie(G,G1),
-            scrie(H,H1),
-            scrie(I,I1),
-            atom_concat('| ',A1,T1),
-            atom_concat(T1,' | ',T2),
-            atom_concat(T2,B1,T3),
-            atom_concat(T3,' | ',T4),
-            atom_concat(T4,C1,T5),
-            atom_concat(T5,' | ',T6),
-            atom_concat(T6,D1,T7),
-            atom_concat(T7,' | ',T9),
-            atom_concat(T9,E1,T10),
-            atom_concat(T10,' | ',T11),
-            atom_concat(T11,F1,T12),
-            atom_concat(T12,' | ',T13),
-            atom_concat(T13,G1,T14),
-            atom_concat(T14,' | ',T15),
-            atom_concat(T15,H1,T16),
-            atom_concat(T16,' | ',T17),
-            atom_concat(T17,I1,T18),
-            atom_concat(T18,' |\n',T19),
-            atom_concat(T19,'=========||========||=========\n',T20),!.
-
 scrieLinie([A,B,C,D,E,F,G,H,I],P,T21):-
-            P=3,
-            scrie(A,A1),
-            scrie(B,B1),
-            scrie(C,C1),
-            scrie(D,D1),
-            scrie(E,E1),
-            scrie(F,F1),
-            scrie(G,G1),
-            scrie(H,H1),
-            scrie(I,I1),
-            atom_concat('| ',A1,T1),
-            atom_concat(T1,' | ',T2),
-            atom_concat(T2,B1,T3),
-            atom_concat(T3,' | ',T4),
-            atom_concat(T4,C1,T5),
-            atom_concat(T5,' | ',T6),
-            atom_concat(T6,D1,T7),
-            atom_concat(T7,' | ',T9),
-            atom_concat(T9,E1,T10),
-            atom_concat(T10,' | ',T11),
-            atom_concat(T11,F1,T12),
-            atom_concat(T12,' | ',T13),
-            atom_concat(T13,G1,T14),
-            atom_concat(T14,' | ',T15),
-            atom_concat(T15,H1,T16),
-            atom_concat(T16,' | ',T17),
-            atom_concat(T17,I1,T18),
-            atom_concat(T18,' |\n',T19),
-            atom_concat(T19,'=========||========||=========\n',T20),
-            atom_concat(T20,'=========||========||=========\n',T21),!.
-
-scrieLinie([A,B,C,D,E,F,G,H,I],P,T21):-
-            P=6,
+            apartine(P,[6,3]),
             scrie(A,A1),
             scrie(B,B1),
             scrie(C,C1),
@@ -263,6 +247,7 @@ scrie(X,T2):-
         atom_concat(T1,' ',T2),!;
         atom_concat(X,'',T2),!.
 
+sudoku(_,_,X):- vieti(V), V<1,atom_concat('Ai comis prea multe greseli','',X),!.
 sudoku(_,_,X):-status(oprit),atom_concat('Jocul nu a inceput','',X),!.
 sudoku(A,_,X):-
         status(pornit),
@@ -284,7 +269,12 @@ sudoku(X,Y,Scriere3):-
         decizie(Rez,Scriere2),
         atom_concat(Scriere,Scriere2,Scriere3),!.
 
-sudoku(_,_,X):-atom_concat('Ai incalcat regulile!\n','',X),!.
+sudoku(_,_,X):-
+        atom_concat('Ai incalcat regulile!\n','',X),
+        vieti(V),
+        V1 is V - 1,
+        retract(vieti(_)),
+        assert(vieti(V1)),!.
 
 decizie(X,S):-
         X = 0 ->
@@ -467,3 +457,5 @@ numaraSpatiiGoale([L|T],R):-
         numaraSpatiiGoaleLinie(L,X),
         R is R1 + X.
 
+apartine(G,[G|_]).
+apartine(G,[_|T]):-apartine(G,T).

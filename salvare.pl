@@ -60,6 +60,7 @@ salveaza(Fisier):-
 incarca(Fisier):-
         atom_concat('C:\\Users\\lenovo\\Documents\\Prolog\\LucrareFilipAlin\\salvari\\',Fisier,Cale),
         atom_concat(Cale,'.txt',Cale1),
+        exists_file(Cale1),
         see(Cale1),
         read(A),
         read(B),
