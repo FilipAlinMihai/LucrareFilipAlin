@@ -29,6 +29,7 @@ regiulile('** Esti captiv in casa X. Usa de la iesire este incuiata.
      Utilizatorul are posibilitatea de a salva progresul realizat prin comanda salveaza.
      Aceasta retine intr-un fisier (al carui nume este introdus ca argument) toate datele rundei curente.
      Pentru a incarca un joc salvat  jucatorul utilizeaza comanda incarca urmata de numele fisierului dorit.
+     Prin comanda optiuni sunt prezentate variantele jocului ce au fost salvate si pot fi incarcate.
 ** Pentru anumite comenzi sunt permise mai multe cuvinte cheie.
      Spre exemplu fiecare din pastreaza,ridica si colecteaza urmata de un obiect plaseaza acel obiect in inventarul jucatorului.
 
