@@ -8,7 +8,7 @@
 % ajutorul modulelor
 
 :- module(joc1,[
-              dificultate/1,
+              dificultate/2,
               incepeJoc/2,
               n/1,s /1,e/1,w/1,
               mananca/2,
@@ -321,7 +321,7 @@ comunicaNivel(X):-
     assert(nivelCurent(X)).
 
 %jucatorul introduce nivelul dorit
-dificultate(X):-
+dificultate(X,Resp):-
     nivel(X,Y),
     amInceput(nu),
     retract(energieJucator(_)),
@@ -336,7 +336,8 @@ dificultate(X):-
     assert(codReal(C1)),
     retract(nivelSelectat(_)),
     assert(nivelSelectat(X)),
-    distribuieObiecte(),!.
+    distribuieObiecte(),
+    descrie(hol,Resp),!.
 
 codReal(aaaaa).
 
@@ -577,6 +578,8 @@ restart(X):-
         assert(locatieJucator(hol)),
         retract(cod_birou(_)),
         assert(cod_birou(aaaaa)),
+        retract(locatieObiect(carteLitera3,_)),
+        assert(locatieObiect(carteLitera3,cameraE)),
         retract(locatieObiect(scrisoareLitera1,_)),
         assert(locatieObiect(scrisoareLitera1,cameraEE)),
         retract(locatieObiect(ghicitoare,_)),

@@ -121,8 +121,10 @@ taiere(X,A1,A2,F):-
 
 executor(X,A1,A2,F):-
         apartine(X,[nivel,dificultate,level]) ->
-        dificultate(A1),
-        atom_concat("Ai selectat nivelul de dificultate : ", A1,R),
+        dificultate(A1,Resp),
+        atom_concat("Ai selectat nivelul de dificultate : ", A1,R1),
+        atom_concat(R1,"\n",R2),
+        atom_concat(R2,Resp,R),
         modificareTextPrezentat(F,R)
         ,!;
         X = energie ->
@@ -211,7 +213,7 @@ executor(X,A1,A2,F):-
         atom_concat('Ai utilizat indiciul disponibil!\n','',R),
         modificareTextPrezentat(F,R),
         !;
-        X = restart ->
+        apartine(X,[restart,reset]) ->
         restart(R),
         retract(ajutor2(_)),
         assert(ajutor2(disponibil)),
