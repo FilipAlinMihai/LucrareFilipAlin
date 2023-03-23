@@ -98,7 +98,7 @@ executor(X,A1,A2,F):-
         assert(ajutor2(disponibil)),
         modificareTextPrezentat(F,R),
         !;
-        X = scriecod ->
+        apartine(X,[scrieCod,cod,scriecod,codul,parola]) ->
         scrie_cod(A1,R20),
         modificareTextPrezentat(F,R20),!;
         X = ghicitoare ->
