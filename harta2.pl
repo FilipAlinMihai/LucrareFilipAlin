@@ -29,7 +29,7 @@ camere(4,5,cameraNE).
 camere(5,2,debara).
 camere(5,3,birou).
 
-scrieLiber(R):-        R = '============',!.
+scrieLiber(R):-        R = '=============',!.
 scrie(cameraWS,R):-    R = '===CAMERAY==',!.
 scrie(cameraES,R):-    R = '===CAMERAX==',!.
 scrie(cameraWW,R):-    R = '====MARIA===',!.
