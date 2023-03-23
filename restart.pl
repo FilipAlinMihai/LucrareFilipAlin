@@ -1,4 +1,5 @@
 restart(X):-
+        golire(),
         retract(jocSliding(_)),
         assert(jocSliding(disponibil)),
         retract(jocXsi0(_)),

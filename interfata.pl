@@ -81,6 +81,7 @@ run:-
     send(E, append, new(_,button(inainte, message(@prolog, inainte, F2)))),
     send(E, append, new(_,button(zoom, message(@prolog, zoom)))),
     send(E, append, new(_,button(reguli, message(@prolog, reguli)))),
+    send(E, append, new(_,button(harta, message(@prolog, harta,F2)))),
     send(D, append, new(B1,button(n, message(@prolog, navigare, n, F2)))),
     send(D, append, new(B6,button(s, message(@prolog, navigare, s, F2)))),
     send(D, append, new(B7,button(e, message(@prolog, navigare, e, F2)))),
@@ -318,3 +319,7 @@ trim_aux([X|T], CuvantCurat) :-
     trim_aux(T, CuvantCurat),!.
 trim_aux([X|T], [X|CuvantCurat]) :- 
      trim_aux(T, CuvantCurat),!.
+
+harta(F):-
+        desenare(X),
+        modificareTextPrezentat(F,X),!.

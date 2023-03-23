@@ -36,7 +36,8 @@
               salveaza/1,
               incarca/1,
               descrie/2,
-              locatieJucator/1]).
+              locatieJucator/1,
+              desenare/1]).
 
 
 :- use_module(sliding).
@@ -53,6 +54,7 @@
 :- include('distribuireObiecte.pl').
 :- include('restart.pl').
 :- include('controlJocuri.pl').
+:- include('harta2.pl').
 
 :- dynamic locatieJucator/1,
     locatieObiect/2,
@@ -339,7 +341,8 @@ dificultate(X,Resp):-
     retract(nivelSelectat(_)),
     assert(nivelSelectat(X)),
     distribuieObiecte(),
-    descrie(hol,Resp),!.
+    descrie(hol,Resp),
+    golire(),!.
 
 codReal(aaaaa).
 
@@ -375,6 +378,7 @@ mutaJucator(X,R):-
     retract(locatieJucator(L)),
     assert(locatieJucator(Z)),
     descrie(Z,H),
+    amParcurs(Z),
     cerceteazaCamera(T1),
     atom_concat(H,T1,R),!.
 
@@ -410,6 +414,7 @@ mutaJucator(X,R):-
     legatura(X,L,cameraCapcana1),
     retract(locatieJucator(L)),
     assert(locatieJucator(cameraCapcana1)),
+    amParcurs(cameraCapcana1),
     descrie(cameraCapcana1,Z),
     cerceteazaCamera(T1),
     scadeViata(),
@@ -419,6 +424,7 @@ mutaJucator(X,R):-
     amInceput(da),
     locatieJucator(L),
     legatura(X,L,cameraCapcana2),
+     amParcurs(cameraCapcana2),
     scadeEnergie(),
     retract(locatieJucator(L)),
     assert(locatieJucator(cameraCapcana2)),
@@ -434,6 +440,7 @@ mutaJucator(X,R):-
     scadeEnergie(),
     retract(locatieJucator(L)),
     assert(locatieJucator(Z)),
+     amParcurs(Z),
     descrie(Z,H),
     cerceteazaCamera(T1),
     atom_concat(H,T1,R),!.
