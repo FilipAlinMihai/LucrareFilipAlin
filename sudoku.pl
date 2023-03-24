@@ -189,6 +189,7 @@ sudoku(X,Y,Scriere3):-
         stareCurenta(S),
         modifica(X,Y,S,R),
         verifica(0,R),nl,
+        %write(R),
         retract(stareCurenta(_)),
         assert(stareCurenta(R)),
         afisare(Scriere),
@@ -228,7 +229,7 @@ verifica(I,[L|T]):-
         verificaLinie(LL),
         verificaLinie(LLL),
         I1 is I + 1,
-        verifica(I1,[L|T]),!.
+        verifica(I1,T),!.
 
 
 

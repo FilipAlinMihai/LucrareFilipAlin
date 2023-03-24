@@ -1,5 +1,9 @@
 restart(X):-
         golire(),
+        retract(camereLibere(_)),
+        assert(camereLibere([hol,biblioteca,cameraE,
+        cameraES,cameraEE,debara,bucatarie,
+        cameraNW,cameraW,cameraWW,cameraWS,cameraNE])),
         retract(jocSliding(_)),
         assert(jocSliding(disponibil)),
         retract(jocXsi0(_)),

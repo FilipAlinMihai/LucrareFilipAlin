@@ -330,8 +330,6 @@ dificultate(X,Resp):-
     amInceput(nu),
     retract(energieJucator(_)),
     assert(energieJucator(Y)),
-    retract(amInceput(nu)),
-    assert(amInceput(da)),
     comunicaNivel(X),
     write(''),
     write(''),
@@ -342,7 +340,9 @@ dificultate(X,Resp):-
     assert(nivelSelectat(X)),
     distribuieObiecte(),
     descrie(hol,Resp),
-    golire(),!.
+    golire(),
+    retract(amInceput(nu)),
+    assert(amInceput(da)),!.
 
 codReal(aaaaa).
 
