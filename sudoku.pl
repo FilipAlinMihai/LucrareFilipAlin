@@ -1,4 +1,4 @@
-:- module(sudoku,[startS/1,
+:- module(sudoku,[startS/2,
                 stopS/0,
                 sudoku/3,
                 afisare/1
@@ -28,13 +28,13 @@ alegeVarianta(X):-
         random(0,Y,S),
         nth0(S,R,X),!.
 
-startS(S):-
+startS(S,Z):-
         alegeVarianta(X),
         retract(stareCurenta(_)),
         assert(stareCurenta(X)),
         retract(status(_)),
         assert(status(pornit)),
-        creareJoc(S),
+        creareJoc(S,Z),
         retract(vieti(_)),
         assert(vieti(4)).
 stopS():-
@@ -155,17 +155,16 @@ substituireInLinie(T2,I,[X|T],[X|R]):-
 
 egale(X,X).
 
-distrugereStare(60):-!.
-distrugereStare(X):-
+distrugereStare(Z,Z):-!.
+distrugereStare(X,Z):-
         eliminarePozitie(X),
         I is X +1,
-        distrugereStare(I),!.
-distrugereStare(X):-
-        I is X +1,
-        distrugereStare(I),!.
+        distrugereStare(I,Z),!.
+distrugereStare(X,Z):-
+        distrugereStare(X,Z),!.
 
-creareJoc(X):-
-        distrugereStare(10),
+creareJoc(X,Z):-
+        distrugereStare(10,Z),
         afisare(X).
 
 scrie(X,T2):-
@@ -188,7 +187,7 @@ sudoku(_,B,X):-
 sudoku(X,Y,Scriere3):-
         stareCurenta(S),
         modifica(X,Y,S,R),
-        verifica(0,R),nl,
+        verifica(0,R,R),nl,
         %write(R),
         retract(stareCurenta(_)),
         assert(stareCurenta(R)),
@@ -221,15 +220,15 @@ modificaLinie(X,Y,[X|T],[Y|T]).
 modificaLinie(X,Y,[L|T],[L|R]):-
         modificaLinie(X,Y,T,R),!.
 
-verifica(9,_).
-verifica(I,[L|T]):-
-        creareLinieColoana(I,[L|T],LL),
-        creareLiniePatrat(I,[L|T],LLL),
+verifica(9,_,_).
+verifica(I,[L|T],Stare):-
+        creareLinieColoana(I,Stare,LL),
+        creareLiniePatrat(I,Stare,LLL),
         verificaLinie(L),
         verificaLinie(LL),
         verificaLinie(LLL),
         I1 is I + 1,
-        verifica(I1,T),!.
+        verifica(I1,T,Stare),!.
 
 
 

@@ -98,6 +98,10 @@ executor(X,A1,A2,F):-
         assert(ajutor2(disponibil)),
         modificareTextPrezentat(F,R),
         !;
+        apartine(X,[arunca,renunta,elibereaza,drop]) ->
+        renunta(A1,R),
+        modificareTextPrezentat(F,R),
+        !;
         apartine(X,[scrieCod,cod,scriecod,codul,parola]) ->
         scrie_cod(A1,R20),
         modificareTextPrezentat(F,R20),!;

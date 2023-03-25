@@ -37,7 +37,9 @@
               incarca/1,
               descrie/2,
               locatieJucator/1,
-              desenare/1]).
+              desenare/1,
+              locatieObiect/2,
+              renunta/2]).
 
 
 :- use_module(sliding).
@@ -55,6 +57,8 @@
 :- include('restart.pl').
 :- include('controlJocuri.pl').
 :- include('harta2.pl').
+:- include('gestionareInventar.pl').
+:- include('clasament.pl').
 
 :- dynamic locatieJucator/1,
     locatieObiect/2,
@@ -218,21 +222,6 @@ cerceteazaCamera(R1):-
     atom_concat('---------------------------------\n',
     'Acestea au fost obiectele gasite',R1).
 
-scrieObiecte([],'').
-scrieObiecte([L|T],Y):-
-    atom_concat('--------------------------\n',L,T1),
-    atom_concat(T1,'\n',T2),
-    scrieObiecte(T,T3),
-    atom_concat(T2,T3,Y).
-
-inventar(R1):-
-    bagof(Y,locatieObiect(Y,jucator),Obiecte),
-    scrieObiecte(Obiecte,RO),
-    atom_concat('',RO,R1).
-
-inventar(X):-atom_concat('','------------------------\n',X).
-
-
 raspunsGhicitoare(aaaaaaaaa).
 
 raspunde_la_Ghicitoare(X,R):-
@@ -243,34 +232,6 @@ raspunde_la_Ghicitoare(X,R):-
 
 raspunde_la_Ghicitoare(_,R):-
     atom_concat('','Raspuns incorectcorect',R),!.
-
-% Prin aceasta metoda jucatorul are posibilitatea de a pastra obiecte in
-% rucsacul personal pentru a le folosi mai tarziu
-pastreaza(cheie,R1):-
-    locatieObiect(seif,jucator),
-    raspunsGhicitoare(cheie),
-    retract(locatieObiect(cheie,seif)),
-    assert(locatieObiect(cheie,jucator)),
-    atom_concat('Cheia e la tine!','\n',R1),!.
-
-pastreaza(cheie,R1):-
-    locatieObiect(seif,jucator),
-    atom_concat('Mai intai raspunde la ghicitoare!','\n',R1),!.
-
-pastreaza(Y,R1):-
-    locatieObiect(Y,X),
-    locatieJucator(X),
-    retract(locatieObiect(Y, X)),
-    assert(locatieObiect(Y, jucator)),
-    atom_concat('Obiectul a fost plasat in inventar!','\n',R1),!.
-
-pastreaza(Y,X):-
-    locatieObiect(Y,jucator),
-    atom_concat('Il avem deja !\n','',X),!.
-
-pastreaza(Y,X):-
-    locatieObiect(Y,_),
-    atom_concat('Actiune imposibila. Nu vad obiectul : ',Y,X),!.
 
 % Dupa consumarea unui obiect comestibil jucatorul primeste 5 puncte de
 % energie
@@ -398,6 +359,9 @@ mutaJucator(X,R):-
     scadeEnergie(),
     retract(locatieJucator(L)),
     assert(locatieJucator(iesire)),
+    energieJucator(Energie),
+    nivelSelectat(Nivel),
+    clasament(Nivel,Energie),
     atom_concat('','Joc Finalizat !! Felicitari !!!!\n',R).
 
 mutaJucator(X,R):-
@@ -444,6 +408,11 @@ mutaJucator(X,R):-
     descrie(Z,H),
     cerceteazaCamera(T1),
     atom_concat(H,T1,R),!.
+
+mutaJucator(n,R):-
+    amInceput(da),
+    locatieJucator(biblioteca),
+    atom_concat('','Introdu codul lacatului!\n',R),!.
 
 mutaJucator(_,R):-
         atom_concat('','In directia aceasta nu se afla nimic!\n',R).

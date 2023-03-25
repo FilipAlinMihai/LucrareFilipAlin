@@ -122,7 +122,7 @@ run:-
     send(F2, above, E),
    
     send(F2, size, size(700, 400)),
-    send(F2, open),
+    send(W, open),
     !.
 
 taiere(X,A1,A2,F):-

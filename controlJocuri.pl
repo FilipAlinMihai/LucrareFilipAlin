@@ -80,7 +80,8 @@ incepeJoc(sudoku,X):-
 incepeJoc(sudoku,X1):-
     locatieJucator(cameraEE),
     descrie(sudoku,X),
-    startS(S),
+    determinaNumarInlocuiri(NR),
+    startS(S,NR),
     atom_concat(X,S,X1),
     retract(seJoaca(_)),
     assert(seJoaca(sudoku)),
@@ -102,3 +103,13 @@ stopJoc(dilema):-stopD().
 stopJoc(hunter):-stopH().
 stopJoc(foarfecahartiepiatra):-stopJ().
 stopJoc(sudoku):-stopS().
+
+determinaNumarInlocuiri(NR):-
+        nivelSelectat(usor)->
+        NR = 40,!;
+        nivelSelectat(mediu)->
+        NR = 45,!;
+        nivelSelectat(dificil)->
+        NR = 50,!;
+        nivelSelectat(imposibil)->
+        NR = 55,!.
