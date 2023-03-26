@@ -39,7 +39,8 @@
               locatieJucator/1,
               desenare/1,
               locatieObiect/2,
-              renunta/2]).
+              renunta/2,
+              afisareClasament/2]).
 
 
 :- use_module(sliding).

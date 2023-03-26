@@ -51,6 +51,10 @@ executor(X,A1,A2,F):-
         atom_concat("Joc salvat!\n",'',R),
         modificareTextPrezentat(F,R),
         !;
+        apartine(X,[clasament,top,scor]) ->
+        afisareClasament(A1,R),
+        modificareTextPrezentat(F,R),
+        !;
         X = incarca, incarca(A1)->
         locatieJucator(Juc),
         descrie(Juc,R1),
