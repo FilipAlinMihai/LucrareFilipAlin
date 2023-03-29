@@ -1,46 +1,48 @@
-clasament(Nivel,Energie):-
+clasament(Nivel,Energie,Nume):-
         Nivel = usor ->
-        procesareUsor(Energie),!;
+        procesareUsor(Energie,Nume),!;
         Nivel = mediu ->
-        procesareMediu(Energie),!;
+        procesareMediu(Energie,Nume),!;
         Nivel = dificil ->
-        procesareDificil(Energie),!;
+        procesareDificil(Energie,Nume),!;
         Nivel = imposibil ->
-        procesareImposibil(Energie),!.
+        procesareImposibil(Energie,Nume),!.
 
 
-procesareMediu(Energie):-
+procesareMediu(Energie,Nume):-
         citireMediu(Clasament),
-        sortate(Clasament,Energie,ClasamentNou),
+        sortate(Clasament,[Energie,Nume],ClasamentNou),
         tell('C:\\Users\\lenovo\\Documents\\Prolog\\LucrareFilipAlin\\clasament\\ClasamentNivelMediu.txt'),
         scriere(ClasamentNou),
         told.
 
-procesareUsor(Energie):-
+procesareUsor(Energie,Nume):-
         citireUsor(Clasament),
-        sortate(Clasament,Energie,ClasamentNou),
+        sortate(Clasament,[Energie,Nume],ClasamentNou),
         tell('C:\\Users\\lenovo\\Documents\\Prolog\\LucrareFilipAlin\\clasament\\ClasamentNivelUsor.txt'),
         scriere(ClasamentNou),
         told.
 
-procesareDificil(Energie):-
+procesareDificil(Energie,Nume):-
         citireDificil(Clasament),
-        sortate(Clasament,Energie,ClasamentNou),
+        sortate(Clasament,[Energie,Nume],ClasamentNou),
         tell('C:\\Users\\lenovo\\Documents\\Prolog\\LucrareFilipAlin\\clasament\\ClasamentNivelDificil.txt'),
         scriere(ClasamentNou),
         told.
 
-procesareImposibil(Energie):-
+procesareImposibil(Energie,Nume):-
         citireImposibil(Clasament),
-        sortate(Clasament,Energie,ClasamentNou),
+        sortate(Clasament,[Energie,Nume],ClasamentNou),
         tell('C:\\Users\\lenovo\\Documents\\Prolog\\LucrareFilipAlin\\clasament\\ClasamentNivelImposibil.txt'),
         scriere(ClasamentNou),
         told.
 
 scriere([]).
 scriere([end_of_file|_]).
-scriere([L|T]):-
-        write(L),write('.\n'),
+scriere([[P,N]|T]):-
+        write(P),write('.\n'),
+        string_lower(N,N1),
+        write(N1),write('.\n'),
         scriere(T),!.
 
 citireMediu(Clasament):-
@@ -71,14 +73,15 @@ citeste(Continut,[X|T]) :-
     read(Continut,X),
     citeste(Continut,T),!.
 
-comparator2(X,Y,Z):-
+comparator2(X,[Y,_],[Z,_]):-
         Y < Z->
         X = >;
         X = < .
 
-sortate(Clasament,Energie,L):-
+sortate(Clasament,[Energie,Nume],L):-
          stergeEOF(Clasament,ClasamentCurat), 
-         predsort(comparator2,[Energie|ClasamentCurat],L),!.
+         perechi(ClasamentCurat,Perechi),
+         predsort(comparator2,[[Energie,Nume]|Perechi],L),!.
 
 stergeEOF([],[]).
 stergeEOF([end_of_file|_],[]).
@@ -87,23 +90,33 @@ stergeEOF([L|T],[L|R]):-stergeEOF(T,R),!.
 afisareClasament(Nivel,R):-
         Nivel = usor ->
         citireUsor(Clasament),
-        scriereClasament(Clasament,R1),
+        stergeEOF(Clasament,Clasament1),
+        scriereClasament(Clasament1,R1),
         atom_concat('Clasament Nivel Usor:\n',R1,R),!;
         Nivel = mediu ->
         citireMediu(Clasament),
-        scriereClasament(Clasament,R1),
+        stergeEOF(Clasament,Clasament1),
+        scriereClasament(Clasament1,R1),
         atom_concat('Clasament Nivel Mediu:\n',R1,R),!;
         Nivel = dificil ->
         citireDificil(Clasament),
-        scriereClasament(Clasament,R1),
+        stergeEOF(Clasament,Clasament1),
+        scriereClasament(Clasament1,R1),
         atom_concat('Clasament Nivel Dificil:\n',R1,R),!;
         Nivel = imposibil ->
         citireImposibil(Clasament),
-        scriereClasament(Clasament,R1),
+        stergeEOF(Clasament,Clasament1),
+        scriereClasament(Clasament1,R1),
         atom_concat('Clasament Nivel Imposibil:\n',R1,R),!.
 
 scriereClasament([],'').
-scriereClasament([L|T],R):-
+scriereClasament([L,M|T],R):-
         scriereClasament(T,R1),
-        atom_concat(L,"\n",RR),
+        atom_concat(L,"---",R01),
+        atom_concat(R01,M,R02),
+        atom_concat(R02,"\n",RR),
         atom_concat(RR,R1,R),!.        
+
+perechi([],[]).
+perechi([X,Y|T],[[X,Y]|Perechi]):-
+                perechi(T,Perechi).

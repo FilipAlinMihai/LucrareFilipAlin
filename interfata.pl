@@ -145,7 +145,8 @@ navigare(X,F):-
         modificareTextPrezentat(F,R),!;
         X = s ->
         s(R),
-        modificareTextPrezentat(F,R),!;
+        modificareTextPrezentat(F,R),
+        verificare(),!;
         X = e ->
         e(R),
         modificareTextPrezentat(F,R),!;
@@ -153,6 +154,10 @@ navigare(X,F):-
         w(R),
         modificareTextPrezentat(F,R),!.
 
+verificare():-
+        locatieJucator(iesire) ->
+        casetaNume(),!;
+        1 = 1,!.
 
 mutareSliding(X,F):-
         X = u,
@@ -340,3 +345,27 @@ row(R,Type,Column1,Column2,Column3) :-
     send(R, append, Column1, right),
     send(R, append, Column2, right),
     send(R, append, Column3, right).
+
+casetaNume():-
+        new(E, dialog),
+        new(T, text("Daca dorest sa fi inclus in \nclasamentul oficial introdu un nume")),
+        send(T, colour, orange),
+        send(T, font, font(times, bold, 18)),
+        send(E, display, T, point(20, 15)),
+        send(E, append, new(Argument, text_item(input, 'Nume')),right),
+        send(E, append, new(A,button(trimite, message(@prolog, nume, Argument?selection,E)))),
+        send(Argument,below,T),
+        send(A,below,Argument),
+        send(E, background, black),
+        send(E, size, size(400,250)),
+        send(E,open),!.
+
+
+nume(Nume,E):-
+        energieJucator(Energie),
+        nivelSelectat(Nivel),
+        clasament(Nivel,Energie,Nume),
+        write(Nume),nl,
+        write(Nivel),nl,
+        write(Energie),nl,
+        free(E),!.

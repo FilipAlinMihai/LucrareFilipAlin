@@ -40,7 +40,9 @@
               desenare/1,
               locatieObiect/2,
               renunta/2,
-              afisareClasament/2]).
+              afisareClasament/2,
+              energieJucator/1,
+              clasament/3]).
 
 
 :- use_module(sliding).
@@ -360,9 +362,6 @@ mutaJucator(X,R):-
     scadeEnergie(),
     retract(locatieJucator(L)),
     assert(locatieJucator(iesire)),
-    energieJucator(Energie),
-    nivelSelectat(Nivel),
-    clasament(Nivel,Energie),
     atom_concat('','Joc Finalizat !! Felicitari !!!!\n',R).
 
 mutaJucator(X,R):-
