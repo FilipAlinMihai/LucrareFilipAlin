@@ -1,7 +1,7 @@
 :- use_module(library(dcg/basics)).
 :- use_module(joc1).
 :- use_module(library(pce)).
-:- use_module(sudoku).
+%:- use_module(sudoku).
 
 :- dynamic mesajCurent/1,
            mesajAnterior/1,
@@ -68,7 +68,10 @@ run:-
     send(F, size, size(425,250)),
     send(F2, scrollbars, both),
     send(F2, size, size(425,250)),
-    send(E, append, new(Com, text_item(in, 'Comanda')),right),
+    send(E, append, new(Com,  menu(department, cycle))),
+    send_list(Com, append, [nivel,energie,inventar,joc,pastreaza,
+    inspecteaza,cod,mananca,restart,salveaza,incarca,clasament,decizie,
+    optiuni,sudoku,viata,ajutor,arunca,foarfecahartiepiatra,ghicitoare]),
     send(E, append, new(Arg, text_item(in, 'Argument1')),right),
     send(E, append, new(Arg2, text_item(in, 'Argument2')),right),
     send(Com, width,20),
@@ -133,11 +136,13 @@ taiere(X,A1,A2,F):-
 
 mutareInterfata(X,F):-
         seJoaca(Joc),
-        Joc = xsi0 ->
+        Joc = xsi0 ,  locatieJucator(cameraNW) ->
         mutare(X,R),
         modificareTextPrezentat(F,R),!;
+        locatieJucator(cameraWW),
         mutaCal(X,R2),
-        modificareTextPrezentat(F,R2),!.
+        modificareTextPrezentat(F,R2),!;
+        modificareTextPrezentat(F,'Nu te afli in camera corecta!\n'),!.
 
 navigare(X,F):-
         X = n ->
@@ -161,17 +166,23 @@ verificare():-
 
 mutareSliding(X,F):-
         X = u,
+        locatieJucator(biblioteca),
         u(R1),
         modificareTextPrezentat(F,R1),!;
         X = d,
+        locatieJucator(biblioteca),
         d(R1),
         modificareTextPrezentat(F,R1),!;
         X = l,
+        locatieJucator(biblioteca),
         l(R1),
         modificareTextPrezentat(F,R1),!;
         X = r,
+        locatieJucator(biblioteca),
         r(R1),
-        modificareTextPrezentat(F,R1),!.        
+        modificareTextPrezentat(F,R1),!;
+        \+ locatieJucator(biblioteca),
+        modificareTextPrezentat(F,'Nu te afli in biblioteca!\n'),!.        
 
 
 aduagaPuncte(X,Y):-
@@ -302,7 +313,7 @@ zoom():-
         send(F, open).
 
 tabla(F):-
-        afisare(R),
+        afisareSudoku(R),
         modificareTextPrezentat(F,R),!.
 
 

@@ -1,9 +1,9 @@
-:- module(sliding, [start/1,arata/1,stop/0,r/1,l/1,u/1,d/1,ajutor/1]).
+%:- module(sliding, [start/1,arata/1,stop/0,r/1,l/1,u/1,d/1,ajutor/1]).
 
 :- include('astar.pl').
 
+
 :- use_module(aleatoare).
-:- use_module(castigare).
 :- dynamic lista/1,status/1.
 
 status(oprit).
@@ -112,36 +112,52 @@ arata(R):-
     atom_concat('Pentru rezolvarea problemei vei primii 5 puncte de energi.\n=======\n', Y,R),!.
 
 r(T1):-status(oprit),
-   atom_concat('','Jocul nu a inceput',T1),!.
-r(T1):-lista(X),
+   atom_concat('','Jocul nu a inceput!\nSau timplu a expirat!\nAi o singura incercare!\n',T1),!.
+r(T11):-lista(X),
    pozitie(X,R),
    pozitiiE1(Z),
    apartine(Z,R),
-   muta(e,T1),!.
+   muta(e,T1),
+   timpRamas(TimpRamas),
+   atom_concat('Au mai ramas ',TimpRamas,T01),
+   atom_concat(T01,' secunde!\n',T02),
+   atom_concat(T02,T1,T11),!.
 
 l(T1):-status(oprit),
-   atom_concat('','Jocul nu a inceput',T1),!.
-l(T1):-lista(X),
+   atom_concat('','Jocul nu a inceput!\nSau timplu a expirat!\nAi o singura incercare!\n',T1),!.
+l(T11):-lista(X),
    pozitie(X,R),
    pozitiiW1(Z),
    apartine(Z,R),
-   muta(w,T1),!.
+   muta(w,T1),
+   timpRamas(TimpRamas),
+   atom_concat('Au mai ramas ',TimpRamas,T01),
+   atom_concat(T01,' secunde!\n',T02),
+   atom_concat(T02,T1,T11),!.
 
 d(T1):-status(oprit),
-   atom_concat('','Jocul nu a inceput',T1),!.
-d(T1):-lista(X),
+   atom_concat('','Jocul nu a inceput!\nSau timplu a expirat!\nAi o singura incercare!\n',T1),!.
+d(T11):-lista(X),
    pozitie(X,R),
    pozitiiS1(Z),
    apartine(Z,R),
-   muta(s,T1),!.
+   muta(s,T1),
+   timpRamas(TimpRamas),
+   atom_concat('Au mai ramas ',TimpRamas,T01),
+   atom_concat(T01,' secunde!\n',T02),
+   atom_concat(T02,T1,T11),!.
 
 u(T1):-status(oprit),
-   atom_concat('','Jocul nu a inceput',T1),!.
-u(T1):-lista(X),
+   atom_concat('','Jocul nu a inceput!\nSau timplu a expirat!\nAi o singura incercare!\n',T1),!.
+u(T11):-lista(X),
    pozitie(X,R),
    pozitiiN1(Z),
    apartine(Z,R),
-   muta(n,T1),!.
+   muta(n,T1),
+   timpRamas(TimpRamas),
+   atom_concat('Au mai ramas ',TimpRamas,T01),
+   atom_concat(T01,' secunde!\n',T02),
+   atom_concat(T02,T1,T11),!.
 
 
 verifica():-
@@ -160,38 +176,7 @@ muta(M,T1):-
     arata(T1),
     verifica(),!.
 
-%mutare(e,[],[]).
-%mutare(e,[0|[Y|T]],[Y|[0|R]]):-mutare(e,T,R).
-%mutare(e,[X|T],[X|R]):-mutare(e,T,R).
-
-
-%mutare(w,[],[]).
-%mutare(w,[Y|[0|T]],[0|[Y|R]]):-mutare(w,T,R).
-%mutare(w,[X|T],[X|R]):-mutare(w,T,R).
-
-%mutare(s,[],[]).
-%mutare(s,[0|[Y,Z,V|T]],[V,Y,Z|[0|R]]):-mutare(s,T,R).
-%mutare(s,[X|T],[X|R]):-mutare(s,T,R).
-
-%mutare(n,[],[]).
-%mutare(n,[Y,Z,V|[0|T]],[0|[Z,V,Y|R]]):-mutare(n,T,R).
-%mutare(n,[X|T],[X|R]):-mutare(n,T,R).
-
-%apartine([G|_],G).
-%apartine([_|T],G):-apartine(T,G).
-
 pozitie([0|_],1).
 pozitie([_|T],R):-
     pozitie(T,R1),
     R is R1+1.
-
-
-
-
-
-
-
-
-
-
-

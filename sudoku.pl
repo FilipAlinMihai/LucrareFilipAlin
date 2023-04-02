@@ -1,16 +1,12 @@
-:- module(sudoku,[startS/2,
-                stopS/0,
-                sudoku/3,
-                afisare/1
-                  ]).
+%:- module(sudoku,[startS/2,stopS/0,sudoku/3,afisare/1]).
 
-:- use_module(castigare).
 :- include('varianteSudoku.pl').
-:- dynamic stareCurenta/1,status/1,vieti/1.
+
+:- dynamic stareCurenta/1,statusSudoku/1,vieti/1.
 
 stareCurenta([]).
 
-status(oprit).
+statusSudoku(oprit).
 
 vieti(4).
 
@@ -32,16 +28,16 @@ startS(S,Z):-
         alegeVarianta(X),
         retract(stareCurenta(_)),
         assert(stareCurenta(X)),
-        retract(status(_)),
-        assert(status(pornit)),
+        retract(statusSudoku(_)),
+        assert(statusSudoku(pornit)),
         creareJoc(S,Z),
         retract(vieti(_)),
         assert(vieti(4)).
 stopS():-
-        retract(status(_)),
-        assert(status(pornit)).
+        retract(statusSudoku(_)),
+        assert(statusSudoku(oprit)).
 
-afisare(T10):-
+afisareSudoku(T10):-
         stareCurenta([A,B,C,D,E,F,G,H,I]),
         scrieLinie(A,1,A1),
         scrieLinie(B,2,B1),
@@ -52,7 +48,10 @@ afisare(T10):-
         scrieLinie(G,7,G1),
         scrieLinie(H,8,H1),
         scrieLinie(I,9,I1),
-        atom_concat('=========||========||=========\n','',T1),
+        timpRamas(TimpRamas),
+        atom_concat('Au mai ramas ',TimpRamas,T01),
+        atom_concat(T01,' secunde!\n',T02),
+        atom_concat(T02,'=========||========||=========\n',T1),
         atom_concat(T1,A1,T2),
         atom_concat(T2,B1,T3),
         atom_concat(T3,C1,T4),
@@ -64,16 +63,16 @@ afisare(T10):-
         atom_concat(T9,I1,T10),!.
 
 scrieLinie([A,B,C,D,E,F,G,H,I],P,T21):-
-            apartine(P,[6,3]),
-            scrie(A,A1),
-            scrie(B,B1),
-            scrie(C,C1),
-            scrie(D,D1),
-            scrie(E,E1),
-            scrie(F,F1),
-            scrie(G,G1),
-            scrie(H,H1),
-            scrie(I,I1),
+            apartineS(P,[6,3]),
+            scrieS(A,A1),
+            scrieS(B,B1),
+            scrieS(C,C1),
+            scrieS(D,D1),
+            scrieS(E,E1),
+            scrieS(F,F1),
+            scrieS(G,G1),
+            scrieS(H,H1),
+            scrieS(I,I1),
             atom_concat('| ',A1,T1),
             atom_concat(T1,' | ',T2),
             atom_concat(T2,B1,T3),
@@ -96,15 +95,15 @@ scrieLinie([A,B,C,D,E,F,G,H,I],P,T21):-
             atom_concat(T20,'=========||========||=========\n',T21),!.
 
 scrieLinie([A,B,C,D,E,F,G,H,I],_,T20):-
-            scrie(A,A1),
-            scrie(B,B1),
-            scrie(C,C1),
-            scrie(D,D1),
-            scrie(E,E1),
-            scrie(F,F1),
-            scrie(G,G1),
-            scrie(H,H1),
-            scrie(I,I1),
+            scrieS(A,A1),
+            scrieS(B,B1),
+            scrieS(C,C1),
+            scrieS(D,D1),
+            scrieS(E,E1),
+            scrieS(F,F1),
+            scrieS(G,G1),
+            scrieS(H,H1),
+            scrieS(I,I1),
             atom_concat('| ',A1,T1),
             atom_concat(T1,' | ',T2),
             atom_concat(T2,B1,T3),
@@ -127,7 +126,7 @@ scrieLinie([A,B,C,D,E,F,G,H,I],_,T20):-
 
 
 eliminarePozitie(I):-
-        status(pornit),
+        statusSudoku(pornit),
         stareCurenta(X),
         random(0,9,A),
         random(0,9,B),
@@ -141,7 +140,7 @@ eliminarePozitie(I):-
 
 substituire(_,_,_,[],[]).
 substituire(T1,T2,I,[L|T],[RL|R]):-
-        egale(T1,L),
+        egaleS(T1,L),
         substituireInLinie(T2,I,L,RL),
         substituire(T1,T2,I,T,R),!.
 substituire(T1,T2,I,[X|T],[X|R]):-
@@ -153,7 +152,7 @@ substituireInLinie(T2,I,[X|T],[I|T]):-
 substituireInLinie(T2,I,[X|T],[X|R]):-
         substituireInLinie(T2,I,T,R),!.
 
-egale(X,X).
+egaleS(X,X).
 
 distrugereStare(Z,Z):-!.
 distrugereStare(X,Z):-
@@ -165,22 +164,22 @@ distrugereStare(X,Z):-
 
 creareJoc(X,Z):-
         distrugereStare(10,Z),
-        afisare(X).
+        afisareSudoku(X).
 
-scrie(X,T2):-
+scrieS(X,T2):-
         X < 10 ->
         atom_concat(' ',X,T1),
         atom_concat(T1,' ',T2),!;
         atom_concat(X,'',T2),!.
 
 sudoku(_,_,X):- vieti(V), V<1,atom_concat('Ai comis prea multe greseli','',X),!.
-sudoku(_,_,X):-status(oprit),atom_concat('Jocul nu a inceput','',X),!.
+sudoku(_,_,X):-statusSudoku(oprit),atom_concat('Jocul nu a inceput!\nSau timplu a expirat!\nAi o singura incercare!\n','',X),!.
 sudoku(A,_,X):-
-        status(pornit),
+        statusSudoku(pornit),
         A < 10,
         atom_concat('Acaeasta pozitie nu poate fi modificata!','',X),!.
 sudoku(_,B,X):-
-        status(pornit),
+        statusSudoku(pornit),
         B > 9,
         atom_concat('Valoarea introdusa nu este corecta','',X),!.
 
@@ -191,7 +190,7 @@ sudoku(X,Y,Scriere3):-
         %write(R),
         retract(stareCurenta(_)),
         assert(stareCurenta(R)),
-        afisare(Scriere),
+        afisareSudoku(Scriere),
         numaraSpatiiGoale(R,Rez),
         decizie(Rez,Scriere2),
         atom_concat(Scriere,Scriere2,Scriere3),!.
@@ -384,5 +383,5 @@ numaraSpatiiGoale([L|T],R):-
         numaraSpatiiGoaleLinie(L,X),
         R is R1 + X.
 
-apartine(G,[G|_]).
-apartine(G,[_|T]):-apartine(G,T).
+apartineS(G,[G|_]).
+apartineS(G,[_|T]):-apartineS(G,T).

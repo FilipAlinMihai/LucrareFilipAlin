@@ -25,9 +25,9 @@ arataH(R):-
 
 afisareH([],R1):-atom_concat('','',R1).
 afisareH([X,Y,Z|T],R8):-
-        scrieH(X,T1),
-        scrieH(Y,T2),
-        scrieH(Z,T3),
+        scrieHunter(X,T1),
+        scrieHunter(Y,T2),
+        scrieHunter(Z,T3),
         atom_concat('| ',T1,R1),
         atom_concat(R1,' | ',R2),
         atom_concat(R2,T2,R3),
@@ -38,7 +38,7 @@ afisareH([X,Y,Z|T],R8):-
         atom_concat(R6,R7,R8),!.
 
 
-scrieH(X,R1):-
+scrieHunter(X,R1):-
         X = 1 ->
         atom_concat('p','',R1),!;
         X = 3 ->
@@ -86,7 +86,7 @@ mutaCal(X,Raspuns):-
     stareH(S),
     pozitieCal(S,R),
     mutariLegale(R,R1),
-    apartineH(R1,X),
+    apartineHunter(R1,X),
     elementNH(S,X,1,Rez),
     Rez =:= 1,
     transforma1(S,S1),
@@ -101,8 +101,8 @@ mutaCal(_,R1):-
     atom_concat('Mutare invalida!\n',R2,R1),
     scadeMutare(),!.
 
-apartineH([G|_],G).
-apartineH([_|T],G):-apartineH(T,G),!.
+apartineHunter([G|_],G).
+apartineHunter([_|T],G):-apartineHunter(T,G),!.
 
 elementNH([X|_],I,L,X):-L=:=I,!.
 elementNH([_|T],I,L,R):-

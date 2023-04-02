@@ -107,21 +107,6 @@ verificare(_,_,_,0).
 pozitieInStare(X,[X|_],0).
 pozitieInStare(X,[_|T],R):- pozitieInStare(X,T,R1), R is R1 + 1,!.
 
-%euristica([1,0,2,3,4,5,6,7,8],_,X):-X is 1,!.
-%euristica([3,1,2,0,4,5,6,7,8],_,X):-X is 1,!.
-%euristica([3,1,2,6,4,5,0,7,8],_,X):-X is 2,!.
-%euristica([1,2,0,3,4,5,6,7,8],_,X):-X is 2,!.
-%euristica([1,4,2,3,0,5,6,7,8],_,X):-X is 2,!.
-%euristica([1,4,2,3,7,5,6,0,8],_,X):-X is 2,!.
-
-%euristica([1,2,4,3,0,5,6,7,8],_,X):-X is 12,!.
-%euristica([0,2,1,3,4,5,6,7,8],_,X):-X is 12,!.
-%euristica([0,1,2,8,4,5,6,7,5],_,X):-X is 12,!.
-%euristica([0,1,2,3,8,5,6,7,4],_,X):-X is 12,!.
-%euristica([0,1,2,8,4,5,6,7,3],_,X):-X is 12,!.
-%euristica([0,8,2,3,4,5,6,7,1],_,X):-X is 12,!.
-%euristica([0,6,2,3,4,5,1,7,8],_,X):-X is 12,!.
-%euristica([6,1,2,3,4,6,5,7,8],_,X):-X is 12,!.
 
 euristica(_,[],0).
 euristica(S,[0|T],R1):-

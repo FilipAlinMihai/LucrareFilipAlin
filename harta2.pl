@@ -30,21 +30,21 @@ camere(5,2,debara).
 camere(5,3,birou).
 
 scrieLiber(R):-        R = '=============',!.
-scrie(cameraWS,R):-    R = '===CAMERAY==',!.
-scrie(cameraES,R):-    R = '===CAMERAX==',!.
-scrie(cameraWW,R):-    R = '====MARIA===',!.
-scrie(cameraW,R):-     R = '====DIANA===',!.
-scrie(hol,R):-         R = '====HOLL====',!.
-scrie(cameraE,R):-     R = '====MIHAI===',!.
-scrie(cameraEE,R):-    R = '===ANDREI===',!.
-scrie(cameraCapcana1,R):-R = '===CAPCANE==',!.
-scrie(cameraCapcana2,R):-R = '===CAPCANE==',!.
-scrie(cameraNW,R):-      R = '==CAMERA-ZI=',!.
-scrie(biblioteca,R):-    R = '=BIBLIOTECA=',!.
-scrie(bucatarie,R):-     R = '==BUCATARIE=',!.
-scrie(cameraNE,R):-      R = '====BOGDAN==',!.
-scrie(debara,R):-        R = '===DEBARA===',!.
-scrie(birou,R):-         R = '====BIROU===',!.
+scrieH(cameraWS,R):-    R = '===CAMERAY==',!.
+scrieH(cameraES,R):-    R = '===CAMERAX==',!.
+scrieH(cameraWW,R):-    R = '====MARIA===',!.
+scrieH(cameraW,R):-     R = '====DIANA===',!.
+scrieH(hol,R):-         R = '====HOLL====',!.
+scrieH(cameraE,R):-     R = '====MIHAI===',!.
+scrieH(cameraEE,R):-    R = '===ANDREI===',!.
+scrieH(cameraCapcana1,R):-R = '===CAPCANE==',!.
+scrieH(cameraCapcana2,R):-R = '===CAPCANE==',!.
+scrieH(cameraNW,R):-      R = '==CAMERA-ZI=',!.
+scrieH(biblioteca,R):-    R = '=BIBLIOTECA=',!.
+scrieH(bucatarie,R):-     R = '==BUCATARIE=',!.
+scrieH(cameraNE,R):-      R = '====BOGDAN==',!.
+scrieH(debara,R):-        R = '===DEBARA===',!.
+scrieH(birou,R):-         R = '====BIROU===',!.
 
 desenare(X):-parcurgere1([1,2,3,4,5],X),nl,!.
 
@@ -66,13 +66,13 @@ afisare(X,Y,R):-locLiber(X,Y),scrieLiber(R),!.
 afisare(X,Y,R):-
         camere(X,Y,Camera),
         camereParcurse(CP),
-        apartine(Camera,CP),
-        scrie(Camera,R),!.
+        apartineH(Camera,CP),
+        scrieH(Camera,R),!.
 afisare(_,_,R):-
         scrieLiber(R),!.
 
-apartine(G,[G|_]).
-apartine(G,[_|T]):-apartine(G,T).
+apartineH(G,[G|_]).
+apartineH(G,[_|T]):-apartineH(G,T).
 
 amParcurs(X):-
         camereParcurse(L),

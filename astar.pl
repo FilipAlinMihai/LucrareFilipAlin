@@ -84,7 +84,7 @@ mutareUrmatoare(R1):-
         retract(semneRecente(_)),
         assert(semneRecente([s |SR])).
 
-egale(X,X).
+egaleAstar(X,X).
 
 miscarileEfectuate([]).
 
@@ -103,7 +103,7 @@ astar(_,32):-write('Adancime prea mare'),
         assert(stariParcurse([])),!.
 
 astar(X,_):-
-        egale(X,[0,1,2,3,4,5,6,7,8]),
+        egaleAstar(X,[0,1,2,3,4,5,6,7,8]),
         extrageDate(Parinte,Semn,ListaRamasa),
         construireCale(Parinte,ListaRamasa,Semne),
         reverse(Semne,Semne2),

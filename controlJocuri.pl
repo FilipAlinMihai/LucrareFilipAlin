@@ -13,7 +13,13 @@ incepeJoc(sliding,X):-
     retract(seJoaca(_)),
     assert(seJoaca(sliding)),
     retract(jocSliding(_)),
-    assert(jocSliding(jucat)),!.
+    assert(jocSliding(jucat)),
+    start_timer(100,stop),
+    get_time(Ora),
+    Secunde is 100,
+    MomentFinalizare is Ora + Secunde,
+    retract(timp(_)),
+    assert(timp(MomentFinalizare)),!.
 
 incepeJoc(xsi0,X):-
     jocXsi0(jucat),
@@ -81,12 +87,18 @@ incepeJoc(sudoku,X1):-
     locatieJucator(cameraEE),
     descrie(sudoku,X),
     determinaNumarInlocuiri(NR),
+    get_time(Ora),
+    Secunde is 400,
+    MomentFinalizare is Ora + Secunde,
+    retract(timp(_)),
+    assert(timp(MomentFinalizare)),
     startS(S,NR),
     atom_concat(X,S,X1),
     retract(seJoaca(_)),
     assert(seJoaca(sudoku)),
     retract(jocSudoku(_)),
-    assert(jocSudoku(jucat)),!.
+    assert(jocSudoku(jucat)),
+    start_timer(400,stopS),!.
 
 
 % Jocul este restrictionat unei singure camere

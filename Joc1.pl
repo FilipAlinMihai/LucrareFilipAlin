@@ -32,7 +32,6 @@
               nivelSelectat/1,
               alege/2,
               restart/1,
-              afisare/1,
               salveaza/1,
               incarca/1,
               descrie/2,
@@ -42,14 +41,16 @@
               renunta/2,
               afisareClasament/2,
               energieJucator/1,
-              clasament/3]).
+              clasament/3,
+              sudoku/3,
+              afisareSudoku/1]).
 
 
-:- use_module(sliding).
+%:- use_module(sliding).
 :- use_module(xsi0).
 :- use_module(castigare).
 :- use_module(piatrafoarfecahartie).
-:- use_module(sudoku).
+%:- use_module(sudoku).
 
 :- include('literenoi.pl').
 :- include('dilema_prizonierilor.pl').
@@ -62,6 +63,9 @@
 :- include('harta2.pl').
 :- include('gestionareInventar.pl').
 :- include('clasament.pl').
+:- include('sudoku.pl').
+:- include('sliding.pl').
+:- include('gestionareTimp.pl').
 
 :- dynamic locatieJucator/1,
     locatieObiect/2,

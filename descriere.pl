@@ -75,7 +75,8 @@ descrie(biblioteca,X):-
     'Usa de la intrarea in birou are un lacat!\n',T1),
     atom_concat(T1,'Lacatul are un cod format din 5 litere\n',T2),
     atom_concat(T2,'Poti juca un joc: sliding 8\n',T3),
-    atom_concat(T3,'La est e bucataria\n',T4),
+    atom_concat(T3,'Incepe jocul prin comanda Joc cu argumentul sliding\n',T31),
+    atom_concat(T31,'La est e bucataria\n',T4),
     atom_concat(T4,'La vest e camera de zi\n',T5),
     atom_concat(T5,'La sud e holul\n',X).
 
@@ -89,18 +90,21 @@ descrie(cameraE,X):-
     atom_concat('Te afli in camera camera lui Mihai. La est este camera lui Andrei\n',
     'La vest se afla holul.
 La sud este camera X.
-Poti juca un joc de foarfeca hartie piatra impotriva calculatorului\n',X).
+Poti juca un joc de foarfeca hartie piatra impotriva calculatorului\n',T3),
+atom_concat(T3,'Incepe jocul prin comanda Joc cu argumentul foarfecahartiepiatra\n',X).
     
 
 descrie(cameraEE,X):-
     atom_concat('Te afli in camera lui Andrei. La nord este camera lui Bogdan\n',
     'La vest se afla camera lui Mihai\n
-Poti juca Sudoku\n',X).
+Poti juca Sudoku\n',T3),
+atom_concat(T3,'Incepe jocul prin comanda Joc cu argumentul sudoku.\n',X).
 
 descrie(cameraNE,X):-
     atom_concat('Te afli in camera lui Bogdan. La vest se afla bucataria\n',
     'La sud se afla camera lui Andrei\n
-Rezolva dilema prizonierilor\n',X).
+Rezolva dilema prizonierilor\n',T3),
+atom_concat(T3,'Incepe jocul prin comanda Joc cu argumentul dilema\n',X).
 
 descrie(bucatarie,X):-
     atom_concat('Te afli in bucatarie. La vest este biblioteca\n',
@@ -114,14 +118,16 @@ descrie(cameraW,X):-
 
 descrie(cameraWW,X):-
     atom_concat('','Te afli in camera Mariei. La est este camera Dianei.\n
-Poti juca hunter.\n',X).
+Poti juca hunter.\n',T3),
+atom_concat(T3,'Incepe jocul prin comanda Joc cu argumentul hunter.\n',X).
 
 descrie(cameraNW,X):-
     atom_concat('Te afli in camera de zi. La est se afla biblioteca\n',
     'Acesta portiune a hartii nu este clara!\n',T1),
     atom_concat(T1,'Ai posibilitatea de a merge in 3 camere necunoscute la nord, vest si sud\n', T2),
     atom_concat(T2, 'Ai mare grija camerele acestea pot fi periculoase!\n
-Poti juca x si 0 !\n',X).
+Poti juca x si 0 !\n',T3),
+atom_concat(T3,'Incepe jocul prin comanda Joc cu argumentul xsi0.\n',X).
     
 
 descrie(debara,X):-
