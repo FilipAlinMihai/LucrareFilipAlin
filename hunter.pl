@@ -73,7 +73,6 @@ mutaCal(_,R1):-
 
 mutaCal(_,R1):-
     finalizat(),
-    adaugaEnergie(3,_),
     atom_concat('Ai castigat jocul. Ai primit 3 puncte de energie\n','',R1),!.
 
 
@@ -94,7 +93,10 @@ mutaCal(X,Raspuns):-
     scadeMutare(),
     retract(stareH(S)),
     assert(stareH(S2)),
-    arataH(Raspuns),!.
+    \+ finalizat() ->
+    arataH(Raspuns),!;
+    adaugaEnergie(3,_),
+    Raspuns = 'Ai castigat jocul. Ai primit 3 puncte de energie\n',!.
 
 mutaCal(_,R1):-
     arataH(R2),

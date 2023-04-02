@@ -119,7 +119,8 @@ r(T11):-lista(X),
    apartine(Z,R),
    muta(e,T1),
    timpRamas(TimpRamas),
-   atom_concat('Au mai ramas ',TimpRamas,T01),
+   format(atom(Rotunjire), '~2f', [TimpRamas]),
+   atom_concat('Au mai ramas ',Rotunjire,T01),
    atom_concat(T01,' secunde!\n',T02),
    atom_concat(T02,T1,T11),!.
 
@@ -131,7 +132,8 @@ l(T11):-lista(X),
    apartine(Z,R),
    muta(w,T1),
    timpRamas(TimpRamas),
-   atom_concat('Au mai ramas ',TimpRamas,T01),
+   format(atom(Rotunjire), '~2f', [TimpRamas]),
+   atom_concat('Au mai ramas ',Rotunjire,T01),
    atom_concat(T01,' secunde!\n',T02),
    atom_concat(T02,T1,T11),!.
 
@@ -143,7 +145,8 @@ d(T11):-lista(X),
    apartine(Z,R),
    muta(s,T1),
    timpRamas(TimpRamas),
-   atom_concat('Au mai ramas ',TimpRamas,T01),
+   format(atom(Rotunjire), '~2f', [TimpRamas]),
+   atom_concat('Au mai ramas ',Rotunjire,T01),
    atom_concat(T01,' secunde!\n',T02),
    atom_concat(T02,T1,T11),!.
 
@@ -155,7 +158,8 @@ u(T11):-lista(X),
    apartine(Z,R),
    muta(n,T1),
    timpRamas(TimpRamas),
-   atom_concat('Au mai ramas ',TimpRamas,T01),
+   format(atom(Rotunjire), '~2f', [TimpRamas]),
+   atom_concat('Au mai ramas ',Rotunjire,T01),
    atom_concat(T01,' secunde!\n',T02),
    atom_concat(T02,T1,T11),!.
 

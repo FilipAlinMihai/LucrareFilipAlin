@@ -1,5 +1,7 @@
 restart(X):-
         golire(),
+        fireExecutie(Fire),
+        stop_timer(Fire),
         retract(camereLibere(_)),
         assert(camereLibere([hol,biblioteca,cameraE,
         cameraES,cameraEE,debara,bucatarie,

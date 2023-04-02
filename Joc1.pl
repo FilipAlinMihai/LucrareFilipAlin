@@ -307,7 +307,9 @@ dificultate(X,Resp):-
     retract(nivelSelectat(_)),
     assert(nivelSelectat(X)),
     distribuieObiecte(),
-    descrie(hol,Resp),
+    descrie(hol,Camera),
+    cerceteazaCamera(Rez1),
+    atom_concat(Camera,Rez1,Resp),
     golire(),
     retract(amInceput(nu)),
     assert(amInceput(da)),!.

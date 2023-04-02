@@ -14,9 +14,10 @@ incepeJoc(sliding,X):-
     assert(seJoaca(sliding)),
     retract(jocSliding(_)),
     assert(jocSliding(jucat)),
-    start_timer(100,stop),
+    determinareSecunde1(NumarSecunde),
+    start_timer(NumarSecunde,stop),
     get_time(Ora),
-    Secunde is 100,
+    Secunde is NumarSecunde,
     MomentFinalizare is Ora + Secunde,
     retract(timp(_)),
     assert(timp(MomentFinalizare)),!.
@@ -87,8 +88,10 @@ incepeJoc(sudoku,X1):-
     locatieJucator(cameraEE),
     descrie(sudoku,X),
     determinaNumarInlocuiri(NR),
+    determinareSecunde2(NumarSecunde),
     get_time(Ora),
-    Secunde is 400,
+    start_timer(NumarSecunde,stopS),
+    Secunde is NumarSecunde,
     MomentFinalizare is Ora + Secunde,
     retract(timp(_)),
     assert(timp(MomentFinalizare)),
@@ -97,8 +100,7 @@ incepeJoc(sudoku,X1):-
     retract(seJoaca(_)),
     assert(seJoaca(sudoku)),
     retract(jocSudoku(_)),
-    assert(jocSudoku(jucat)),
-    start_timer(400,stopS),!.
+    assert(jocSudoku(jucat)),!.
 
 
 % Jocul este restrictionat unei singure camere
@@ -125,3 +127,24 @@ determinaNumarInlocuiri(NR):-
         NR = 50,!;
         nivelSelectat(imposibil)->
         NR = 55,!.
+
+determinareSecunde2(NumarSecunde):-
+            nivelSelectat(usor)->
+            NumarSecunde = 800,!;
+            nivelSelectat(mediu)->
+            NumarSecunde = 500,!;
+            nivelSelectat(dificil)->
+            NumarSecunde = 400,!;
+            nivelSelectat(imposibil)->
+            NumarSecunde = 300,!.
+
+
+determinareSecunde1(NumarSecunde):-
+            nivelSelectat(usor)->
+            NumarSecunde = 250,!;
+            nivelSelectat(mediu)->
+            NumarSecunde = 120,!;
+            nivelSelectat(dificil)->
+            NumarSecunde = 100,!;
+            nivelSelectat(imposibil)->
+            NumarSecunde = 60,!.
