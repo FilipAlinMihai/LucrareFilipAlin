@@ -50,12 +50,12 @@ run:-
     send(F2, background, black),
     new(W,  window('Jocuri', size(800, -5))),                    
     atom_concat('','
-                           Evadeaza din captivitate.\n
-                           Da dovada de gandire logica.\n
-                           Demonstreaza aptitudinile tale de strateg.\n
-                           Evadeaza din captivitate.\n
-                           Da dovada de gandire logica.\n
-                           Demonstreaza aptitudinile tale de strateg.\n
+                           Te-ai trezit pe podeaua unei camere.\n
+                           Nu iti amintesti unde esti sau cum ai ajuns aici.\n
+                           Te intrepti spre o usa ce pare a fi iesirea.\n
+                           Usa e incuiata si nu poti evada.\n
+                           Singura ta sansa e cheia de ce poate descuia aceasta usa.\n
+                           Trebuie sa explorezi camerele casei pentru a regasi libertatea.\n
                             ',Textinitial),
     new(Text2, text(Textinitial)),
     seteazaMesajCurent(Textinitial),
@@ -71,7 +71,7 @@ run:-
     send(E, append, new(Com,  menu(department, cycle))),
     send_list(Com, append, [nivel,energie,inventar,joc,pastreaza,
     inspecteaza,cod,mananca,restart,salveaza,incarca,clasament,decizie,
-    optiuni,sudoku,viata,ajutor,arunca,foarfecahartiepiatra,ghicitoare]),
+    optiuni,sudoku,viata,ajutor,arunca,foarfecahartiepiatra,ghicitoare,parola]),
     send(E, append, new(Arg, text_item(in, 'Argument1')),right),
     send(E, append, new(Arg2, text_item(in, 'Argument2')),right),
     send(Com, width,20),

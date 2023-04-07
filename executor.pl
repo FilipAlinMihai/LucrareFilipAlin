@@ -106,12 +106,16 @@ executor(X,A1,A2,F):-
         renunta(A1,R),
         modificareTextPrezentat(F,R),
         !;
-        apartine(X,[scrieCod,cod,scriecod,codul,parola]) ->
+        apartine(X,[scrieCod,cod,scriecod,codul]) ->
         scrie_cod(A1,R20),
         modificareTextPrezentat(F,R20),!;
         X = ghicitoare ->
         raspunde_la_Ghicitoare(A1,R21),
         modificareTextPrezentat(F,R21)
+        ,!;
+        X = parola ->
+        afisareLitereDescoperite(R),
+        modificareTextPrezentat(F,R)
         ,!;
         atom_concat('Comanda inexistenta!\n', X,R),
         modificareTextPrezentat(F,R),!.

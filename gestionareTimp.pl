@@ -3,42 +3,36 @@ timp(0).
 
 fireExecutie([]).
 
-start_timer(Time, Action) :-
-    thread_create(timer_thread(Time, Action), ThreadId, [detached(true)]),
-    assert(timer_thread(ThreadId)),
+start_timer(Timp, Actiune) :-
+    thread_create(timer_thread(Timp, Actiune), IDFir, [detached(true)]),
+    assert(timer_thread(IDFir)),
     fireExecutie(Lista),
     retract(fireExecutie(_)),
-    assert(fireExecutie([ThreadId|Lista])).
+    assert(fireExecutie([IDFir|Lista])).
 
 stop_timer([]).
-stop_timer([Thread|Threads]):-
-        (   thread_property(Thread, status(running))
-    ->  thread_signal(Thread, abort),
-        fireExecutie(Lista),
-        eliminareFir(Thread,Lista,ListaNoua),
-        retract(fireExecutie(_)),
-        assert(fireExecutie(ListaNoua)),
-        stop_timer(Threads)
-    ;   (   thread_property(Thread, existence(true))
+stop_timer([X|T]):-
+        (   thread_property(X, status(running))
+    ->  thread_signal(X, abort),
+        opresteFir(X),
+        stop_timer(T)
+    ;   (   thread_property(X, existence(true))
         ->  true % thread exists, but is not running
-        ;   format('Thread ~w no longer exists.~n', [Thread])
+        ;   format('Firul de executie ~w nu mai exista .~n', [X])
         ),
-        stop_timer(Threads)
+        stop_timer(T)
     ),!.
 
-timer_thread(Time, Action) :-
-    thread_self(ThreadId),
-    sleep(Time),
-    (   timer_thread_active
-    ->  call(Action),
-    fireExecutie(Lista),
-    eliminareFir(ThreadId,Lista,ListaNoua),
-    retract(fireExecutie(_)),
-    assert(fireExecutie(ListaNoua))
+timer_thread(Timp, Actiune) :-
+    thread_self(IDFir),
+    sleep(Timp),
+    (   activ
+    ->  call(Actiune),
+    opresteFir(IDFir)
     ;   true
     ).
 
-timer_thread_active :-
+activ :-
     current_predicate(timer_thread/1),
     timer_thread(_).
 
@@ -53,3 +47,9 @@ eliminareFir(ThreadId,[ThreadId|Lista],ListaNoua):-
         eliminareFir(ThreadId,Lista,ListaNoua),!.
 eliminareFir(ThreadId,[L|Lista],[L|ListaNoua]):-
         eliminareFir(ThreadId,Lista,ListaNoua),!.
+
+opresteFir(IDFir):-
+        fireExecutie(Lista),
+        eliminareFir(IDFir,Lista,ListaNoua),
+        retract(fireExecutie(_)),
+        assert(fireExecutie(ListaNoua)).

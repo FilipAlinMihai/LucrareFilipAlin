@@ -43,7 +43,8 @@
               energieJucator/1,
               clasament/3,
               sudoku/3,
-              afisareSudoku/1]).
+              afisareSudoku/1,
+              afisareLitereDescoperite/1]).
 
 
 %:- use_module(sliding).
@@ -82,7 +83,12 @@
     jocHunter/1,
     nivelSelectat/1,
     jocFoarfecahartiepiatra/1,
-    jocSudoku/1.
+    jocSudoku/1,
+    avemLit1/1,
+    avemLit2/1,
+    avemLit3/1,
+    avemLit4/1,
+    avemLit5/1.
 
 jocSliding(disponibil).
 jocXsi0(disponibil).
@@ -149,6 +155,12 @@ legatura(e,cameraWW,cameraW).
 legatura(s,birou,biblioteca).
 
 cod_birou(aaaaa).
+
+avemLit1('*').
+avemLit2('*').
+avemLit3('*').
+avemLit4('*').
+avemLit5('*').
 
 %jucatorul introduce codul de la lacatul biroului
 scrie_cod(X,R):-
@@ -425,8 +437,47 @@ mutaJucator(_,R):-
 
 inspecteaza(X,R1):-
     locatieObiect(X,jucator),
+    amDescoperit(X),
     descrie(X,R1).
 
 inspecteaza(_,X):-atom_concat('','Nu ai acest obiect in rucsac!\n',X).
 
 harta():-locatieJucator(X),descrie(X,_),!.
+
+amDescoperit(X):-
+        X=scrisoareLitera1->
+        litera1(L1),
+        retract(avemLit1(_)),
+        assert(avemLit1(L1)),!;
+        X=carteLitera2->
+        litera2(L2),
+        retract(avemLit2(_)),
+        assert(avemLit2(L2)),!;
+        X=carteLitera3->
+        litera3(L3),
+        retract(avemLit3(_)),
+        assert(avemLit3(L3)),!;
+        X=carteLitera4->
+        litera4(L4),
+        retract(avemLit4(_)),
+        assert(avemLit4(L4)),!;
+        X=scrisoareLitera5->
+        litera5(L5),
+        retract(avemLit5(_)),
+        assert(avemLit5(L5)),!;
+        true,!.
+
+afisareLitereDescoperite(R):-
+        avemLitere(R1),
+        atom_concat('Parola este : ',R1,R),!.
+
+avemLitere(R):-
+        avemLit1(R1),
+        avemLit2(R2),
+        avemLit3(R3),
+        avemLit4(R4),
+        avemLit5(R5),
+        atom_concat(R1,R2,T1),
+        atom_concat(T1,R3,T2),
+        atom_concat(T2,R4,T3),
+        atom_concat(T3,R5,R),!.
