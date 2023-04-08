@@ -34,11 +34,11 @@ decizie(neaga,R1,X):-
     afisareSentinta(X,R1),
     stopD(),!.
 
-decizie(_,R,_):-atom_concat('','Jocul nu a inceput!\n',R).
+decizie(_,R,_):-atom_concat('','Jocul nu a început!\n',R).
 
 coin(R):-random(0,2,R).
 
-afisareSentinta(0,R):-atom_concat('Esti liber\n','',R),!.
+afisareSentinta(0,R):-atom_concat('Ești liber\n','',R),!.
 afisareSentinta(X,R):-
     atom_concat('Ai fost condamnat la ',X,T1),
-    atom_concat(T1 , ' ani de inchisoare\n', R),!.
+    atom_concat(T1 , ' ani de închisoare\n', R),!.

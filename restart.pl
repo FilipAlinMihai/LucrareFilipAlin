@@ -60,8 +60,13 @@ restart(X):-
         assert(amInceput(nu)),
         retract(codReal(_)),
         assert(codReal(aaaaa)),
+        retract(mutariRamase(_)),
+        assert(mutariRamase(7)),
         atom_concat('
-                           Evadeaza din captivitate.\n
-                           Da dovada de gandire logica.\n
-                           Demonstreaza aptitudinile tale de strateg.\n
+                          Te-ai trezit pe podeaua unei camere.\n
+                           Nu iți amintești unde ești sau cum ai ajuns aici.\n
+                           Te îndrepți spre o ușă ce pare a fi ieșirea.\n
+                           Ușa e încuiată și nu poți evada.\n
+                           Singura ta șansă e cheia ce poate descuia această ușă.\n
+                           Trebuie să explorezi camerele casei pentru a regăsi libertatea.\n
                             ','',X),!.

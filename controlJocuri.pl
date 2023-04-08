@@ -19,8 +19,8 @@ incepeJoc(sliding,X):-
     get_time(Ora),
     Secunde is NumarSecunde,
     MomentFinalizare is Ora + Secunde,
-    retract(timp(_)),
-    assert(timp(MomentFinalizare)),!.
+    retract(timpSliding(_)),
+    assert(timpSliding(MomentFinalizare)),!.
 
 incepeJoc(xsi0,X):-
     jocXsi0(jucat),
@@ -57,6 +57,13 @@ incepeJoc(hunter,X):-
 incepeJoc(hunter,X):-
     locatieJucator(cameraWW),
     descrie(hunter,Y),
+    determinareSecunde3(NumarSecunde),
+    get_time(Ora),
+    start_timer(NumarSecunde,stopH),
+    Secunde is NumarSecunde,
+    MomentFinalizare is Ora + Secunde,
+    retract(timpHunter(_)),
+    assert(timpHunter(MomentFinalizare)),
     startH(),
     arataH(Z),
     atom_concat(Y,Z,X),
@@ -93,8 +100,8 @@ incepeJoc(sudoku,X1):-
     start_timer(NumarSecunde,stopS),
     Secunde is NumarSecunde,
     MomentFinalizare is Ora + Secunde,
-    retract(timp(_)),
-    assert(timp(MomentFinalizare)),
+    retract(timpSudoku(_)),
+    assert(timpSudoku(MomentFinalizare)),
     startS(S,NR),
     atom_concat(X,S,X1),
     retract(seJoaca(_)),
@@ -104,12 +111,12 @@ incepeJoc(sudoku,X1):-
 
 
 % Jocul este restrictionat unei singure camere
-incepeJoc(sliding,X):-atom_concat('','Nu te aflii in biblioteca!', X).
-incepeJoc(xsi0,X):-atom_concat('','Nu te aflii in camera de zi!', X).
-incepeJoc(dilema,X):-atom_concat('','Nu te aflii in camera lui Bogdan!', X).
-incepeJoc(hunter,X):-atom_concat('','Nu te aflii in camera Mariei!', X).
-incepeJoc(foarfecahartiepiatra,X):-atom_concat('Nu te afli in camera lui Mihai','!', X).
-incepeJoc(sudoku,X):-atom_concat('Nu te afli in camera lui Andrei','!', X).
+incepeJoc(sliding,X):-atom_concat('','Nu te aflii în bibliotecă!', X).
+incepeJoc(xsi0,X):-atom_concat('','Nu te aflii în camera de zi!', X).
+incepeJoc(dilema,X):-atom_concat('','Nu te aflii în camera lui Bogdan!', X).
+incepeJoc(hunter,X):-atom_concat('','Nu te aflii în camera Mariei!', X).
+incepeJoc(foarfecahartiepiatra,X):-atom_concat('Nu te afli în camera lui Mihai','!', X).
+incepeJoc(sudoku,X):-atom_concat('Nu te afli în camera lui Andrei','!', X).
 
 stopJoc(sliding):-stop().
 stopJoc(xsi0):-stopx().
@@ -148,3 +155,13 @@ determinareSecunde1(NumarSecunde):-
             NumarSecunde = 100,!;
             nivelSelectat(imposibil)->
             NumarSecunde = 60,!.
+
+determinareSecunde3(NumarSecunde):-
+            nivelSelectat(usor)->
+            NumarSecunde = 35,!;
+            nivelSelectat(mediu)->
+            NumarSecunde = 28,!;
+            nivelSelectat(dificil)->
+            NumarSecunde = 20,!;
+            nivelSelectat(imposibil)->
+            NumarSecunde = 17,!.

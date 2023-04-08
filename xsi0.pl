@@ -25,16 +25,16 @@ stopx():-
     assert(status(oprit)).
 
 mutare(_,X):-status(oprit),
-    atom_concat('','Jocul nu a inceput',X),!.
+    atom_concat('','Jocul nu a început.',X),!.
 
-mutare(_,X):-castigatorX(),atom_concat('','Joc finalizat: X a castigat deja',X).
-mutare(_,X):-castigator0(),atom_concat('','Joc finalizat: 0 a castigat deja',X).
+mutare(_,X):-castigatorX(),atom_concat('','Joc finalizat: X a câștigat deja.',X).
+mutare(_,X):-castigator0(),atom_concat('','Joc finalizat: 0 a câștigat deja.',X).
 
 mutare(P,R):-
     stare(X),
     elementN(X,P,1,Rez),
     Rez =\= 1,
-    atom_concat('','Pozitie Ocupata',R),!.
+    atom_concat('','Poziție Ocupată!!',R),!.
 
 mutare(P,T3):-
     stare(X),
@@ -45,8 +45,8 @@ mutare(P,T3):-
     assert(stare(R)),
     castigatorX(),
     aratax(T1),
-    atom_concat(T1,'Ai castigat. Evita directiile vest si sud.\n',T2),
-    atom_concat(T2,'La nord este camera pe care trebuie sa o cercetezi\n',T3),!.
+    atom_concat(T1,'Ai câștigat. Evită direcțiile vest și sud.\n',T2),
+    atom_concat(T2,'La nord este camera pe care trebuie să o cercetezi.\n',T3),!.
 
 mutare(P,T3):-
     stare(X),
@@ -56,7 +56,7 @@ mutare(P,T3):-
     retract(stare(X)),
     assert(stare(R)),
     aratax(T1),
-    atom_concat(T1,'Egalitate. Doua din camerele vest nord si sud contin capcane.\n',T3),!.
+    atom_concat(T1,'Egalitate. Două din camerele vest nord și sud conțin capcane.\n',T3),!.
 
 
 mutare(P,T3):-
@@ -70,8 +70,8 @@ mutare(P,T3):-
     nivelCurent(Nivel),
     mutare0(Nivel),
     aratax(T1),
-    atom_concat(T1,'Ai castigat. Evita directiile vest si sud.\n',T2),
-    atom_concat(T2,'La nord este camera pe care trebuie sa o cercetezi\n',T3),!.
+    atom_concat(T1,'Ai câștigat. Evită direcțiile vest și sud.\n',T2),
+    atom_concat(T2,'La nord este camera pe care trebuie să o cercetezi.\n',T3),!.
 
 
 
@@ -86,9 +86,9 @@ mutare(P,T2):-
     mutare0(Nivel),
     aratax(T1),
     castigator0(),
-    atom_concat(T1,'Jocul a fost castigat de calculator!\n',T2),!;
+    atom_concat(T1,'Jocul a fost câștigat de calculator!\n',T2),!;
     aratax(T1),
-    atom_concat(T1,'Joc in desfasurare\n',T2),!.
+    atom_concat(T1,'Joc în desfășurare!\n',T2),!.
 
 verificare():-castigatorX(),!.
 verificare():-castigator0(),!.

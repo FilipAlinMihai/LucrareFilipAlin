@@ -48,7 +48,7 @@ afisareSudoku(T10):-
         scrieLinie(G,7,G1),
         scrieLinie(H,8,H1),
         scrieLinie(I,9,I1),
-        timpRamas(TimpRamas),
+        timpRamas(sudoku,TimpRamas),
         format(atom(Rotunjire), '~2f', [TimpRamas]),
         atom_concat('Au mai ramas ',Rotunjire,T01),
         atom_concat(T01,' secunde!\n',T02),
@@ -173,16 +173,16 @@ scrieS(X,T2):-
         atom_concat(T1,' ',T2),!;
         atom_concat(X,'',T2),!.
 
-sudoku(_,_,X):- vieti(V), V<1,atom_concat('Ai comis prea multe greseli','',X),!.
-sudoku(_,_,X):-statusSudoku(oprit),atom_concat('Jocul nu a inceput!\nSau timplu a expirat!\nAi o singura incercare!\n','',X),!.
+sudoku(_,_,X):- vieti(V), V<1,atom_concat('Ai comis prea multe greșeli','',X),!.
+sudoku(_,_,X):-statusSudoku(oprit),atom_concat('Jocul nu a început!\nSau timplu a expirat!\nAi o singură încercare!\n','',X),!.
 sudoku(A,_,X):-
         statusSudoku(pornit),
         A < 10,
-        atom_concat('Acaeasta pozitie nu poate fi modificata!','',X),!.
+        atom_concat('Acaeasta poziție nu poate fi modificată!','',X),!.
 sudoku(_,B,X):-
         statusSudoku(pornit),
         B > 9,
-        atom_concat('Valoarea introdusa nu este corecta','',X),!.
+        atom_concat('Valoarea introdusă nu este corectă','',X),!.
 
 sudoku(X,Y,Scriere3):-
         stareCurenta(S),
@@ -197,7 +197,7 @@ sudoku(X,Y,Scriere3):-
         atom_concat(Scriere,Scriere2,Scriere3),!.
 
 sudoku(_,_,X):-
-        atom_concat('Ai incalcat regulile!\n','',X),
+        atom_concat('Ai încălcat regulile!\n','',X),
         vieti(V),
         V1 is V - 1,
         retract(vieti(_)),
@@ -205,10 +205,10 @@ sudoku(_,_,X):-
 
 decizie(X,S):-
         X = 0 ->
-        atom_concat('Joc finalizat','',S),
+        atom_concat('Joc finalizat!!','',S),
         adaugaEnergie(5,_),!;
         X > 0 ->
-        atom_concat('Continua','',S),!.
+        atom_concat('Continuă!!','',S),!.
 
 modifica(_,_,[],[]).
 modifica(X,Y,[L|T],[L1|R]):-

@@ -21,7 +21,11 @@ stopH():-
 arataH(R):-
     stareH(X),
     afisareH(X,T1),
-    atom_concat('------------\n',T1,R),!.
+    timpRamas(hunter,TimpRamas),
+    format(atom(Rotunjire), '~2f', [TimpRamas]),
+    atom_concat('Au mai ramas ',Rotunjire,T01),
+    atom_concat(T01,'\n------------\n',T02),
+    atom_concat(T02,T1,R),!.
 
 afisareH([],R1):-atom_concat('','',R1).
 afisareH([X,Y,Z|T],R8):-
@@ -68,18 +72,18 @@ finalizat():-
 
 mutaCal(_,R1):-
     statusH(oprit),
-    atom_concat('Jocul nu a inceput\n','',R1),!.
+    atom_concat('Jocul nu a început!\nSau timpul a expirat!\n','',R1),!.
 
 
 mutaCal(_,R1):-
     finalizat(),
-    atom_concat('Ai castigat jocul. Ai primit 3 puncte de energie\n','',R1),!.
+    atom_concat('Ai câștigat jocul. Ai primit 3 puncte de energie\n','',R1),!.
 
 
 mutaCal(_,R1):-
     mutariRamase(X),
     X<1,
-    atom_concat('Ai ramas fara mutari\n','',R1),!.
+    atom_concat('Ai rămas fără mutări\n','',R1),!.
 
 mutaCal(X,Raspuns):-
     stareH(S),
@@ -93,15 +97,18 @@ mutaCal(X,Raspuns):-
     scadeMutare(),
     retract(stareH(S)),
     assert(stareH(S2)),
-    \+ finalizat() ->
-    arataH(Raspuns),!;
-    adaugaEnergie(3,_),
-    Raspuns = 'Ai castigat jocul. Ai primit 3 puncte de energie\n',!.
+    verificareFinal(Raspuns),!.
 
 mutaCal(_,R1):-
     arataH(R2),
-    atom_concat('Mutare invalida!\n',R2,R1),
+    atom_concat('Mutare invalidă!\n',R2,R1),
     scadeMutare(),!.
+
+verificareFinal(Raspuns):-
+    \+ finalizat() ->
+    arataH(Raspuns),!;
+    adaugaEnergie(3,_),
+    Raspuns = 'Ai câștigat jocul. Ai primit 3 puncte de energie\n',!.
 
 apartineHunter([G|_],G).
 apartineHunter([_|T],G):-apartineHunter(T,G),!.
@@ -116,8 +123,6 @@ scadeMutare():-
     X1 is X-1,
     retract(mutariRamase(X)),
     assert(mutariRamase(X1)),!.
-
-
 
 transforma1([],[]).
 transforma1([L|T],[3|T]):-L =:= 2,!.

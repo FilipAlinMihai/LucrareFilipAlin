@@ -26,7 +26,7 @@ pastreaza(cheie,R1):-
 
 pastreaza(cheie,R1):-
     locatieObiect(seif,jucator),
-    atom_concat('Mai intai raspunde la ghicitoare!','\n',R1),!.
+    atom_concat('Mai întâi răspunde la ghicitoare!','\n',R1),!.
 
 pastreaza(Y,X):-
     locatieObiect(Y,jucator),
@@ -40,7 +40,7 @@ pastreaza(Y,R1):-
     NumarInventar < 6,
     retract(locatieObiect(Y, X)),
     assert(locatieObiect(Y, jucator)),
-    atom_concat('Obiectul a fost plasat in inventar!','\n',R1),!.
+    atom_concat('Obiectul a fost plasat în inventar!','\n',R1),!.
 
 pastreaza(Y,R1):-
     locatieObiect(Y,X),
@@ -53,7 +53,7 @@ pastreaza(Y,R1):-
 
 pastreaza(Y,X):-
     locatieObiect(Y,_),
-    atom_concat('Actiune imposibila. Nu vad obiectul : ',Y,X),!.
+    atom_concat('Acțiune imposibilă. Nu văd obiectul : ',Y,X),!.
 
 renunta(Y,R):-
     locatieObiect(Y,jucator),
@@ -63,4 +63,4 @@ renunta(Y,R):-
     atom_concat('Obiectul a fost aruncat!','\n',R),!.
 
 renunta(_,R):-
-    atom_concat('Acest obiect nu este in inventar!','\n',R),!.
+    atom_concat('Acest obiect nu este în inventar!','\n',R),!.

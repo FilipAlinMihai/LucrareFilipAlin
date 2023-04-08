@@ -1,3 +1,4 @@
+:- set_prolog_flag(encoding, utf8).
 :- use_module(library(dcg/basics)).
 :- use_module(joc1).
 :- use_module(library(pce)).
@@ -33,6 +34,7 @@ reguli():-
     send(F, open),!.
 
 run:-
+    set_prolog_flag(encoding, utf8),
     restart(_),
     new(D, dialog),
     new(F, dialog),
@@ -52,10 +54,10 @@ run:-
     atom_concat('','
                            Te-ai trezit pe podeaua unei camere.\n
                            Nu iti amintesti unde esti sau cum ai ajuns aici.\n
-                           Te intrepti spre o usa ce pare a fi iesirea.\n
+                           Te indrepti spre o usa ce pare a fi iesirea.\n
                            Usa e incuiata si nu poti evada.\n
-                           Singura ta sansa e cheia de ce poate descuia aceasta usa.\n
-                           Trebuie sa explorezi camerele casei pentru a regasi libertatea.\n
+                           Singura ta sansa e cheia ce poate descuia aceasta ușa.\n
+                           Trebuie să explorezi camerele casei pentru a regasi libertatea.\n
                             ',Textinitial),
     new(Text2, text(Textinitial)),
     seteazaMesajCurent(Textinitial),
@@ -142,7 +144,7 @@ mutareInterfata(X,F):-
         locatieJucator(cameraWW),
         mutaCal(X,R2),
         modificareTextPrezentat(F,R2),!;
-        modificareTextPrezentat(F,'Nu te afli in camera corecta!\n'),!.
+        modificareTextPrezentat(F,'Nu te afli în camera corectă!\n'),!.
 
 navigare(X,F):-
         X = n ->
@@ -182,7 +184,7 @@ mutareSliding(X,F):-
         r(R1),
         modificareTextPrezentat(F,R1),!;
         \+ locatieJucator(biblioteca),
-        modificareTextPrezentat(F,'Nu te afli in biblioteca!\n'),!.        
+        modificareTextPrezentat(F,'Nu te afli in bibliotecă!\n'),!.        
 
 
 aduagaPuncte(X,Y):-
@@ -359,7 +361,7 @@ row(R,Type,Column1,Column2,Column3) :-
 
 casetaNume():-
         new(E, dialog),
-        new(T, text("Daca dorest sa fi inclus in \nclasamentul oficial introdu un nume")),
+        new(T, text("Dacă dorești să fi inclus în \nclasamentul oficial introdu un nume.")),
         send(T, colour, orange),
         send(T, font, font(times, bold, 18)),
         send(E, display, T, point(20, 15)),

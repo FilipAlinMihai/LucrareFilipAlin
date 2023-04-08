@@ -58,11 +58,11 @@ executor(X,A1,A2,F):-
         X = incarca, incarca(A1)->
         locatieJucator(Juc),
         descrie(Juc,R1),
-        atom_concat("Joc incarcat!\n",R1,R),
+        atom_concat("Joc încărcat!\n",R1,R),
         modificareTextPrezentat(F,R),
         !;
         X = incarca, \+ incarca(A1) ->
-        atom_concat("Aceasta versiune nu a putut fi incarcata!\n",'',R),
+        atom_concat("Această versiune nu a putut fi încărcată!\n",'',R),
         modificareTextPrezentat(F,R),
         !;
         X = optiuni ->
@@ -79,11 +79,11 @@ executor(X,A1,A2,F):-
         !;
         X = viata ->
         viata(R31),
-        atom_concat('Situatia sanatatii curente: ',R31,R312),
+        atom_concat('Situația sănătății curente: ',R31,R312),
         modificareTextPrezentat(F,R312),
         !;
         X = ajutor,nivelSelectat(imposibil) ->
-        atom_concat('Pentru nivelul imposibil nu exista ajutor!\n','',R),
+        atom_concat('Pentru nivelul imposibil nu există ajutor!\n','',R),
         modificareTextPrezentat(F,R),
         !;
         X = ajutor,ajutor2(disponibil) ->
@@ -117,5 +117,5 @@ executor(X,A1,A2,F):-
         afisareLitereDescoperite(R),
         modificareTextPrezentat(F,R)
         ,!;
-        atom_concat('Comanda inexistenta!\n', X,R),
+        atom_concat('Comandă inexistentă!\n', X,R),
         modificareTextPrezentat(F,R),!.

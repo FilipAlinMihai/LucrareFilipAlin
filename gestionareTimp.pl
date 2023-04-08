@@ -1,5 +1,12 @@
-:- dynamic timp/1,fireExecutie/1.
-timp(0).
+:- dynamic 
+        timpSudoku/1,
+        timpSliding/1,
+        timpHunter/1,
+        fireExecutie/1.
+
+timpSudoku(0).
+timpSliding(0).
+timpHunter(0).
 
 fireExecutie([]).
 
@@ -18,7 +25,7 @@ stop_timer([X|T]):-
         stop_timer(T)
     ;   (   thread_property(X, existence(true))
         ->  true % thread exists, but is not running
-        ;   format('Firul de executie ~w nu mai exista .~n', [X])
+        ;   format('Firul de execuție ~w nu mai există .~n', [X])
         ),
         stop_timer(T)
     ),!.
@@ -36,11 +43,11 @@ activ :-
     current_predicate(timer_thread/1),
     timer_thread(_).
 
-timpRamas(Timpramas):-
-        timp(MomentFinalizare),
+timpRamas(Joc,Timpramas):-
+        alegereTimp(Joc,MomentFinalizare),
         get_time(Ora),
         Timpramas is MomentFinalizare - Ora,
-        stamp_date_time(Timpramas, _, 'local').
+        stamp_date_time(Timpramas, _, 'local'),!.
 
 eliminareFir(_,[],[]).
 eliminareFir(ThreadId,[ThreadId|Lista],ListaNoua):-
@@ -53,3 +60,11 @@ opresteFir(IDFir):-
         eliminareFir(IDFir,Lista,ListaNoua),
         retract(fireExecutie(_)),
         assert(fireExecutie(ListaNoua)).
+
+alegereTimp(Joc,MomentFinalizare):-
+        Joc = sudoku->
+        timpSudoku(MomentFinalizare),!;
+        Joc = hunter->
+        timpHunter(MomentFinalizare),!;
+        Joc = sliding->
+        timpSliding(MomentFinalizare),!.

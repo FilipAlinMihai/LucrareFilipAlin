@@ -234,12 +234,12 @@ cerceteazaCamera(R1):-
     locatieJucator(X),
     bagof(Y,locatieObiect(Y,X),Obiecte),
     scrieObiecte(Obiecte,RO),
-    atom_concat('',RO,R1).
+    atom_concat('\nObiecte în câmpul tău vizual!\n',RO,R1).
     
 
 cerceteazaCamera(R1):-
     atom_concat('---------------------------------\n',
-    'Acestea au fost obiectele gasite',R1).
+    'Nu există obiecte în câmpul vizual.',R1).
 
 raspunsGhicitoare(aaaaaaaaa).
 
@@ -247,10 +247,10 @@ raspunde_la_Ghicitoare(X,R):-
     retract(raspunsGhicitoare(_)),
     assert(raspunsGhicitoare(X)),
     egale(cheie,X),
-    atom_concat('','Raspuns corect',R),!.
+    atom_concat('','Răspuns corect.',R),!.
 
 raspunde_la_Ghicitoare(_,R):-
-    atom_concat('','Raspuns incorectcorect',R),!.
+    atom_concat('','Răspuns incorect.',R),!.
 
 % Dupa consumarea unui obiect comestibil jucatorul primeste 5 puncte de
 % energie
@@ -277,7 +277,7 @@ scadeViata():-
 verificaConditie():-
     viata(X),
     energieJucator(Y),
-    write('Conditia ta : '),
+    write('Condiția ta : '),
     write(X),nl,
     write('Puncte de energie disponibile:'),
     write(Y),nl.
@@ -330,8 +330,8 @@ codReal(aaaaa).
 
 mutaJucator(_,R):-
     amInceput(nu),
-    atom_concat('Nu ai selectat nivelul de dificultate!\n','Utilizeaza comanda nivel(nivelul ales).\n',T1),
-    atom_concat(T1,'Ai patru optoini: usor, mediu, dificil, imposibil\n',R),!.
+    atom_concat('Nu ai selectat nivelul de dificultate!\n','Utilizează comanda nivel(nivelul ales).\n',T1),
+    atom_concat(T1,'Ai patru opțiuni: usor, mediu, dificil, imposibil\n',R),!.
 
 % Daca jucatorul e mort el nu se mai poate deplasa intre camere
 mutaJucator(_,R):-
@@ -344,7 +344,7 @@ mutaJucator(_,R):-
 % alimente.
 mutaJucator(_,R):-
     energieJucator(0),
-    atom_concat('','Esti epuizat!!!!',R).
+    atom_concat('','Ești epuizat!!!!',R).
 
 % Atunci cand deplasarea intre camere este realizata jucatorul consuma
 % energie . Pentru fiecare deplasare reusita este scazut un punct de
@@ -370,7 +370,7 @@ mutaJucator(X,R):-
     locatieJucator(L),
     legatura(X,L,Z),
     cameraIntunecata(Z),
-    atom_concat('Este prea intuneric in aceasta camera\n','Ai nevoie de o lanterna\n',R).
+    atom_concat('Este prea întuneric în această cameră.\n','Ai nevoie de o lanternă\n',R).
 
 mutaJucator(X,R):-
     amInceput(da),
@@ -380,7 +380,7 @@ mutaJucator(X,R):-
     scadeEnergie(),
     retract(locatieJucator(L)),
     assert(locatieJucator(iesire)),
-    atom_concat('','Joc Finalizat !! Felicitari !!!!\n',R).
+    atom_concat('','Joc Finalizat !! Felicitări !!!!\n',R).
 
 mutaJucator(X,R):-
     amInceput(da),
@@ -430,17 +430,17 @@ mutaJucator(X,R):-
 mutaJucator(n,R):-
     amInceput(da),
     locatieJucator(biblioteca),
-    atom_concat('','Introdu codul lacatului!\n',R),!.
+    atom_concat('','Introdu codul lacătului!\n',R),!.
 
 mutaJucator(_,R):-
-        atom_concat('','In directia aceasta nu se afla nimic!\n',R).
+        atom_concat('','În direcția aceasta nu se află nimic!\n',R).
 
 inspecteaza(X,R1):-
     locatieObiect(X,jucator),
     amDescoperit(X),
     descrie(X,R1).
 
-inspecteaza(_,X):-atom_concat('','Nu ai acest obiect in rucsac!\n',X).
+inspecteaza(_,X):-atom_concat('','Nu ai acest obiect în rucsac!\n',X).
 
 harta():-locatieJucator(X),descrie(X,_),!.
 

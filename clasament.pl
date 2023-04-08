@@ -92,7 +92,7 @@ afisareClasament(Nivel,R):-
         citireUsor(Clasament),
         stergeEOF(Clasament,Clasament1),
         scriereClasament(Clasament1,R1),
-        atom_concat('Clasament Nivel Usor:\n',R1,R),!;
+        atom_concat('Clasament Nivel Ușor:\n',R1,R),!;
         Nivel = mediu ->
         citireMediu(Clasament),
         stergeEOF(Clasament,Clasament1),

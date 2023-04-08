@@ -45,7 +45,7 @@ ajutor(R):-
       scrieDirectie(Y,S2),
       scrieDirectie(Z,S3),
       scrieDirectie(O,S4),
-      atom_concat('Realizeaza mutarile: ',S1,T1),
+      atom_concat('Realizează mutările: ',S1,T1),
       atom_concat(T1,S2,T2),
       atom_concat(T2,S3,T3),
       atom_concat(T3,S4,R),!.
@@ -56,7 +56,7 @@ ajutor(R):-
       scrieDirectie(X,S1),
       scrieDirectie(Y,S2),
       scrieDirectie(Z,S3),
-      atom_concat('Realizeaza mutarile: ',S1,T1),
+      atom_concat('Realizează mutările: ',S1,T1),
       atom_concat(T1,S2,T2),
       atom_concat(T2,S3,R),!.
 
@@ -65,14 +65,14 @@ ajutor(R):-
       startAstar(L,[X,Y|_]),
       scrieDirectie(X,S1),
       scrieDirectie(Y,S2),
-      atom_concat('Realizeaza mutarile: ',S1,T1),
+      atom_concat('Realizează mutările: ',S1,T1),
       atom_concat(T1,S2,R),!.
 
 ajutor(R):-
       lista(L),
       startAstar(L,[X|_]),
       scrieDirectie(X,S1),
-      atom_concat('Realizeaza mutarile: ',S1,R),!.
+      atom_concat('Realizează mutările: ',S1,R),!.
 
 
 scrieDirectie(X,R):-
@@ -112,54 +112,54 @@ arata(R):-
     atom_concat('Pentru rezolvarea problemei vei primii 5 puncte de energi.\n=======\n', Y,R),!.
 
 r(T1):-status(oprit),
-   atom_concat('','Jocul nu a inceput!\nSau timplu a expirat!\nAi o singura incercare!\n',T1),!.
+   atom_concat('','Jocul nu a început!\nSau timplu a expirat!\nAi o singură încercare!\n',T1),!.
 r(T11):-lista(X),
    pozitie(X,R),
    pozitiiE1(Z),
    apartine(Z,R),
    muta(e,T1),
-   timpRamas(TimpRamas),
+   timpRamas(sliding,TimpRamas),
    format(atom(Rotunjire), '~2f', [TimpRamas]),
-   atom_concat('Au mai ramas ',Rotunjire,T01),
+   atom_concat('Au mai rămas ',Rotunjire,T01),
    atom_concat(T01,' secunde!\n',T02),
    atom_concat(T02,T1,T11),!.
 
 l(T1):-status(oprit),
-   atom_concat('','Jocul nu a inceput!\nSau timplu a expirat!\nAi o singura incercare!\n',T1),!.
+   atom_concat('','Jocul nu a început!\nSau timplu a expirat!\nAi o singură încercare!\n',T1),!.
 l(T11):-lista(X),
    pozitie(X,R),
    pozitiiW1(Z),
    apartine(Z,R),
    muta(w,T1),
-   timpRamas(TimpRamas),
+   timpRamas(sliding,TimpRamas),
    format(atom(Rotunjire), '~2f', [TimpRamas]),
-   atom_concat('Au mai ramas ',Rotunjire,T01),
+   atom_concat('Au mai rămas ',Rotunjire,T01),
    atom_concat(T01,' secunde!\n',T02),
    atom_concat(T02,T1,T11),!.
 
 d(T1):-status(oprit),
-   atom_concat('','Jocul nu a inceput!\nSau timplu a expirat!\nAi o singura incercare!\n',T1),!.
+   atom_concat('','Jocul nu a început!\nSau timplu a expirat!\nAi o singură încercare!\n',T1),!.
 d(T11):-lista(X),
    pozitie(X,R),
    pozitiiS1(Z),
    apartine(Z,R),
    muta(s,T1),
-   timpRamas(TimpRamas),
+   timpRamas(sliding,TimpRamas),
    format(atom(Rotunjire), '~2f', [TimpRamas]),
-   atom_concat('Au mai ramas ',Rotunjire,T01),
+   atom_concat('Au mai rămas ',Rotunjire,T01),
    atom_concat(T01,' secunde!\n',T02),
    atom_concat(T02,T1,T11),!.
 
 u(T1):-status(oprit),
-   atom_concat('','Jocul nu a inceput!\nSau timplu a expirat!\nAi o singura incercare!\n',T1),!.
+   atom_concat('','Jocul nu a început!\nSau timplu a expirat!\nAi o singură încercare!\n',T1),!.
 u(T11):-lista(X),
    pozitie(X,R),
    pozitiiN1(Z),
    apartine(Z,R),
    muta(n,T1),
-   timpRamas(TimpRamas),
+   timpRamas(sliding,TimpRamas),
    format(atom(Rotunjire), '~2f', [TimpRamas]),
-   atom_concat('Au mai ramas ',Rotunjire,T01),
+   atom_concat('Au mai rămas ',Rotunjire,T01),
    atom_concat(T01,' secunde!\n',T02),
    atom_concat(T02,T1,T11),!.
 
@@ -167,7 +167,6 @@ u(T11):-lista(X),
 verifica():-
     lista(X),
     victorie(X),
-    write('Ai castigat'),
     adaugaEnergie(5,_),
     stop(),nl,!.
 verifica():-write('').

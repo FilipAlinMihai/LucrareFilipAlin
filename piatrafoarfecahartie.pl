@@ -42,7 +42,7 @@ alege(X,Z2):-
     atom_concat(Z,V,Z2),!.
 
 alege(_,Z):-
-    atom_concat('Jocul nu a inceput\n','',Z),!.
+    atom_concat('Jocul nu a început\n','',Z),!.
 
 
 alegereSistem(R):-
@@ -55,7 +55,7 @@ interpretareAlegereSistem(3,foarfeca).
 
 comparare(X,Y,Z1,T,L):-
         castiga(X,Y) ->
-        atom_concat('Ai castigat runda, sistemul a ales: ',Y,Z),
+        atom_concat('Ai câștigat runda, sistemul a ales: ',Y,Z),
         atom_concat(Z,'\n',Z1),
         T is 1,
         L is 0,!;
@@ -80,16 +80,16 @@ verifica(X):-
         runda(R),
         scor(A,B),
         R = 3, A > B ->
-        atom_concat('Ai castigat jocul!\nAi primit un punct de energie!\n',A,X1),
+        atom_concat('Ai câștigat jocul!\nAi primit un punct de energie!\n',A,X1),
         atom_concat(X1,' : ',X2),
         atom_concat(X2,B,X),
         adaugaEnergie(1,_),
         stopJ(),!;
         runda(R),
         scor(A,B),
-        atom_concat('Joc in desfasurare!\n','Runda ',X1),
+        atom_concat('Joc în desfășurare!\n','Runda ',X1),
         atom_concat(X1,R,X2),
-        atom_concat(X2,'\nScor jucator ',X3),
+        atom_concat(X2,'\nScor jucător ',X3),
         atom_concat(X3,A,X4),
         atom_concat(X4,'\nScor calculator ',X5),
         atom_concat(X5,B,X),!.
