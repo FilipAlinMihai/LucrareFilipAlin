@@ -1,4 +1,4 @@
-:- dynamic camereParcurse/1.
+:- dynamic camereParcurse/1,camere/3.
 
 camereParcurse([hol]).
 

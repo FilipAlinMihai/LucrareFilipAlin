@@ -62,6 +62,7 @@ restart(X):-
         assert(codReal(aaaaa)),
         retract(mutariRamase(_)),
         assert(mutariRamase(7)),
+        distribuireCamere(),
         atom_concat('
                           Te-ai trezit pe podeaua unei camere.\n
                            Nu iți amintești unde ești sau cum ai ajuns aici.\n

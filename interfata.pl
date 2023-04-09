@@ -17,13 +17,13 @@ mesajCurent(****).
 mesajAnterior(****).
 mesajAnteriorAnterior(****).
 
-:- include('reguli.pl').
+
 :- include('executor.pl').
 
 reguli():-
     new(F, dialog),
     new(W,  window('Jocuri', size(1000, -5))), 
-    regiulile(Reg), 
+    regulile(Reg), 
     new(Text, text(Reg)),  
     send(Text, font, font(times, bold, 17)),
     send(Text, colour, orange),
@@ -51,14 +51,7 @@ run:-
     send(I, background, black),
     send(F2, background, black),
     new(W,  window('Jocuri', size(800, -5))),                    
-    atom_concat('','
-                           Te-ai trezit pe podeaua unei camere.\n
-                           Nu iti amintesti unde esti sau cum ai ajuns aici.\n
-                           Te indrepti spre o usa ce pare a fi iesirea.\n
-                           Usa e incuiata si nu poti evada.\n
-                           Singura ta sansa e cheia ce poate descuia aceasta ușa.\n
-                           Trebuie să explorezi camerele casei pentru a regasi libertatea.\n
-                            ',Textinitial),
+    textStart(Textinitial),
     new(Text2, text(Textinitial)),
     seteazaMesajCurent(Textinitial),
     seteazaMesajAnterior(Textinitial),
@@ -144,7 +137,8 @@ mutareInterfata(X,F):-
         locatieJucator(cameraWW),
         mutaCal(X,R2),
         modificareTextPrezentat(F,R2),!;
-        modificareTextPrezentat(F,'Nu te afli în camera corectă!\n'),!.
+        pozitie_incorecta2(Text),
+        modificareTextPrezentat(F,Text),!.
 
 navigare(X,F):-
         X = n ->
@@ -184,7 +178,8 @@ mutareSliding(X,F):-
         r(R1),
         modificareTextPrezentat(F,R1),!;
         \+ locatieJucator(biblioteca),
-        modificareTextPrezentat(F,'Nu te afli in bibliotecă!\n'),!.        
+        pozitie_incorecta1(Text),
+        modificareTextPrezentat(F,Text),!.        
 
 
 aduagaPuncte(X,Y):-
@@ -361,7 +356,8 @@ row(R,Type,Column1,Column2,Column3) :-
 
 casetaNume():-
         new(E, dialog),
-        new(T, text("Dacă dorești să fi inclus în \nclasamentul oficial introdu un nume.")),
+        text_clasament(TextC),
+        new(T, text(TextC)),
         send(T, colour, orange),
         send(T, font, font(times, bold, 18)),
         send(E, display, T, point(20, 15)),

@@ -6,7 +6,6 @@
 
 % pentru realizarea mini jocurilor utilizam fisiere externe integrate cu
 % ajutorul modulelor
-
 :- module(joc1,[
               dificultate/2,
               incepeJoc/2,
@@ -44,7 +43,12 @@
               clasament/3,
               sudoku/3,
               afisareSudoku/1,
-              afisareLitereDescoperite/1]).
+              afisareLitereDescoperite/1,
+              textStart/1,
+              pozitie_incorecta1/1,
+              pozitie_incorecta2/1,
+              regulile/1,
+              text_clasament/1]).
 
 
 %:- use_module(sliding).
@@ -53,6 +57,7 @@
 :- use_module(piatrafoarfecahartie).
 %:- use_module(sudoku).
 
+:- include('reguli.pl').
 :- include('literenoi.pl').
 :- include('dilema_prizonierilor.pl').
 :- include('hunter.pl').
@@ -67,6 +72,7 @@
 :- include('sudoku.pl').
 :- include('sliding.pl').
 :- include('gestionareTimp.pl').
+:- include('generareCamereCapcana.pl').
 
 :- dynamic locatieJucator/1,
     locatieObiect/2,
@@ -88,7 +94,8 @@
     avemLit2/1,
     avemLit3/1,
     avemLit4/1,
-    avemLit5/1.
+    avemLit5/1,
+    legatura/3.
 
 jocSliding(disponibil).
 jocXsi0(disponibil).

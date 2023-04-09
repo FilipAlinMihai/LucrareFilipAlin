@@ -1,9 +1,11 @@
-:-module(xsi0,[mutare/2,aratax/1,startx/0,stopx/0,mutare0/1,nivelCurent/1]).
+:-module(xsi0,[mutare/2,aratax/1,startx/0,stopx/0,mutare0/1,nivelCurent/1,camerePericol/1]).
 
 
 :- include('minimax.pl').
 
-:- dynamic stare/1,status/1,nivelCurent/1.
+:- dynamic stare/1,status/1,nivelCurent/1,camerePericol/1.
+
+camerePericol([]).
 
 nivelCurent(null).
 
@@ -56,7 +58,9 @@ mutare(P,T3):-
     retract(stare(X)),
     assert(stare(R)),
     aratax(T1),
-    atom_concat(T1,'Egalitate. Două din camerele vest nord și sud conțin capcane.\n',T3),!.
+    camerePericol([Directie|_]),
+    scrieRecompensaEgalitate(Directie,T31),
+    atom_concat(T1,T31,T3),!.
 
 
 mutare(P,T3):-
@@ -70,8 +74,9 @@ mutare(P,T3):-
     nivelCurent(Nivel),
     mutare0(Nivel),
     aratax(T1),
-    atom_concat(T1,'Ai câștigat. Evită direcțiile vest și sud.\n',T2),
-    atom_concat(T2,'La nord este camera pe care trebuie să o cercetezi.\n',T3),!.
+    camerePericol([Directie1,Directie2]),
+    scrieRecompensaVictorie(Directie1,Directie2,T31),
+    atom_concat(T1,T31,T3),!.
 
 
 
@@ -89,6 +94,25 @@ mutare(P,T2):-
     atom_concat(T1,'Jocul a fost câștigat de calculator!\n',T2),!;
     aratax(T1),
     atom_concat(T1,'Joc în desfășurare!\n',T2),!.
+
+scrieRecompensaEgalitate(Directie,T31):-
+    Directie = w ->
+    atom_concat('','Egalitate.La vest se afla o camera periculoasa.\nEvita aceasta directie!!\n',T31),!;
+    Directie = s ->
+    atom_concat('','Egalitate.La sud se afla o camera periculoasa.\nEvita aceasta directie!!\n',T31),!;
+    Directie = n ->
+    atom_concat('','Egalitate.La nord se afla o camera periculoasa.\nEvita aceasta directie!!\n',T31),!.
+
+scrieRecompensaVictorie(Directie1,Directie2,T31):-
+    Directie1 = w, Directie2 = n ->
+    atom_concat('Ai câștigat. Evită direcțiile vest și nord.\n',
+    'La sud este camera pe care trebuie să o cercetezi.\n',T31),!;
+    Directie1 = s, Directie2 = w ->
+    atom_concat('Ai câștigat. Evită direcțiile vest și sud.\n',
+    'La nord este camera pe care trebuie să o cercetezi.\n',T31),!;
+    Directie1 = n, Directie2 = s ->
+    atom_concat('Ai câștigat. Evită direcțiile sud și nord.\n',
+    'La vest este camera pe care trebuie să o cercetezi.\n',T31),!.
 
 verificare():-castigatorX(),!.
 verificare():-castigator0(),!.
@@ -142,15 +166,13 @@ castigatorX():-
     stare(X),
     pozitiiX(X,1,R)
     ,victorii(V)
-    ,compara(V,R),
-    write('Victorie X'),nl,!.
+    ,compara(V,R),nl,!.
 
 castigator0():-
     stare(X),
     pozitii0(X,1,R)
     ,victorii(V)
-    ,compara(V,R)
-    ,write('Victorie 0'),nl,!.
+    ,compara(V,R),nl,!.
 
 
 apartine([G|_],G).

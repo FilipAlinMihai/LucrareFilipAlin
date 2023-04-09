@@ -134,10 +134,10 @@ descrie(debara,X):-
     atom_concat('','Te afli in debara. \nLa sud se afla camera de zi\n',X).
 
 descrie(cameraCapcana1,X):-
-    atom_concat('','Te afli în cameraCapcana1. \nÎntoarcete repede în camera de zi\n',X).
+    atom_concat('','Te afli într-o camera periculoasa plina de capcane.\nViata ta e in pericol. \nÎntoarcete repede în camera de zi\n',X).
 
 descrie(cameraCapcana2,X):-
-    atom_concat('','Te afli în cameraCapcana2. \nÎntoarcete repede în camera de zi\n',X).
+    atom_concat('','Te afli într-o camera periculoasa plina de capcane.\nViata ta e in pericol. \nÎntoarcete repede în camera de zi\n',X).
 
 descrie(birou,X):-
     atom_concat('','Te afli în birou !, \nLa sud se află biblioteca\n',X).
@@ -149,3 +149,16 @@ descrie(cameraES,X):-
     atom_concat('Te afli în camera X.\n','La nord este camera lui Mihai\n',X).
 descrie(cameraWS,X):-
     atom_concat('Te afli în camera Y.\n','La nord este camera Dianei\n',X).
+
+textStart(Textinitial):- atom_concat('','
+                           Te-ai trezit pe podeaua unei camere.\n
+                           Nu îți amintești unde ești sau cum ai ajuns aici.\n
+                           Te îndrepți spre o ușă ce pare a fi ieșirea.\n
+                           Ușa e încuiată și nu poți evada.\n
+                           Singura ta șansă e cheia ce poate descuia această ușă.\n
+                           Trebuie să explorezi camerele casei pentru a regăsi libertatea.\n
+                            ',Textinitial).
+
+pozitie_incorecta1(Text):-atom_concat('','Nu te afli in bibliotecă!\n',Text). 
+pozitie_incorecta2(Text):-atom_concat('','Nu te afli în camera corectă!\n',Text). 
+text_clasament(Text):-atom_concat("Dacă dorești să fi inclus în \nclasamentul oficial introdu un nume.",'',Text).

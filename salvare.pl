@@ -39,6 +39,9 @@ salveaza(Fisier):-
         downcase_atom(Lit3,Lit31),
         downcase_atom(Lit4,Lit41),
         downcase_atom(Lit5,Lit51),
+        camerePericol(CamereCapcane),
+        determinaStareCapcane(CamereCapcane,NrCapcane),
+        camereParcurse(CamereParcurse),
         tell(Cale1),
         write(A),write('.\n'),
         write(B),write('.\n'),
@@ -72,10 +75,13 @@ salveaza(Fisier):-
         write(Lit31),write('.\n'),
         write(Lit41),write('.\n'),
         write(Lit51),write('.\n'), 
+        write(NrCapcane),write('.\n'), 
+        write(CamereParcurse),write('.\n'), 
         told.
 
 
 incarca(Fisier):-
+        golire(),
         atom_concat('C:\\Users\\lenovo\\Documents\\Prolog\\LucrareFilipAlin\\salvari\\',Fisier,Cale),
         atom_concat(Cale,'.txt',Cale1),
         exists_file(Cale1),
@@ -112,6 +118,8 @@ incarca(Fisier):-
         read(Lit3),
         read(Lit4),
         read(Lit5),
+        read(NrCapcane),
+        read(CamereParcurse),
         seen,
         upcase_atom(Z1,Z11),
         upcase_atom(Lit1,Lit11),
@@ -182,5 +190,15 @@ incarca(Fisier):-
         retract(amInceput(_)),
         assert(amInceput(Z)),
         retract(codReal(_)),
-        assert(codReal(Z11)),!.
+        assert(codReal(Z11)),
+        retract(camereParcurse(_)),
+        assert(camereParcurse(CamereParcurse)),
+        efectuareModificari(NrCapcane),!.
 
+determinaStareCapcane(CamereCapcane,NrCapcane):-
+                CamereCapcane = [w,n] ->
+                NrCapcane = 0,!;
+                CamereCapcane = [n,s ] ->
+                NrCapcane = 1,!;
+                CamereCapcane = [s,w] ->
+                NrCapcane = 2,!.

@@ -1,4 +1,4 @@
-regiulile('** Ești captiv în casa X. Ușa de la ieșire este încuiată. 
+regulile(X):-atom_concat('** Ești captiv în casa X. Ușa de la ieșire este încuiată. 
      Din fericire ai gâșit o hartă a casei. Aceasta nu este foarte clară în unele părți.
 ** Poți cerceta casa dar fiecare tranziție între camere te costă energie. 
      Vei găsi obiecte, aceste pot fi folosite pentru a câștiga energie sau pentru alte activități. 
@@ -51,4 +51,4 @@ regiulile('** Ești captiv în casa X. Ușa de la ieșire este încuiată.
 ** Mini jocurile nu produc niciodata aceasi varianta a jocului.
 ** Pentru jocul sliding 8 utilizeaza comanda ajutor daca ramai blocat.
      Aceasta iti va oferi primii 4 pasi pe care trenuiie sa ii faci pentru  a iesi din impas.
-                            ').
+                            ','\n',X).
