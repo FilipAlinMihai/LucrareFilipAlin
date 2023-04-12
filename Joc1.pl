@@ -48,7 +48,8 @@
               pozitie_incorecta1/1,
               pozitie_incorecta2/1,
               regulile/1,
-              text_clasament/1]).
+              text_clasament/1,
+              comenziScurtatura/1]).
 
 
 %:- use_module(sliding).
@@ -73,6 +74,7 @@
 :- include('sliding.pl').
 :- include('gestionareTimp.pl').
 :- include('generareCamereCapcana.pl').
+:- include('riddles.pl').
 
 :- dynamic locatieJucator/1,
     locatieObiect/2,
@@ -253,7 +255,8 @@ raspunsGhicitoare(aaaaaaaaa).
 raspunde_la_Ghicitoare(X,R):-
     retract(raspunsGhicitoare(_)),
     assert(raspunsGhicitoare(X)),
-    egale(cheie,X),
+    raspunsCurent(Raspunsuri),
+    apartineNou(X,Raspunsuri),
     atom_concat('','Răspuns corect.',R),!.
 
 raspunde_la_Ghicitoare(_,R):-

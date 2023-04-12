@@ -1,5 +1,6 @@
 restart(X):-
         golire(),
+        alegeIntrebare(),
         fireExecutie(Fire),
         stop_timer(Fire),
         retract(camereLibere(_)),

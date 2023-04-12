@@ -15,11 +15,16 @@ inventar(R1):-
 
 inventar(X):-atom_concat('','------------------------\n',X).
 
+apartineNou(G,[G|_]).
+apartineNou(G,[_|T]):-apartineNou(G,T),!.
+
 % Prin aceasta metoda jucatorul are posibilitatea de a pastra obiecte in
 % rucsacul personal pentru a le folosi mai tarziu
 pastreaza(cheie,R1):-
     locatieObiect(seif,jucator),
-    raspunsGhicitoare(cheie),
+    raspunsGhicitoare(RG),
+    raspunsCurent(Raspunsuri),
+    apartineNou(RG,Raspunsuri),
     retract(locatieObiect(cheie,seif)),
     assert(locatieObiect(cheie,jucator)),
     atom_concat('Cheia e la tine!','\n',R1),!.

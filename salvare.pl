@@ -42,6 +42,7 @@ salveaza(Fisier):-
         camerePericol(CamereCapcane),
         determinaStareCapcane(CamereCapcane,NrCapcane),
         camereParcurse(CamereParcurse),
+        numarGhicitoare(NRG),
         tell(Cale1),
         write(A),write('.\n'),
         write(B),write('.\n'),
@@ -77,6 +78,7 @@ salveaza(Fisier):-
         write(Lit51),write('.\n'), 
         write(NrCapcane),write('.\n'), 
         write(CamereParcurse),write('.\n'), 
+        write(NRG),write('.\n'), 
         told.
 
 
@@ -120,6 +122,7 @@ incarca(Fisier):-
         read(Lit5),
         read(NrCapcane),
         read(CamereParcurse),
+        read(NRG),
         seen,
         upcase_atom(Z1,Z11),
         upcase_atom(Lit1,Lit11),
@@ -193,7 +196,8 @@ incarca(Fisier):-
         assert(codReal(Z11)),
         retract(camereParcurse(_)),
         assert(camereParcurse(CamereParcurse)),
-        efectuareModificari(NrCapcane),!.
+        efectuareModificari(NrCapcane),
+        stabilireIntrebare(NRG),!.
 
 determinaStareCapcane(CamereCapcane,NrCapcane):-
                 CamereCapcane = [w,n] ->

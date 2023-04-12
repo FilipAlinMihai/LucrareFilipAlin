@@ -51,8 +51,8 @@ descrie(carteLitera4,X):-
     atom_concat('A patra literă a parolei este ',R5,X).
 
 descrie(ghicitoare,X):-
-    atom_concat('Deși nu sunt diamant pe inel mă pui.\n',
-    'Când vremea mea vine uși descui.\n',X).
+    ghicitoareCurenta(Val),
+    atom_concat(Val,'\n',X).
     
 
 descrie(bilet,X):-
@@ -162,3 +162,41 @@ textStart(Textinitial):- atom_concat('','
 pozitie_incorecta1(Text):-atom_concat('','Nu te afli in bibliotecă!\n',Text). 
 pozitie_incorecta2(Text):-atom_concat('','Nu te afli în camera corectă!\n',Text). 
 text_clasament(Text):-atom_concat("Dacă dorești să fi inclus în \nclasamentul oficial introdu un nume.",'',Text).
+
+comenziScurtatura(R):-atom_concat('','
+                        **Incepere joc
+                            comanda: Joc argument: jocul dorit
+                        **Selectare nivel de dificultate
+                            comanda: Nivel argument: nivel dorit
+                        **Plasarea unui obiect in inventar
+                            comanda: Pastreaza argument: obiect dorit
+                        **Renuntarea la un obiect din inventar
+                            comanda: Arunca argument: obiect dorit
+                        **Inspecteaza obiect descoperit
+                            comanda: Inspecteaza argument: obiect dorit
+                        **Consumarea unui obiect pentru energie
+                            comanda: Mananca argument: obiect dorit
+                        **Completarea codului pentru acces in Birou
+                            comanda: Cod argument: codul de 5 litere
+                        **Salvarea jocului curent
+                            comanda: Salveaza argument: nume fisier
+                        **Incarcarea unui joc anterior
+                            comanda: Incarca argument:  nume fisier
+                        **Clasamentul jucatorilor pentru un anumit nivel
+                            comanda: Clasament argument: nivel dorit
+                        **Decizia pentru jocul dilema prizonierilor
+                            comanda: Decizie argument: recunoaste / neaga in functie de hotararea luata
+                        **Mutare pentru jocul sudoku 
+                            comanda: Sudoku argument1: pozitia argument2: valoarea noua
+                        **Raspuns la ghicitoare pentr deschiderea seifului
+                            comanda: Ghicitoare argument: raspuns
+                         **Pentru jocul de foarfeca-hartie-piatra impotriva calculatorului
+                            comanda: Foarfecahartiepiatra argument: foarfeca, hartie sau piatra
+                        **Comenzi ce nu necesita argumente
+                            Inventar -- Listarea inventaruiui 
+                            Energie  -- Afisarea energiei curente
+                            Viata    -- Afisarea starii de sanatate
+                            Restart  -- Resetarea datelor jocului
+                            Optiuni  -- Listarea fisierelor cu jocuri salvate 
+                            Ajutor   -- Ajutor pentru jocul sliding 8
+                            Parola   -- Afisarea literelor din parola descoperite',R).

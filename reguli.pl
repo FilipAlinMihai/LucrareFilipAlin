@@ -51,4 +51,7 @@ regulile(X):-atom_concat('** Ești captiv în casa X. Ușa de la ieșire este î
 ** Mini jocurile nu produc niciodata aceasi varianta a jocului.
 ** Pentru jocul sliding 8 utilizeaza comanda ajutor daca ramai blocat.
      Aceasta iti va oferi primii 4 pasi pe care trenuiie sa ii faci pentru  a iesi din impas.
+** Butonul harta prezinta jucatorului o harta a partilor din casa pe care lea vizitat in jocul curent.
+** Prin butonul Zoom poate fi izolat mesajul curent intr-o fereastra separata pentru a fi analizat mai usor.
+** Doua butoane Inainte si Inapoi perrmit circularea intre ultimele trei mesaje afisate pe ecran.
                             ','\n',X).

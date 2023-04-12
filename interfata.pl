@@ -27,6 +27,7 @@ reguli():-
     new(Text, text(Reg)),  
     send(Text, font, font(times, bold, 17)),
     send(Text, colour, orange),
+    send(F, append, new(_,button(comenzi, message(@prolog, comenzi,  F)))),
     send(F, display, Text, point(100, 50)),
     send(F, background, black),
     send(F, scrollbars, both),
@@ -378,3 +379,11 @@ nume(Nume,E):-
         write(Nivel),nl,
         write(Energie),nl,
         free(E),!.
+
+comenzi(F):-
+        comenziScurtatura(R),
+        send(F, clear),
+        new(T,text(R)),
+        send(T, colour, orange),
+        send(T, font, font(times, bold, 17)),
+        send(F, display, T, point(200, 50)).
