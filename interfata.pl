@@ -386,4 +386,14 @@ comenzi(F):-
         new(T,text(R)),
         send(T, colour, orange),
         send(T, font, font(times, bold, 17)),
+        send(F, append, new(_,button(reguli, message(@prolog, inapoiReguli,  F)))),
+        send(F, display, T, point(200, 50)).
+
+inapoiReguli(F):-
+        send(F, clear),
+        regulile(R), 
+        send(F, append, new(_,button(comenzi, message(@prolog, comenzi,  F)))),
+        new(T,text(R)),
+        send(T, colour, orange),
+        send(T, font, font(times, bold, 17)),
         send(F, display, T, point(200, 50)).
