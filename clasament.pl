@@ -113,7 +113,8 @@ scriereClasament([],'').
 scriereClasament([L,M|T],R):-
         scriereClasament(T,R1),
         atom_concat(L,"---",R01),
-        atom_concat(R01,M,R02),
+        string_upper(M,M1),
+        atom_concat(R01,M1,R02),
         atom_concat(R02,"\n",RR),
         atom_concat(RR,R1,R),!.        
 

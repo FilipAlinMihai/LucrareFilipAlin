@@ -31,7 +31,7 @@ pastreaza(cheie,R1):-
 
 pastreaza(cheie,R1):-
     locatieObiect(seif,jucator),
-    atom_concat('Mai întâi răspunde la ghicitoare!','\n',R1),!.
+    atom_concat('Pentru a deschide seiful trebuie introduse cuvintele cheie!\nMai întâi răspunde la ghicitoare!','\n',R1),!.
 
 pastreaza(Y,X):-
     locatieObiect(Y,jucator),

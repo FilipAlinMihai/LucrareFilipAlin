@@ -49,7 +49,9 @@
               pozitie_incorecta2/1,
               regulile/1,
               text_clasament/1,
-              comenziScurtatura/1]).
+              comenziScurtatura/1,
+              cerceteazaCamera/1,
+              victorieMarcata/1]).
 
 
 %:- use_module(sliding).
@@ -97,7 +99,10 @@
     avemLit3/1,
     avemLit4/1,
     avemLit5/1,
-    legatura/3.
+    legatura/3,
+    victorieMarcata/1.
+
+victorieMarcata(nu).
 
 jocSliding(disponibil).
 jocXsi0(disponibil).
@@ -253,14 +258,19 @@ cerceteazaCamera(R1):-
 raspunsGhicitoare(aaaaaaaaa).
 
 raspunde_la_Ghicitoare(X,R):-
+    locatieObiect(seif,jucator),
     retract(raspunsGhicitoare(_)),
     assert(raspunsGhicitoare(X)),
     raspunsCurent(Raspunsuri),
     apartineNou(X,Raspunsuri),
-    atom_concat('','Răspuns corect.',R),!.
+    atom_concat('','Răspuns corect.\nIn interiorul seifului se afla o cheie!\n ',R),!.
 
 raspunde_la_Ghicitoare(_,R):-
+    locatieObiect(seif,jucator),
     atom_concat('','Răspuns incorect.',R),!.
+
+raspunde_la_Ghicitoare(_,R):-
+    atom_concat('','Raspunde la ghicitoare dupa ce ai luat seiful.',R),!.
 
 % Dupa consumarea unui obiect comestibil jucatorul primeste 5 puncte de
 % energie

@@ -1,4 +1,8 @@
 35.
+doarunnume3.
+35.
+doarunnume2.
+35.
 modificaririddle.
 35.
 alin3.
@@ -14,5 +18,13 @@ alin.
 nume.
 29.
 paul.
+27.
+doarunnume.
+27.
+doarunnume.
 7.
 alin5.
+6.
+joccomplet2.
+6.
+joccomplet.

@@ -89,7 +89,7 @@ descrie(hol,X):-
 descrie(cameraE,X):-
     atom_concat('Te afli în camera lui Mihai. \nLa est este camera lui Andrei\n',
     'La vest se află holul.
-La sud este camera X.
+La sud este camera de oaspeti.
 Poți juca un joc de foarfecă hârtie piatră împotriva calculatorului\n',T3),
 atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul foarfecahartiepiatra\n',X).
     
@@ -113,7 +113,7 @@ descrie(bucatarie,X):-
 descrie(cameraW,X):-
     atom_concat('Te afli în camera Dianei.\n La est se afla holul principal\n',
     'Te afli în camera Dianei. La est se află holul principal\n',T1),
-    atom_concat(T1,'La sud se află camera Y\n',T2),
+    atom_concat(T1,'La sud se află Atelierul\n',T2),
     atom_concat(T2,'La vest se află camera Mariei\n',X).
 
 descrie(cameraWW,X):-
@@ -146,9 +146,9 @@ descrie(iesire,X):-
     atom_concat('','Felicitări ai finalizat jocul!!\n',X).
 
 descrie(cameraES,X):-
-    atom_concat('Te afli în camera X.\n','La nord este camera lui Mihai\n',X).
+    atom_concat('Te afli în camera de oaspeti.\n','La nord este camera lui Mihai\n',X).
 descrie(cameraWS,X):-
-    atom_concat('Te afli în camera Y.\n','La nord este camera Dianei\n',X).
+    atom_concat('Te afli în Atelier.\n','La nord este camera Dianei\n',X).
 
 textStart(Textinitial):- atom_concat('','
                            Te-ai trezit pe podeaua unei camere.\n

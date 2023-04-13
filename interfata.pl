@@ -22,12 +22,12 @@ mesajAnteriorAnterior(****).
 
 reguli():-
     new(F, dialog),
+    send(F, append, new(_,button(comenzi, message(@prolog, comenzi,  F)))),
     new(W,  window('Jocuri', size(1000, -5))), 
     regulile(Reg), 
     new(Text, text(Reg)),  
     send(Text, font, font(times, bold, 17)),
     send(Text, colour, orange),
-    send(F, append, new(_,button(comenzi, message(@prolog, comenzi,  F)))),
     send(F, display, Text, point(100, 50)),
     send(F, background, black),
     send(F, scrollbars, both),
@@ -51,7 +51,8 @@ run:-
     send(H, background, black),
     send(I, background, black),
     send(F2, background, black),
-    new(W,  window('Jocuri', size(800, -5))),                    
+    new(W,  window('Jocuri', size(800, -5))),  
+    send(W, background, black),                  
     textStart(Textinitial),
     new(Text2, text(Textinitial)),
     seteazaMesajCurent(Textinitial),
@@ -67,7 +68,7 @@ run:-
     send(E, append, new(Com,  menu(department, cycle))),
     send_list(Com, append, [nivel,energie,inventar,joc,pastreaza,
     inspecteaza,cod,mananca,restart,salveaza,incarca,clasament,decizie,
-    optiuni,sudoku,viata,ajutor,arunca,foarfecahartiepiatra,ghicitoare,parola]),
+    optiuni,sudoku,viata,ajutor,arunca,foarfecahartiepiatra,ghicitoare,parola,locatie]),
     send(E, append, new(Arg, text_item(in, 'Argument1')),right),
     send(E, append, new(Arg2, text_item(in, 'Argument2')),right),
     send(Com, width,20),
@@ -157,8 +158,10 @@ navigare(X,F):-
         modificareTextPrezentat(F,R),!.
 
 verificare():-
-        locatieJucator(iesire) ->
-        casetaNume(),!;
+        locatieJucator(iesire),victorieMarcata(nu) ->
+        casetaNume(),
+        retract(victorieMarcata(_)),
+        assert(victorieMarcata(da)),!;
         1 = 1,!.
 
 mutareSliding(X,F):-
@@ -282,14 +285,14 @@ zoom():-
         send(F, display, T, point(100, 50)),
         send(F, open).
 
- ecransudoku(R3):-
+ ecransudoku(R3,FSecund):-
         new(W2,  window('Sudoku', size(1100, -1))),
         new(E, dialog),
         new(F, dialog),
         new(T, text(R3)),
-        send(E, append, new(Argument, text_item(input, 'Argument1')),right),
-        send(E, append, new(Argument2, text_item(input, 'Argument2')),right),
-        send(E, append, new(A,button(executor, message(@prolog, plaseaza, Argument?selection,Argument2?selection, F)))),
+        send(E, append, new(Argument,  int_item(pozitie, low := 10, high := 55)),right),
+        send(E, append, new(Argument2,  int_item(valoare, low := 1, high := 9)),right),
+        send(E, append, new(A,button(executor, message(@prolog, plaseaza_aux, Argument?selection,Argument2?selection,F,FSecund)))),
         send(E, append, new(B,button(inapoi, message(@prolog, inapoi, F)))),
         send(E, append, new(_,button(inainte, message(@prolog, inainte, F)))),
         send(E, append, new(_,button(tabla, message(@prolog, tabla, F)))),
@@ -314,12 +317,16 @@ tabla(F):-
         afisareSudoku(R),
         modificareTextPrezentat(F,R),!.
 
-
 plaseaza(A1,A2,F):-
         atom_number(A1, A11),
         atom_number(A2, A21),
         sudoku(A11,A21,R),
         modificareTextPrezentat(F,R),!.
+
+plaseaza_aux(A1,A2,F,FSecund):-
+        sudoku(A1,A2,R),
+        modificareTextPrezentat(F,R),
+        modificareTextPrezentat(FSecund,R),!.
 
 scriefisiere([],'').
 scriefisiere([X|T],S):-
@@ -386,14 +393,14 @@ comenzi(F):-
         new(T,text(R)),
         send(T, colour, orange),
         send(T, font, font(times, bold, 17)),
-        send(F, append, new(_,button(reguli, message(@prolog, inapoiReguli,  F)))),
-        send(F, display, T, point(200, 50)).
+        send(F, display, T, point(200, 50)),
+        send(F, append, new(_,button(reguli, message(@prolog, inapoiReguli,  F)))).
 
 inapoiReguli(F):-
         send(F, clear),
         regulile(R), 
-        send(F, append, new(_,button(comenzi, message(@prolog, comenzi,  F)))),
         new(T,text(R)),
         send(T, colour, orange),
         send(T, font, font(times, bold, 17)),
-        send(F, display, T, point(200, 50)).
+        send(F, display, T, point(200, 50)),
+        send(F, append, new(_,button(comenzi, message(@prolog, comenzi,  F)))).

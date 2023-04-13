@@ -28,7 +28,7 @@ executor(X,A1,A2,F):-
         apartine(X,[joc,joaca,incepeJoc,incepejoc,play,incepe,start]) , A1 = sudoku ->
         incepeJoc(A1,R3),
         modificareTextPrezentat(F,R3),
-        ecransudoku(R3),
+        ecransudoku(R3,F),
         !;
         apartine(X,[joc,joaca,incepeJoc,incepejoc,play,incepe,start]) ->
         incepeJoc(A1,R3),
@@ -115,6 +115,13 @@ executor(X,A1,A2,F):-
         ,!;
         X = parola ->
         afisareLitereDescoperite(R),
+        modificareTextPrezentat(F,R)
+        ,!;
+        X = locatie ->
+        locatieJucator(Loc),
+        descrie(Loc,R1),
+        cerceteazaCamera(T1),
+        atom_concat(R1,T1,R),
         modificareTextPrezentat(F,R)
         ,!;
         atom_concat('Comandă inexistentă!\n', X,R),

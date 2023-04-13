@@ -30,8 +30,8 @@ camere(5,2,debara).
 camere(5,3,birou).
 
 scrieLiber(R):-        R = '=============',!.
-scrieH(cameraWS,R):-    R = '===CAMERAY==',!.
-scrieH(cameraES,R):-    R = '===CAMERAX==',!.
+scrieH(cameraWS,R):-    R = '===ATELIER==',!.
+scrieH(cameraES,R):-    R = '===OASPETI==',!.
 scrieH(cameraWW,R):-    R = '====MARIA===',!.
 scrieH(cameraW,R):-     R = '====DIANA===',!.
 scrieH(hol,R):-         R = '====HOLL====',!.
@@ -76,9 +76,15 @@ apartineH(G,[_|T]):-apartineH(G,T).
 
 amParcurs(X):-
         camereParcurse(L),
+        \+ amMaiFost(X,L)->
         retract(camereParcurse(_)),
-        assert(camereParcurse([X|L])),!.
+        assert(camereParcurse([X|L])),!;
+        true,!.
 
 golire():-
         retract(camereParcurse(_)),
         assert(camereParcurse([hol])),!.
+
+amMaiFost(_,[]):-false,!.
+amMaiFost(X,[X|_]):-true,!.
+amMaiFost(X,[_|T]):-amMaiFost(X,T),!.        

@@ -63,6 +63,8 @@ restart(X):-
         assert(codReal(aaaaa)),
         retract(mutariRamase(_)),
         assert(mutariRamase(7)),
+        retract(victorieMarcata(_)),
+        assert(victorieMarcata(nu)),
         distribuireCamere(),
         atom_concat('
                           Te-ai trezit pe podeaua unei camere.\n
