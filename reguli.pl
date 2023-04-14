@@ -54,4 +54,8 @@ regulile(X):-atom_concat('** Ești captiv în casa X. Ușa de la ieșire este î
 ** Butonul harta prezinta jucatorului o harta a partilor din casa pe care lea vizitat in jocul curent.
 ** Prin butonul Zoom poate fi izolat mesajul curent intr-o fereastra separata pentru a fi analizat mai usor.
 ** Doua butoane Inainte si Inapoi perrmit circularea intre ultimele trei mesaje afisate pe ecran.
+** Dupa un anumit numar de utilizari lanterna ramane fara energie si nu mai poate fi  utilizata.
+     In acest caz este necesara repararea lanternei. Pentru reparare este necesara o baterie noua.
+** In cazul in care a fost decoperit un bandaj el poate fi utilizat pentru a imbunatati starea de sanatate a jucatorului.
+     Bandajul nu apare in fiecare runda. Frecventa cu care acesta apare este determinata de nivlul de dificultate ales.
                             ','\n',X).

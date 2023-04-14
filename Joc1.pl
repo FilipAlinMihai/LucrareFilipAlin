@@ -51,7 +51,9 @@
               text_clasament/1,
               comenziScurtatura/1,
               cerceteazaCamera/1,
-              victorieMarcata/1]).
+              victorieMarcata/1,
+              bandajeaza/1,
+              repara/1]).
 
 
 %:- use_module(sliding).
@@ -100,7 +102,10 @@
     avemLit4/1,
     avemLit5/1,
     legatura/3,
-    victorieMarcata/1.
+    victorieMarcata/1,
+    utilizareLanterna/1.
+
+utilizareLanterna(0).
 
 victorieMarcata(nu).
 
@@ -127,6 +132,7 @@ legatura(s,hol,iesire).
 legatura(e,cameraE,cameraEE).
 legatura(w,cameraE,hol).
 legatura(s,cameraE,cameraES).
+legatura(n,cameraE,cameraEN).
 
 legatura(n,cameraES,cameraE).
 
@@ -143,6 +149,11 @@ legatura(w,biblioteca,cameraNW).
 
 legatura(e,bucatarie,cameraNE).
 legatura(w,bucatarie,biblioteca).
+legatura(n,bucatarie,cameraNN).
+
+legatura(s,cameraNN,bucatarie).
+
+legatura(s,cameraEN,cameraE).
 
 legatura(e,cameraNW,biblioteca).
 legatura(s,cameraNW,cameraCapcana1).
@@ -207,6 +218,8 @@ locatieObiect(mar,cameraEE).
 locatieObiect(biscuit,bucatarie).
 locatieObiect(scrisoareLitera5,debara).
 locatieObiect(carteLitera4,cameraNE).
+locatieObiect(bandaj,neplasat).
+locatieObiect(baterie,cameraNN).
 
 % In aceste camere se afla capcane . Daca jucatorul intra aici el va
 % pierde o portiune din viata
@@ -224,6 +237,7 @@ comestibil(mar).
 cameraIntunecata(cameraWW).
 cameraIntunecata(cameraW).
 cameraIntunecata(cameraNE).
+cameraIntunecata(cameraEN).
 
 %Jucatorul porneste la drum cu un total de 20 de puncte de energie
 %Acest total se va modifica in functie de actiunile jucatorului
@@ -339,6 +353,8 @@ dificultate(X,Resp):-
     retract(nivelSelectat(_)),
     assert(nivelSelectat(X)),
     distribuieObiecte(),
+    distribuieBandaj(),
+    capacitateLanterna(X),
     descrie(hol,Camera),
     cerceteazaCamera(Rez1),
     atom_concat(Camera,Rez1,Resp),
@@ -376,7 +392,17 @@ mutaJucator(X,R):-
     cameraIntunecata(Z),
     locatieObiect(lanterna,jucator),
     legatura(X,L,Z),
+    utilizareLanterna(0),
+    atom_concat('Lanterna a ramas fara baterii.\n','',R),!.
+
+mutaJucator(X,R):-
+    amInceput(da),
+    locatieJucator(L),
+    cameraIntunecata(Z),
+    locatieObiect(lanterna,jucator),
+    legatura(X,L,Z),
     scadeEnergie(),
+    amUtilizatLanterna(),
     retract(locatieJucator(L)),
     assert(locatieJucator(Z)),
     descrie(Z,H),
@@ -390,7 +416,7 @@ mutaJucator(X,R):-
     locatieJucator(L),
     legatura(X,L,Z),
     cameraIntunecata(Z),
-    atom_concat('Este prea întuneric în această cameră.\n','Ai nevoie de o lanternă\n',R).
+    atom_concat('Este prea întuneric în această cameră.\n','Ai nevoie de o lanternă\n',R),!.
 
 mutaJucator(X,R):-
     amInceput(da),
@@ -400,14 +426,14 @@ mutaJucator(X,R):-
     scadeEnergie(),
     retract(locatieJucator(L)),
     assert(locatieJucator(iesire)),
-    atom_concat('','Joc Finalizat !! Felicitări !!!!\n',R).
+    atom_concat('','Joc Finalizat !! Felicitări !!!!\n',R),!.
 
 mutaJucator(X,R):-
     amInceput(da),
     locatieJucator(L),
     legatura(X,L,iesire),
     locatieObiect(cheie,seif),
-    atom_concat('','Ai nevoie de cheie pentru a evada\n',R).
+    atom_concat('','Ai nevoie de cheie pentru a evada\n',R),!.
 
 
 mutaJucator(X,R):-
@@ -426,7 +452,7 @@ mutaJucator(X,R):-
     amInceput(da),
     locatieJucator(L),
     legatura(X,L,cameraCapcana2),
-     amParcurs(cameraCapcana2),
+    amParcurs(cameraCapcana2),
     scadeEnergie(),
     retract(locatieJucator(L)),
     assert(locatieJucator(cameraCapcana2)),
@@ -501,3 +527,50 @@ avemLitere(R):-
         atom_concat(T1,R3,T2),
         atom_concat(T2,R4,T3),
         atom_concat(T3,R5,R),!.
+
+bandajeaza(R):-
+    locatieObiect(bandaj,jucator),
+    viata(V),
+    V < 100 ->
+    V1 is V+50,
+    retract(viata(_)),
+    assert(viata(V1)),
+    atom_concat('Acum te simti mai bine !\n Vata ta : ',V1,R),
+    retract(locatieObiect(bandaj,_)),
+    assert(locatieObiect(bandaj,utilizat)),
+    !;
+    atom_concat('Nu esti ranit!\n','Pastreaza bandajele pentru mai tarziu!',R),!.
+
+bandajeaza(R):-
+    atom_concat('Nu bandaje in inventar!\n','',R),!.
+
+capacitateLanterna(NivelSelectat):-
+       NivelSelectat=usor->
+       retract(utilizareLanterna(_)),
+       assert(utilizareLanterna(25)),!;
+       NivelSelectat=mediu->
+       retract(utilizareLanterna(_)),
+       assert(utilizareLanterna(15)),!;
+       NivelSelectat=dificil->
+       retract(utilizareLanterna(_)),
+       assert(utilizareLanterna(5)),!;
+       NivelSelectat=imposibil->
+       retract(utilizareLanterna(_)),
+       assert(utilizareLanterna(3)),!.
+
+amUtilizatLanterna():-
+        utilizareLanterna(L),
+        L1 is L-1,
+        retract(utilizareLanterna(_)),
+        assert(utilizareLanterna(L1)),!.
+
+repara(R):-
+        locatieObiect(baterie,jucator),
+        locatieObiect(lanterna,jucator),
+        retract(utilizareLanterna(_)),
+        assert(utilizareLanterna(15)),
+        atom_concat('Reparatie completa!\n','Ai schimbat bateria lanternei!.\n',R),!.
+
+repara(R):-
+        atom_concat('Reparatie esuata!\n',
+        'Nu deti resursele necesare!.\nAi nevoie de lanterna si de o baterie!\n',R),!.

@@ -51,6 +51,8 @@ restart(X):-
         assert(locatieObiect(scrisoareLitera5,debara)),
         retract(locatieObiect(carteLitera4,_)),
         assert(locatieObiect(carteLitera4,cameraNE)),
+        retract(locatieObiect(bandaj,_)),
+        assert(locatieObiect(bandaj,neplasat)),
         retract(energieJucator(_)),
         assert(energieJucator(0)),
         retract(raspunsGhicitoare(_)),

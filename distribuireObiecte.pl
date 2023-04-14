@@ -1,21 +1,29 @@
-:- dynamic camereLibere/1.
+:- dynamic camereLibere/1,
+            listaLanterna/1.
 
 listaLanterna(
     [hol,biblioteca,cameraE,cameraES,
-    cameraEE,debara,bucatarie,cameraNW]).
+    cameraEE,debara,bucatarie,
+    cameraNW, cameraNN]).
 listaComestibile(
     [hol,biblioteca,cameraE,cameraES,
     cameraEE,debara,bucatarie,cameraNW,cameraW,
-    cameraWW,cameraWS,cameraNE,cameraCapcana2,cameraCapcana1]).
+    cameraWW,cameraWS,cameraNE,cameraCapcana2,
+    cameraCapcana1,cameraNN, cameraEN]).
 
 camereLibere([hol,biblioteca,cameraE,
     cameraES,cameraEE,debara,bucatarie,
-    cameraNW,cameraW,cameraWW,cameraWS,cameraNE]).
+    cameraNW,cameraW,cameraWW,cameraWS,
+    cameraNE,cameraEN,cameraNN]).
 
 alegeCamera(L,Locatie):-
     length(L,X),
     random(0,X,Pozitie),
-    nth0(Pozitie,L,Locatie),!.
+    nth0(Pozitie,L,Locatie),
+    listaLanterna(L2),
+    elimina(Locatie,L2,RezultatEliminare),
+    retract(listaLanterna(_)),
+    assert(listaLanterna(RezultatEliminare)),!.
 
 alegeCameraLitera(Locatie):-
     camereLibere(L),
@@ -28,7 +36,6 @@ alegeCameraLitera(Locatie):-
 
 distribuieObiecte():-
         listaLanterna(L2),
-        listaComestibile(L3),
         alegeCameraLitera(R0),
         retract(locatieObiect(carteLitera3,_)),
         assert(locatieObiect(carteLitera3,R0)),
@@ -46,6 +53,11 @@ distribuieObiecte():-
         alegeCamera(L2,R5),
         retract(locatieObiect(lanterna,_)),
         assert(locatieObiect(lanterna,R5)),
+        listaLanterna(L4),
+        alegeCamera(L4,LocatieBaterie),
+        retract(locatieObiect(baterie,_)),
+        assert(locatieObiect(baterie,LocatieBaterie)),
+        listaComestibile(L3),
         alegeCamera(L3,R6),
         retract(locatieObiect(mar,_)),
         assert(locatieObiect(mar,R6)),
@@ -62,3 +74,23 @@ distribuieObiecte():-
 elimina(_,[],[]):-!.
 elimina(Locatie,[Locatie|T],T):-!.
 elimina(Locatie,[X|T],[X|RezEliminare]):-elimina(Locatie,T,RezEliminare),!.
+
+probabilitateBandaj(NivelSelectat,X):-
+       NivelSelectat=usor->
+       X = 3,!;
+       NivelSelectat=mediu->
+       X = 4,!;
+       NivelSelectat=dificil->
+       X = 6,!;
+       NivelSelectat=imposibil->
+       X = 8,!.
+
+distribuieBandaj():-
+        nivelSelectat(NivelSelectat),
+        probabilitateBandaj(NivelSelectat,X),
+        random(1,X,R),
+        R = 1 ->
+        alegeCameraLitera(Locatie),
+        retract(locatieObiect(bandaj,_)),
+        assert(locatieObiect(bandaj,Locatie)),!;
+        true,!.

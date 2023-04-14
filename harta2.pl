@@ -28,8 +28,12 @@ camere(4,4,bucatarie).
 camere(4,5,cameraNE).
 camere(5,2,debara).
 camere(5,3,birou).
+camere(3,4,cameraEN).
+camere(5,4,cameraNN).
 
 scrieLiber(R):-        R = '=============',!.
+scrieH(cameraNN,R):-    R = '===CAMERAX==',!.
+scrieH(cameraEN,R):-    R = '===CAMERAY==',!.
 scrieH(cameraWS,R):-    R = '===ATELIER==',!.
 scrieH(cameraES,R):-    R = '===OASPETI==',!.
 scrieH(cameraWW,R):-    R = '====MARIA===',!.

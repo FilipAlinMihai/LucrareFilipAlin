@@ -57,6 +57,9 @@ descrie(ghicitoare,X):-
 
 descrie(bilet,X):-
     atom_concat('','Ieșirea e încuiată iar cheia se află în Birou.\n',X).
+
+descrie(bandaj,X):-
+    atom_concat('','Un bandaj medical.\nPoate fi utilizat pentru tratarea ranilor.\n',X).
     
 descrie(lanterna,X):-
     atom_concat('','Foloseștio pentru a lumina camerele inacesibile\n',X).
@@ -108,7 +111,15 @@ atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul dilema\n',X).
 
 descrie(bucatarie,X):-
     atom_concat('Te afli în bucătărie.\nLa vest este biblioteca\n',
-    'La est se află camera lui Bogdan\n',X).
+    'La est se află camera lui Bogdan\nLa nord se află cameraX\n',X).
+
+descrie(cameraNN,X):-
+    atom_concat('Te afli în cameraX.\nLa sud este bucataria.\n',
+    '',X).
+
+descrie(cameraEN,X):-
+    atom_concat('Te afli în cameraY.\nLa sud este camera lui Mihai.\n',
+    '',X).
 
 descrie(cameraW,X):-
     atom_concat('Te afli în camera Dianei.\n La est se afla holul principal\n',
@@ -117,7 +128,7 @@ descrie(cameraW,X):-
     atom_concat(T2,'La vest se află camera Mariei\n',X).
 
 descrie(cameraWW,X):-
-    atom_concat('','Te afli în camera Mariei. \nLa est este camera Dianei.\n
+    atom_concat('','Te afli în camera Mariei. \nLa est este camera Dianei.\nLa nord este cameraY\n
 Poți juca hunter.\n',T3),
 atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul hunter.\n',X).
 
@@ -190,8 +201,10 @@ comenziScurtatura(R):-atom_concat('','
                             comanda: Sudoku argument1: pozitia argument2: valoarea noua
                         **Raspuns la ghicitoare pentr deschiderea seifului
                             comanda: Ghicitoare argument: raspuns
-                         **Pentru jocul de foarfeca-hartie-piatra impotriva calculatorului
+                        **Pentru jocul de foarfeca-hartie-piatra impotriva calculatorului
                             comanda: Foarfecahartiepiatra argument: foarfeca, hartie sau piatra
+                        **In cazul in care lanterna ramane fara energie 
+                            comanda: Repara argument: lanterna
                         **Comenzi ce nu necesita argumente
                             Inventar -- Listarea inventaruiui 
                             Energie  -- Afisarea energiei curente
@@ -199,4 +212,6 @@ comenziScurtatura(R):-atom_concat('','
                             Restart  -- Resetarea datelor jocului
                             Optiuni  -- Listarea fisierelor cu jocuri salvate 
                             Ajutor   -- Ajutor pentru jocul sliding 8
-                            Parola   -- Afisarea literelor din parola descoperite',R).
+                            Parola   -- Afisarea literelor din parola descoperite
+                            Locatie  -- Examinarea imprejurimilor jucatorului
+                            Bandajare-- Utilizarea unui bandaj pentru crestere nivelului de viata',R).

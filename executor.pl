@@ -117,6 +117,14 @@ executor(X,A1,A2,F):-
         afisareLitereDescoperite(R),
         modificareTextPrezentat(F,R)
         ,!;
+        X = bandajare ->
+        bandajeaza(R),
+        modificareTextPrezentat(F,R)
+        ,!;
+        X = repara, A1 = lanterna ->
+        repara(R),
+        modificareTextPrezentat(F,R)
+        ,!;
         X = locatie ->
         locatieJucator(Loc),
         descrie(Loc,R1),
