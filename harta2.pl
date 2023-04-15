@@ -49,6 +49,24 @@ camere(2,5,3,birou).
 camere(2,3,3,cameraEN).
 camere(2,3,4,cameraNN).
 
+camere(3,2,2,cameraWS).
+camere(3,3,4,cameraES).
+camere(3,2,3,cameraWW).
+camere(3,2,2,cameraW).
+camere(3,1,5,hol).
+camere(3,2,4,cameraE).
+camere(3,2,5,cameraEE).
+camere(3,3,2,cameraCapcana1).
+camere(3,4,1,cameraCapcana2).
+camere(3,4,2,cameraNW).
+camere(3,4,4,biblioteca).
+camere(3,4,3,bucatarie).
+camere(3,4,5,cameraNE).
+camere(3,5,2,debara).
+camere(3,5,4,birou).
+camere(3,3,3,cameraEN).
+camere(3,3,5,cameraNN).
+
 scrieLiber(R):-        R = '=============',!.
 scrieH(cameraNN,R):-    R = '===CAMERAX==',!.
 scrieH(cameraEN,R):-    R = '===CAMERAY==',!.

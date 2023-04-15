@@ -246,6 +246,91 @@ descrieCamera(2,cameraWW,X):-
 Poți juca hunter.\n',T3),
 atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul hunter.\n',X).
 
+%DESCRIERE HARTA 3
+descrieCamera(3,hol,X):-
+    atom_concat('Te afli în Holul principal. \nLa nord se află camera lui Andrei\n', 
+    'La sud este ieșirea\n',X).
+
+descrieCamera(3,cameraE,X):-
+    atom_concat('Te afli în camera lui Mihai. \nLa est este camera lui Andrei\n',
+    'La nord este camera de oaspeti.
+Poți juca un joc de foarfecă hârtie piatră împotriva calculatorului\n',T3),
+atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul foarfecahartiepiatra\n',X).
+
+descrieCamera(3,cameraEE,X):-
+    atom_concat('Te afli în camera lui Andrei. \nLa nord este camera lui Bogdan\n',
+    'La vest se află camera lui Mihai\n
+La sud se află holul principal.\n
+Poți juca Sudoku\n',T3),
+atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul sudoku.\n',X).  
+
+descrieCamera(3,cameraES,X):-
+    atom_concat('Te afli în camera de oaspeti.\n','La vest se afla cameraY.\n
+La nord se afla biblioteca.
+La sud se afla camera lui Mihai.\n',X).
+
+descrieCamera(3,debara,X):-
+    atom_concat('','Te afli in debara. \nLa sud se afla camera de zi\n',X).
+
+descrieCamera(3,cameraCapcana1,X):-
+    atom_concat('','Te afli într-o camera periculoasa plina de capcane.\nViata ta e in pericol. \nÎntoarcete repede în camera de zi\n',X).
+
+descrieCamera(3,cameraCapcana2,X):-
+    atom_concat('','Te afli într-o camera periculoasa plina de capcane.\nViata ta e in pericol. \nÎntoarcete repede în camera de zi\n',X).
+
+descrieCamera(3,cameraNW,X):-
+    atom_concat('Te afli în camera de zi. \nLa est se află bucataria\n',
+    'Acesta porțiune a hărții nu este clară!\n',T1),
+    atom_concat(T1,'Ai posibilitatea de a merge în 3 camere necunoscute la nord, vest și sud\n', T2),
+    atom_concat(T2, 'Ai mare grijă camerele acestea pot fi periculoase!\n
+Poți juca x și 0 !\n',T3),
+atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul xsi0.\n',X).
+
+descrieCamera(3,cameraNE,X):-
+    atom_concat('Te afli în camera lui Bogdan.\nLa vest se afla biblioteca.\n',
+    'La sud se află cameraX\n
+Rezolvă dilema prizonierilor\n',T3),
+atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul dilema.\n',X).
+
+descrieCamera(3,birou,X):-
+    atom_concat('','Te afli în birou !, \nLa sud se află biblioteca.\n',X).
+
+descrieCamera(3,biblioteca,X):-
+    atom_concat('Te afli în bibliotecă. \nLa Nord se află Biroul!\n',
+    'Ușa de la intrarea în birou are un lacăt!\n',T1),
+    atom_concat(T1,'Lacătul are un cod format din 5 litere.\n',T2),
+    atom_concat(T2,'La vest e bucătăria.\n',T4),
+    atom_concat(T4,'La est e camera lui Bogdan.\n',T5),
+    atom_concat(T5,'La sud e camera de oaspeti.\n',T6),
+    atom_concat(T6,'Poți juca un joc: sliding 8.\n',T3),
+    atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul sliding.\n',X).
+
+descrieCamera(3,cameraNN,X):-
+    atom_concat('Te afli în cameraX.\nLa sud este camera lui Andrei.\n',
+    'La nord este camera lui Bogdan.\n',X).
+
+descrieCamera(3,cameraEN,X):-
+    atom_concat('Te afli în cameraY.\nLa sud este camera Mariei.\n',
+    'La nord este bucataria.
+La est este camera de oaspeti.\n',X).
+
+descrieCamera(3,bucatarie,X):-
+    atom_concat('Te afli în bucătărie.\nLa est este biblioteca\n',
+    'La vest se află camera dezi\nLa sud se află cameraY\n',X).
+
+descrieCamera(3,cameraWS,X):-
+    atom_concat('Te afli în Atelier.\n','La est este camera Mariei.\n',X).
+
+descrieCamera(3,cameraW,X):-
+    atom_concat('Te afli în camera Dianei.\n','La nord se află camera Mariei\n',X).
+
+descrieCamera(3,cameraWW,X):-
+    atom_concat('','Te afli în camera Mariei. \nLa sud este camera Dianei.
+La vest este atelierul.
+La nord este Y.
+Poți juca hunter.\n',T3),
+atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul hunter.\n',X).
+
 textStart(Textinitial):- atom_concat('','
                            Te-ai trezit pe podeaua unei camere.\n
                            Nu îți amintești unde ești sau cum ai ajuns aici.\n

@@ -82,8 +82,8 @@ legatura(2,s,cameraNE,cameraEE).
 legatura(2,w,cameraNE,bucatarie).
 
 legatura(2,e,biblioteca,bucatarie).
-legatura(1,n,biblioteca,birou):-cod_birou(X),codReal(Y),egale(X,Y).
-legatura(1,n,biblioteca,birou):-fail.
+legatura(2,n,biblioteca,birou):-cod_birou(X),codReal(Y),egale(X,Y).
+legatura(2,n,biblioteca,birou):-fail.
 legatura(2,w,biblioteca,cameraNW).
 legatura(2,s,biblioteca,cameraEN).
 
@@ -113,7 +113,62 @@ legatura(2,e,cameraW,cameraWS).
 legatura(2,n,cameraW,cameraWW).
 legatura(2,s,cameraWW,cameraW).
 
+%HARTA NUMARUL 2
+
+legatura(3,n,hol,cameraEE).
+legatura(3,s,hol,iesire).
+
+legatura(3,s,cameraEE,hol).
+legatura(3,n,cameraEE,cameraNN).
+legatura(3,w,cameraEE,cameraE).
+
+legatura(3,e,cameraE,cameraEE).
+legatura(3,n,cameraE,cameraES).
+
+legatura(3,n,cameraES,biblioteca).
+legatura(3,w,cameraES,cameraEN).
+legatura(3,s,cameraES,cameraE).
+
+legatura(3,s,cameraNN,cameraEE).
+legatura(3,n,cameraNN,cameraNE).
+
+legatura(3,s,cameraNE,cameraNN).
+legatura(3,w,cameraNE,biblioteca).
+
+legatura(3,w,biblioteca,bucatarie).
+legatura(3,n,biblioteca,birou):-cod_birou(X),codReal(Y),egale(X,Y).
+legatura(3,n,biblioteca,birou):-fail.
+legatura(3,e,biblioteca,cameraNE).
+legatura(3,s,biblioteca,cameraES).
+
+legatura(3,s,birou,biblioteca).
+
+legatura(3,e,cameraNW,bucatarie).
+legatura(3,s,cameraNW,cameraCapcana1).
+legatura(3,n,cameraNW,debara).
+legatura(3,w,cameraNW,cameraCapcana2).
+
+legatura(3,s,debara,cameraNW).
+
+legatura(3,n,cameraCapcana1,cameraNW).
+legatura(3,e,cameraCapcana2,cameraNW).
+
+legatura(3,s,bucatarie,cameraEN).
+legatura(3,e,bucatarie,biblioteca).
+legatura(3,w,bucatarie,cameraNW).
+
+legatura(3,s,cameraEN,cameraWW).
+legatura(3,e,cameraEN,cameraES).
+legatura(3,n,cameraEN,bucatarie).
+
+legatura(3,s,cameraWW,cameraW).
+legatura(3,w,cameraWW,cameraWS).
+legatura(3,n,cameraWW,cameraEN).
+
+legatura(3,n,cameraW,cameraWW).
+legatura(3,e,cameraWS,cameraWW).
+
 selectareHarta():-
-        random(1,3,X),
+        random(3,4,X),
         retract(numarPlanCasa(_)),
         assert(numarPlanCasa(X)),!.

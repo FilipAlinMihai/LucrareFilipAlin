@@ -54,7 +54,8 @@
               victorieMarcata/1,
               bandajeaza/1,
               repara/1,
-              descrieCamera/3]).
+              descrieCamera/3,
+              numarPlanCasa/1]).
 
 
 %:- use_module(sliding).
