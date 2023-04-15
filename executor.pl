@@ -57,7 +57,8 @@ executor(X,A1,A2,F):-
         !;
         X = incarca, incarca(A1)->
         locatieJucator(Juc),
-        descrie(Juc,R1),
+        numarPlanCasa(NRPC),
+        descrieCamera(NRPC,Juc,R1),
         atom_concat("Joc încărcat!\n",R1,R),
         modificareTextPrezentat(F,R),
         !;
@@ -127,7 +128,8 @@ executor(X,A1,A2,F):-
         ,!;
         X = locatie ->
         locatieJucator(Loc),
-        descrie(Loc,R1),
+        numarPlanCasa(NRPC),
+        descrieCamera(NRPC,Loc,R1),
         cerceteazaCamera(T1),
         atom_concat(R1,T1,R),
         modificareTextPrezentat(F,R)

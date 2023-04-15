@@ -1,4 +1,4 @@
-:- dynamic camereParcurse/1,camere/3.
+:- dynamic camereParcurse/1,camere/4.
 
 camereParcurse([hol]).
 
@@ -13,23 +13,41 @@ locLiber(5,1).
 locLiber(5,4).
 locLiber(5,5).
 
-camere(1,2,cameraWS).
-camere(1,4,cameraES).
-camere(2,1,cameraWW).
-camere(2,2,cameraW).
-camere(2,3,hol).
-camere(2,4,cameraE).
-camere(2,5,cameraEE).
-camere(3,2,cameraCapcana1).
-camere(4,1,cameraCapcana2).
-camere(4,2,cameraNW).
-camere(4,3,biblioteca).
-camere(4,4,bucatarie).
-camere(4,5,cameraNE).
-camere(5,2,debara).
-camere(5,3,birou).
-camere(3,4,cameraEN).
-camere(5,4,cameraNN).
+camere(1,1,2,cameraWS).
+camere(1,1,4,cameraES).
+camere(1,2,1,cameraWW).
+camere(1,2,2,cameraW).
+camere(1,2,3,hol).
+camere(1,2,4,cameraE).
+camere(1,2,5,cameraEE).
+camere(1,3,2,cameraCapcana1).
+camere(1,4,1,cameraCapcana2).
+camere(1,4,2,cameraNW).
+camere(1,4,3,biblioteca).
+camere(1,4,4,bucatarie).
+camere(1,4,5,cameraNE).
+camere(1,5,2,debara).
+camere(1,5,3,birou).
+camere(1,3,4,cameraEN).
+camere(1,5,4,cameraNN).
+
+camere(2,2,2,cameraWS).
+camere(2,2,3,cameraES).
+camere(2,3,1,cameraWW).
+camere(2,2,1,cameraW).
+camere(2,1,4,hol).
+camere(2,2,4,cameraE).
+camere(2,2,5,cameraEE).
+camere(2,3,2,cameraCapcana1).
+camere(2,4,1,cameraCapcana2).
+camere(2,4,2,cameraNW).
+camere(2,4,3,biblioteca).
+camere(2,4,4,bucatarie).
+camere(2,4,5,cameraNE).
+camere(2,5,2,debara).
+camere(2,5,3,birou).
+camere(2,3,3,cameraEN).
+camere(2,3,4,cameraNN).
 
 scrieLiber(R):-        R = '=============',!.
 scrieH(cameraNN,R):-    R = '===CAMERAX==',!.
@@ -68,7 +86,8 @@ prelucrare2(X,[Y|T],Rez):-
 afisare(X,Y,R):-locLiber(X,Y),scrieLiber(R),!.
 
 afisare(X,Y,R):-
-        camere(X,Y,Camera),
+        numarPlanCasa(NRH),
+        camere(NRH,X,Y,Camera),
         camereParcurse(CP),
         apartineH(Camera,CP),
         scrieH(Camera,R),!.

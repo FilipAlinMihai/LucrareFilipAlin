@@ -53,7 +53,8 @@
               cerceteazaCamera/1,
               victorieMarcata/1,
               bandajeaza/1,
-              repara/1]).
+              repara/1,
+              descrieCamera/3]).
 
 
 %:- use_module(sliding).
@@ -102,7 +103,7 @@
     avemLit3/1,
     avemLit4/1,
     avemLit5/1,
-    legatura/3,
+    legatura/4,
     victorieMarcata/1,
     utilizareLanterna/1.
 
@@ -290,8 +291,7 @@ dificultate(X,Resp):-
     retract(energieJucator(_)),
     assert(energieJucator(Y)),
     comunicaNivel(X),
-    write(''),
-    write(''),
+    selectareHarta(),
     generareCuvant(C1),
     retract(codReal(_)),
     assert(codReal(C1)),
@@ -300,7 +300,8 @@ dificultate(X,Resp):-
     distribuieObiecte(),
     distribuieBandaj(),
     capacitateLanterna(X),
-    descrie(hol,Camera),
+    numarPlanCasa(NRPC),
+    descrieCamera(NRPC,hol,Camera),
     cerceteazaCamera(Rez1),
     atom_concat(Camera,Rez1,Resp),
     golire(),
@@ -336,7 +337,8 @@ mutaJucator(X,R):-
     locatieJucator(L),
     cameraIntunecata(Z),
     locatieObiect(lanterna,jucator),
-    legatura(X,L,Z),
+    numarPlanCasa(NRH),
+    legatura(NRH,X,L,Z),
     utilizareLanterna(0),
     atom_concat('Lanterna a ramas fara baterii.\n','',R),!.
 
@@ -345,12 +347,14 @@ mutaJucator(X,R):-
     locatieJucator(L),
     cameraIntunecata(Z),
     locatieObiect(lanterna,jucator),
-    legatura(X,L,Z),
+    numarPlanCasa(NRH),
+    legatura(NRH,X,L,Z),
     scadeEnergie(),
     amUtilizatLanterna(),
     retract(locatieJucator(L)),
     assert(locatieJucator(Z)),
-    descrie(Z,H),
+    numarPlanCasa(NRPC),
+    descrieCamera(NRPC,Z,H),
     amParcurs(Z),
     cerceteazaCamera(T1),
     atom_concat(H,T1,R),!.
@@ -359,14 +363,16 @@ mutaJucator(X,R):-
 mutaJucator(X,R):-
     amInceput(da),
     locatieJucator(L),
-    legatura(X,L,Z),
+    numarPlanCasa(NRH),
+    legatura(NRH,X,L,Z),
     cameraIntunecata(Z),
     atom_concat('Este prea întuneric în această cameră.\n','Ai nevoie de o lanternă\n',R),!.
 
 mutaJucator(X,R):-
     amInceput(da),
     locatieJucator(L),
-    legatura(X,L,iesire),
+    numarPlanCasa(NRH),
+    legatura(NRH,X,L,iesire),
     locatieObiect(cheie,jucator),
     scadeEnergie(),
     retract(locatieJucator(L)),
@@ -376,7 +382,8 @@ mutaJucator(X,R):-
 mutaJucator(X,R):-
     amInceput(da),
     locatieJucator(L),
-    legatura(X,L,iesire),
+    numarPlanCasa(NRH),
+    legatura(NRH,X,L,iesire),
     locatieObiect(cheie,seif),
     atom_concat('','Ai nevoie de cheie pentru a evada\n',R),!.
 
@@ -384,11 +391,13 @@ mutaJucator(X,R):-
 mutaJucator(X,R):-
     amInceput(da),
     locatieJucator(L),
-    legatura(X,L,cameraCapcana1),
+    numarPlanCasa(NRH),
+    legatura(NRH,X,L,cameraCapcana1),
     retract(locatieJucator(L)),
     assert(locatieJucator(cameraCapcana1)),
     amParcurs(cameraCapcana1),
-    descrie(cameraCapcana1,Z),
+    numarPlanCasa(NRPC),
+    descrieCamera(NRPC,cameraCapcana1,Z),
     cerceteazaCamera(T1),
     scadeViata(),
     atom_concat(Z,T1,R),!.
@@ -396,12 +405,14 @@ mutaJucator(X,R):-
 mutaJucator(X,R):-
     amInceput(da),
     locatieJucator(L),
-    legatura(X,L,cameraCapcana2),
+    numarPlanCasa(NRH),
+    legatura(NRH,X,L,cameraCapcana2),
     amParcurs(cameraCapcana2),
     scadeEnergie(),
     retract(locatieJucator(L)),
     assert(locatieJucator(cameraCapcana2)),
-    descrie(cameraCapcana2,Z),
+    numarPlanCasa(NRPC),
+    descrieCamera(NRPC,cameraCapcana2,Z),
     cerceteazaCamera(T1),
     scadeViata(),
     atom_concat(Z,T1,R),!.
@@ -409,12 +420,14 @@ mutaJucator(X,R):-
 mutaJucator(X,R):-
     amInceput(da),
     locatieJucator(L),
-    legatura(X,L,Z),
+    numarPlanCasa(NRH),
+    legatura(NRH,X,L,Z),
     scadeEnergie(),
     retract(locatieJucator(L)),
     assert(locatieJucator(Z)),
-     amParcurs(Z),
-    descrie(Z,H),
+    amParcurs(Z),
+    numarPlanCasa(NRPC),
+    descrieCamera(NRPC,Z,H),
     cerceteazaCamera(T1),
     atom_concat(H,T1,R),!.
 
@@ -433,7 +446,10 @@ inspecteaza(X,R1):-
 
 inspecteaza(_,X):-atom_concat('','Nu ai acest obiect în rucsac!\n',X).
 
-harta():-locatieJucator(X),descrie(X,_),!.
+harta():-
+    locatieJucator(X),
+    numarPlanCasa(NRPC),
+    descrieCamera(NRPC,X,_),!.
 
 amDescoperit(X):-
         X=scrisoareLitera1->

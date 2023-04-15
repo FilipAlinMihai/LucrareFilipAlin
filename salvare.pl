@@ -45,6 +45,7 @@ salveaza(Fisier):-
         camereParcurse(CamereParcurse),
         numarGhicitoare(NRG),
         utilizareLanterna(UtilizareLanterna),
+        numarPlanCasa(NRH),
         tell(Cale1),
         write(A),write('.\n'),
         write(B),write('.\n'),
@@ -83,6 +84,7 @@ salveaza(Fisier):-
         write(NRG),write('.\n'),
         write(LocatieB),write('.\n'),
         write(UtilizareLanterna),write('.\n'),
+        write(NRH),write('.\n'),
         told.
 
 
@@ -129,6 +131,7 @@ incarca(Fisier):-
         read(NRG),
         read(LocatieB),
         read(UtilizareLanterna),
+        read(NRH),
         seen,
         upcase_atom(Z1,Z11),
         upcase_atom(Lit1,Lit11),
@@ -206,6 +209,8 @@ incarca(Fisier):-
         assert(utilizareLanterna(UtilizareLanterna)),
         retract(camereParcurse(_)),
         assert(camereParcurse(CamereParcurse)),
+        retract(numarPlanCasa(_)),
+        assert(numarPlanCasa(NRH)),
         efectuareModificari(NrCapcane),
         stabilireIntrebare(NRG),!.
 
