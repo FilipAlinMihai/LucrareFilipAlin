@@ -79,6 +79,7 @@
 :- include('gestionareTimp.pl').
 :- include('generareCamereCapcana.pl').
 :- include('riddles.pl').
+:- include('conectareCamere.pl').
 
 :- dynamic locatieJucator/1,
     locatieObiect/2,
@@ -122,62 +123,6 @@ seJoaca(momentanNimic).
 
 locatieJucator(hol). %Se stabileste locatia de pornire a jucatorului
                         %Aceasta se modifica pe parcur in  functie de mutarile jucatorului
-
-%Sunt stabilite rutele de legatura intre camere.
-legatura(n,hol,biblioteca).
-legatura(w,hol,cameraW).
-legatura(e,hol,cameraE).
-legatura(s,hol,iesire).
-
-legatura(e,cameraE,cameraEE).
-legatura(w,cameraE,hol).
-legatura(s,cameraE,cameraES).
-legatura(n,cameraE,cameraEN).
-
-legatura(n,cameraES,cameraE).
-
-legatura(w,cameraEE,cameraE).
-legatura(n,cameraEE,cameraNE).
-
-%In birou se poate intra cu un cod gasit prin explorarea camerelor
-legatura(n,biblioteca,birou):-cod_birou(X),codReal(Y),egale(X,Y).
-legatura(n,biblioteca,birou):-
-    write(''),nl,fail.
-legatura(s,biblioteca,hol).
-legatura(e,biblioteca,bucatarie).
-legatura(w,biblioteca,cameraNW).
-
-legatura(e,bucatarie,cameraNE).
-legatura(w,bucatarie,biblioteca).
-legatura(n,bucatarie,cameraNN).
-
-legatura(s,cameraNN,bucatarie).
-
-legatura(s,cameraEN,cameraE).
-
-legatura(e,cameraNW,biblioteca).
-legatura(s,cameraNW,cameraCapcana1).
-legatura(n,cameraNW,debara).
-legatura(w,cameraNW,cameraCapcana2).
-
-legatura(s,debara,cameraNW).
-
-legatura(n,cameraCapcana1,cameraNW).
-
-legatura(s,cameraNE,cameraEE).
-legatura(w,cameraNE,bucatarie).
-
-legatura(e,cameraCapcana2,cameraNW).
-
-legatura(w,cameraW,cameraWW).
-legatura(e,cameraW,hol).
-legatura(s,cameraW,cameraWS).
-
-legatura(n,cameraWS,cameraW).
-
-legatura(e,cameraWW,cameraW).
-
-legatura(s,birou,biblioteca).
 
 cod_birou(aaaaa).
 
