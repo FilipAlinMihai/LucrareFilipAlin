@@ -72,7 +72,6 @@ restart(X):-
         assert(mutariRamase(7)),
         retract(victorieMarcata(_)),
         assert(victorieMarcata(nu)),
-        distribuireCamere(),
         atom_concat('
                           Te-ai trezit pe podeaua unei camere.\n
                            Nu iți amintești unde ești sau cum ai ajuns aici.\n

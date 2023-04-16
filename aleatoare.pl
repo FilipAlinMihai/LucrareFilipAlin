@@ -100,5 +100,4 @@ generareStareNoua(I,Stare2):-
 efectuareMutare(M,Stare,Stare2):-
         mutare(M,Stare,Stare2),!.
         
-
 generare8():-generareStareNoua(8,Stare),write(Stare).

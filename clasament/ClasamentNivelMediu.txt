@@ -23,6 +23,8 @@ doarunnume.
 27.
 doarunnume.
 7.
+hartinoi.
+7.
 alin5.
 6.
 joccomplet2.

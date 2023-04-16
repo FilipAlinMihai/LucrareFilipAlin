@@ -169,6 +169,6 @@ legatura(3,n,cameraW,cameraWW).
 legatura(3,e,cameraWS,cameraWW).
 
 selectareHarta():-
-        random(3,4,X),
+        random(1,4,X),
         retract(numarPlanCasa(_)),
         assert(numarPlanCasa(X)),!.

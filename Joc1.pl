@@ -293,6 +293,7 @@ dificultate(X,Resp):-
     assert(energieJucator(Y)),
     comunicaNivel(X),
     selectareHarta(),
+    distribuireCamere(),
     generareCuvant(C1),
     retract(codReal(_)),
     assert(codReal(C1)),
