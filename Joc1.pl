@@ -505,7 +505,7 @@ bandajeaza(R):-
     atom_concat('Nu esti ranit!\n','Pastreaza bandajele pentru mai tarziu!',R),!.
 
 bandajeaza(R):-
-    atom_concat('Nu bandaje in inventar!\n','',R),!.
+    atom_concat('Nu exista bandaje in inventar!\n','',R),!.
 
 capacitateLanterna(NivelSelectat):-
        NivelSelectat=usor->

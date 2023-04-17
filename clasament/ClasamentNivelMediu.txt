@@ -11,6 +11,10 @@ andrei.
 35.
 vlad.
 33.
+numefaraspatiu.
+33.
+numecuspatiu.
+33.
 alin2.
 33.
 alin.
@@ -22,6 +26,8 @@ paul.
 doarunnume.
 27.
 doarunnume.
+21.
+numecuspatiu2.
 7.
 hartinoi.
 7.

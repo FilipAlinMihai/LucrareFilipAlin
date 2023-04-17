@@ -42,7 +42,7 @@ regulile(X):-atom_concat('** Ești captiv în casa X. Ușa de la ieșire este î
      Dupa curgerea timpului jocurile nu mai accepta mutari.
      La fiecare mutare noua se va specifica cate secunde au mai ramas pana la inchiderea jocului.
      Timpul pus la dispoziti jucatorului e calculat in functie de joc si de nivelul de dificultate ales.
-** Exista o imita de obiecte pe care jucatorul le poate cara la un moment dat.
+** Exista o limita de obiecte pe care jucatorul le poate cara la un moment dat.
      Daca inventarul este plin jucatorul poate scapa de obiectele mai putin importante prin comanda arunca.
 ** Prin comanda Parola Jucatorul poate vedea literele parole pe care lea descoperit.
      Spre exemplu daca au fost gasite literele 2 si 5 si aceste sunt T si G comanda parola va afisa *T**G.

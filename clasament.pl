@@ -11,31 +11,40 @@ clasament(Nivel,Energie,Nume):-
 
 procesareMediu(Energie,Nume):-
         citireMediu(Clasament),
-        sortate(Clasament,[Energie,Nume],ClasamentNou),
+        eliminate_spaces(Nume, Nume2),
+        sortate(Clasament,[Energie,Nume2],ClasamentNou),
         tell('C:\\Users\\lenovo\\Documents\\Prolog\\LucrareFilipAlin\\clasament\\ClasamentNivelMediu.txt'),
         scriere(ClasamentNou),
         told.
 
 procesareUsor(Energie,Nume):-
         citireUsor(Clasament),
-        sortate(Clasament,[Energie,Nume],ClasamentNou),
+        eliminate_spaces(Nume, Nume2),
+        sortate(Clasament,[Energie,Nume2],ClasamentNou),
         tell('C:\\Users\\lenovo\\Documents\\Prolog\\LucrareFilipAlin\\clasament\\ClasamentNivelUsor.txt'),
         scriere(ClasamentNou),
         told.
 
 procesareDificil(Energie,Nume):-
         citireDificil(Clasament),
-        sortate(Clasament,[Energie,Nume],ClasamentNou),
+        eliminate_spaces(Nume, Nume2),
+        sortate(Clasament,[Energie,Nume2],ClasamentNou),
         tell('C:\\Users\\lenovo\\Documents\\Prolog\\LucrareFilipAlin\\clasament\\ClasamentNivelDificil.txt'),
         scriere(ClasamentNou),
         told.
 
 procesareImposibil(Energie,Nume):-
         citireImposibil(Clasament),
-        sortate(Clasament,[Energie,Nume],ClasamentNou),
+        eliminate_spaces(Nume, Nume2),
+        sortate(Clasament,[Energie,Nume2],ClasamentNou),
         tell('C:\\Users\\lenovo\\Documents\\Prolog\\LucrareFilipAlin\\clasament\\ClasamentNivelImposibil.txt'),
         scriere(ClasamentNou),
         told.
+
+eliminate_spaces(Proposition, NewProposition) :-
+    atom_chars(Proposition, Chars),
+    findall(C, (member(C, Chars), C \= ' '), CleanChars),
+    atomic_list_concat(CleanChars, NewProposition).
 
 scriere([]).
 scriere([end_of_file|_]).

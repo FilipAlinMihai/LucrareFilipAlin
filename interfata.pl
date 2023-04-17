@@ -19,6 +19,7 @@ mesajAnteriorAnterior(****).
 
 
 :- include('executor.pl').
+:- include('bot.pl').
 
 reguli():-
     new(F, dialog),
@@ -83,10 +84,13 @@ run:-
     new(BTN4,button(zoom, message(@prolog, zoom))),
     new(BTN5,button(reguli, message(@prolog, reguli))),
     new(BTN6,button(harta, message(@prolog, harta,F2))),
+    new(BTNBOT,button(bot, message(@prolog, main))),
     row(Row,group,BTN1,BTN2,BTN3),
     row(Row1,group,BTN4,BTN5,BTN6),
+    rowOfOne(Row2,group,BTNBOT),
     send(E,append,Row),
     send(E,append,Row1),
+    send(E,append,Row2),
     send(D, append, new(B1,button(n, message(@prolog, navigare, n, F2)))),
     send(D, append, new(B6,button(s, message(@prolog, navigare, s, F2)))),
     send(D, append, new(B7,button(e, message(@prolog, navigare, e, F2)))),
@@ -362,6 +366,10 @@ row(R,Type,Column1,Column2,Column3) :-
     send(R, append, Column1, right),
     send(R, append, Column2, right),
     send(R, append, Column3, right).
+
+rowOfOne(R,Type,Column1):-
+        new(R,dialog_group('ColAll',Type)),
+        send(R, append, Column1, right).
 
 casetaNume():-
         new(E, dialog),

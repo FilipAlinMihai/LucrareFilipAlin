@@ -52,7 +52,7 @@ camere(2,3,4,cameraNN).
 camere(3,2,2,cameraWS).
 camere(3,3,4,cameraES).
 camere(3,2,3,cameraWW).
-camere(3,2,2,cameraW).
+camere(3,1,3,cameraW).
 camere(3,1,5,hol).
 camere(3,2,4,cameraE).
 camere(3,2,5,cameraEE).
@@ -101,7 +101,7 @@ prelucrare2(X,[Y|T],Rez):-
         atom_concat(R1,R2,Rez),!.
 
 
-afisare(X,Y,R):-locLiber(X,Y),scrieLiber(R),!.
+%afisare(X,Y,R):-locLiber(X,Y),scrieLiber(R),!.
 
 afisare(X,Y,R):-
         numarPlanCasa(NRH),

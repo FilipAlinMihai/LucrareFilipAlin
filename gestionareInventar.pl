@@ -1,4 +1,4 @@
-scrieObiecte([],'').
+scrieObiecte([],'--------------------------\nAcestea sunt obiectele din inventar\n').
 scrieObiecte([L|T],Y):-
     atom_concat('--------------------------\n',L,T1),
     atom_concat(T1,'\n',T2),

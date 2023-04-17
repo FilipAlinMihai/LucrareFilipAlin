@@ -22,6 +22,7 @@ salveaza(Fisier):-
         locatieObiect(scrisoareLitera5,T),
         locatieObiect(carteLitera4,U),
         locatieObiect(bandaj,LocatieB),
+        locatieObiect(baterie,LocatieBaterie),
         energieJucator(V),
         raspunsGhicitoare(X),
         viata(Y),
@@ -85,6 +86,7 @@ salveaza(Fisier):-
         write(LocatieB),write('.\n'),
         write(UtilizareLanterna),write('.\n'),
         write(NRH),write('.\n'),
+        write(LocatieBaterie),write('.\n'),
         told.
 
 
@@ -132,6 +134,7 @@ incarca(Fisier):-
         read(LocatieB),
         read(UtilizareLanterna),
         read(NRH),
+        read(LocatieBaterie),
         seen,
         upcase_atom(Z1,Z11),
         upcase_atom(Lit1,Lit11),
@@ -211,6 +214,8 @@ incarca(Fisier):-
         assert(camereParcurse(CamereParcurse)),
         retract(numarPlanCasa(_)),
         assert(numarPlanCasa(NRH)),
+        retract(locatieObiect(baterie,_)),
+        assert(locatieObiect(baterie,LocatieBaterie)),
         efectuareModificari(NrCapcane),
         stabilireIntrebare(NRG),!.
 
