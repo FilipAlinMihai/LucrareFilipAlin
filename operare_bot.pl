@@ -40,6 +40,46 @@ calcul_aux(Cuvinte):-
         retract(raspuns(_)),
         assert(raspuns(Raspuns)).
 
+intrebare([comanda, comenzi, control,start, porni, pornire,
+ porneste, regula, joc,mini, provocare, logic, argument ],
+' Pentru inceperea unui joc se va utiliza:
+     comanda: Joc cu argumentul: jocul dorit').
+
+intrebare([comanda, comenzi, control,dificultate, nivel,
+ greutate,usurinta, intensitate, argument ],
+'Pentru selectarea nivelului de dificultate se utilizeaza:
+    comanda: Nivel cu argumentul : nivel dorit').
+
+intrebare([comanda, comenzi, control, argument,inventar,obiect,
+pastreaza,ridica, pastra, plasa, colecta, colecteaza ],
+'Pentru plasarea unui obiect in inventar se utilizeaza:
+    comanda: Pastreaza cu argumentul: obiect dorit').
+
+intrebare([comanda, comenzi, control, argument,inventar,obiect,
+inspecteaza,inspecta, analizare, analiza, analizat, inspectie, descriere ],
+'Inspecteaza un obiect descoperit cu comanda
+    comanda: Inspecteaza cu argumentul: obiect dorit').
+
+intrebare([comanda, comenzi, control, argument,cod,scriere,scrie, introdu,
+introducere, completa,completare, completeaza ],
+'Completarea codului pentru acces in Birou
+    comanda: Cod cu argumentul: codul de 5 litere').
+
+intrebare([comanda, comenzi, control, argument,completare, 
+sudoku, joc,mutare, juca, argumente ],
+'Mutare pentru jocul sudoku cu ajutoul:
+    comanda: Sudoku cu argument1: pozitia si argument2: valoarea noua').
+
+intrebare([comanda, comenzi, control, argument, repara, lanterna,
+ fara, energie, ramane, consum ,consumata, consumare, liminat, utilizare,baterie ],
+'In cazul in care lanterna ramane fara energie se utilizeaza: 
+    comanda: Repara cu argumentul: lanterna
+Este necesara si o baterie.').
+
+intrebare([comanda, comenzi, control, argument,arunca, aruncare, renunta,
+ inlaturare, golire, goli, eliberare,elibera,spatiu,inventar],
+'Pentru renuntarea la un obiect din inventar se utilizeaza:
+    comanda: Arunca cu argumentul: obiect dorit').
 
 intrebare([poveste,plot,continut,despre,descriere,descriemi,
 descrie,descri, povesteste,jocul,explica,spunemi],
@@ -83,7 +123,8 @@ Dupa ce jocul a fost finalizat cu succes jucatorul introduce numele cu care va a
 Clasamentul se bazeaza pe numarul de puncte de energie cu care jucatorul a terminat jocul.
 Cu cat numarul este mai mare cu atat jucatorul va fi mai sus in clasament.').
 
-intrebare([limita, timp,restrictie,limitare, cronometru, finalizare],
+intrebare([limita, timp,restrictie,limitare, cronometru, cronometrat, cronometrate,
+ finalifate,finalizeaza, finalizez, finalizare],
 'Trei dintre mini jocurile disponibile sunt cronometrate.
 Ele trebuie sa fie rezolvate intr-un numar prestabilit de secunde.
 Dupa curgerea timpului jocurile nu mai accepta mutari.
@@ -115,3 +156,6 @@ intrebare([intuneric, intunecat, intunecata, bezna,
 In cazul acestor camere este necesara o sursa de lumina precum o lanterna.
 Dupa un anumit numar de utilizari lanterna ramane fara energie si nu mai poate fi  utilizata.
 In acest caz este necesara repararea lanternei. Pentru reparare este necesara o baterie noua.').
+
+intrebare([inainte, inapoi, raspuns, anterior, mesaj, raspunsul, intoarcere, tranzitie],
+' Doua butoane Inainte si Inapoi perrmit circularea intre ultimele trei mesaje afisate pe ecran.').

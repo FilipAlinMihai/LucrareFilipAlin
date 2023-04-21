@@ -139,11 +139,11 @@ determinareSecunde2(NumarSecunde):-
             nivelSelectat(usor)->
             NumarSecunde = 800,!;
             nivelSelectat(mediu)->
-            NumarSecunde = 500,!;
+            NumarSecunde = 650,!;
             nivelSelectat(dificil)->
-            NumarSecunde = 400,!;
+            NumarSecunde = 650,!;
             nivelSelectat(imposibil)->
-            NumarSecunde = 300,!.
+            NumarSecunde = 600,!.
 
 
 determinareSecunde1(NumarSecunde):-

@@ -12,12 +12,13 @@ main :-
     send(D, append, new(Intrebare, text_item(in, 'Intrebare')),right),
 
     send(D, append, button(ok, message(@prolog, print_raspuns, Intrebare?selection,E))),
-    new(Text2, text('Raspuns dat de carte sistem *******************
-Aici ***************************
-Aici ***************************
-Aici ***************************
-Aici ***************************
-Aici ***************************')),
+    new(Text2, text('
+Raspuns dat de carte sistem ***************************************
+Aici **************************************************************
+Aici **************************************************************
+Aici **************************************************************
+Aici **************************************************************
+Aici **************************************************************')),
     send(Text2, font, font(times, bold, 17)),
     send(Text2, colour, orange),
     send(E, display, Text2, point(50, 20)), 
