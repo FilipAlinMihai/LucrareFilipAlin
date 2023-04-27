@@ -66,7 +66,7 @@ completare2([A,B,C,D,E,F,G,H,I],R):-
         verificare2(C,I,3,X9),
         R is X1+X2+X3+X4+X5+X6+X7+X8+X9.
 
-verificare2(A,B,L,2):-
+verificare2(A,B,L,16):-
                 A > B,
                 A \= 0,
                 B \= 0,
@@ -96,7 +96,7 @@ completare([A,B,C,D,E,F,G,H,I],R):-
         verificare(G,I,3,X9),
         R is X1+X2+X3+X4+X5+X6+X7+X8+X9.
 
-verificare(A,B,L,2):-
+verificare(A,B,L,16):-
                 A > B,
                 A \= 0,
                 B \= 0,
@@ -107,18 +107,21 @@ verificare(_,_,_,0).
 pozitieInStare(X,[X|_],0).
 pozitieInStare(X,[_|T],R):- pozitieInStare(X,T,R1), R is R1 + 1,!.
 
+euristica(S,R):-
+        euristica1(S,S,R1),
+        completare(S,X1),
+        completare2(S,X2),
+        R is R1 + X1+X2,!.
 
-euristica(_,[],0).
-euristica(S,[0|T],R1):-
-        euristica(S,T,R1),!.
-euristica(S,[L|T],R):-
-        euristica(S,T,R1),
+euristica1(_,[],0).
+euristica1(S,[0|T],R1):-
+        euristica1(S,T,R1),!.
+euristica1(S,[L|T],R):-
+        euristica1(S,T,R1),
         pozitieInStare(L,S,H),
         ordonare(L,H,J,K),
         distanta(J,K,X),
-        completare(S,X1),
-        completare2(S,X2),
-        R is R1 + X+X1+X2,!.
+        R is R1 + X,!.
 
 ordonare(X,Y,X,Y):- X < Y,!.
 ordonare(X,Y,Y,X).

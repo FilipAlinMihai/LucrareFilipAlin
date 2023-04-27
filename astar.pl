@@ -143,7 +143,7 @@ determinareStariNoi(X,I,ListaStariDerivate):-
 
 construirePerechi(_,_,[],[],[]).
 construirePerechi(Parinte,I,[Stare|Stari],[Semn|Semne],[[Stare,CostCale,Semn,Parinte,Valoare]|Perechi]):-
-                euristica(Stare,Stare,Valoare),
+                euristica(Stare,Valoare),
                 CostCale is I+1,
                 construirePerechi(Parinte,I,Stari,Semne,Perechi),!.
 
@@ -161,16 +161,16 @@ completareStariCandidate([Stare|ListaStariDerivate],[Stare|StariCandidate]):-
 
 completareStariCandidate([[Lista,CostCale,Semn,Parinte,Valoare]|ListaStariDerivate],[[Lista,CostCale,Semn,Parinte,Valoare]|StariRamase]):-
                 completareStariCandidate(ListaStariDerivate,StariCandidate),
-                contine(StariCandidate,[Lista,CostCale,Semn,Parinte,Valoare],V),
+                contine(StariCandidate,[Lista,CostCale,Semn,Parinte,Valoare],C),
                 stariParcurse(StariParcurse),
                 \+ contine(StariParcurse,[Lista,CostCale,Semn,Parinte,Valoare],_),
-                V>Valoare,
+                C>CostCale,
                 eliminareDuplicat([Lista,CostCale,Semn,Parinte,Valoare],StariCandidate,StariRamase),!.
 
 completareStariCandidate([_|ListaStariDerivate],StariCandidate):-
                 completareStariCandidate(ListaStariDerivate,StariCandidate),!.
 
-contine([[G,_,_,_,V]|_],[G,_,_,_,_],V).
+contine([[G,C,_,_,_]|_],[G,_,_,_,_],C).
 contine([_|T],G,V):-contine(T,G,V).
 
 eliminareDuplicat(_,[],[]).
@@ -199,6 +199,6 @@ extrageDate(Parinte,Semn,ListaRamasa):-
 
 
 comparator(X,[_,CostCale1,_,_,Valoare1],[_,CostCale2,_,_,Valoare2]):-
-        CostCale1+Valoare1 >= CostCale2+Valoare2->
+        CostCale1+Valoare1 > CostCale2+Valoare2->
         X = >;
         X = < .

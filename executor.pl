@@ -80,7 +80,7 @@ executor(X,A1,A2,F):-
         !;
         X = viata ->
         viata(R31),
-        atom_concat('Situația sănătății curente: ',R31,R312),
+        atom_concat('Situatia sanatatii curente: ',R31,R312),
         modificareTextPrezentat(F,R312),
         !;
         X = ajutor,nivelSelectat(imposibil) ->

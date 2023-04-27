@@ -7,9 +7,9 @@
     litera4/1,
     litera5/1.
 
-random_letter(Letter) :-
-    random_between(65, 90, ASCII), % generate a random number between 65 and 90
-    char_code(Letter, ASCII). % convert the ASCII code to a letter
+generare_litera(Litera) :-
+    random_between(65, 90, Cod), 
+    char_code(Litera, Cod).
 
 litera1(a).
 litera2(b).
@@ -18,11 +18,11 @@ litera4(d).
 litera5(e).
 
 generareLitere():-
-    random_letter(A),
-    random_letter(B),
-    random_letter(C),
-    random_letter(D),
-    random_letter(E),
+    generare_litera(A),
+    generare_litera(B),
+    generare_litera(C),
+    generare_litera(D),
+    generare_litera(E),
     litera1(A1),
     litera2(B1),
     litera3(C1),
