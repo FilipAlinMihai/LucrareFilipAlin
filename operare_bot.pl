@@ -183,8 +183,7 @@ intrebare([ce,se, intampla, am,de, ramas,fara, punct, energie,daca, raman, voi,
 Pentru prevenirea acestei situații este recomandată câștigarea mini jocurilor.
 Acestea acordă recompense precum punctele de energie.').
 
-intrebare([aaa,bbb],
-'Gresit').
-
-intrebare([aaa,bbb,ccc],
-'Corect').
+intrebare([nu, ma, pot, misca, naviga, harta,blocat, este, permisa],
+'Exista mai multe motive pentru care utilizatorul nu poate naviga harta.
+Este posibil ca utilizatorul sa nu fi selectat un nivel de dificultate.
+O alta posibilitate este epuizarea punctelor de energie.').

@@ -179,16 +179,6 @@ eliminareDuplicat([Lista,CostCale,Semn,Parinte,Valoare],[[Lista,_,_,_,_]|StariCa
 eliminareDuplicat([Lista,CostCale,Semn,Parinte,Valoare],[Stare|StariCandidate],[Stare|StariRamase]):-
                 eliminareDuplicat([Lista,CostCale,Semn,Parinte,Valoare],StariCandidate,StariRamase),!.
 
-
-%starePreferentiala([],[[],0,t,[],1000]).
-%starePreferentiala([[_,CostCale,_,_,Valoare]|Stari],[ListaPreferata,CostCalePreferata,SemnPreferential,ParintePreferential,ValoarePreferata]):-
-                %starePreferentiala(Stari,[ListaPreferata,CostCalePreferata,SemnPreferential,ParintePreferential,ValoarePreferata]),
-                %Valoare+CostCale > ValoarePreferata+CostCalePreferata,!.
-
-%starePreferentiala([[Lista,CostCale,Semn,Parinte,Valoare]|Stari],[Lista,CostCale,Semn,Parinte,Valoare]):-
-                %starePreferentiala(Stari,_),!.
-
-
 construireCale(_,[],[]).
 construireCale(ParintePrimit,[[ParintePrimit,_,Semn,Parinte,_]|StariRamase],[Semn|Semne]):-
                         construireCale(Parinte,StariRamase,Semne),!.
