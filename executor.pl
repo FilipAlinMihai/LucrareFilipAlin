@@ -1,3 +1,5 @@
+:- use_module(text).
+
 executor(X,A1,A2,F):-
         apartine(X,[nivel,dificultate,level]) ->
         dificultate(A1,Resp),
@@ -59,11 +61,13 @@ executor(X,A1,A2,F):-
         locatieJucator(Juc),
         numarPlanCasa(NRPC),
         descrieCamera(NRPC,Juc,R1),
-        atom_concat("Joc încărcat!\n",R1,R),
+        mesajIncarcare(M1),
+        atom_concat(M1,R1,R),
         modificareTextPrezentat(F,R),
         !;
         X = incarca, \+ incarca(A1) ->
-        atom_concat("Această versiune nu a putut fi încărcată!\n",'',R),
+        eroareIncarcare(E1),
+        atom_concat(E1,'',R),
         modificareTextPrezentat(F,R),
         !;
         X = optiuni ->
@@ -80,11 +84,13 @@ executor(X,A1,A2,F):-
         !;
         X = viata ->
         viata(R31),
-        atom_concat('Situatia sanatatii curente: ',R31,R312),
+        mesajViata(M2),
+        atom_concat(M2,R31,R312),
         modificareTextPrezentat(F,R312),
         !;
         X = ajutor,nivelSelectat(imposibil) ->
-        atom_concat('Pentru nivelul imposibil nu există ajutor!\n','',R),
+        eroareAjutor(E2),
+        atom_concat(E2,'',R),
         modificareTextPrezentat(F,R),
         !;
         X = ajutor,ajutor2(disponibil) ->
@@ -134,5 +140,6 @@ executor(X,A1,A2,F):-
         atom_concat(R1,T1,R),
         modificareTextPrezentat(F,R)
         ,!;
-        atom_concat('Comandă inexistentă!\n', X,R),
+        eroareComanda(E3),
+        atom_concat(E3, X,R),
         modificareTextPrezentat(F,R),!.

@@ -1,3 +1,6 @@
+:- module(operare_bot, [raspuns/1,
+                        procesareText/1]).
+
 :- dynamic numarPotriviri/1,
             raspuns/1.
 
@@ -25,20 +28,30 @@ scor([_|T],Y,R):-
 
 calcul(Cuvinte):-
     calcul_aux(Cuvinte) ->
+    numarPotriviri(Np),
+    write(Np),
     retract(numarPotriviri(_)),
     assert(numarPotriviri(0)),!;
     retract(numarPotriviri(_)),
     assert(numarPotriviri(0)),!.
 
-calcul_aux(Cuvinte):-
-        intrebare(CuvinteCheie,Raspuns),
-        numarPotriviri(NP),
-        scor(Cuvinte,CuvinteCheie,Scor),
-        Scor > NP ->
-        retract(numarPotriviri(_)),
+calcul_aux(Cuvinte) :-
+    findall((CuvinteCheie, Raspuns), intrebare(CuvinteCheie, Raspuns), Perechi),
+    iterare(Perechi, Cuvinte).
+
+iterare([], _).
+iterare([(CuvinteCheie, Raspuns)|Rest], Cuvinte) :-
+    scor(Cuvinte, CuvinteCheie, Scor),
+    numarPotriviri(NP),
+    (Scor > NP ->
+        retractall(numarPotriviri(NP)),
         assert(numarPotriviri(Scor)),
-        retract(raspuns(_)),
-        assert(raspuns(Raspuns)).
+        retractall(raspuns(_)),
+        assert(raspuns(Raspuns))
+    ;
+        true
+    ),
+    iterare(Rest, Cuvinte).
 
 intrebare([comanda, comenzi, control,start, porni, pornire,
  porneste, regula, joc,mini, provocare, logic, argument ],
@@ -48,7 +61,8 @@ intrebare([comanda, comenzi, control,start, porni, pornire,
 intrebare([comanda, comenzi, control,dificultate, nivel,
  greutate,usurinta, intensitate, argument ],
 'Pentru selectarea nivelului de dificultate se utilizeaza:
-    comanda: Nivel cu argumentul : nivel dorit').
+    comanda: Nivel cu argumentul : nivel dorit
+    sunt disponibile 4 optiuni: usor, mediu, dificil si imposibil.').
 
 intrebare([comanda, comenzi, control, argument,inventar,obiect,
 pastreaza,ridica, pastra, plasa, colecta, colecteaza ],
@@ -71,7 +85,7 @@ sudoku, joc,mutare, juca, argumente ],
     comanda: Sudoku cu argument1: pozitia si argument2: valoarea noua').
 
 intrebare([comanda, comenzi, control, argument, repara, lanterna,
- fara, energie, ramane, consum ,consumata, consumare, liminat, utilizare,baterie ],
+ fara, energie, ramane, consum ,consumata, consumare, liminat, utilizare,baterie,a ],
 'In cazul in care lanterna ramane fara energie se utilizeaza: 
     comanda: Repara cu argumentul: lanterna
 Este necesara si o baterie.').
@@ -82,12 +96,13 @@ intrebare([comanda, comenzi, control, argument,arunca, aruncare, renunta,
     comanda: Arunca cu argumentul: obiect dorit').
 
 intrebare([poveste,plot,continut,despre,descriere,descriemi,
-descrie,descri, povesteste,jocul,explica,spunemi],
+descrie,descri, povesteste,jocul,explica,spunemi,scop,scopul,care,tinta],
 'Ești captiv în casa X. Ușa de la ieșire este încuiată.
 Poți cerceta casa dar fiecare tranziție între camere te costă energie. 
 Vei găsi obiecte, aceste pot fi folosite pentru a câștiga energie sau pentru alte activități.
 Pentru navigare utilizează butoanele N S E V. 
-Accesul în unele canere este restricționat.').
+Accesul în unele canere este restricționat.
+Trebuie sa evadezi.').
 
 intrebare([miscare, circulare, tranzitie, cum, 
 traversare, traversez, misc, mutare, mut,
@@ -159,3 +174,17 @@ In acest caz este necesara repararea lanternei. Pentru reparare este necesara o 
 
 intrebare([inainte, inapoi, raspuns, anterior, mesaj, raspunsul, intoarcere, tranzitie],
 ' Doua butoane Inainte si Inapoi perrmit circularea intre ultimele trei mesaje afisate pe ecran.').
+
+
+intrebare([ce,se, intampla, am,de, ramas,fara, punct, energie,daca, raman, voi,
+ ramane, puncte, epuizat, nu, mai, pot,naviga,circula],
+'În cazul în care utilizatorul rămâne fără puncte de energie el nu mai poate naviga harta.
+În acest caz el poate consuma obiecte comestibile din inventar pentru energie.
+Pentru prevenirea acestei situații este recomandată câștigarea mini jocurilor.
+Acestea acordă recompense precum punctele de energie.').
+
+intrebare([aaa,bbb],
+'Gresit').
+
+intrebare([aaa,bbb,ccc],
+'Corect').

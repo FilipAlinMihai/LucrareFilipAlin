@@ -1,6 +1,6 @@
 :- use_module(library(pce)).
 :- use_module(library(pce_style_item)).
-:- include('operare_bot.pl').
+:- use_module(operare_bot).
 
 main :-
     new(E, dialog('Raspuns')),
