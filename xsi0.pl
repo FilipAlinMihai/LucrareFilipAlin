@@ -211,7 +211,7 @@ mutare0(usor):-
 
 mutare0(_):-
     stare(X),
-    minimax(-100,200,[0,desfasurare,X],[_,_,R],_),
+    minimax(X,R),
     retract(stare(X)),
     assert(stare(R)),!.
 

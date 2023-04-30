@@ -1,25 +1,5 @@
-
-mutari([0, desfasurare, StareCurenta], [0, victorie, StareUrmatoare]) :-
-    stariUrmatoare(0, StareCurenta, StareUrmatoare),
-    stareVictorie(0, StareUrmatoare), !.
-
-mutari([0, desfasurare, StareCurenta], [0, egalitate, StareUrmatoare]) :-
-    stariUrmatoare(0, StareCurenta, StareUrmatoare),
-    stareEgalitate(0,StareUrmatoare), !.
-
-mutari([0, desfasurare, StareCurenta], [2, desfasurare, StareUrmatoare]) :-
-    stariUrmatoare(0, StareCurenta, StareUrmatoare).
-
-mutari([2, desfasurare, StareCurenta], [2, victorie, StareUrmatoare]) :-
-    stariUrmatoare(2, StareCurenta, StareUrmatoare),
-    stareVictorie(2, StareUrmatoare), !.
-
-mutari([2, desfasurare, StareCurenta], [2, egalitate, StareUrmatoare]) :-
-    stariUrmatoare(2, StareCurenta, StareUrmatoare),
-    stareEgalitate(2,StareUrmatoare), !.
-
-mutari([2, desfasurare, StareCurenta], [0, desfasurare, StareUrmatoare]) :-
-    stariUrmatoare(2, StareCurenta, StareUrmatoare).
+minimax(X,R):-
+        algoritm(-100,200,[0,desfasurare,X],[_,_,R],_).
 
 stareVictorie(P, X) :-
     P == 2,
@@ -69,39 +49,41 @@ numarare([1|T],R):-numarare(T,R1),R is R1+1,!.
 numarare([_|T],R):-numarare(T,R),!.
 
 
-stariUrmatoare(Jucator, [1|T], [Jucator|T]).
-stariUrmatoare(Jucator, [X|T], [X|R]) :-
+stariUrmatoare(Jucator, [X|T], [Y|T]) :-
+    X = 1->
+    Y = Jucator.
+stariUrmatoare(Jucator, [X|T], [Y|R]) :-
+    Y = X,
     stariUrmatoare(Jucator, T, R).
 
-
-minimax(A,B,Pozitie, PozitieCastigatoare, Valoare) :-     
+algoritm(A,B,Pozitie, PozitieCastigatoare, Valoare) :-     
     mutariDerivate(Pozitie,PozitiiUrmatoare),             
-    ceaMaiBunaMutare(A,B,PozitiiUrmatoare, PozitieCastigatoare, Valoare), !.
+    sortareStari(A,B,PozitiiUrmatoare, PozitieCastigatoare, Valoare), !.
 
-minimax(_,_,[Pion,Status,_], _, Valoare) :-                      
+algoritm(_,_,[Pion,Status,_], _, Valoare) :-                      
     evaluarePozitie(Status,Pion, Valoare).
 
 
 mutariDerivate(Pozitie,PozitiiUrmatoare):-
-        bagof(UrmatoareaPozitie, mutari(Pozitie, UrmatoareaPozitie), PozitiiUrmatoare).
+        findall(UrmatoareaPozitie, generareStareUrmatoare(Pozitie, UrmatoareaPozitie), PozitiiUrmatoare).
 
-ceaMaiBunaMutare(A,B,[Pozitie], Pozitie, Valoare) :-
-    minimax(A,B,Pozitie, _, Valoare), !.
+sortareStari(A,B,[Pozitie], Pozitie, Valoare) :-
+    algoritm(A,B,Pozitie, _, Valoare), !.
 
-ceaMaiBunaMutare(A,B,[[Pion,Status,Lista] | _], [Pion,Status,Lista], A) :-
+sortareStari(A,B,[[Pion,Status,Lista] | _], [Pion,Status,Lista], A) :-
     Pion =:= 0,
     A>B,!.
 
-ceaMaiBunaMutare(A,B,[[Pion,Status,Lista] | _], [Pion,Status,Lista], B) :-
+sortareStari(A,B,[[Pion,Status,Lista] | _], [Pion,Status,Lista], B) :-
     Pion =:= 2,
     A>B,!.
 
 
-ceaMaiBunaMutare(A,B,[[Pion,Status,Lista] | ListaPozitii], PozitieCastigatoare, ValoareCastigatoare) :-
-    minimax(A,B,[Pion,Status,Lista], _, Valoare0),
+sortareStari(A,B,[[Pion,Status,Lista] | ListaPozitii], PozitieCastigatoare, ValoareCastigatoare) :-
+    algoritm(A,B,[Pion,Status,Lista], _, Valoare0),
     determinaModificari(Pion,A,B,Valoare0,ANou,BNou),
-    ceaMaiBunaMutare(ANou,BNou,ListaPozitii, Pozitie1, Valoare1),
-    comparare(Pion,[Pion,Status,Lista], Valoare0, Pozitie1, Valoare1, PozitieCastigatoare, ValoareCastigatoare),!.
+    sortareStari(ANou,BNou,ListaPozitii, Pozitie1, Valoare1),
+    comparare(Pion,Status,Lista, Valoare0, Pozitie1, Valoare1, PozitieCastigatoare, ValoareCastigatoare),!.
 
 determinaModificari(Pion,A,B,Valoare0,ANou,BNou):-
         Pion = 0 , Valoare0 > A ->
@@ -113,18 +95,39 @@ determinaModificari(Pion,A,B,Valoare0,ANou,BNou):-
         ANou is A,
         BNou is B,!.
 
-comparare(Pion,Pozitie1, Valoare1, Pozitie2, Valoare2, PozitiePreferata, ValoarePreferata) :-   
+comparare(Pion,Status,Lista, Valoare1, Pozitie2, Valoare2, PozitiePreferata, ValoarePreferata) :-   
     Pion =:= 2,                        
     Valoare1 < Valoare2,
-    PozitiePreferata = Pozitie1,
+    PozitiePreferata = [Pion,Status,Lista],
     ValoarePreferata = Valoare1, !;
     Pion =:= 0,                        
     Valoare1 > Valoare2,
-    PozitiePreferata = Pozitie1,
+    PozitiePreferata = [Pion,Status,Lista],
     ValoarePreferata = Valoare1, !;
     PozitiePreferata = Pozitie2,
     ValoarePreferata = Valoare2,!.                              
 
+generareStareUrmatoare([0, desfasurare, StareCurenta], [0, victorie, StareUrmatoare]) :-
+    stariUrmatoare(0, StareCurenta, StareUrmatoare),
+    stareVictorie(0, StareUrmatoare), !.
+
+generareStareUrmatoare([0, desfasurare, StareCurenta], [0, egalitate, StareUrmatoare]) :-
+    stariUrmatoare(0, StareCurenta, StareUrmatoare),
+    stareEgalitate(0,StareUrmatoare), !.
+
+generareStareUrmatoare([0, desfasurare, StareCurenta], [2, desfasurare, StareUrmatoare]) :-
+    stariUrmatoare(0, StareCurenta, StareUrmatoare).
+
+generareStareUrmatoare([2, desfasurare, StareCurenta], [2, victorie, StareUrmatoare]) :-
+    stariUrmatoare(2, StareCurenta, StareUrmatoare),
+    stareVictorie(2, StareUrmatoare), !.
+
+generareStareUrmatoare([2, desfasurare, StareCurenta], [2, egalitate, StareUrmatoare]) :-
+    stariUrmatoare(2, StareCurenta, StareUrmatoare),
+    stareEgalitate(2,StareUrmatoare), !.
+
+generareStareUrmatoare([2, desfasurare, StareCurenta], [0, desfasurare, StareUrmatoare]) :-
+    stariUrmatoare(2, StareCurenta, StareUrmatoare).
 
 evaluarePozitie(victorie,0, 0).       
 evaluarePozitie(victorie,2, 100).      
