@@ -79,7 +79,6 @@ sortareStari(A,B,[[Pion,Lista] | _], [Pion,Lista], B) :-
     Pion =:= 2,
     A>B,!.
 
-
 sortareStari(A,B,[[Pion,Lista] | ListaPozitii], PozitieCastigatoare, ValoareCastigatoare) :-
     algoritm(A,B,[Pion,Lista], _, Valoare0),
     determinaModificari(Pion,A,B,Valoare0,ANou,BNou),
@@ -127,12 +126,12 @@ evaluarePozitie(victorie,2, 100).
 evaluarePozitie(egalitate,_, 50).
 
 evaluareFinalizare(Stare,X,Y):-
-    stareVictorie(0, Stare)->
-    X = victorie,
-    Y = 0,!;
     stareVictorie(2, Stare)->
     X = victorie,
     Y = 2,!;
+    stareVictorie(0, Stare)->
+    X = victorie,
+    Y = 0,!;
     stareEgalitate(0,Stare)->
     X = egalitate,
     Y = 0,!;

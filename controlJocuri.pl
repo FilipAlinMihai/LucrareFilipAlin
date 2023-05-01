@@ -127,23 +127,23 @@ stopJoc(sudoku):-stopS().
 
 determinaNumarInlocuiri(NR):-
         nivelSelectat(usor)->
-        NR = 40,!;
+        NR = 38,!;
         nivelSelectat(mediu)->
-        NR = 45,!;
+        NR = 44,!;
         nivelSelectat(dificil)->
-        NR = 50,!;
+        NR = 49,!;
         nivelSelectat(imposibil)->
-        NR = 55,!.
+        NR = 51,!.
 
 determinareSecunde2(NumarSecunde):-
             nivelSelectat(usor)->
-            NumarSecunde = 800,!;
+            NumarSecunde = 730,!;
             nivelSelectat(mediu)->
-            NumarSecunde = 650,!;
+            NumarSecunde = 715,!;
             nivelSelectat(dificil)->
-            NumarSecunde = 650,!;
+            NumarSecunde = 700,!;
             nivelSelectat(imposibil)->
-            NumarSecunde = 600,!.
+            NumarSecunde = 675,!.
 
 
 determinareSecunde1(NumarSecunde):-
