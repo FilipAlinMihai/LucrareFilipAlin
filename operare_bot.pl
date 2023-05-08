@@ -1,5 +1,6 @@
 :- module(operare_bot, [raspuns/1,
-                        procesareText/1]).
+                        procesareText/1,
+                        numarPotriviri/1]).
 
 :- dynamic numarPotriviri/1,
             raspuns/1.
@@ -30,8 +31,10 @@ calcul(Cuvinte):-
     calcul_aux(Cuvinte) ->
     numarPotriviri(Np),
     write(Np),
+    raspunsNegativ(),
     retract(numarPotriviri(_)),
     assert(numarPotriviri(0)),!;
+    raspunsNegativ(),
     retract(numarPotriviri(_)),
     assert(numarPotriviri(0)),!.
 
@@ -53,46 +56,54 @@ iterare([(CuvinteCheie, Raspuns)|Rest], Cuvinte) :-
     ),
     iterare(Rest, Cuvinte).
 
-intrebare([comanda, comenzi, control,start, porni, pornire,
+raspunsNegativ():-
+        numarPotriviri(Np),
+        Np = 0 ->
+        retractall(raspuns(_)),
+        assert(raspuns('Din nefericire nu am un raspuns la aceasta intrebare.')),!;
+        true,!.
+
+intrebare([cum, pot, juca, nou, comanda, comenzi, control,start, porni, pornire,
  porneste, regula, joc,mini, provocare, logic, argument ],
 ' Pentru inceperea unui joc se va utiliza:
      comanda: Joc cu argumentul: jocul dorit').
 
-intrebare([comanda, comenzi, control,dificultate, nivel,
+intrebare([cum,pot,  comanda, comenzi, control,dificultate,dificultatea, nivel,
  greutate,usurinta, intensitate, argument ],
 'Pentru selectarea nivelului de dificultate se utilizeaza:
     comanda: Nivel cu argumentul : nivel dorit
     sunt disponibile 4 optiuni: usor, mediu, dificil si imposibil.').
 
-intrebare([comanda, comenzi, control, argument,inventar,obiect,
-pastreaza,ridica, pastra, plasa, colecta, colecteaza ],
+intrebare([cum,pot, comanda, comenzi, control, argument,inventar,obiect,
+pastreaza,pastrez,ridica, pastra, plasa, colecta, colecteaza ],
 'Pentru plasarea unui obiect in inventar se utilizeaza:
     comanda: Pastreaza cu argumentul: obiect dorit').
 
-intrebare([comanda, comenzi, control, argument,inventar,obiect,
+intrebare([cum, pot, comanda, comenzi, control, argument,inventar,obiect,
 inspecteaza,inspecta, analizare, analiza, analizat, inspectie, descriere ],
 'Inspecteaza un obiect descoperit cu comanda
     comanda: Inspecteaza cu argumentul: obiect dorit').
 
-intrebare([comanda, comenzi, control, argument,cod,scriere,scrie, introdu,
-introducere, completa,completare, completeaza ],
+intrebare([cum, pot, comanda, comenzi, control, argument,cod,scriere,scrie, introdu,
+introducere, introduce, completa,completare, completeaza ],
 'Completarea codului pentru acces in Birou
     comanda: Cod cu argumentul: codul de 5 litere').
 
-intrebare([comanda, comenzi, control, argument,completare, 
+intrebare([cum,mutare,muta, pot, comanda, comenzi, control, argument,completare, 
 sudoku, joc,mutare, juca, argumente ],
-'Mutare pentru jocul sudoku cu ajutoul:
+'Mutarile pentru jocul sudoku sunt realizate cu :
     comanda: Sudoku cu argument1: pozitia si argument2: valoarea noua').
 
-intrebare([comanda, comenzi, control, argument, repara, lanterna,
+intrebare([cum, pot, comanda, comenzi, control, argument, repara, lanterna,
  fara, energie, ramane, consum ,consumata, consumare, liminat, utilizare,baterie,a ],
 'In cazul in care lanterna ramane fara energie se utilizeaza: 
     comanda: Repara cu argumentul: lanterna
 Este necesara si o baterie.').
 
-intrebare([comanda, comenzi, control, argument,arunca, aruncare, renunta,
+intrebare([cum, pot, comanda, comenzi, control, argument,arunca, aruncare, renunta,
  inlaturare, golire, goli, eliberare,elibera,spatiu,inventar],
-'Pentru renuntarea la un obiect din inventar se utilizeaza:
+'Exista o limita de 6 obiecte pe care jucatorul le poate cara la un moment dat.
+Pentru renuntarea la un obiect din inventar se utilizeaza:
     comanda: Arunca cu argumentul: obiect dorit').
 
 intrebare([poveste,plot,continut,despre,descriere,descriemi,
@@ -104,14 +115,17 @@ Pentru navigare utilizează butoanele N S E V.
 Accesul în unele canere este restricționat.
 Trebuie sa evadezi.').
 
-intrebare([miscare, circulare, tranzitie, cum, 
+intrebare([pot,miscare, circulare, tranzitie, cum, 
 traversare, traversez, misc, mutare, mut,
  traversez, parcurg, parcurgere],
 'Pentru navigare utilizează butoanele N S E V. 
 Accesul în unele canere este restricționat.').
 
-intrebare([mini, jocuri, probleme , logice , provocari, puncte, extra ,recompense],
-'Vei avea posibilitatea de a juca mini jocuri. Daca reusesti sa castigi vei primi recompense. ').
+intrebare([mini, jocuri, probleme , logice , provocari, puncte, extra ,recompense,
+ce, jocuri, sunt, disponibile, lista, disponibil],
+'Vei avea posibilitatea de a juca mini jocuri. Daca reusesti sa castigi vei primi recompense. 
+Sunt disponibile jocurile: x si 0, sudoku, sliding, foarfeca hartie piatra, hunter si dilema.
+Mini jocurile nu produc niciodata aceasi varianta a jocului. ').
 
 intrebare([capcane, pericol, primejdie, pierdere, pierd, capcana, vitalitate],
 'Unele camere sunt periculoase. Ele contin capcane si pot pune in pericol viata jucatorului.
@@ -154,7 +168,7 @@ Exista o limita de obiecte pe care jucatorul le poate cara la un moment dat.
 Daca inventarul este plin jucatorul poate scapa de obiectele mai putin importante prin comanda arunca.').
 
 
-intrebare([obiecte, gasite, obiect, mananca, consuma, comestibile,unelte  ],
+intrebare([obiecte, gasite, obiect, mananca, consuma, comestibile,unelte , pastreaza, mar, bisciut],
 'Obiectele sunt plasate in inventar cu comanda pastreaza. 
 Obiectele comestibile pot fi consumate prin comanda mananca. ').
 
@@ -172,7 +186,8 @@ In cazul acestor camere este necesara o sursa de lumina precum o lanterna.
 Dupa un anumit numar de utilizari lanterna ramane fara energie si nu mai poate fi  utilizata.
 In acest caz este necesara repararea lanternei. Pentru reparare este necesara o baterie noua.').
 
-intrebare([inainte, inapoi, raspuns, anterior, mesaj, raspunsul, intoarcere, tranzitie],
+intrebare([cum, pot , vedea, mesajele, anterioare,sa, revin, 
+reveni, la , inainte, inapoi, raspuns, anterior, mesaj, raspunsul, intoarcere, tranzitie],
 ' Doua butoane Inainte si Inapoi perrmit circularea intre ultimele trei mesaje afisate pe ecran.').
 
 
@@ -183,7 +198,42 @@ intrebare([ce,se, intampla, am,de, ramas,fara, punct, energie,daca, raman, voi,
 Pentru prevenirea acestei situații este recomandată câștigarea mini jocurilor.
 Acestea acordă recompense precum punctele de energie.').
 
-intrebare([nu, ma, pot, misca, naviga, harta,blocat, este, permisa],
+intrebare([nu, ma, pot, misca, naviga, harta,blocat, este, permisa,interzisa,restrictie, incerc],
 'Exista mai multe motive pentru care utilizatorul nu poate naviga harta.
 Este posibil ca utilizatorul sa nu fi selectat un nivel de dificultate.
-O alta posibilitate este epuizarea punctelor de energie.').
+O alta posibilitate este epuizarea punctelor de energie sau viata.').
+
+intrebare([cum, pot , restabili, sanatatea, viata, imbunatati,utiliza,
+utilizez, bandaje,bandaja, am, gasit, ce , face, aplic, aplica  ],
+' In cazul in care a fost decoperit un bandaj el poate fi utilizat pentru a imbunatati starea de sanatate a jucatorului.
+    Bandajul nu apare in fiecare runda. Frecventa cu care acesta apare este determinata de nivlul de dificultate ales.').
+
+intrebare([harta, arata, ce, utilizare, rol, cum, pot, poate, utilizat, harti  ],
+'Butonul harta prezinta jucatorului o harta a partilor din casa pe care lea vizitat in jocul curent.
+    Harta jocului poate sa difere. ').
+
+intrebare([cum, pot, vedea, cate, litere, am,strans, adunat, colectat, parte, parola, din, ale, parolei ],
+' Prin comanda Parola Jucatorul poate vedea literele parole pe care lea descoperit.
+     Spre exemplu daca au fost gasite literele 2 si 5 si aceste sunt T si G comanda parola va afisa *T**G.').
+
+intrebare([cum, pot, cheie,seif, preiau, prelua, pastra, accesa, ghicitoare, raspunde, raspuns ],
+'Pentru A prelua cheia din seif trebuie sa raspunzi corect la o ghicitoare gasita in camerele casei. 
+     Scrie raspunsul cu comanda ghicitoare si raspunsul ca argument. ').
+
+intrebare([rol, scop, functionalitatea, scopul, rolul, utilizare, intrebuintare,utoilizate, buton ,butoanele, interfata ],
+'Butoanele numerotate de la 1 la 9 sunt pentru jocul de x si 0 impotriva calculatorului. 
+Pentru navigare utilizează butoanele N S E V. 
+Butoanele U D R L controleaza jocul sliding.').
+
+intrebare([comenzi, nu, necesita, argumente, nevoie, functioneaza, fara, argument],
+'Comenzi ce nu necesita argumente
+    Inventar -- Listarea inventaruiui 
+    Energie  -- Afisarea energiei curente
+    Viata    -- Afisarea starii de sanatate
+    Restart  -- Resetarea datelor jocului
+    Optiuni  -- Listarea fisierelor cu jocuri salvate 
+    Ajutor   -- Ajutor pentru jocul sliding 8
+    Parola   -- Afisarea literelor din parola descoperite
+    Locatie  -- Examinarea imprejurimilor jucatorului
+    Bandajare-- Utilizarea unui bandaj pentru crestere nivelului de viata').
+

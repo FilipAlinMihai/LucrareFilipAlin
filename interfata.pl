@@ -20,6 +20,7 @@ mesajAnteriorAnterior(****).
 
 :- include('executor.pl').
 :- include('bot.pl').
+:- include('reguli2.pl').
 
 reguli():-
     new(F, dialog),
@@ -82,7 +83,7 @@ run:-
     new(BTN2,button(inapoi, message(@prolog, inapoi, F2))),
     new(BTN3,button(inainte, message(@prolog, inainte, F2))),
     new(BTN4,button(zoom, message(@prolog, zoom))),
-    new(BTN5,button(reguli, message(@prolog, reguli))),
+    new(BTN5,button(reguli, message(@prolog, reguli2))),
     new(BTN6,button(harta, message(@prolog, harta,F2))),
     new(BTNBOT,button(bot, message(@prolog, main))),
     row(Row,group,BTN1,BTN2,BTN3),
@@ -277,6 +278,13 @@ modificareTextPrezentat2(F,R):-
         send(T, font, font(times, bold, 17)),
         send(F, display, T, point(200, 50)).
 
+modificareTextPrezentat3(F,R):-
+        send(F, clear),
+        new(T,text(R)),
+        send(T, colour, orange),
+        send(T, font, font(times, bold, 17)),
+        send(F, display, T, point(20, 20)).
+
 zoom():-
         mesajCurent(M),
         new(W2,  window('Zoom', size(800, -1))),
@@ -413,3 +421,50 @@ inapoiReguli(F):-
         send(T, font, font(times, bold, 17)),
         send(F, display, T, point(200, 50)),
         send(F, append, new(_,button(comenzi, message(@prolog, comenzi,  F)))).
+
+reguli2 :-
+    new(E, dialog('Raspuns')),
+    new(D, dialog('Fereastra Reguli')),
+    new(Window, window('Input')),
+    send(Window, size, size(700, -1)),
+    send(D, below, Window),
+    send(E, scrollbars, both),
+    new(Text2, text('
+************************************************************************
+**************************Selecteaza o categorie**************************
+************************************************************************
+************************************************************************
+************************************************************************
+************************************************************************
+************************************************************************')),
+    send(Text2, font, font(times, bold, 17)),
+    send(Text2, colour, orange),
+    send(E, display, Text2, point(10, 10)), 
+
+    new(BT1,button(dificultate,  message(@prolog, raspundeCuRegula,1, E))),
+    new(BT2,button(navigare,  message(@prolog, raspundeCuRegula,2, E))),
+    new(BT3,button(puncte,  message(@prolog, raspundeCuRegula,3, E))),
+    new(BT4,button(jocuri,  message(@prolog, raspundeCuRegula,4, E))),
+    new(BT5,button(obiecte,  message(@prolog, raspundeCuRegula,5, E))),
+    new(BT6,button(clasament,  message(@prolog, raspundeCuRegula,6, E))),
+    new(BT7,button(ghicitoare, message(@prolog, raspundeCuRegula,7, E))),
+    new(BT8,button(salvare, message(@prolog, raspundeCuRegula,8, E))),
+    new(BT9,button(restart, message(@prolog, raspundeCuRegula,9, E))),
+
+    row(RowAll,group,BT1,BT2,BT3),
+    row(RowAll1,group,BT4,BT5,BT6),
+    row(RowAll2,group,BT7,BT8,BT9),
+
+    row(Linie,group,RowAll,RowAll1,RowAll2),
+    send(D,append,Linie),
+    %send(D,append,RowAll1),
+    %send(D,append,RowAll2),
+
+    send(D, background, black),
+    send(E, background, black),
+    send(E, above, D),
+    send(D, open).
+
+raspundeCuRegula(N,E):-
+        reguli2(N,R),
+        modificareTextPrezentat3(E,R),!.
