@@ -55,7 +55,10 @@
               bandajeaza/1,
               repara/1,
               descrieCamera/3,
-              numarPlanCasa/1]).
+              numarPlanCasa/1,
+              amInceput/1,
+              legatura/4,
+              mutaJucator/2]).
 
 
 %:- use_module(sliding).

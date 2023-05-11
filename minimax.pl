@@ -1,6 +1,9 @@
 minimax(X,R):-
         algoritm(-100,200,[0,X],[_,R],_).
 
+minimax_secund(X,R):-
+        algoritm(-100,200,[2,X],[_,R],_).
+
 stareVictorie(P, X) :-
     P == 2,
     pozitii1(X,1,R)
