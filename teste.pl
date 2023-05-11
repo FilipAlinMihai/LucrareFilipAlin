@@ -1,29 +1,64 @@
 :- use_module(joc1).
+:- use_module(operare_bot).
 :- include('minimax.pl').
+:- include('astar.pl').
+
+:- dynamic contor/1.
+
+contor(0).
 
 teste():-
+        contorizare(0),
+        teste_aux(),
+        contor(NR),
+        write("Din totalul de 13 teste uintare au fost trecute: "),
+        write(NR),!.
+
+teste():-
+        contor(NR),
+        write("Din totalul de 13 teste uintare au fost trecute: "),
+        write(NR),
+        contorizare(0),!.
+
+teste_aux():-
         restart(_),
         test1(),
+        contorizare(1),
         restart(_),
         test2(),
+        contorizare(2),
         restart(_),
         test3(),
+        contorizare(3),
         restart(_),
         test4(),
+        contorizare(4),
         restart(_),
         test5(),
+        contorizare(5),
         restart(_),
         test6(),
+        contorizare(6),
         restart(_),
         test7(),
+        contorizare(7),
         restart(_),
         test8(),
+        contorizare(8),
         restart(_),
         test9(),
+        contorizare(9),
         restart(_),
         test10(),
+        contorizare(10),
         restart(_),
-        test11(),!.
+        test11(),
+        contorizare(11),
+        restart(_),
+        test12(),
+        contorizare(12),
+        test13(),
+        contorizare(13),!.
 
 test1():-
         dificultate(mediu,_),
@@ -93,6 +128,36 @@ test11():-
         minimax_secund([1,1,0,1,0,1,1,1,2],R5),
         egale(R5,[1,1,0,1,0,1,2,1,2]),!.
 
+test12():-
+        startAstar([3,1,0,4,7,2,6,8,5],Sol),
+        egale(Sol,[s,s,w,n,w,n]),
+        startAstar([3,7,1,0,4,2,6,8,5],Sol1),
+        egale(Sol1,[e,n,e,s,s,w,n,w,n]),
+        startAstar([3,1,2,6,0,7,8,4,5],Sol3),
+        egale(Sol3,[s,w,n,e,e,s,w,n,w,n]),!.
+
+test13():-
+        procesareText('cum selectez nivelul de dificultate'),
+        raspuns(R),
+        egale(R,'Pentru selectarea nivelului de dificultate se utilizeaza:
+    comanda: Nivel cu argumentul : nivel dorit
+    sunt disponibile 4 optiuni: usor, mediu, dificil si imposibil.'),
+        procesareText('ce se intampla daca raman fara puncte de energie'),
+        raspuns(R1),
+        egale(R1,'În cazul în care utilizatorul rămâne fără puncte de energie el nu mai poate naviga harta.
+În acest caz el poate consuma obiecte comestibile din inventar pentru energie.
+Pentru prevenirea acestei situații este recomandată câștigarea mini jocurilor.
+Acestea acordă recompense precum punctele de energie.'),
+        procesareText('cum pot juca un mini joc'),
+        raspuns(R2),
+        egale(R2,' Pentru inceperea unui joc se va utiliza:
+     comanda: Joc cu argumentul: jocul dorit'),
+        procesareText('nu ma pot misca'),
+        raspuns(R3),
+        egale(R3,'Exista mai multe motive pentru care utilizatorul nu poate naviga harta.
+Este posibil ca utilizatorul sa nu fi selectat un nivel de dificultate.
+O alta posibilitate este epuizarea punctelor de energie sau viata.'),!.
+
 verificareTest6(NR):-
         NR = 1 ->
         legatura(1,n,hol,biblioteca),
@@ -137,5 +202,6 @@ verificareTest7(NR):-
 
 egale(X,X).
 
-apartine([G|_],G).
-apartine([_|T],G):-apartine(T,G).
+contorizare(N):-
+        retract(contor(_)),
+        assert(contor(N)),!.

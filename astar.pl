@@ -108,7 +108,7 @@ astar(X,_):-
         construireCale(Parinte,ListaRamasa,Semne),
         reverse(Semne,Semne2),
         append(Semne2,[Semn],SP),
-        write(SP),
+        %write(SP),
         retract(solutie(_)),
         assert(solutie(SP)),
         retract(miscarileEfectuate(_)),

@@ -29,8 +29,8 @@ scor([_|T],Y,R):-
 
 calcul(Cuvinte):-
     calcul_aux(Cuvinte) ->
-    numarPotriviri(Np),
-    write(Np),
+    %numarPotriviri(Np),
+    %write(Np),
     raspunsNegativ(),
     retract(numarPotriviri(_)),
     assert(numarPotriviri(0)),!;
@@ -140,7 +140,7 @@ intrebare([restart, reincepe, reincepere, incepere, incercare, nou, noua , am, p
 'Cu ajutorul comenzii restart jucatorul poate reseta toate elementele jocului ce au fost modificate la starea initiala.').
 
 intrebare([salvare, retinere, mentine, salveaza, salva, incarcare,
- continuare,optiuni, pastrace, intrerupere, intrerupe],
+ continuare,optiuni, pastrace, intrerupere, intrerupe,salvez],
 'Utilizatorul are posibilitatea de a salva progresul realizat prin comanda salveaza.
 Aceasta retine intr-un fisier (al carui nume este introdus ca argument) toate datele rundei curente.
 Pentru a incarca un joc salvat  jucatorul utilizeaza comanda incarca urmata de numele fisierului dorit.
@@ -160,7 +160,7 @@ Dupa curgerea timpului jocurile nu mai accepta mutari.
 La fiecare mutare noua se va specifica cate secunde au mai ramas pana la inchiderea jocului.
 Timpul pus la dispoziti jucatorului e calculat in functie de joc si de nivelul de dificultate ales.').
 
-intrebare([arunca, inventar, plin, obiecte, limita, maxim, numar, pastreaza, pastrare, pastreze],
+intrebare([arunca, inventar,inventarul, plin, obiecte, limita, maxim, numar, pastreaza, pastrare, pastreze],
 'In camerele casei sunt distribuite in mod aleator obiecte.
 Ele sunt obiecte comestibile, unelte utile precum lanterna sau bandaje sau 
 obiecte ce contin indicii precum litere ale unor parole.
