@@ -34,7 +34,7 @@ incepeJoc(xsi0,X):-
     atom_concat(Y,Z,X),
     retract(seJoaca(_)),
     assert(seJoaca(xsi0)),
-    retract(jocXsi0(_)),
+    retract(jocXsi0(disponibil)),
     assert(jocXsi0(jucat)),!.
 
 incepeJoc(dilema,X):-

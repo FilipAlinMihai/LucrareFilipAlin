@@ -2,6 +2,7 @@
 :- use_module(operare_bot).
 :- include('minimax.pl').
 :- include('astar.pl').
+:- include('literenoi.pl').
 
 :- dynamic contor/1.
 
@@ -11,12 +12,12 @@ teste():-
         contorizare(0),
         teste_aux(),
         contor(NR),
-        write("Din totalul de 13 teste uintare au fost trecute: "),
+        write("Din totalul de 16 teste uintare au fost trecute: "),
         write(NR),!.
 
 teste():-
         contor(NR),
-        write("Din totalul de 13 teste uintare au fost trecute: "),
+        write("Din totalul de 16 teste uintare au fost trecute: "),
         write(NR),
         contorizare(0),!.
 
@@ -58,7 +59,16 @@ teste_aux():-
         test12(),
         contorizare(12),
         test13(),
-        contorizare(13),!.
+        contorizare(13),
+        restart(_),
+        test14(),
+        contorizare(14),
+        restart(_),
+        test15(),
+        contorizare(15),
+        restart(_),
+        test16(),
+        contorizare(16),!.
 
 test1():-
         dificultate(mediu,_),
@@ -158,6 +168,43 @@ Acestea acordă recompense precum punctele de energie.'),
 Este posibil ca utilizatorul sa nu fi selectat un nivel de dificultate.
 O alta posibilitate este epuizarea punctelor de energie sau viata.'),!.
 
+test14():-
+        generareLitere(),
+        litera1(A),
+        litera2(B),
+        litera3(C),
+        litera4(D),
+        litera5(E),
+        generareLitere(),
+        litera1(A1),
+        litera2(B1),
+        litera3(C1),
+        litera4(D1),
+        litera5(E1),
+        verificareParole(A,B,C,D,E,A1,B1,C1,D1,E1),!.
+
+test15():-
+        retract(locatieJucator(_)),
+        assert(locatieJucator(cameraNW)),
+        jocXsi0(disponibil),
+        incepeJoc(xsi0,X),
+        X \= 'Ai jucat acest joc deja',
+        stopJoc(xsi0),
+        jocXsi0(jucat),!.
+
+test16():-
+        euristica([0,1,2,3,4,5,6,7,8],R),
+        euristica([3,1,2,4,7,5,6,0,8],R1),
+        euristica([3,7,1,0,4,2,6,8,5],R2),
+        euristica([3,1,2,4,0,5,6,7,8],R3),
+        euristica([3,1,2,6,0,7,8,4,5],R4),
+        euristica([3,1,0,4,7,2,6,8,5],R5),
+        euristica([8,7,6,5,4,3,2,1,0],R6),
+        R = 0,
+        R1 < R2,
+        R3 < R4,
+        R5 < R6,!.
+
 verificareTest6(NR):-
         NR = 1 ->
         legatura(1,n,hol,biblioteca),
@@ -205,3 +252,10 @@ egale(X,X).
 contorizare(N):-
         retract(contor(_)),
         assert(contor(N)),!.
+
+verificareParole(A,B,C,D,E,A1,B1,C1,D1,E1):-
+        A \= A1;
+        B \= B1;
+        C \= C1;
+        D \= D1;
+        E \= E1,!.

@@ -58,7 +58,8 @@
               numarPlanCasa/1,
               amInceput/1,
               legatura/4,
-              mutaJucator/2]).
+              mutaJucator/2,
+              jocXsi0/1]).
 
 
 %:- use_module(sliding).
