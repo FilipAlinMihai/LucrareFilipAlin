@@ -59,7 +59,8 @@
               amInceput/1,
               legatura/4,
               mutaJucator/2,
-              jocXsi0/1]).
+              jocXsi0/1,
+              codReal/1]).
 
 
 %:- use_module(sliding).

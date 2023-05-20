@@ -12,12 +12,12 @@ teste():-
         contorizare(0),
         teste_aux(),
         contor(NR),
-        write("Din totalul de 16 teste uintare au fost trecute: "),
+        write("Din totalul de 17 teste uintare au fost trecute: "),
         write(NR),!.
 
 teste():-
         contor(NR),
-        write("Din totalul de 16 teste uintare au fost trecute: "),
+        write("Din totalul de 17 teste uintare au fost trecute: "),
         write(NR),
         contorizare(0),!.
 
@@ -68,7 +68,11 @@ teste_aux():-
         contorizare(15),
         restart(_),
         test16(),
-        contorizare(16),!.
+        contorizare(16),
+        restart(_),
+        test17(),
+        contorizare(17),
+        restart(_),!.
 
 test1():-
         dificultate(mediu,_),
@@ -204,6 +208,17 @@ test16():-
         R1 < R2,
         R3 < R4,
         R5 < R6,!.
+
+test17():-
+        incarca(salvare1),
+        locatieJucator(cameraE),
+        energie(29),
+        viata(50),
+        locatieObiect(mar,jucator),
+        locatieObiect(biscuit,cameraES),
+        jocXsi0(jucat),
+        codReal('APWCO'),
+        numarPlanCasa(4),!.
 
 verificareTest6(NR):-
         NR = 1 ->

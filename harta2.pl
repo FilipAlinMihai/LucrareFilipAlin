@@ -77,7 +77,7 @@ camere(4,2,5,cameraEE).
 camere(4,3,2,cameraCapcana1).
 camere(4,4,1,cameraCapcana2).
 camere(4,4,2,cameraNW).
-camere(4,4,4,bucataria).
+camere(4,4,4,bucatarie).
 camere(4,4,3,biblioteca).
 camere(4,4,5,cameraNE).
 camere(4,5,2,debara).

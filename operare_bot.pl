@@ -237,3 +237,55 @@ intrebare([comenzi, nu, necesita, argumente, nevoie, functioneaza, fara, argumen
     Locatie  -- Examinarea imprejurimilor jucatorului
     Bandajare-- Utilizarea unui bandaj pentru crestere nivelului de viata').
 
+intrebare([hunter,joc,jocul,joaca],
+'Tabla de joc este umplută de pioni în 7 poziții din 9.
+Pe poziția marcata cu k se află un cal ce se mițcă în modul specific jocului de șah.
+Încearcă să capturezi toți pionii în 7 mișcări.
+Selectează pozițiia pe care dorești să se deplaseze calul.
+Fiecare mutare fie e validă sau invalidă este contorizată.
+Jocul este cronometrat.').
+
+intrebare([dilema, prizonierilor,prizonierului,joc,jocul,joaca],
+'Tu și prietenul tău ați fost prinși în timpul unui jaf minor!\n
+Amandoi puteți fi condamnați la un an de închisoare. Sunteți interogați în camere separate. \n
+Procurorii va suspectează de comiterea unei serii întregi de jafuri dar nu au suficiente dovezi.\n
+Ei iți cer o marturisire scrisă. \n
+Ai posibilitatea de a declara că prietenul tău a comis restul jafurilor.\n
+O altă variantă este acea de a declara că nu ști nimic despre restul furturilor.\n
+Dacă mărturisești este posibil să primești o reducere a sentinței.\n
+Dacă amândoi negați acuzațiile judecătorul nu vă poate condamna la mai mult de un an de închisoare.\n
+Cel mai probabil și prietenul tau a primit aceiași ofertă.\n
+Dacă prietenul tău declara că tui ai comis jafurile vei primi o sentință mult mai lungă.\n
+Dacă amandoi vă acuzați reciproc procurorii vor ști că ați fost complici și astfel sentința se împarte.\n
+Când ai luat decizia finală execută comanda Decizie cu unul din argumentele recunoaște sau neagă.').
+
+intrebare([foarfecahartiepiatra,foarfeca,hartie,piatra,joc,jocul,joaca],
+'Se joaca trei runde de foarfeca hartie piatra.
+Jucatorul poate sa isi modiifce alegerea inaintea orcarei dintre cele 3 runde.
+La final daca jucatorul a castigat el primeste un punct de energie.').
+
+intrebare([sudoku,joc,jocul,joaca],
+'Rezolvă această problemă conform regulilor clasice de sudoku!
+Nu trebuie să existe duplicate pe linii coloane sau în pătratele de 3X3 delimitate.
+Pozitiile ocupate de numere mai mari ca 9 trebuie completate.
+Completarea unei pozitii se face prin introducerea acesteia ca Argument1 si a valorii noi ca Argument2. 
+Jocul este cronometrat.\n').
+
+intrebare([xsi0 , x, si,0,o,jocul,joc,joaca],
+'Se respecta regulile clasice ale jocului de x si 0.
+Captureaza 3 pozitii consecutive pe linie coloana sau diagonala.
+Utilizatorul are prima mutare si joaca cu X.
+Dupa fiecare mutare a utilizatorului calculatorul raspunde cu o mutare proprie.
+Mutarile alterneaza pana cand una din parti a castigat sau sa ajuns la remiza.
+Acest joc ofera o recompensa importanta. ').
+
+intrebare([sliding,puzzle,8,jocul,joc,joaca],
+'Pozitiile de la 0 la 8 trebuie ordonate crescator.
+Starea tinta este [0,1,2,3,4,5,6,7,8].
+Exista o restrictie. Doar cifra 0 poate face schimb de pozitii cu vecinii sai. 
+Jocul este controlat prin butoanele D, R, L și U astfel: 
+    R mută poziția 0 la dreapta, 
+    L mută poziția 0 la stânga, 
+    U mută poziția 0 pe coloană pe rândul superior și
+    D mută poziția 0 pe coloană pe rândul inferior
+Jocul este cronometrat.').

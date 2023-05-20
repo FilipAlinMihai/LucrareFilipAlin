@@ -8,7 +8,8 @@
            mesajAnterior/1,
            ajutor2/1,
            mesajAnteriorAnterior/1,
-           mesajAfisat/1.
+           mesajAfisat/1,
+           statistica/1.
 
 ajutor2(disponibil).
 
@@ -21,6 +22,8 @@ mesajAnteriorAnterior(****).
 :- include('executor.pl').
 :- include('bot.pl').
 :- include('reguli2.pl').
+
+statistica(0).
 
 reguli():-
     new(F, dialog),
@@ -46,14 +49,16 @@ run:-
     new(H, dialog),
     new(I, dialog),
     new(F2, dialog),
+    new(K, dialog),
     send(D, background, black),
     send(F, background, black),
     send(E, background, black),
     send(G, background, black),
+    send(K, background, black),
     send(H, background, black),
     send(I, background, black),
     send(F2, background, black),
-    new(W,  window('Jocuri', size(800, -5))),  
+    new(W,  window('Jocuri', size(700, -5))),  
     send(W, background, black),                  
     textStart(Textinitial),
     new(Text2, text(Textinitial)),
@@ -61,9 +66,14 @@ run:-
     seteazaMesajAnterior(Textinitial),
     send(Text2, font, font(times, bold, 17)),
     send(Text2, colour, orange),
-    send(F2, display, Text2, point(200, 50)),   
+    send(F2, display, Text2, point(200, 50)),
+    new(Text3, text('Energie: 0\nViata: 100')),  
+    send(Text3, colour, orange),
+    send(Text3, font, font(times, bold, 17)),
+    send(K, display, Text3, point(5, 5)),   
     send(F, alignment, center),
     send(F, scrollbars, both),
+    send(K, scrollbars, both),
     send(F, size, size(425,250)),
     send(F2, scrollbars, both),
     send(F2, size, size(425,250)),
@@ -85,7 +95,7 @@ run:-
     new(BTN4,button(zoom, message(@prolog, zoom))),
     new(BTN5,button(reguli, message(@prolog, reguli2))),
     new(BTN6,button(harta, message(@prolog, harta,F2))),
-    new(BTNBOT,button(bot, message(@prolog, main))),
+    new(BTNBOT,button(asiatent, message(@prolog, main))),
     row(Row,group,BTN1,BTN2,BTN3),
     row(Row1,group,BTN4,BTN5,BTN6),
     rowOfOne(Row2,group,BTNBOT),
@@ -119,14 +129,16 @@ run:-
     send(H,append,RowAll),
     send(H,append,RowAll1),
     send(H,append,RowAll2),
-    send(H, size, size(400, 150)),
-    %send(D, size, size(250, 150)),
+    send(H, size, size(300, 150)),
+    send(D, size, size(400, 150)),
     send(F2, gap, size(0, 0)),
     send(H, below, W),
     send(D, left, H),
-    send(E, above, D),
+    send(K, left, D),
+    send(E, above, K),
     send(F2, above, E),
-   
+    retract(statistica(_)),
+    assert(statistica(K)),
     send(F2, size, size(700, 400)),
     send(W, open),
     !.
@@ -269,6 +281,18 @@ modificareTextPrezentat(F,R):-
         send(T, colour, orange),
         send(T, font, font(times, bold, 17)),
         send(F, display, T, point(200, 50)),
+
+        statistica(Stat),
+        send(Stat, clear),
+        energie(En),
+        viata(Viata),
+        atom_concat('Energie: ',En,X),
+        atom_concat(X,'\nViata: ',X1),
+        atom_concat(X1,Viata,X2),
+        new(T2,text(X2)),
+        send(T2, colour, orange),
+        send(T2, font, font(times, bold, 17)),
+        send(Stat, display, T2, point(5, 5)),
         inoireMesaj(R).
 
 modificareTextPrezentat2(F,R):-

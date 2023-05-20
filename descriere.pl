@@ -13,18 +13,19 @@ Pe poziția marcata cu k se află un cal ce se mițcă în modul specific joculu
 Selectează pozițiia pe care dorești să se deplaseze calul.
 Fiecare mutare fie e validă sau invalidă este contorizată\n', X),!.
 
-descrie(dilema,X):-atom_concat('','Tu și prietenul tău ați fost prinși în timpul unui jaf minor!\n
-Amandoi puteți fi condamnați la un an de închisoare. Sunteți interogați în camere separate. \n
-Procurorii va suspectează de comiterea unei serii întregi de jafuri dar nu au suficiente dovezi.\n
-Ei iți cer o marturisire scrisă. \n
-Ai posibilitatea de a declara că prietenul tău a comis restul jafurilor.\n
-O altă variantă este acea de a declara că nu ști nimic despre restul furturilor.\n
-Dacă mărturisești este posibil să primești o reducere a sentinței.\n
-Dacă amândoi negați acuzațiile judecătorul nu vă poate condamna la mai mult de un an de închisoare.\n
-Cel mai probabil și prietenul tau a primit aceiași ofertă.\n
-Dacă prietenul tău declara că tui ai comis jafurile vei primi o sentință mult mai lungă.\n
-Dacă amandoi vă acuzați reciproc procurorii vor ști că ați fost complici și astfel sentința se împarte.\n
-Când ai luat decizia finală execută comanda Decizie cu unul din argumentele recunoaște sau neagă.', X),!.
+descrie(dilema,X):-atom_concat('','Doi infractori au fost prinși în timpul unui jaf minor!
+Amândoi pot fi condamnați la un an de închisoare. Ei sunt interogați în camere separate. 
+Procurorii îi suspectează de comiterea unei serii întregi de jafuri dar nu au suficiente dovezi.
+Procurorii cer fiecărui suspect o mărturisire scrisă.
+Fiecare suspect are posibilitatea de a declara că prietenul său a comis restul jafurilor de unul singur.
+O altă variantă este accea de a declara că nu știe nimic despre restul furturilor.
+Dacă suspectul își acuză complicele este posibil să primească o reducere a sentinței pentru cooperare.
+Dacă amândoi negagă acuzațiile judecătorul nu îi poate condamna la mai mult de un an de închisoare.
+Ambii suspecți primesc aceași ofertă.
+Daca unul dintre suspecti nu coopereaza dar este trădat de complicele său acesta primește o pedeapsă mult mai lungă.
+Dacă ambii suspecți se acuză reciproc procurorii vor ști că au fost complici și astfel sentința se împarte.
+Ce decizie ai lua în locul unui deținut în aceste condiții?
+Când ai luat decizia finală execută comanda Decizie cu unul din argumentele recunoaste sau neaga.', X),!.
 
 descrie(foarfecahartiepiatra,X):-
         atom_concat('','Joacă foarfecă hârtie piatră împotriva calculatorului!\n
