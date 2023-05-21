@@ -17,13 +17,13 @@ riddle(4,'Domnul si doamna Popescu au sase fice. Fiecare fica are cate un frate.
 riddle(5,'Ce are 6 fete toate diferite, are touazeci si unu de ochi dar nu poate vedea',
             ['Zar','zar']).
 riddle(6,'Am orase dar nu am case am paduri dar nu am copaci, am rauri dar nu am pesti. Ce sunt?',
-            ['Harta']).
+            ['Harta','harta']).
 riddle(7,'Cu cat e mai mult cu atat e mai greu de vazut. Ce e?',
             ['Intuneric','intuneric']).
 riddle(8,'Ce poate trece prin sticla fara sa o sparga?',
             ['lumina']).
 riddle(9,'Ce e la finalul unui CURCUBEU',
-            ['litera U']).
+            ['U','u']).
 
 alegeIntrebare():-
         random(1,10,X),

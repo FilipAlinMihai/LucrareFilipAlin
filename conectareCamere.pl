@@ -171,6 +171,7 @@ legatura(3,e,cameraWS,cameraWW).
 % HARTA 4
 legatura(4,e,hol,cameraWS).
 legatura(4,w,hol,cameraW).
+legatura(4,s,hol,iesire).
 
 legatura(4,e,cameraW,hol).
 legatura(4,n,cameraW,cameraWW).

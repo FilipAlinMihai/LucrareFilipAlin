@@ -66,7 +66,10 @@ raspunsNegativ():-
 intrebare([cum, pot, juca, nou, comanda, comenzi, control,start, porni, pornire,
  porneste, regula, joc,mini, provocare, logic, argument ],
 ' Pentru inceperea unui joc se va utiliza:
-     comanda: Joc cu argumentul: jocul dorit').
+     comanda: Joc cu argumentul: jocul dorit
+Jocurile pot fi jucate doar in anumite camere.
+Atunci cand utilizatorul se afla intr-o asemena camera el este anuntat.
+Este indicat si jocul disponibil.').
 
 intrebare([cum,pot,  comanda, comenzi, control,dificultate,dificultatea, nivel,
  greutate,usurinta, intensitate, argument ],
@@ -137,7 +140,8 @@ nivel, nivele, dicil, selectez, selectare, alege, alegere],
 Dificultatea e selectata prin comanda nivel cu un argument, acesta fiind nivelul ales.').
 
 intrebare([restart, reincepe, reincepere, incepere, incercare, nou, noua , am, pierdut, murit, rejucare, rejuca],
-'Cu ajutorul comenzii restart jucatorul poate reseta toate elementele jocului ce au fost modificate la starea initiala.').
+'Cu ajutorul comenzii restart jucatorul poate reseta toate elementele jocului
+ ce au fost modificate, la starea initiala.').
 
 intrebare([salvare, retinere, mentine, salveaza, salva, incarcare,
  continuare,optiuni, pastrace, intrerupere, intrerupe,salvez],
@@ -204,9 +208,12 @@ Este posibil ca utilizatorul sa nu fi selectat un nivel de dificultate.
 O alta posibilitate este epuizarea punctelor de energie sau viata.').
 
 intrebare([cum, pot , restabili, sanatatea, viata, imbunatati,utiliza,
-utilizez, bandaje,bandaja, am, gasit, ce , face, aplic, aplica  ],
-' In cazul in care a fost decoperit un bandaj el poate fi utilizat pentru a imbunatati starea de sanatate a jucatorului.
-    Bandajul nu apare in fiecare runda. Frecventa cu care acesta apare este determinata de nivlul de dificultate ales.').
+utilizez, bandaje,bandaja,bandajare, am, gasit, ce , face, aplic, aplica ,bandaj ],
+'Punctele de viata pot fi pierdute in unele camere periculoase.
+Epuizarea tuturor aceste puncte duce la pierderea jocului.
+In cazul in care a fost decoperit un bandaj el poate fi utilizat pentru
+a imbunatati starea de sanatate a jucatorului. Bandajul nu apare in fiecare runda.
+ Frecventa cu care acesta apare este determinata de nivlul de dificultate ales.').
 
 intrebare([harta, arata, ce, utilizare, rol, cum, pot, poate, utilizat, harti  ],
 'Butonul harta prezinta jucatorului o harta a partilor din casa pe care lea vizitat in jocul curent.
@@ -289,3 +296,100 @@ Jocul este controlat prin butoanele D, R, L și U astfel:
     U mută poziția 0 pe coloană pe rândul superior și
     D mută poziția 0 pe coloană pe rândul inferior
 Jocul este cronometrat.').
+
+intrebare([nivel],
+'Pentru selectarea nivelului de dificultate se utilizeaza:
+**comanda: Nivel cu argumentul : nivel dorit
+**sunt disponibile 4 optiuni: usor, mediu, dificil si imposibil.
+Nivelul de dificultate are un rol inportant in
+**Determinarea dificultatii minijocurilor.
+**Determinarea punctelor de energie la start.').
+
+intrebare([energie],
+'Punctele de energie sunt vitale pentru continoarea jocului.
+Fara acestea jucatorul nu pote circula prin camerele casei si nu poate finaliza jocul.
+Fiecare tranzitie costa un punct.
+Se pot acumula puncte de energie prin castigarea mini jocurilor.
+Obiectele comestibile ofera si ele energie.').
+
+intrebare([inventar],
+'In camerele casei sunt distribuite in mod aleator obiecte.
+Ele sunt obiecte comestibile, unelte utile precum lanterna sau bandaje sau 
+obiecte ce contin indicii precum litere ale unor parole.
+Exista o limita de obiecte pe care jucatorul le poate cara la un moment dat.
+Daca inventarul este plin jucatorul poate scapa de obiectele mai putin importante prin comanda arunca.
+Pentru plasarea unui obiect in inventar se utilizeaza:
+    comanda: Pastreaza cu argumentul: obiect dorit').
+
+intrebare([incarca],
+'Pentru a incarca un joc salvat  jucatorul utilizeaza comanda incarca urmata de numele fisierului dorit.
+Prin comanda optiuni sunt prezentate variantele jocului ce au fost salvate si pot fi incarcate.').
+
+intrebare([decizie],
+'Prin comanda decizie este luata decizia finala in cazul jocului dilema prizonierului
+   Este utilizata comanda dilema cu unul din argumentele recunoaste sau neaga').
+
+intrebare([ajutor],
+'Sliding 8 este un  puzzle logic inclus in aplicatie.
+Daca jucatorul ramane blocat incercand sa rezolve aceasta problema el poate utiliza comanda ajutor.
+Comanda ajutor este disponibila doar pentru nivelele usor, mediu si dificil.
+Aceasta optiune ofera primele 4 mutari pe care utilizatorul trebuie sa le faca pentru a castiga.').
+
+intrebare([locatie],
+'Cu ajutorul comenzii locatie poti inspecta imprejurimile.
+Vei afla ce camere pot fi explorate in continoare.
+Ce obiecte se afla in campul tau vizual.
+Dar si ce jocuri sunt disponibile.').
+
+intrebare([nu , am ,ai, selectat , nivelul, dificultate],
+'Nivelul de dificultate trebuie ales la inceperea jocului.
+El are un rol inportant in
+**Determinarea dificultatii minijocurilor.
+**Determinarea punctelor de energie la start.
+Pentru selectarea nivelului de dificultate se utilizeaza:
+**comanda: Nivel cu argumentul : nivel dorit
+**sunt disponibile 4 optiuni: usor, mediu, dificil si imposibil.
+').
+
+intrebare([este, prea, intuneric, aceasta, camera, intunecata],
+'Exista cateva restrictii de navigare.
+In cazul camerelor ce nu sunt luminate corespunzator
+  este necesara o lanterna pentru acces.
+Lanterna are un numar limitat de utilizari si poate fi reparata cu ajutorul unei baterii.
+').
+
+intrebare([directia, aceasta, nu ,afla ,nimic],
+'Incerci sa navighezi inspre o directie gresita.
+In partea aceasta a camerei nu exista nici o legatura cu o alta camera.
+Incearca o alta varianta de navigare.
+Utilizeaza comanda Locatie pentru a descoperi ce optiuni ai.
+').
+
+intrebare([nu, acest, obiect ,inventar, rucsac],
+'Pentru a realiza o actiune asupra unui obiect el trebuie sa se afle in inventar.
+Astfel pentru comenzile mananca sau inspecteaza trebuie oferit
+ ca argument un obiect existent in inventar.
+').
+
+intrebare([acest, obiect, nu, este, comestibil],
+'Doar cateva obiecte pot fi consumate pentru a obtine puncte de energie.
+Acestea sunt marul si biscuitul.
+').
+
+intrebare([actiune, imosibila, nu, vad, obiectul],
+'Penru a fi manipulat un obiect trebuie sa se afle in campul vizual al jucatorului.
+').
+
+intrebare([cod, incorect, gresit],
+'Codul introdus este incorect. 
+Colecteaza toate literele parolei si incearca iar.
+').
+
+intrebare([ai, murit],
+'Ai pierdut jocul.
+Utilizeaza comanda Restart pentru a incepe o incercare noua.
+').
+
+intrebare([ai, jucat , acest, mini, joc, deja],
+'Pentru fiecare mini joc este disponibila o singura incercare.
+').
