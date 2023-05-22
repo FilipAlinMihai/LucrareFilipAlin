@@ -40,6 +40,11 @@ stop():-
 
 ajutor(R):-
       lista(L),
+      startAstar(L,erorr),
+      atom_concat('Imi pare rau nu te pot ajuta!','',R),!.
+
+ajutor(R):-
+      lista(L),
       startAstar(L,[X,Y,Z,O|_]),
       scrieDirectie(X,S1),
       scrieDirectie(Y,S2),

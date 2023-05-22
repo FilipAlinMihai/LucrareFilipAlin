@@ -4,6 +4,8 @@ incepeJoc(sliding,X):-
     atom_concat('','Ai jucat acest joc deja',X),!.
 
 incepeJoc(sliding,X):-
+    retract(statusCautare(_)),
+    assert(statusCautare(desfasurare)),
     locatieJucator(biblioteca),
     descrie(sliding,Y),
     nivelSelectat(Dif),
@@ -150,7 +152,7 @@ determinareSecunde1(NumarSecunde):-
             nivelSelectat(usor)->
             NumarSecunde = 250,!;
             nivelSelectat(mediu)->
-            NumarSecunde = 120,!;
+            NumarSecunde = 12000,!;
             nivelSelectat(dificil)->
             NumarSecunde = 100,!;
             nivelSelectat(imposibil)->

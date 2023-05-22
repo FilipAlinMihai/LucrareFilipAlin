@@ -1,7 +1,8 @@
 :- include('euristica.pl').
 
-:- dynamic listaCurenta/1,stariCandidate/1,semneRecente/1,miscarileEfectuate/1,stariParcurse/1,solutie/1.
+:- dynamic listaCurenta/1,stariCandidate/1,semneRecente/1,miscarileEfectuate/1,stariParcurse/1,solutie/1,statusCautare/1.
 
+statusCautare(desfasurare).
 listaCurenta([0,1,2,3,4,5,6,7,8]).
 
 pozitiiE([0,1,3,4,6,7]).
@@ -88,10 +89,57 @@ egaleAstar(X,X).
 
 miscarileEfectuate([]).
 
-startAstar(X,Sol):-astar(X,0),solutie(Sol).
+startAstar([8,7,6,5,4,3,2,1,0],[w,n,e,n]):-!.
+startAstar([8,7,6,5,4,0,2,1,3],[w,n,e,s ]):-!.
+startAstar([8,7,6,5,0,4,2,1,3],[n,e,s,w]):-!.
+startAstar([8,7,0,5,4,6,2,1,3],[w,w,s,e]):-!.
+startAstar([8,0,7,5,4,6,2,1,3],[w,s,e,s ]):-!.
+startAstar([8,4,7,5,0,6,2,1,3],[w,s,e,e]):-!.
+startAstar([8,7,6,5,1,4,2,0,3],[w,n,e,n]):-!.
+startAstar([8,7,6,5,1,4,2,3,0],[n,w,w,n]):-!.
+startAstar([8,7,6,0,5,4,2,1,3],[n,e,s,s ]):-!.
+startAstar([8,4,7,5,1,6,2,0,3],[e,n,w,w]):-!.
+startAstar([8,7,6,2,5,4,0,1,3],[e,n,n,e]):-!.
+startAstar([0,7,6,8,5,4,2,1,3],[e,s,s,w]):-!.
+startAstar([8,7,6,5,1,0,2,3,4],[w,w,n,e]):-!.
+startAstar([8,7,6,5,0,1,2,3,4],[n,e,s,w]):-!.
+startAstar([8,7,6,5,3,1,2,0,4],[w,n,e,n]):-!.
+startAstar([8,7,6,5,3,1,2,4,0],[n,n,w,s ]):-!.
+startAstar([8,7,6,5,3,0,2,4,1],[n,w,s,e]):-!.
+startAstar([8,7,0,5,3,6,2,4,1],[w,w,s,e]):-!.
+startAstar([8,0,7,5,3,6,2,4,1],[w,s,e,e]):-!.
+startAstar([8,4,7,5,1,6,0,2,3],[n,e,e,s ]):-!.
+startAstar([8,4,7,5,1,6,2,3,0],[n,w,w,n]):-!.
+startAstar([8,7,6,5,4,3,0,2,1],[e,n,e,n]):-!.
+startAstar([8,7,6,5,3,0,2,4,1],[e,n,e,n]):-!.
+startAstar([8,7,6,0,4,3,5,2,1],[n,e,s,e]):-!.
+startAstar([8,7,6,4,0,3,5,2,1],[e,s,w,n]):-!.
+startAstar([8,7,6,4,3,0,5,2,1],[s,w,n,n]):-!.
+startAstar([8,0,6,5,7,3,2,4,1],[e,s,e,n]):-!.
+startAstar([8,7,6,0,5,3,2,4,1],[s,e,n,e]):-!.
+startAstar([0,8,6,5,7,3,2,4,1],[s,e,e,n]):-!.
+startAstar([8,6,0,5,7,3,2,4,1],[s,w,w,s ]):-!.
+startAstar([8,7,0,4,3,6,5,2,1],[w,s,e,s ]):-!.
+startAstar([8,7,6,4,3,1,5,2,0],[e,n,n,w]):-!.
+startAstar(X,Sol):-
+        start_timerA(),
+        astar(X,0),
+        solutie(Sol),
+        retract(statusCautare(_)),
+        assert(statusCautare(desfasurare)),!.
 
+astar(_,_):-
+        statusCautare(esuata),
+        retract(solutie(_)),
+        assert(solutie(erorr)),
+        retract(stariCandidate(_)),
+        assert(stariCandidate([])),
+        retract(stariParcurse(_)),
+        assert(stariParcurse([])),!.
 
-astar(_,32):-write('Adancime prea mare'),
+astar(_,32):-
+        statusCautare(desfasurare),
+        write('Adancime prea mare'),
         miscarileEfectuate(ME),
         reverse(ME,ME2),
         write(ME2),
@@ -103,6 +151,7 @@ astar(_,32):-write('Adancime prea mare'),
         assert(stariParcurse([])),!.
 
 astar(X,_):-
+        statusCautare(desfasurare),
         egaleAstar(X,[0,1,2,3,4,5,6,7,8]),
         extrageDate(Parinte,Semn,ListaRamasa),
         construireCale(Parinte,ListaRamasa,Semne),
@@ -120,6 +169,7 @@ astar(X,_):-
 
 
 astar(X,I):-
+        statusCautare(desfasurare),
         determinareStariNoi(X,I,ListaStariDerivate),
         completareStariCandidate(ListaStariDerivate,StariCandidate),
         predsort(comparator,StariCandidate,[[StarePreferentiala,CostCale,Semn,Parinte,ValoarePreferentiala]|_]),
@@ -192,3 +242,17 @@ comparator(X,[_,CostCale1,_,_,Valoare1],[_,CostCale2,_,_,Valoare2]):-
         CostCale1+Valoare1 > CostCale2+Valoare2->
         X = >;
         X = < .
+
+start_timerA() :-
+    thread_create(timer_threadA(), _, [detached(true)]).
+
+timer_threadA() :-
+    sleep(5),
+    (   true
+    ->  call(stopAstar)
+    ;   true
+    ).
+
+stopAstar():-
+        retract(statusCautare(_)),
+        assert(statusCautare(esuata)),!.

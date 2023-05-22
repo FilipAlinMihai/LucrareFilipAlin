@@ -94,8 +94,13 @@ descrieCamera(1,cameraE,X):-
     'La vest se află holul.
 La sud este camera de oaspeti.
 La nord este cameraY.\n
-Poți juca un joc de foarfecă hârtie piatră împotriva calculatorului\n',T3),
-atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul foarfecahartiepiatra\n',X).
+Poți juca un joc de foarfecă hârtie piatră împotriva calculatorului.\n\n',T3),
+atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul foarfecahartiepiatra.
+După start utilizează comanda Foarfecahartiepiatra cu unul din argumentele:
+        *piatra
+        *foarfeca
+        *hartie
+Jocul are trei runde. Pentru fiecare rundă poți modifica alegerea.\n',X).
     
 
 descrieCamera(1,cameraEE,X):-
@@ -172,8 +177,13 @@ descrieCamera(2,cameraE,X):-
     'La sud se află holul.
 La vest este camera de oaspeti.
 La nord este cameraX.
-Poți juca un joc de foarfecă hârtie piatră împotriva calculatorului\n',T3),
-atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul foarfecahartiepiatra\n',X).
+Poți juca un joc de foarfecă hârtie piatră împotriva calculatorului.\n\n',T3),
+atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul foarfecahartiepiatra.
+După start utilizează comanda Foarfecahartiepiatra cu unul din argumentele:
+        *piatra
+        *foarfeca
+        *hartie
+Jocul are trei runde. Pentru fiecare rundă poți modifica alegerea.\n',X).
 
 descrieCamera(2,cameraEE,X):-
     atom_concat('Te afli în camera lui Andrei. \nLa nord este camera lui Bogdan\n',
@@ -255,8 +265,13 @@ descrieCamera(3,hol,X):-
 descrieCamera(3,cameraE,X):-
     atom_concat('Te afli în camera lui Mihai. \nLa est este camera lui Andrei\n',
     'La nord este camera de oaspeti.
-Poți juca un joc de foarfecă hârtie piatră împotriva calculatorului\n',T3),
-atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul foarfecahartiepiatra\n',X).
+Poți juca un joc de foarfecă hârtie piatră împotriva calculatorului.\n\n',T3),
+atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul foarfecahartiepiatra.
+După start utilizează comanda Foarfecahartiepiatra cu unul din argumentele:
+        *piatra
+        *foarfeca
+        *hartie
+Jocul are trei runde. Pentru fiecare rundă poți modifica alegerea.\n',X).
 
 descrieCamera(3,cameraEE,X):-
     atom_concat('Te afli în camera lui Andrei. \nLa nord este camera lui Bogdan\n',
@@ -379,8 +394,13 @@ descrieCamera(4,cameraE,X):-
     atom_concat('Te afli în camera lui Mihai. \nLa est este camera lui Andrei\n',
     'La nord este bucataria\n.
 La sun este cameraY.\n
-Poți juca un joc de foarfecă hârtie piatră împotriva calculatorului\n',T3),
-atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul foarfecahartiepiatra\n',X).
+Poți juca un joc de foarfecă hârtie piatră împotriva calculatorului.\n\n',T3),
+atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul foarfecahartiepiatra.
+După start utilizează comanda Foarfecahartiepiatra cu unul din argumentele:
+        *piatra
+        *foarfeca
+        *hartie
+Jocul are trei runde. Pentru fiecare rundă poți modifica alegerea.\n',X).
 
 descrieCamera(4,cameraEE,X):-
     atom_concat('Te afli în camera lui Andrei. \nLa nord este camera lui Bogdan\n',
@@ -419,12 +439,19 @@ La est se afla Atelierul.\n',
 
 
 textStart(Textinitial):- atom_concat('','
-                           Te-ai trezit pe podeaua unei camere.\n
-                           Nu îți amintești unde ești sau cum ai ajuns aici.\n
-                           Te îndrepți spre o ușă ce pare a fi ieșirea.\n
-                           Ușa e încuiată și nu poți evada.\n
-                           Singura ta șansă e cheia ce poate descuia această ușă.\n
-                           Trebuie să explorezi camerele casei pentru a regăsi libertatea.\n
+                           Te-ai trezit într-o casă necunoscută.
+                           Nu îți amintești unde ești sau cum ai ajuns aici.
+                           Te îndrepți spre o ușă ce pare a fi ieșirea.
+                           Ușa e încuiată și nu poți evada.
+                           Singura ta șansă e cheia ce poate descuia această ușă.
+                           Trebuie să explorezi camerele casei pentru a regăsi libertatea.
+                           Pentru a te mișca utilizează:
+                              *Butonul N - direcția Nord.
+                              *Butonul S - direcția Sud.
+                              *Butonul E - direcția Est.
+                              *Butonul W - direcția Vest.
+                           Ai grijă de energi și sănătatea ta.
+                           Alege dificultatea dorită (usor, mediu, dificil, imposibil).
                             ',Textinitial).
 
 pozitie_incorecta1(Text):-atom_concat('','Nu te afli in bibliotecă!\n',Text). 
