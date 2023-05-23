@@ -40,11 +40,6 @@ stop():-
 
 ajutor(R):-
       lista(L),
-      startAstar(L,erorr),
-      atom_concat('Imi pare rau nu te pot ajuta!','',R),!.
-
-ajutor(R):-
-      lista(L),
       startAstar(L,[X,Y,Z,O|_]),
       scrieDirectie(X,S1),
       scrieDirectie(Y,S2),
@@ -78,6 +73,13 @@ ajutor(R):-
       startAstar(L,[X|_]),
       scrieDirectie(X,S1),
       atom_concat('Realizează mutările: ',S1,R),!.
+
+ajutor(R):-
+      lista(L),
+      write(L),
+      startAstar(L,RR),
+      egale(RR,erorr),
+      atom_concat('Imi pare rau nu te pot ajuta!','',R),!.
 
 
 scrieDirectie(X,R):-

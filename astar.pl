@@ -89,10 +89,10 @@ egaleAstar(X,X).
 
 miscarileEfectuate([]).
 
-startAstar([8,7,6,5,4,3,2,1,0],[w,n,e,n]):-!.
-startAstar([8,7,6,5,4,0,2,1,3],[w,n,e,s ]):-!.
-startAstar([8,7,6,5,0,4,2,1,3],[n,e,s,w]):-!.
-startAstar([8,7,0,5,4,6,2,1,3],[w,w,s,e]):-!.
+startAstar([8,7,6,5,4,3,2,1,0],[w,n,e,n]):-true,!.
+startAstar([8,7,6,5,4,0,2,1,3],[w,n,e,s ]):-true,!.
+startAstar([8,7,6,5,0,4,2,1,3],[n,e,s,w]):-true,!.
+startAstar([8,7,0,5,4,6,2,1,3],[w,w,s,e]):-true,!.
 startAstar([8,0,7,5,4,6,2,1,3],[w,s,e,s ]):-!.
 startAstar([8,4,7,5,0,6,2,1,3],[w,s,e,e]):-!.
 startAstar([8,7,6,5,1,4,2,0,3],[w,n,e,n]):-!.

@@ -56,6 +56,8 @@ teste_aux():-
         test11(),
         contorizare(11),
         restart(_),
+        retract(statusCautare(_)),
+        assert(statusCautare(desfasurare)),
         test12(),
         contorizare(12),
         test13(),
@@ -103,13 +105,17 @@ test7():-
         verificareTest7(NR),!.
 test8():-
         descrieCamera(1,hol,X),
-        egale(X,'Te afli în Holul principal. \nLa nord se află biblioteca\nLa sud este ieșirea\nLa vest este camera Dianei\nLa est este camera lui Mihai\n'),
+        egale(X,'Te afli în Holul principal. \n
+La nord se află biblioteca\nLa sud este ieșirea\nLa vest este camera Dianei\nLa est este camera lui Mihai\n'),
         descrieCamera(2,hol,X1),
-        egale(X1,'Te afli în Holul principal. \nLa nord se află camera lui Mihai\nLa sud este ieșirea\n'),
+        egale(X1,'Te afli în Holul principal. \n
+La nord se află camera lui Mihai\nLa sud este ieșirea\n'),
         descrieCamera(3,hol,X2),
-        egale(X2,'Te afli în Holul principal. \nLa nord se află camera lui Andrei\nLa sud este ieșirea\n'),
+        egale(X2,'Te afli în Holul principal. \n
+La nord se află camera lui Andrei\nLa sud este ieșirea\n'),
         descrieCamera(4,hol,X3),
-        egale(X3,'Te afli în Holul principal. \nLa vest se află camera Dianei.
+        egale(X3,'Te afli în Holul principal. \n
+La vest se află camera Dianei.
 La est se afla Atelierul.\nLa sud este ieșirea\n'),!.
 
 test9():-
@@ -165,7 +171,10 @@ Acestea acordă recompense precum punctele de energie.'),
         procesareText('cum pot juca un mini joc'),
         raspuns(R2),
         egale(R2,' Pentru inceperea unui joc se va utiliza:
-     comanda: Joc cu argumentul: jocul dorit'),
+     comanda: Joc cu argumentul: jocul dorit
+Jocurile pot fi jucate doar in anumite camere.
+Atunci cand utilizatorul se afla intr-o asemena camera el este anuntat.
+Este indicat si jocul disponibil.'),
         procesareText('nu ma pot misca'),
         raspuns(R3),
         egale(R3,'Exista mai multe motive pentru care utilizatorul nu poate naviga harta.
