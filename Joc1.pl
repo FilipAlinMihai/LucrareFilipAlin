@@ -60,8 +60,13 @@
               legatura/4,
               mutaJucator/2,
               jocXsi0/1,
-              codReal/1]).
-
+              codReal/1,
+              lista/1,
+              verifica/1,
+              verificareFinal/1,
+              stareH/1,
+              decizie/2,
+              verifica/3]).
 
 %:- use_module(sliding).
 :- use_module(xsi0).
@@ -196,9 +201,7 @@ cameraIntunecata(cameraEN).
 % energieJucator(40).
 
 energie(X):-
-    energieJucator(X),
-    write(''),
-    write(''),nl.
+    energieJucator(X),nl.
 
 scadeEnergie():-
     energieJucator(X),

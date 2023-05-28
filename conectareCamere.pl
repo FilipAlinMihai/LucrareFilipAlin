@@ -20,8 +20,7 @@ legatura(1,n,cameraEE,cameraNE).
 
 %In birou se poate intra cu un cod gasit prin explorarea camerelor
 legatura(1,n,biblioteca,birou):-cod_birou(X),codReal(Y),egale(X,Y).
-legatura(1,n,biblioteca,birou):-
-    write(''),nl,fail.
+legatura(1,n,biblioteca,birou):-fail.
 legatura(1,s,biblioteca,hol).
 legatura(1,e,biblioteca,bucatarie).
 legatura(1,w,biblioteca,cameraNW).

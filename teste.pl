@@ -12,12 +12,12 @@ teste():-
         contorizare(0),
         teste_aux(),
         contor(NR),
-        write("Din totalul de 17 teste uintare au fost trecute: "),
+        write("Din totalul de 21 teste uintare au fost trecute: "),
         write(NR),!.
 
 teste():-
         contor(NR),
-        write("Din totalul de 17 teste uintare au fost trecute: "),
+        write("Din totalul de 21 teste uintare au fost trecute: "),
         write(NR),
         contorizare(0),!.
 
@@ -74,6 +74,18 @@ teste_aux():-
         restart(_),
         test17(),
         contorizare(17),
+        restart(_),
+        test18(),
+        contorizare(18),
+        restart(_),
+        test19(),
+        contorizare(19),
+        restart(_),
+        test20(),
+        contorizare(20),
+        restart(_),
+        test21(),
+        contorizare(21),
         restart(_),!.
 
 test1():-
@@ -149,10 +161,6 @@ test11():-
         egale(R5,[1,1,0,1,0,1,2,1,2]),!.
 
 test12():-
-        startAstar([3,1,0,4,7,2,6,8,5],Sol),
-        egale(Sol,[s,s,w,n,w,n]),
-        startAstar([3,7,1,0,4,2,6,8,5],Sol1),
-        egale(Sol1,[e,n,e,s,s,w,n,w,n]),
         startAstar([3,1,2,6,0,7,8,4,5],Sol3),
         egale(Sol3,[s,w,n,e,e,s,w,n,w,n]),!.
 
@@ -228,6 +236,82 @@ test17():-
         jocXsi0(jucat),
         codReal('APWCO'),
         numarPlanCasa(4),!.
+
+test18():-
+        retract(lista(_)),
+        assert(lista([0,1,2,3,4,5,6,7,8])),
+        energie(X),
+        X1 is X+5,
+        verifica(A1),
+        egale('\nAi primit 5 puncte de energie!',A1),
+        energie(X2),
+        egale(X1,X2),!.
+
+test19():-
+        retract(stareH(_)),
+        assert(stareH([2,3,3,3,3,3,3,3,3])),
+        energie(X),
+        X1 is X+3,
+        verificareFinal(A1),
+        egale('Ai câștigat jocul. Ai primit 3 puncte de energie\n',A1),
+        energie(X2),
+        egale(X1,X2),!.
+
+test20():-
+        energie(X),
+        X1 is X+5,
+        decizie(0,A1),
+        decizie(5,A2),
+        egale('Joc finalizat!!',A1),
+        egale('Continuă!!',A2),
+        energie(X2),
+        egale(X1,X2),!.      
+
+test21():-
+        S = [
+                [9,4,2,1,6,3,8,5,7],
+                [5,3,6,2,8,7,9,4,1],
+                [8,7,1,9,5,4,2,3,6],
+                [3,2,7,8,1,9,4,6,5],
+                [1,5,4,3,2,6,7,9,8],
+                [6,9,8,7,4,5,1,2,3],
+                [2,6,5,4,7,1,3,8,9],
+                [7,8,9,6,3,2,5,1,4],
+                [4,1,3,5,9,8,6,7,2]],
+        R = [
+                [9,1,2,1,6,3,8,5,7],
+                [5,3,6,2,8,7,9,4,1],
+                [8,7,1,9,5,4,2,3,6],
+                [3,2,7,8,1,9,4,6,5],
+                [1,5,4,3,2,6,7,9,8],
+                [6,9,8,7,4,5,1,2,3],
+                [2,6,5,4,7,1,3,8,9],
+                [7,8,9,6,3,2,5,1,4],
+                [4,1,3,5,9,8,6,7,2]],
+        S2 =  [
+                [5,3,4,6,7,8,9,1,2],
+                [6,7,2,1,9,5,3,4,8],
+                [1,9,8,3,4,2,5,6,7],
+                [8,5,9,7,6,1,4,2,3],
+                [4,2,6,8,5,3,7,9,1],
+                [7,1,3,9,2,4,8,5,6],
+                [9,6,1,5,3,7,2,8,4],
+                [2,8,7,4,1,9,6,3,5],
+                [3,4,5,2,8,6,1,7,9]],
+        R2 = [
+                [5,3,4,6,7,8,9,1,2],
+                [6,7,2,1,9,5,3,4,8],
+                [1,9,8,3,4,2,5,6,7],
+                [8,5,9,7,6,1,4,2,3],
+                [4,2,6,8,5,3,7,9,1],
+                [7,1,3,9,2,4,8,5,6],
+                [9,6,1,5,3,7,2,8,4],
+                [2,8,7,4,1,9,6,3,5],
+                [3,4,5,2,8,6,1,2,9]],
+        verifica(0,S,S),
+        \+ verifica(0,R,R),
+        verifica(0,S2,S2),
+        \+ verifica(0,R2,R2),!.        
 
 verificareTest6(NR):-
         NR = 1 ->

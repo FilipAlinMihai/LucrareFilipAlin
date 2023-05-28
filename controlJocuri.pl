@@ -152,7 +152,7 @@ determinareSecunde1(NumarSecunde):-
             nivelSelectat(usor)->
             NumarSecunde = 250,!;
             nivelSelectat(mediu)->
-            NumarSecunde = 12000,!;
+            NumarSecunde = 120,!;
             nivelSelectat(dificil)->
             NumarSecunde = 100,!;
             nivelSelectat(imposibil)->

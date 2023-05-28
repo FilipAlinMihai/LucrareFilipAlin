@@ -1,6 +1,6 @@
 descrie(sliding,X):-
     atom_concat('Mută pozițiile în ordine crescătoare \n','Doar 0 are dreptul de a se mișca\n', X1),
-    atom_concat(X1, 'Direcțiile de deplasare sunt: l-stânga, r-dreapta, u-sus și d-jos\n',X),!.
+    atom_concat(X1, 'Direcțiile de deplasare sunt: L-stânga, R-dreapta,U-sus și D-jos\n',X),!.
 
 descrie(xsi0,X):-atom_concat('','Câștigă acest joc de x și 0 împotriva calculatorului!\n
 Utilizează butoanele numerotate.

@@ -76,7 +76,6 @@ ajutor(R):-
 
 ajutor(R):-
       lista(L),
-      write(L),
       startAstar(L,RR),
       egale(RR,erorr),
       atom_concat('Imi pare rau nu te pot ajuta!','',R),!.
@@ -171,20 +170,22 @@ u(T11):-lista(X),
    atom_concat(T02,T1,T11),!.
 
 
-verifica():-
+verifica(A1):-
     lista(X),
     victorie(X),
     adaugaEnergie(5,_),
-    stop(),nl,!.
-verifica():-write('').
+    stop(),
+    atom_concat('\nAi primit 5 puncte de energie!','',A1),!.
+verifica(A1):-atom_concat('\nContinuă','',A1),!.
 
 muta(M,T1):-
     lista(X),
     mutare(M,X,R),
     retract(lista(X)),
     assert(lista(R)),
-    arata(T1),
-    verifica(),!.
+    arata(T1s),
+    verifica(A1),
+    atom_concat(T1s,A1,T1),!.
 
 pozitie([0|_],1).
 pozitie([_|T],R):-
