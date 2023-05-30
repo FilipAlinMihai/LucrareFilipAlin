@@ -178,7 +178,7 @@ Pentru prevenirea acestei situații este recomandată câștigarea mini jocurilo
 Acestea acordă recompense precum punctele de energie.'),
         procesareText('cum pot juca un mini joc'),
         raspuns(R2),
-        egale(R2,' Pentru inceperea unui joc se va utiliza:
+        egale(R2,'Pentru inceperea unui joc se va utiliza:
      comanda: Joc cu argumentul: jocul dorit
 Jocurile pot fi jucate doar in anumite camere.
 Atunci cand utilizatorul se afla intr-o asemena camera el este anuntat.

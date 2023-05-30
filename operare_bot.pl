@@ -65,7 +65,7 @@ raspunsNegativ():-
 
 intrebare([cum, pot, juca, nou, comanda, comenzi, control,start, porni, pornire,
  porneste, regula, joc,mini, provocare, logic, argument ],
-' Pentru inceperea unui joc se va utiliza:
+'Pentru inceperea unui joc se va utiliza:
      comanda: Joc cu argumentul: jocul dorit
 Jocurile pot fi jucate doar in anumite camere.
 Atunci cand utilizatorul se afla intr-o asemena camera el este anuntat.
@@ -151,7 +151,7 @@ Pentru a incarca un joc salvat  jucatorul utilizeaza comanda incarca urmata de n
 Prin comanda optiuni sunt prezentate variantele jocului ce au fost salvate si pot fi incarcate.').
 
 intrebare([clasament, concurs, competitie, ordine, ordonare,rezultate, castigare, castigator],
-' Este creat cate un clasament pentru fiecare nivel de dificultate.
+'Este creat cate un clasament pentru fiecare nivel de dificultate.
 Dupa ce jocul a fost finalizat cu succes jucatorul introduce numele cu care va aparea in clasament.
 Clasamentul se bazeaza pe numarul de puncte de energie cu care jucatorul a terminat jocul.
 Cu cat numarul este mai mare cu atat jucatorul va fi mai sus in clasament.').
@@ -192,7 +192,7 @@ In acest caz este necesara repararea lanternei. Pentru reparare este necesara o 
 
 intrebare([cum, pot , vedea, mesajele, anterioare,sa, revin, 
 reveni, la , inainte, inapoi, raspuns, anterior, mesaj, raspunsul, intoarcere, tranzitie],
-' Doua butoane Inainte si Inapoi perrmit circularea intre ultimele trei mesaje afisate pe ecran.').
+'Doua butoane Inainte si Inapoi permit circularea intre ultimele trei mesaje afisate pe ecran.').
 
 
 intrebare([ce,se, intampla, am,de, ramas,fara, punct, energie,daca, raman, voi,
@@ -213,21 +213,21 @@ utilizez, bandaje,bandaja,bandajare, am, gasit, ce , face, aplic, aplica ,bandaj
 Epuizarea tuturor aceste puncte duce la pierderea jocului.
 In cazul in care a fost decoperit un bandaj el poate fi utilizat pentru
 a imbunatati starea de sanatate a jucatorului. Bandajul nu apare in fiecare runda.
- Frecventa cu care acesta apare este determinata de nivlul de dificultate ales.').
+Frecventa cu care acesta apare este determinata de nivlul de dificultate ales.').
 
 intrebare([harta, arata, ce, utilizare, rol, cum, pot, poate, utilizat, harti  ],
 'Butonul harta prezinta jucatorului o harta a partilor din casa pe care lea vizitat in jocul curent.
     Harta jocului poate sa difere. ').
 
 intrebare([cum, pot, vedea, cate, litere, am,strans, adunat, colectat, parte, parola, din, ale, parolei ],
-' Prin comanda Parola Jucatorul poate vedea literele parole pe care lea descoperit.
+'Prin comanda Parola Jucatorul poate vedea literele parole pe care lea descoperit.
      Spre exemplu daca au fost gasite literele 2 si 5 si aceste sunt T si G comanda parola va afisa *T**G.').
 
 intrebare([cum, pot, cheie,seif, preiau, prelua, pastra, accesa, ghicitoare, raspunde, raspuns ],
 'Pentru A prelua cheia din seif trebuie sa raspunzi corect la o ghicitoare gasita in camerele casei. 
      Scrie raspunsul cu comanda ghicitoare si raspunsul ca argument. ').
 
-intrebare([rol, scop, functionalitatea, scopul, rolul, utilizare, intrebuintare,utoilizate, buton ,butoanele, interfata ],
+intrebare([rol, scop, functionalitatea, scopul, rolul, utilizare, intrebuintare,utoilizate, butoane, buton ,butoanele, interfata ],
 'Butoanele numerotate de la 1 la 9 sunt pentru jocul de x si 0 impotriva calculatorului. 
 Pentru navigare utilizează butoanele N S E V. 
 Butoanele U D R L controleaza jocul sliding.').
@@ -299,11 +299,11 @@ Jocul este cronometrat.').
 
 intrebare([nivel],
 'Pentru selectarea nivelului de dificultate se utilizeaza:
-**comanda: Nivel cu argumentul : nivel dorit
-**sunt disponibile 4 optiuni: usor, mediu, dificil si imposibil.
+    comanda: Nivel cu argumentul : nivel dorit
+    sunt disponibile 4 optiuni: usor, mediu, dificil si imposibil.
 Nivelul de dificultate are un rol inportant in
-**Determinarea dificultatii minijocurilor.
-**Determinarea punctelor de energie la start.').
+    Determinarea dificultatii minijocurilor.
+    Determinarea punctelor de energie la start.').
 
 intrebare([energie],
 'Punctele de energie sunt vitale pentru continoarea jocului.
@@ -327,7 +327,7 @@ Prin comanda optiuni sunt prezentate variantele jocului ce au fost salvate si po
 
 intrebare([decizie],
 'Prin comanda decizie este luata decizia finala in cazul jocului dilema prizonierului
-   Este utilizata comanda dilema cu unul din argumentele recunoaste sau neaga').
+Este utilizata comanda dilema cu unul din argumentele recunoaste sau neaga').
 
 intrebare([ajutor],
 'Sliding 8 este un  puzzle logic inclus in aplicatie.
@@ -354,7 +354,7 @@ Pentru selectarea nivelului de dificultate se utilizeaza:
 intrebare([este, prea, intuneric, aceasta, camera, intunecata],
 'Exista cateva restrictii de navigare.
 In cazul camerelor ce nu sunt luminate corespunzator
-  este necesara o lanterna pentru acces.
+    este necesara o lanterna pentru acces.
 Lanterna are un numar limitat de utilizari si poate fi reparata cu ajutorul unei baterii.
 ').
 
@@ -368,7 +368,7 @@ Utilizeaza comanda Locatie pentru a descoperi ce optiuni ai.
 intrebare([nu, acest, obiect ,inventar, rucsac],
 'Pentru a realiza o actiune asupra unui obiect el trebuie sa se afle in inventar.
 Astfel pentru comenzile mananca sau inspecteaza trebuie oferit
- ca argument un obiect existent in inventar.
+ca argument un obiect existent in inventar.
 ').
 
 intrebare([acest, obiect, nu, este, comestibil],

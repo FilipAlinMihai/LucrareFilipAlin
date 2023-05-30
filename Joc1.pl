@@ -66,7 +66,8 @@
               verificareFinal/1,
               stareH/1,
               decizie/2,
-              verifica/3]).
+              verifica/3,
+              reguli2/2]).
 
 %:- use_module(sliding).
 :- use_module(xsi0).
@@ -92,6 +93,7 @@
 :- include('generareCamereCapcana.pl').
 :- include('riddles.pl').
 :- include('conectareCamere.pl').
+:- include('reguli2.pl').
 
 :- dynamic locatieJucator/1,
     locatieObiect/2,
@@ -506,14 +508,14 @@ bandajeaza(R):-
     V1 is V+50,
     retract(viata(_)),
     assert(viata(V1)),
-    atom_concat('Acum te simti mai bine !\n Vata ta : ',V1,R),
+    atom_concat('Acum te simți mai bine !\n Vița ta : ',V1,R),
     retract(locatieObiect(bandaj,_)),
     assert(locatieObiect(bandaj,utilizat)),
     !;
-    atom_concat('Nu esti ranit!\n','Pastreaza bandajele pentru mai tarziu!',R),!.
+    atom_concat('Nu ești rănit!\n','Păstrează bandajele pentru mai târziu!',R),!.
 
 bandajeaza(R):-
-    atom_concat('Nu exista bandaje in inventar!\n','',R),!.
+    atom_concat('Nu există bandaje în inventar!\n','',R),!.
 
 capacitateLanterna(NivelSelectat):-
        NivelSelectat=usor->
@@ -540,8 +542,8 @@ repara(R):-
         locatieObiect(lanterna,jucator),
         retract(utilizareLanterna(_)),
         assert(utilizareLanterna(15)),
-        atom_concat('Reparatie completa!\n','Ai schimbat bateria lanternei!.\n',R),!.
+        atom_concat('Reparație completă!\n','Ai schimbat bateria lanternei!.\n',R),!.
 
 repara(R):-
-        atom_concat('Reparatie esuata!\n',
-        'Nu deti resursele necesare!.\nAi nevoie de lanterna si de o baterie!\n',R),!.
+        atom_concat('Reparație eșuată!\n',
+        'Nu deți resursele necesare!.\nAi nevoie de lanternă și de o baterie!\n',R),!.

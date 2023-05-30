@@ -21,7 +21,6 @@ mesajAnteriorAnterior(****).
 
 :- include('executor.pl').
 :- include('bot.pl').
-:- include('reguli2.pl').
 
 statistica(0).
 
@@ -467,13 +466,28 @@ reguli2 :-
     new(BT7,button(ghicitoare, message(@prolog, raspundeCuRegula,7, E))),
     new(BT8,button(salvare, message(@prolog, raspundeCuRegula,8, E))),
     new(BT9,button(restart, message(@prolog, raspundeCuRegula,9, E))),
+    new(BT10,button(descriere,  message(@prolog, raspundeCuRegula,10, E))),
+    new(BT11,button(comenzi1, message(@prolog, raspundeCuRegula,11, E))),
+    new(BT12,button(comenzi2,  message(@prolog, raspundeCuRegula,12, E))),
+    new(BT13,button(lanterna,  message(@prolog, raspundeCuRegula,13, E))),
+    new(BT14,button(bandaj,  message(@prolog, raspundeCuRegula,14, E))),
+    new(BT15,button(butoane,  message(@prolog, raspundeCuRegula,15, E))),
+    new(BT16,button(pericole,  message(@prolog, raspundeCuRegula,16, E))),
+    new(BT17,button(cronometre, message(@prolog, raspundeCuRegula,17, E))),
+    new(BT18,button(harti, message(@prolog, raspundeCuRegula,18, E))),
+    
 
     row(RowAll,group,BT1,BT2,BT3),
     row(RowAll1,group,BT4,BT5,BT6),
     row(RowAll2,group,BT7,BT8,BT9),
+    row(RowAll3,group,BT10,BT11,BT12),
+    row(RowAll4,group,BT13,BT14,BT15),
+    row(RowAll5,group,BT16,BT17,BT18),
 
     row(Linie,group,RowAll,RowAll1,RowAll2),
+    row(Linie2,group,RowAll3,RowAll4,RowAll5),
     send(D,append,Linie),
+    send(D,append,Linie2),
     %send(D,append,RowAll1),
     %send(D,append,RowAll2),
 

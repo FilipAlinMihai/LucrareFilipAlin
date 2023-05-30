@@ -82,11 +82,17 @@ restart(X):-
         assert(avemLit5('*')),
         retract(victorieMarcata(_)),
         assert(victorieMarcata(nu)),
-        atom_concat('
-                          Te-ai trezit pe podeaua unei camere.\n
-                           Nu iți amintești unde ești sau cum ai ajuns aici.\n
-                           Te îndrepți spre o ușă ce pare a fi ieșirea.\n
-                           Ușa e încuiată și nu poți evada.\n
-                           Singura ta șansă e cheia ce poate descuia această ușă.\n
-                           Trebuie să explorezi camerele casei pentru a regăsi libertatea.\n
+        atom_concat('Te-ai trezit într-o casă necunoscută.
+                           Nu îți amintești unde ești sau cum ai ajuns aici.
+                           Te îndrepți spre o ușă ce pare a fi ieșirea.
+                           Ușa e încuiată și nu poți evada.
+                           Singura ta șansă e cheia ce poate descuia această ușă.
+                           Trebuie să explorezi camerele casei pentru a regăsi libertatea.
+                           Pentru a te mișca utilizează:
+                              *Butonul N - direcția Nord.
+                              *Butonul S - direcția Sud.
+                              *Butonul E - direcția Est.
+                              *Butonul W - direcția Vest.
+                           Ai grijă de energi și sănătatea ta.
+                           Alege dificultatea dorită (usor, mediu, dificil, imposibil).
                             ','',X),!.
