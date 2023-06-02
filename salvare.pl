@@ -33,7 +33,7 @@ salveaza(Fisier):-
         litera3(Lit3),
         litera4(Lit4),
         litera5(Lit5),
-        atom_concat('C:\\Users\\lenovo\\Documents\\Prolog\\LucrareFilipAlin\\salvari\\',Fisier,Cale),
+        atom_concat('LucrareFilipAlin\\salvari\\',Fisier,Cale),
         atom_concat(Cale,'.txt',Cale1),
         downcase_atom(Z1,Z11),
         downcase_atom(Lit1,Lit11),
@@ -92,7 +92,7 @@ salveaza(Fisier):-
 
 incarca(Fisier):-
         golire(),
-        atom_concat('C:\\Users\\lenovo\\Documents\\Prolog\\LucrareFilipAlin\\salvari\\',Fisier,Cale),
+        atom_concat('LucrareFilipAlin\\salvari\\',Fisier,Cale),
         atom_concat(Cale,'.txt',Cale1),
         exists_file(Cale1),
         see(Cale1),

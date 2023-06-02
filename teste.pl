@@ -121,14 +121,14 @@ test8():-
 La nord se află biblioteca\nLa sud este ieșirea\nLa vest este camera Dianei\nLa est este camera lui Mihai\n'),
         descrieCamera(2,hol,X1),
         egale(X1,'Te afli în Holul principal. \n
-La nord se află camera lui Mihai\nLa sud este ieșirea\n'),
+La nord se află camera lui Mihai.\nLa sud este ieșirea\n'),
         descrieCamera(3,hol,X2),
         egale(X2,'Te afli în Holul principal. \n
-La nord se află camera lui Andrei\nLa sud este ieșirea\n'),
+La nord se află camera lui Andrei.\nLa sud este ieșirea.\n'),
         descrieCamera(4,hol,X3),
         egale(X3,'Te afli în Holul principal. \n
 La vest se află camera Dianei.
-La est se afla Atelierul.\nLa sud este ieșirea\n'),!.
+La est se află Atelierul.\nLa sud este ieșirea\n'),!.
 
 test9():-
         dificultate(mediu,_),

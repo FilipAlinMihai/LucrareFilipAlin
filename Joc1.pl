@@ -27,6 +27,7 @@
               seJoaca/1,
               mutaCal/2,
               ajutor/1,
+              ajutor2/1,
               viata/1,
               nivelSelectat/1,
               alege/2,

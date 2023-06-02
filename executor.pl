@@ -96,8 +96,6 @@ executor(X,A1,A2,F):-
         X = ajutor,ajutor2(disponibil) ->
         ajutor(R23),
         modificareTextPrezentat(F,R23),
-        retract(ajutor2(_)),
-        assert(ajutor2(indisponibil)),
         !;
         X = ajutor,ajutor2(indisponibil) ->
         atom_concat('Ai utilizat indiciul disponibil!\n','',R),
@@ -105,8 +103,6 @@ executor(X,A1,A2,F):-
         !;
         apartine(X,[restart,reset]) ->
         restart(R),
-        retract(ajutor2(_)),
-        assert(ajutor2(disponibil)),
         modificareTextPrezentat(F,R),
         !;
         apartine(X,[arunca,renunta,elibereaza,drop]) ->

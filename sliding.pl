@@ -4,11 +4,13 @@
 
 
 :- use_module(aleatoare).
-:- dynamic lista/1,status/1.
+:- dynamic lista/1,status/1,ajutor2/1.
 
 status(oprit).
 
 lista([]).
+
+ajutor2(disponibil).
 
 dificultateRidicata(dificil).
 dificultateRidicata(imposibil).
@@ -39,6 +41,19 @@ stop():-
     assert(status(oprit)).
 
 ajutor(R):-
+    \+ locatieJucator(biblioteca),
+    atom_concat('Nu te aflii în bibliotecă!','',R),!.
+
+ajutor(R):-
+    timpRamas(sliding,TimpRamas),
+    \+ TimpRamas> 0,
+    atom_concat('Jocul nu a început sau a fost finalizat!','',R),!.
+
+ajutor(R):-
+    jocSliding(disponibil),
+    atom_concat('Jocul nu a început sau a fost finalizat!','',R),!.
+
+ajutor(R):-
       lista(L),
       startAstar(L,[X,Y,Z,O|_]),
       scrieDirectie(X,S1),
@@ -48,7 +63,9 @@ ajutor(R):-
       atom_concat('Realizează mutările: ',S1,T1),
       atom_concat(T1,S2,T2),
       atom_concat(T2,S3,T3),
-      atom_concat(T3,S4,R),!.
+      atom_concat(T3,S4,R),
+      retract(ajutor2(_)),
+      assert(ajutor2(indisponibil)),!.
 
 ajutor(R):-
       lista(L),
@@ -58,7 +75,9 @@ ajutor(R):-
       scrieDirectie(Z,S3),
       atom_concat('Realizează mutările: ',S1,T1),
       atom_concat(T1,S2,T2),
-      atom_concat(T2,S3,R),!.
+      atom_concat(T2,S3,R),
+      retract(ajutor2(_)),
+      assert(ajutor2(indisponibil)),!.
 
 ajutor(R):-
       lista(L),
@@ -66,19 +85,25 @@ ajutor(R):-
       scrieDirectie(X,S1),
       scrieDirectie(Y,S2),
       atom_concat('Realizează mutările: ',S1,T1),
-      atom_concat(T1,S2,R),!.
+      atom_concat(T1,S2,R),
+      retract(ajutor2(_)),
+      assert(ajutor2(indisponibil)),!.
 
 ajutor(R):-
       lista(L),
       startAstar(L,[X|_]),
       scrieDirectie(X,S1),
-      atom_concat('Realizează mutările: ',S1,R),!.
+      atom_concat('Realizează mutările: ',S1,R),
+      retract(ajutor2(_)),
+      assert(ajutor2(indisponibil)),!.
 
 ajutor(R):-
       lista(L),
       startAstar(L,RR),
       egale(RR,erorr),
-      atom_concat('Imi pare rau nu te pot ajuta!','',R),!.
+      atom_concat('Imi pare rau nu te pot ajuta!','',R),
+      retract(ajutor2(_)),
+      assert(ajutor2(indisponibil)),!.
 
 
 scrieDirectie(X,R):-

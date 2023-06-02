@@ -1,5 +1,9 @@
 restart(X):-
         golire(),
+        retract(ajutor2(_)),
+        assert(ajutor2(disponibil)),
+        retract(statusCautare(_)),
+        assert(statusCautare(desfasurare)),
         alegeIntrebare(),
         fireExecutie(Fire),
         stop_timer(Fire),
@@ -82,7 +86,8 @@ restart(X):-
         assert(avemLit5('*')),
         retract(victorieMarcata(_)),
         assert(victorieMarcata(nu)),
-        atom_concat('Te-ai trezit într-o casă necunoscută.
+        atom_concat('                          
+                           Te-ai trezit într-o casă necunoscută.
                            Nu îți amintești unde ești sau cum ai ajuns aici.
                            Te îndrepți spre o ușă ce pare a fi ieșirea.
                            Ușa e încuiată și nu poți evada.

@@ -6,12 +6,9 @@
 
 :- dynamic mesajCurent/1,
            mesajAnterior/1,
-           ajutor2/1,
            mesajAnteriorAnterior/1,
            mesajAfisat/1,
            statistica/1.
-
-ajutor2(disponibil).
 
 mesajAfisat(curent).
 mesajCurent(****).
