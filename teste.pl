@@ -228,14 +228,14 @@ test16():-
 
 test17():-
         incarca(salvare1),
-        locatieJucator(cameraE),
-        energie(29),
+        locatieJucator(biblioteca),
+        energie(11),
         viata(50),
-        locatieObiect(mar,jucator),
-        locatieObiect(biscuit,cameraES),
-        jocXsi0(jucat),
-        codReal('APWCO'),
-        numarPlanCasa(4),!.
+        locatieObiect(biscuit,jucator),
+        locatieObiect(mar,cameraCapcana2),
+        jocXsi0(disponibil),
+        codReal('VAXFU'),
+        numarPlanCasa(1),!.
 
 test18():-
         retract(lista(_)),

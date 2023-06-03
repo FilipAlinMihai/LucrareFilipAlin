@@ -66,10 +66,10 @@ completare2([A,B,C,D,E,F,G,H,I],R):-
         verificare2(C,I,3,X9),
         R is X1+X2+X3+X4+X5+X6+X7+X8+X9.
 
+verificare2(_,0,_,0).
+verificare2(0,_,_,0).
 verificare2(A,B,L,4):-
                 A > B,
-                A \= 0,
-                B \= 0,
                 coloana(A,L),
                 coloana(B,L),!.
 verificare2(_,_,_,0).
@@ -96,10 +96,10 @@ completare([A,B,C,D,E,F,G,H,I],R):-
         verificare(G,I,3,X9),
         R is X1+X2+X3+X4+X5+X6+X7+X8+X9.
 
+verificare(_,0,_,0):-!.
+verificare(0,_,_,0):-!.
 verificare(A,B,L,4):-
                 A > B,
-                A \= 0,
-                B \= 0,
                 linie(A,L),
                 linie(B,L),!.
 verificare(_,_,_,0).

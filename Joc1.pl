@@ -141,11 +141,11 @@ locatieJucator(hol). %Se stabileste locatia de pornire a jucatorului
 
 cod_birou(aaaaa).
 
-avemLit1('*').
-avemLit2('*').
-avemLit3('*').
-avemLit4('*').
-avemLit5('*').
+avemLit1('8').
+avemLit2('8').
+avemLit3('8').
+avemLit4('8').
+avemLit5('8').
 
 %jucatorul introduce codul de la lacatul biroului
 scrie_cod(X,R):-
@@ -489,7 +489,8 @@ amDescoperit(X):-
 
 afisareLitereDescoperite(R):-
         avemLitere(R1),
-        atom_concat('Parola este : ',R1,R),!.
+        atom_concat('Parola este : ',R1,R2),
+        atom_concat(R2,'\nPozițiile numerotate cu 8 trebuie completate!',R),!.
 
 avemLitere(R):-
         avemLit1(R1),
