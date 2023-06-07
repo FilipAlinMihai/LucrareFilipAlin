@@ -23,8 +23,9 @@ arataH(R):-
     afisareH(X,T1),
     timpRamas(hunter,TimpRamas),
     format(atom(Rotunjire), '~2f', [TimpRamas]),
-    atom_concat('Au mai ramas ',Rotunjire,T01),
-    atom_concat(T01,'\n------------\n',T02),
+    atom_concat('Au mai rămas ',Rotunjire,T01),
+    atom_concat(T01,' secunde!\n',T001),
+    atom_concat(T001,'\n------------\n',T02),
     atom_concat(T02,T1,R),!.
 
 afisareH([],R1):-atom_concat('','',R1).

@@ -68,7 +68,9 @@
               stareH/1,
               decizie/2,
               verifica/3,
-              reguli2/2]).
+              reguli2/2,
+              utilizareLanterna/1,
+              locatieObiect/2]).
 
 %:- use_module(sliding).
 :- use_module(xsi0).
@@ -286,8 +288,8 @@ w(T1):- mutaJucator(w,T1).
 % acestea Sunt nivelele de dificultate dintr care jucatorul poate alege
 nivel(usor,50).
 nivel(mediu,40).
-nivel(dificil,10).
-nivel(imposibil,5).
+nivel(dificil,20).
+nivel(imposibil,10).
 
 %Se incepe jocul dupa selectarea nivelului de dificultate
 amInceput(nu).
@@ -528,10 +530,10 @@ capacitateLanterna(NivelSelectat):-
        assert(utilizareLanterna(15)),!;
        NivelSelectat=dificil->
        retract(utilizareLanterna(_)),
-       assert(utilizareLanterna(5)),!;
+       assert(utilizareLanterna(13)),!;
        NivelSelectat=imposibil->
        retract(utilizareLanterna(_)),
-       assert(utilizareLanterna(3)),!.
+       assert(utilizareLanterna(11)),!.
 
 amUtilizatLanterna():-
         utilizareLanterna(L),
@@ -543,7 +545,7 @@ repara(R):-
         locatieObiect(baterie,jucator),
         locatieObiect(lanterna,jucator),
         retract(utilizareLanterna(_)),
-        assert(utilizareLanterna(15)),
+        assert(utilizareLanterna(11)),
         atom_concat('Reparație completă!\n','Ai schimbat bateria lanternei!.\n',R),!.
 
 repara(R):-

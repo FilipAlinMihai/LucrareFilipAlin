@@ -13,7 +13,7 @@ procesareMediu(Energie,Nume):-
         citireMediu(Clasament),
         eliminate_spaces(Nume, Nume2),
         sortate(Clasament,[Energie,Nume2],ClasamentNou),
-        tell('C:\\Users\\lenovo\\Documents\\Prolog\\LucrareFilipAlin\\clasament\\ClasamentNivelMediu.txt'),
+        tell('LucrareFilipAlin\\clasament\\ClasamentNivelMediu.txt'),
         scriere(ClasamentNou),
         told.
 
@@ -21,7 +21,7 @@ procesareUsor(Energie,Nume):-
         citireUsor(Clasament),
         eliminate_spaces(Nume, Nume2),
         sortate(Clasament,[Energie,Nume2],ClasamentNou),
-        tell('C:\\Users\\lenovo\\Documents\\Prolog\\LucrareFilipAlin\\clasament\\ClasamentNivelUsor.txt'),
+        tell('LucrareFilipAlin\\clasament\\ClasamentNivelUsor.txt'),
         scriere(ClasamentNou),
         told.
 
@@ -29,7 +29,7 @@ procesareDificil(Energie,Nume):-
         citireDificil(Clasament),
         eliminate_spaces(Nume, Nume2),
         sortate(Clasament,[Energie,Nume2],ClasamentNou),
-        tell('C:\\Users\\lenovo\\Documents\\Prolog\\LucrareFilipAlin\\clasament\\ClasamentNivelDificil.txt'),
+        tell('LucrareFilipAlin\\clasament\\ClasamentNivelDificil.txt'),
         scriere(ClasamentNou),
         told.
 
@@ -37,7 +37,7 @@ procesareImposibil(Energie,Nume):-
         citireImposibil(Clasament),
         eliminate_spaces(Nume, Nume2),
         sortate(Clasament,[Energie,Nume2],ClasamentNou),
-        tell('C:\\Users\\lenovo\\Documents\\Prolog\\LucrareFilipAlin\\clasament\\ClasamentNivelImposibil.txt'),
+        tell('LucrareFilipAlin\\clasament\\ClasamentNivelImposibil.txt'),
         scriere(ClasamentNou),
         told.
 
@@ -55,22 +55,22 @@ scriere([[P,N]|T]):-
         scriere(T),!.
 
 citireMediu(Clasament):-
-        open('C:\\Users\\lenovo\\Documents\\Prolog\\LucrareFilipAlin\\clasament\\ClasamentNivelMediu.txt', read, Str),
+        open('LucrareFilipAlin\\clasament\\ClasamentNivelMediu.txt', read, Str),
         citeste(Str,Clasament),
         close(Str).
 
 citireUsor(Clasament):-
-        open('C:\\Users\\lenovo\\Documents\\Prolog\\LucrareFilipAlin\\clasament\\ClasamentNivelUsor.txt', read, Str),
+        open('LucrareFilipAlin\\clasament\\ClasamentNivelUsor.txt', read, Str),
         citeste(Str,Clasament),
         close(Str).
 
 citireDificil(Clasament):-
-        open('C:\\Users\\lenovo\\Documents\\Prolog\\LucrareFilipAlin\\clasament\\ClasamentNivelDificil.txt', read, Str),
+        open('LucrareFilipAlin\\clasament\\ClasamentNivelDificil.txt', read, Str),
         citeste(Str,Clasament),
         close(Str).
 
 citireImposibil(Clasament):-
-        open('C:\\Users\\lenovo\\Documents\\Prolog\\LucrareFilipAlin\\clasament\\ClasamentNivelImposibil.txt', read, Str),
+        open('LucrareFilipAlin\\clasament\\ClasamentNivelImposibil.txt', read, Str),
         citeste(Str,Clasament),
         close(Str).
 

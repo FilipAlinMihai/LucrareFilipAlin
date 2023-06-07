@@ -50,7 +50,7 @@ afisareSudoku(T10):-
         scrieLinie(I,9,I1),
         timpRamas(sudoku,TimpRamas),
         format(atom(Rotunjire), '~2f', [TimpRamas]),
-        atom_concat('Au mai ramas ',Rotunjire,T01),
+        atom_concat('Au mai rămas ',Rotunjire,T01),
         atom_concat(T01,' secunde!\n',T02),
         atom_concat(T02,'=========||========||=========\n',T1),
         atom_concat(T1,A1,T2),

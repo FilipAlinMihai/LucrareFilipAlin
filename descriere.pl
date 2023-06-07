@@ -10,10 +10,10 @@ descrie(sudoku,X):-atom_concat('','Rezolvă această problemă conform regulilor
 Nu trebuie să existe duplicate pe linii coloane sau în pătratele de 3X3 delimitate\n', X),!.
 
 descrie(hunter,X):-atom_concat('','Tabla de joc este umplută de pioni în 7 poziții din 9.
-Pe poziția marcata cu k se află un cal ce se mițcă în modul specific jocului de șah.\n
+Pe poziția marcată cu k se află un cal ce se mișcă în modul specific jocului de șah.\n
 Încearcă să capturezi toți pionii în 7 mișcări.
 Selectează pozițiia pe care dorești să se deplaseze calul.
-Fiecare mutare fie e validă sau invalidă este contorizată\n', X),!.
+Fiecare mutare fie ea validă sau invalidă este contorizată.\n', X),!.
 
 descrie(dilema,X):-atom_concat('','Doi infractori au fost prinși în timpul unui jaf minor!
 Amândoi pot fi condamnați la un an de închisoare. Ei sunt interogați în camere separate. 
@@ -84,7 +84,9 @@ La Nord se află Biroul \n',
     atom_concat(T4,'La vest e camera de zi\n',T5),
     atom_concat(T5,'La sud e holul\n\n',T6),
     atom_concat(T6,'Poți juca un joc: sliding 8\n',T3),
-    atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul sliding\n',X).
+    atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul sliding.\n
+Mută pozițiile în ordine crescătoare \nDoar 0 are dreptul de a se mișca.
+Direcțiile de deplasare sunt: L-stânga, R-dreapta,U-sus și D-jos.\n',X).
 
 descrieCamera(1,hol,X):-
     atom_concat('Te afli în Holul principal. \n
@@ -113,7 +115,9 @@ descrieCamera(1,cameraEE,X):-
 La nord este camera lui Bogdan\n',
 'La vest se află camera lui Mihai\n
 Poți juca Sudoku\n',T3),
-atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul sudoku.\n',X).
+atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul sudoku.
+Rezolvă această problemă conform regulilor clasice de sudoku!
+Nu trebuie să existe duplicate pe linii coloane sau în pătratele de 3X3 delimitate.\n',X).
 
 descrieCamera(1,cameraNE,X):-
     atom_concat('Te afli în camera lui Bogdan.\n
@@ -147,7 +151,12 @@ descrieCamera(1,cameraWW,X):-
     atom_concat('','Te afli în camera Mariei. \n
 La est este camera Dianei.\n
 Poți juca hunter.\n',T3),
-atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul hunter.\n',X).
+atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul hunter.
+Tabla de joc este umplută de pioni în 7 poziții din 9.
+Pe poziția marcată cu k se află un cal ce se mișcă în modul specific jocului de șah.
+Încearcă să capturezi toți pionii în 7 mișcări.
+Selectează poziția pe care dorești să se deplaseze calul.
+Fiecare mutare fie ea validă sau invalidă este contorizată.\n',X).
 
 descrieCamera(1,cameraNW,X):-
     atom_concat('Te afli în camera de zi. \n
@@ -210,7 +219,9 @@ descrieCamera(2,cameraEE,X):-
 La nord este camera lui Bogdan.\n',
 'La vest se află camera lui Mihai.\n
 Poți juca Sudoku\n',T3),
-atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul sudoku.\n',X).  
+atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul sudoku.
+Rezolvă această problemă conform regulilor clasice de sudoku!
+Nu trebuie să existe duplicate pe linii coloane sau în pătratele de 3X3 delimitate.\n',X).  
 
 descrieCamera(2,cameraES,X):-
     atom_concat('Te afli în camera de oaspeți.\n','\nLa est se află camera lui Mihai.
@@ -259,7 +270,9 @@ La Nord se află Biroul \n',
     atom_concat(T4,'La vest e camera de zi\n',T5),
     atom_concat(T5,'La sud e cameraY\n\n',T6),
     atom_concat(T6,'Poți juca un joc: sliding 8\n',T3),
-    atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul sliding\n',X).
+    atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul sliding.\n
+Mută pozițiile în ordine crescătoare \nDoar 0 are dreptul de a se mișca.
+Direcțiile de deplasare sunt: L-stânga, R-dreapta,U-sus și D-jos.\n',X).
 
 descrieCamera(2,cameraNN,X):-
     atom_concat('Te afli în cameraX.\n
@@ -289,7 +302,12 @@ descrieCamera(2,cameraWW,X):-
     atom_concat('','Te afli în camera Mariei. \n
 La sud este camera Dianei.\n
 Poți juca hunter.\n',T3),
-atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul hunter.\n',X).
+atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul hunter.
+Tabla de joc este umplută de pioni în 7 poziții din 9.
+Pe poziția marcată cu k se află un cal ce se mișcă în modul specific jocului de șah.
+Încearcă să capturezi toți pionii în 7 mișcări.
+Selectează poziția pe care dorești să se deplaseze calul.
+Fiecare mutare fie ea validă sau invalidă este contorizată.\n',X).
 
 %DESCRIERE HARTA 3
 descrieCamera(3,hol,X):-
@@ -315,7 +333,9 @@ La nord este camera lui Bogdan.\n',
 'La vest se află camera lui Mihai.
 La sud se află holul principal.\n
 Poți juca Sudoku\n',T3),
-atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul sudoku.\n',X).  
+atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul sudoku.
+Rezolvă această problemă conform regulilor clasice de sudoku!
+Nu trebuie să existe duplicate pe linii coloane sau în pătratele de 3X3 delimitate.\n',X).  
 
 descrieCamera(3,cameraES,X):-
     atom_concat('Te afli în camera de oaspeți.\n','\nLa vest se află cameraY.
@@ -365,7 +385,9 @@ La Nord se află Biroul!\n',
     atom_concat(T4,'La est e camera lui Bogdan.\n',T5),
     atom_concat(T5,'La sud e camera de oaspeti.\n\n',T6),
     atom_concat(T6,'Poți juca un joc: sliding 8.\n',T3),
-    atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul sliding.\n',X).
+    atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul sliding.\n
+Mută pozițiile în ordine crescătoare \nDoar 0 are dreptul de a se mișca.
+Direcțiile de deplasare sunt: L-stânga, R-dreapta,U-sus și D-jos.\n',X).
 
 descrieCamera(3,cameraNN,X):-
     atom_concat('Te afli în cameraX.\n
@@ -395,7 +417,12 @@ La sud este camera Dianei.
 La vest este atelierul.
 La nord este Y.
 Poți juca hunter.\n',T3),
-atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul hunter.\n',X).
+atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul hunter.
+Tabla de joc este umplută de pioni în 7 poziții din 9.
+Pe poziția marcată cu k se află un cal ce se mișcă în modul specific jocului de șah.
+Încearcă să capturezi toți pionii în 7 mișcări.
+Selectează poziția pe care dorești să se deplaseze calul.
+Fiecare mutare fie ea validă sau invalidă este contorizată.\n',X).
 
 %DESCRIERE HARTA 4
 descrieCamera(4,cameraNE,X):-
@@ -409,7 +436,12 @@ descrieCamera(4,cameraWW,X):-
     atom_concat('','Te afli în camera Mariei. \n
 La sud este camera Dianei.\n
 Poți juca hunter.\n',T3),
-atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul hunter.\n',X).
+atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul hunter.
+Tabla de joc este umplută de pioni în 7 poziții din 9.
+Pe poziția marcată cu k se află un cal ce se mișcă în modul specific jocului de șah.
+Încearcă să capturezi toți pionii în 7 mișcări.
+Selectează poziția pe care dorești să se deplaseze calul.
+Fiecare mutare fie ea validă sau invalidă este contorizată.\n',X).
 
 descrieCamera(4,cameraW,X):-
     atom_concat('Te afli în camera Dianei.\n','\nLa nord se află camera Mariei.
@@ -429,7 +461,9 @@ La nord se află Biroul \n',
     atom_concat(T4,'La vest e camera de zi.\n',T5),
     atom_concat(T5,'La sud e cameraX.\n\n',T6),
     atom_concat(T6,'Poți juca un joc: sliding 8.\n',T3),
-    atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul sliding.\n',X).
+    atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul sliding.\n
+Mută pozițiile în ordine crescătoare \nDoar 0 are dreptul de a se mișca.
+Direcțiile de deplasare sunt: L-stânga, R-dreapta,U-sus și D-jos.\n',X).
 
 descrieCamera(4,debara,X):-
     atom_concat('','Te afli in debara. \n
@@ -466,7 +500,9 @@ La nord este camera lui Bogdan.\n',
 'La vest se află camera lui Mihai.
 La sud se află camera de oaspeti.\n
 Poți juca Sudoku\n',T3),
-atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul sudoku.\n',X).  
+atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul sudoku.
+Rezolvă această problemă conform regulilor clasice de sudoku!
+Nu trebuie să existe duplicate pe linii coloane sau în pătratele de 3X3 delimitate.\n',X).  
 
 descrieCamera(4,cameraEN,X):-
     atom_concat('Te afli în cameraY.\n',
@@ -514,7 +550,7 @@ textStart(Textinitial):- atom_concat('','
                               *Butonul S - direcția Sud.
                               *Butonul E - direcția Est.
                               *Butonul W - direcția Vest.
-                           Ai grijă de energi și sănătatea ta.
+                           Ai grijă de energia și sănătatea ta.
                            Alege dificultatea dorită (usor, mediu, dificil, imposibil).
                             ',Textinitial).
 

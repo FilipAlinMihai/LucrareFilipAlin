@@ -59,7 +59,8 @@ run:-
     send(Text2, font, font(times, bold, 17)),
     send(Text2, colour, orange),
     send(F2, display, Text2, point(200, 50)),
-    new(Text3, text('Energie: 0\nViata: 100')),  
+
+    new(Text3, text('Energie: 0\nViata: 100\nLanterna: 0')),  
     send(Text3, colour, orange),
     send(Text3, font, font(times, bold, 17)),
     send(K, display, Text3, point(5, 5)),   
@@ -278,11 +279,19 @@ modificareTextPrezentat(F,R):-
         atom_concat('Energie: ',En,X),
         atom_concat(X,'\nViata: ',X1),
         atom_concat(X1,Viata,X2),
-        new(T2,text(X2)),
+        atom_concat(X2,'\nLanterna: ',X22),
+        generareUL(UL),
+        atom_concat(X22,UL,X222),
+        new(T2,text(X222)),
         send(T2, colour, orange),
         send(T2, font, font(times, bold, 17)),
         send(Stat, display, T2, point(5, 5)),
         inoireMesaj(R).
+
+generareUL(UL):-
+        locatieObiect(lanterna,jucator)->
+        utilizareLanterna(UL),!;
+        UL is 0,!.
 
 modificareTextPrezentat2(F,R):-
         send(F, clear),

@@ -97,11 +97,11 @@ mutare(P,T2):-
 
 scrieRecompensaEgalitate(Directie,T31):-
     Directie = w ->
-    atom_concat('','Egalitate.La vest se afla o camera periculoasa.\nEvită această direcție!!\n',T31),!;
+    atom_concat('','Egalitate. La vest se află o cameră periculoasă.\nEvită această direcție!!\n',T31),!;
     Directie = s ->
-    atom_concat('','Egalitate.La sud se afla o camera periculoasa.\nEvită această direcție!!\n',T31),!;
+    atom_concat('','Egalitate. La sud se află o cameră periculoasă.\nEvită această direcție!!\n',T31),!;
     Directie = n ->
-    atom_concat('','Egalitate.La nord se afla o camera periculoasa.\nEvită această direcție!!\n',T31),!.
+    atom_concat('','Egalitate. La nord se află o cameră periculoasă.\nEvită această direcție!!\n',T31),!.
 
 scrieRecompensaVictorie(Directie1,Directie2,T31):-
     Directie1 = w, Directie2 = n ->

@@ -14,10 +14,11 @@ stariCandidate([]).
 stariParcurse([]).
 solutie([]).
 
-mutarile(X,ListaMutari,SR2):-
+mutarile(X,ListaMutari,SR2,SMutare):-
         retract(listaCurenta(_)),
         assert(listaCurenta(X)),
-        bagof(R, mutareUrmatoare(R), ListaMutari),
+        opuse(SMutare,OPSMutare),
+        bagof(R, mutareUrmatoare(R,OPSMutare), ListaMutari),
         semneRecente(SR),
         reverse(SR,SR2),
         retract(semneRecente(_)),
@@ -44,7 +45,14 @@ mutare(n,[X|T],[X|R]):-mutare(n,T,R),!.
 
 semneRecente([]).
 
-mutareUrmatoare(R1):-
+opuse(e,w).
+opuse(w,e).
+opuse(s,n).
+opuse(n,s).
+opuse(a,a).
+
+mutareUrmatoare(R1,SMutare):-
+        SMutare \= e,
         listaCurenta(X),
         %pozitiiE(E),
         pozitieInStare(0,X,R),
@@ -55,7 +63,8 @@ mutareUrmatoare(R1):-
         assert(semneRecente([e|SR])).
 
 
-mutareUrmatoare(R1):-
+mutareUrmatoare(R1,SMutare):-
+        SMutare \= w,
         listaCurenta(X),
         %pozitiiW(W),
         pozitieInStare(0,X,R),
@@ -65,7 +74,8 @@ mutareUrmatoare(R1):-
         retract(semneRecente(_)),
         assert(semneRecente([w|SR])).
 
-mutareUrmatoare(R1):-
+mutareUrmatoare(R1,SMutare):-
+        SMutare \= n,
         listaCurenta(X),
         %pozitiiN(N),
         pozitieInStare(0,X,R),
@@ -75,7 +85,8 @@ mutareUrmatoare(R1):-
         retract(semneRecente(_)),
         assert(semneRecente([n|SR])).
 
-mutareUrmatoare(R1):-
+mutareUrmatoare(R1,SMutare):-
+        SMutare \= s,
         listaCurenta(X),
         %pozitiiS(S),
         pozitieInStare(0,X,R),
@@ -123,12 +134,12 @@ startAstar([8,7,0,4,3,6,5,2,1],[w,s,e,s ]):-!.
 startAstar([8,7,6,4,3,1,5,2,0],[e,n,n,w]):-!.
 startAstar(X,Sol):-
         start_timerA(),
-        astar(X,0),
+        astar(X,0,a),
         solutie(Sol),
         retract(statusCautare(_)),
         assert(statusCautare(desfasurare)),!.
 
-astar(_,_):-
+astar(_,_,_):-
         statusCautare(esuata),
         retract(solutie(_)),
         assert(solutie(erorr)),
@@ -150,14 +161,14 @@ astar(_,_):-
         %retract(stariParcurse(_)),
         %assert(stariParcurse([])),!.
 
-astar(X,_):-
+astar(X,_,_):-
         statusCautare(desfasurare),
         egaleAstar(X,[0,1,2,3,4,5,6,7,8]),
         extrageDate(Parinte,Semn,ListaRamasa),
         construireCale(Parinte,ListaRamasa,Semne),
         reverse(Semne,Semne2),
         append(Semne2,[Semn],SP),
-        %write(SP),
+        %write(LSC),
         retract(solutie(_)),
         assert(solutie(SP)),
         retract(miscarileEfectuate(_)),
@@ -168,9 +179,9 @@ astar(X,_):-
         assert(stariParcurse([])),!.
 
 
-astar(X,I):-
+astar(X,I,SMutare):-
         statusCautare(desfasurare),
-        determinareStariNoi(X,I,ListaStariDerivate),
+        determinareStariNoi(X,I,ListaStariDerivate,SMutare),
         completareStariCandidate(ListaStariDerivate,StariCandidate),
         predsort(comparator,StariCandidate,[[StarePreferentiala,CostCale,Semn,Parinte,ValoarePreferentiala]|_]),
         miscarileEfectuate(ME),
@@ -182,18 +193,19 @@ astar(X,I):-
         stariParcurse(SP),
         retract(stariParcurse(_)),
         assert(stariParcurse([[StarePreferentiala,CostCale,Semn,Parinte,ValoarePreferentiala]|SP])),
-        astar(StarePreferentiala,CostCale),!.
+        astar(StarePreferentiala,CostCale,Semn),!.
 
 
 
 
-determinareStariNoi(X,I,ListaStariDerivate):-
-                mutarile(X,ListaMutari,ListaSemne),
+determinareStariNoi(X,I,ListaStariDerivate,SMutare):-
+                mutarile(X,ListaMutari,ListaSemne,SMutare),
                 construirePerechi(X,I,ListaMutari,ListaSemne,ListaStariDerivate).
 
 construirePerechi(_,_,[],[],[]).
-construirePerechi(Parinte,I,[Stare|Stari],[Semn|Semne],[[Stare,I+1,Semn,Parinte,Valoare]|Perechi]):-
+construirePerechi(Parinte,I,[Stare|Stari],[Semn|Semne],[[Stare,CostCale,Semn,Parinte,Valoare]|Perechi]):-
                 euristica(Stare,Valoare),
+                CostCale is I + 1,
                 construirePerechi(Parinte,I,Stari,Semne,Perechi),!.
 
 %completareStariCandidate(_,StariCandidate):-
@@ -201,12 +213,13 @@ construirePerechi(Parinte,I,[Stare|Stari],[Semn|Semne],[[Stare,I+1,Semn,Parinte,
                 %length(StariCandidate,L),
                 %L > 1000,!.
 
-completareStariCandidate([[_,CostCale,_,_,_]|ListaStariDerivate],StariCandidate):-
+completareStariCandidate([[_,CostCale,_,_,_]|_],StariCandidate):-
                 CostCale >  31,
-                completareStariCandidate(ListaStariDerivate,StariCandidate),!.
+                stariCandidate(StariCandidate),!.
 
 
 completareStariCandidate([],StariCandidate):-stariCandidate(StariCandidate).
+
 completareStariCandidate([Stare|ListaStariDerivate],[Stare|StariCandidate]):-
                 completareStariCandidate(ListaStariDerivate,StariCandidate),
                 \+ contine(StariCandidate,Stare,_),
@@ -229,8 +242,8 @@ contine([_|T],G,V):-contine(T,G,V).
 
 eliminareDuplicat(_,[],[]).
 eliminareDuplicat([Lista,_,_,_,_],[[Lista,_,_,_,_]|StariCandidate],StariCandidate):-!.
-eliminareDuplicat([Lista,CostCale,Semn,Parinte,Valoare],[Stare|StariCandidate],[Stare|StariRamase]):-
-                eliminareDuplicat([Lista,CostCale,Semn,Parinte,Valoare],StariCandidate,StariRamase),!.
+eliminareDuplicat(X,[Stare|StariCandidate],[Stare|StariRamase]):-
+                eliminareDuplicat(X,StariCandidate,StariRamase),!.
 
 construireCale(_,[],[]).
 construireCale(ParintePrimit,[[ParintePrimit,_,Semn,Parinte,_]|StariRamase],[Semn|Semne]):-
@@ -251,7 +264,7 @@ start_timerA() :-
     thread_create(timer_threadA(), _, [detached(true)]).
 
 timer_threadA() :-
-    sleep(50),
+    sleep(5),
     (   true
     ->  call(stopAstar)
     ;   true
