@@ -68,7 +68,7 @@ completare2([A,B,C,D,E,F,G,H,I],R):-
 
 verificare2(_,0,_,0).
 verificare2(0,_,_,0).
-verificare2(A,B,L,4):-
+verificare2(A,B,L,16):-
                 A > B,
                 coloana(A,L),
                 coloana(B,L),!.
@@ -98,7 +98,7 @@ completare([A,B,C,D,E,F,G,H,I],R):-
 
 verificare(_,0,_,0):-!.
 verificare(0,_,_,0):-!.
-verificare(A,B,L,4):-
+verificare(A,B,L,16):-
                 A > B,
                 linie(A,L),
                 linie(B,L),!.

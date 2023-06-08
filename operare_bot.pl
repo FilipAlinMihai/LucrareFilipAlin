@@ -203,9 +203,9 @@ Pentru prevenirea acestei situații este recomandată câștigarea mini jocurilo
 Acestea acordă recompense precum punctele de energie.').
 
 intrebare([nu, ma, pot, misca, naviga, harta,blocat, este, permisa,interzisa,restrictie, incerc],
-'Exista mai multe motive pentru care utilizatorul nu poate naviga harta.
-Este posibil ca utilizatorul sa nu fi selectat un nivel de dificultate.
-O alta posibilitate este epuizarea punctelor de energie sau viata.').
+'Există mai multe motive pentru care utilizatorul nu poate naviga harta.
+Este posibil ca utilizatorul să nu fi selectat un nivel de dificultate.
+O altă posibilitate este epuizarea punctelor de energie sau viață.').
 
 intrebare([cum, pot , restabili, sanatatea, viata, imbunatati,utiliza,
 utilizez, bandaje,bandaja,bandajare, am, gasit, ce , face, aplic, aplica ,bandaj ],
@@ -246,7 +246,7 @@ intrebare([comenzi, nu, necesita, argumente, nevoie, functioneaza, fara, argumen
 
 intrebare([hunter,joc,jocul,joaca],
 'Tabla de joc este umplută de pioni în 7 poziții din 9.
-Pe poziția marcata cu k se află un cal ce se mițcă în modul specific jocului de șah.
+Pe poziția marcată cu k se află un cal ce se mișcă în modul specific jocului de șah.
 Încearcă să capturezi toți pionii în 7 mișcări.
 Selectează pozițiia pe care dorești să se deplaseze calul.
 Fiecare mutare fie e validă sau invalidă este contorizată.

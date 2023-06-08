@@ -1,7 +1,7 @@
 %Incepe un mini joc logic
 incepeJoc(sliding,X):-
     jocSliding(jucat),
-    atom_concat('','Ai jucat acest joc deja',X),!.
+    atom_concat('','Ai jucat acest joc deja!',X),!.
 
 incepeJoc(sliding,X):-
     retract(statusCautare(_)),
@@ -26,7 +26,7 @@ incepeJoc(sliding,X):-
 
 incepeJoc(xsi0,X):-
     jocXsi0(jucat),
-    atom_concat('','Ai jucat acest joc deja',X),!.
+    atom_concat('','Ai jucat acest joc deja!',X),!.
 
 incepeJoc(xsi0,X):-
     locatieJucator(cameraNW),
@@ -41,7 +41,7 @@ incepeJoc(xsi0,X):-
 
 incepeJoc(dilema,X):-
     jocDilema(jucat),
-    atom_concat('','Ai jucat acest joc deja',X),!.
+    atom_concat('','Ai jucat acest joc deja!',X),!.
 
 incepeJoc(dilema,Y):-
     locatieJucator(cameraNE),
@@ -54,7 +54,7 @@ incepeJoc(dilema,Y):-
 
 incepeJoc(hunter,X):-
     jocHunter(jucat),
-    atom_concat('','Ai jucat acest joc deja',X),!.
+    atom_concat('','Ai jucat acest joc deja!',X),!.
 
 incepeJoc(hunter,X):-
     locatieJucator(cameraWW),
@@ -76,7 +76,7 @@ incepeJoc(hunter,X):-
 
 incepeJoc(foarfecahartiepiatra,X):-
     jocFoarfecahartiepiatra(jucat),
-    atom_concat('','Ai jucat acest joc deja',X),!.
+    atom_concat('','Ai jucat acest joc deja!',X),!.
 
 
 incepeJoc(foarfecahartiepiatra,X):-
@@ -90,7 +90,7 @@ incepeJoc(foarfecahartiepiatra,X):-
 
 incepeJoc(sudoku,X):-
     jocSudoku(jucat),
-    atom_concat('','Ai jucat acest joc deja',X),!.
+    atom_concat('','Ai jucat acest joc deja!',X),!.
 
 
 incepeJoc(sudoku,X1):-
@@ -113,10 +113,10 @@ incepeJoc(sudoku,X1):-
 
 
 % Jocul este restrictionat unei singure camere
-incepeJoc(sliding,X):-atom_concat('','Nu te aflii în bibliotecă!', X).
-incepeJoc(xsi0,X):-atom_concat('','Nu te aflii în camera de zi!', X).
-incepeJoc(dilema,X):-atom_concat('','Nu te aflii în camera lui Bogdan!', X).
-incepeJoc(hunter,X):-atom_concat('','Nu te aflii în camera Mariei!', X).
+incepeJoc(sliding,X):-atom_concat('','Nu te afli în bibliotecă!', X).
+incepeJoc(xsi0,X):-atom_concat('','Nu te afli în camera de zi!', X).
+incepeJoc(dilema,X):-atom_concat('','Nu te afli în camera lui Bogdan!', X).
+incepeJoc(hunter,X):-atom_concat('','Nu te afli în camera Mariei!', X).
 incepeJoc(foarfecahartiepiatra,X):-atom_concat('Nu te afli în camera lui Mihai','!', X).
 incepeJoc(sudoku,X):-atom_concat('Nu te afli în camera lui Andrei','!', X).
 

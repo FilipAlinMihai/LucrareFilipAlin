@@ -157,10 +157,10 @@ scrie_cod(X,R):-
     cod_birou(Y),
     retract(cod_birou(Y)),
     assert(cod_birou(X)),
-    atom_concat('','Cod corect',R),!.
+    atom_concat('','Cod corect!',R),!.
 
 scrie_cod(_,R):-
-    atom_concat('','Cod incorect',R),!.
+    atom_concat('','Cod incorect!',R),!.
 
 egale(X,X).
 
@@ -256,7 +256,7 @@ mananca(X,R):-
     assert(locatieObiect(X,pierdut)),
     atom_concat('Nivelul curent de energie este : ',Z,R),!.
 
-mananca(_,R):-atom_concat('Acest obiect nu este comestibil','',R),!.
+mananca(_,R):-atom_concat('Acest obiect nu este comestibil!','',R),!.
 
 % Sitautia sanatatii jucatorului se modifica in functie de pericolele pe
 % care le intalneste
@@ -381,7 +381,7 @@ mutaJucator(X,R):-
     numarPlanCasa(NRH),
     legatura(NRH,X,L,Z),
     cameraIntunecata(Z),
-    atom_concat('Este prea întuneric în această cameră.\n','Ai nevoie de o lanternă\n',R),!.
+    atom_concat('Este prea întuneric în această cameră.\n','Ai nevoie de o lanternă!\n',R),!.
 
 mutaJucator(X,R):-
     amInceput(da),

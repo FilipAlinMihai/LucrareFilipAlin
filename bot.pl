@@ -5,7 +5,7 @@
 main :-
     new(E, dialog('Raspuns')),
     new(D, dialog('Fereastra Chat')),
-    new(Window, window('Long Input Example')),
+    new(Window, window('Asistent')),
     send(Window, size, size(700, -1)),
     send(D, below, Window),
     send(E, scrollbars, both),

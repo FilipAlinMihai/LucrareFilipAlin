@@ -99,11 +99,11 @@ test2():-
 test3():-
         dificultate(dificil,_),
         energie(X),
-        egale(X,10),!.
+        egale(X,20),!.
 test4():-
         dificultate(imposibil,_),
         energie(X),
-        egale(X,5),!.
+        egale(X,10),!.
 test5():-
         dificultate(mediu,_),
         amInceput(da),!.
@@ -185,9 +185,9 @@ Atunci cand utilizatorul se afla intr-o asemena camera el este anuntat.
 Este indicat si jocul disponibil.'),
         procesareText('nu ma pot misca'),
         raspuns(R3),
-        egale(R3,'Exista mai multe motive pentru care utilizatorul nu poate naviga harta.
-Este posibil ca utilizatorul sa nu fi selectat un nivel de dificultate.
-O alta posibilitate este epuizarea punctelor de energie sau viata.'),!.
+        egale(R3,'Există mai multe motive pentru care utilizatorul nu poate naviga harta.
+Este posibil ca utilizatorul să nu fi selectat un nivel de dificultate.
+O altă posibilitate este epuizarea punctelor de energie sau viață.'),!.
 
 test14():-
         generareLitere(),
