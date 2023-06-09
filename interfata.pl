@@ -80,8 +80,8 @@ run:-
     send(Com, left, Arg),
     %send(E ,display, text(''),point(200, 10)),
     new(BTN1,button(executor, message(@prolog, taiere, Com?selection, Arg?selection,Arg2?selection, F2))),
-    new(BTN2,button(inapoi, message(@prolog, inapoi, F2))),
-    new(BTN3,button(inainte, message(@prolog, inainte, F2))),
+    new(BTN2,button('\u00EEnapoi', message(@prolog, inapoi, F2))),
+    new(BTN3,button('\u00EEainte', message(@prolog, inainte, F2))),
     new(BTN4,button(zoom, message(@prolog, zoom))),
     new(BTN5,button(reguli, message(@prolog, reguli2))),
     new(BTN6,button(harta, message(@prolog, harta,F2))),
@@ -330,8 +330,8 @@ zoom():-
         send(E, append, new(Argument,  int_item(pozitie, low := 10, high := 55)),right),
         send(E, append, new(Argument2,  int_item(valoare, low := 1, high := 9)),right),
         send(E, append, new(A,button(executor, message(@prolog, plaseaza_aux, Argument?selection,Argument2?selection,F,FSecund)))),
-        send(E, append, new(B,button(inapoi, message(@prolog, inapoi, F)))),
-        send(E, append, new(_,button(inainte, message(@prolog, inainte, F)))),
+        send(E, append, new(B,button('\u00EEnapoi', message(@prolog, inapoi, F)))),
+        send(E, append, new(_,button('\u00EEnainte', message(@prolog, inainte, F)))),
         send(E, append, new(_,button(tabla, message(@prolog, tabla, F)))),
         send(Argument, width,20),
         send(Argument2, width,20),
@@ -455,7 +455,7 @@ reguli2 :-
     send(E, scrollbars, both),
     new(Text2, text('
 ************************************************************************************
-********************************Selecteaza o categorie*********************************
+*******************************  Selecteaz\u0103 o categorie ********************************
 ************************************************************************************
 ************************************************************************************
 ************************************************************************************
@@ -482,7 +482,7 @@ reguli2 :-
     new(BT15,button(butoane,  message(@prolog, raspundeCuRegula,15, E))),
     new(BT16,button(pericole,  message(@prolog, raspundeCuRegula,16, E))),
     new(BT17,button(cronometre, message(@prolog, raspundeCuRegula,17, E))),
-    new(BT18,button(harta, message(@prolog, raspundeCuRegula,18, E))),
+    new(BT18,button('hart\u0103', message(@prolog, raspundeCuRegula,18, E))),
     
 
     row(RowAll,group,BT1,BT2,BT3),

@@ -9,12 +9,12 @@ main :-
     send(Window, size, size(700, -1)),
     send(D, below, Window),
     send(E, scrollbars, both),
-    send(D, append, new(Intrebare, text_item(in, 'Intrebare')),right),
+    send(D, append, new(Intrebare, text_item(in, '\u00EEntrebare')),right),
 
     send(D, append, button(ok, message(@prolog, print_raspuns, Intrebare?selection,E))),
     new(Text2, text('
 ************************************************************************
-***************************Introdu o intrebare**************************
+*************************** Introdu o \u00EEntrebare *************************
 ************************************************************************
 ************************************************************************
 ************************************************************************
