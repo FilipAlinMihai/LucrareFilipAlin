@@ -599,3 +599,7 @@ comenziScurtatura(R):-atom_concat('','
                             Parola   -- Afișarea literelor din parolă descoperite
                             Locatie  -- Examinarea împrejurimilor jucătorului
                             Bandajare-- Utilizarea unui bandaj pentru creșterea nivelului de viață',R).
+
+situatiePuncte(0,'Energie: 0\nViață: 100\nLanternă: 0').
+situatiePuncte(1,'\nViață: ').
+situatiePuncte(2,'\nLanternă:  ').

@@ -70,7 +70,8 @@
               verifica/3,
               reguli2/2,
               utilizareLanterna/1,
-              locatieObiect/2]).
+              locatieObiect/2,
+              situatiePuncte/2]).
 
 %:- use_module(sliding).
 :- use_module(xsi0).

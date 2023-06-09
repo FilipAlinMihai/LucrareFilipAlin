@@ -59,8 +59,8 @@ run:-
     send(Text2, font, font(times, bold, 17)),
     send(Text2, colour, orange),
     send(F2, display, Text2, point(200, 50)),
-
-    new(Text3, text('Energie: 0\nViata: 100\nLanterna: 0')),  
+    situatiePuncte(0,TextPuncte),
+    new(Text3, text(TextPuncte)),  
     send(Text3, colour, orange),
     send(Text3, font, font(times, bold, 17)),
     send(K, display, Text3, point(5, 5)),   
@@ -85,7 +85,7 @@ run:-
     new(BTN4,button(zoom, message(@prolog, zoom))),
     new(BTN5,button(reguli, message(@prolog, reguli2))),
     new(BTN6,button(harta, message(@prolog, harta,F2))),
-    new(BTNBOT,button(asiatent, message(@prolog, main))),
+    new(BTNBOT,button(asistent, message(@prolog, main))),
     row(Row,group,BTN1,BTN2,BTN3),
     row(Row1,group,BTN4,BTN5,BTN6),
     rowOfOne(Row2,group,BTNBOT),
@@ -276,10 +276,12 @@ modificareTextPrezentat(F,R):-
         send(Stat, clear),
         energie(En),
         viata(Viata),
+        situatiePuncte(1,TP1),
+        situatiePuncte(2,TP2),
         atom_concat('Energie: ',En,X),
-        atom_concat(X,'\nViata: ',X1),
+        atom_concat(X,TP1,X1),
         atom_concat(X1,Viata,X2),
-        atom_concat(X2,'\nLanterna: ',X22),
+        atom_concat(X2,TP2,X22),
         generareUL(UL),
         atom_concat(X22,UL,X222),
         new(T2,text(X222)),
@@ -452,13 +454,13 @@ reguli2 :-
     send(D, below, Window),
     send(E, scrollbars, both),
     new(Text2, text('
-****************************************************************************
-****************************Selecteaza o categorie****************************
-****************************************************************************
-****************************************************************************
-****************************************************************************
-****************************************************************************
-****************************************************************************')),
+************************************************************************************
+********************************Selecteaza o categorie*********************************
+************************************************************************************
+************************************************************************************
+************************************************************************************
+************************************************************************************
+************************************************************************************')),
     send(Text2, font, font(times, bold, 17)),
     send(Text2, colour, orange),
     send(E, display, Text2, point(10, 10)), 
@@ -480,7 +482,7 @@ reguli2 :-
     new(BT15,button(butoane,  message(@prolog, raspundeCuRegula,15, E))),
     new(BT16,button(pericole,  message(@prolog, raspundeCuRegula,16, E))),
     new(BT17,button(cronometre, message(@prolog, raspundeCuRegula,17, E))),
-    new(BT18,button(harti, message(@prolog, raspundeCuRegula,18, E))),
+    new(BT18,button(harta, message(@prolog, raspundeCuRegula,18, E))),
     
 
     row(RowAll,group,BT1,BT2,BT3),
