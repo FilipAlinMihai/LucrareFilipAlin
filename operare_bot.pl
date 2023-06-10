@@ -271,6 +271,10 @@ Când ai luat decizia finală execută comanda Decizie cu unul din argumentele r
 intrebare([foarfecahartiepiatra,foarfeca,hartie,piatra,joc,jocul,joaca,joacă],
 'Se joacă trei runde de foarfeca hartie piatra.
 Jucătorul poate să își modiifce alegerea înaintea oricărei dintre cele 3 runde.
+După start utilizează comanda Foarfecahartiepiatra cu unul din argumentele:
+        *piatră
+        *foarfecă
+        *hârtie
 La final dacă jucătorul a câștigat el primește un punct de energie.').
 
 intrebare([sudoku,joc,jocul,joaca,joacă],

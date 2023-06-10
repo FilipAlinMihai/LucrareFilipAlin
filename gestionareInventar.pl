@@ -1,9 +1,14 @@
 scrieObiecte([],'--------------------------\nAcestea sunt obiectele descoperite.\n').
+scrieObiecte([mar|T],Y):-
+    atom_concat('--------------------------\n','măr',T1),
+    atom_concat(T1,'\n',T2),
+    scrieObiecte(T,T3),
+    atom_concat(T2,T3,Y),!.
 scrieObiecte([L|T],Y):-
     atom_concat('--------------------------\n',L,T1),
     atom_concat(T1,'\n',T2),
     scrieObiecte(T,T3),
-    atom_concat(T2,T3,Y).
+    atom_concat(T2,T3,Y),!.
 
 inventar_curent(Obiecte):-bagof(Y,locatieObiect(Y,jucator),Obiecte),!.
 inventar_curent([]).

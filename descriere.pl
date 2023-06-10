@@ -27,7 +27,7 @@ Ambii suspecți primesc aceași ofertă.
 Dacă unul dintre suspecți nu cooperează dar este trădat de complicele său acesta primește o pedeapsă mult mai lungă.
 Dacă ambii suspecți se acuză reciproc procurorii vor ști că au fost complici și astfel sentința se împarte.
 Ce decizie ai lua în locul unui deținut în aceste condiții?
-Când ai luat decizia finală execută comanda Decizie cu unul din argumentele recunoaste sau neaga.', X),!.
+Când ai luat decizia finală execută comanda Decizie cu unul din argumentele recunoaște sau neagă.', X),!.
 
 descrie(foarfecahartiepiatra,X):-
         atom_concat('','Joacă foarfecă hârtie piatră împotriva calculatorului!\n
@@ -68,10 +68,10 @@ descrie(lanterna,X):-
     atom_concat('','Folosești-o pentru a lumina camerele inacesibile\n',X).
    
 descrie(mar,X):-
-    atom_concat('','Un Măr.Consumăl pentr a primi energie\n',X).
+    atom_concat('','Un Măr. Consumăl pentr a primi energie\n',X).
     
 descrie(biscuit,X):-
-    atom_concat('','Un biscuit.Consumăl pentr a primi energie\n',X).
+    atom_concat('','Un biscuit. Consumăl pentr a primi energie\n',X).
 
 % Este descrisa camera in care se afla jucatorul si imprejurimile
 % acesteia
@@ -104,9 +104,9 @@ La nord este cameraY.\n
 Poți juca un joc de foarfecă hârtie piatră împotriva calculatorului.\n',T3),
 atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul foarfecahartiepiatra.
 După start utilizează comanda Foarfecahartiepiatra cu unul din argumentele:
-        *piatra
-        *foarfeca
-        *hartie
+        *piatră
+        *foarfecă
+        *hârtie
 Jocul are trei runde. Pentru fiecare rundă poți modifica alegerea.\n',X).
     
 
@@ -209,9 +209,9 @@ La nord este cameraX.\n
 Poți juca un joc de foarfecă hârtie piatră împotriva calculatorului.\n',T3),
 atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul foarfecahartiepiatra.
 După start utilizează comanda Foarfecahartiepiatra cu unul din argumentele:
-        *piatra
-        *foarfeca
-        *hartie
+        *piatră
+        *foarfecă
+        *hârtie
 Jocul are trei runde. Pentru fiecare rundă poți modifica alegerea.\n',X).
 
 descrieCamera(2,cameraEE,X):-
@@ -322,9 +322,9 @@ La est este camera lui Andrei.\n',
 Poți juca un joc de foarfecă hârtie piatră împotriva calculatorului.\n',T3),
 atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul foarfecahartiepiatra.
 După start utilizează comanda Foarfecahartiepiatra cu unul din argumentele:
-        *piatra
-        *foarfeca
-        *hartie
+        *piatră
+        *foarfecă
+        *hârtie
 Jocul are trei runde. Pentru fiecare rundă poți modifica alegerea.\n',X).
 
 descrieCamera(3,cameraEE,X):-
@@ -489,9 +489,9 @@ La sun este cameraY.\n
 Poți juca un joc de foarfecă hârtie piatră împotriva calculatorului.\n',T3),
 atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul foarfecahartiepiatra.
 După start utilizează comanda Foarfecahartiepiatra cu unul din argumentele:
-        *piatra
-        *foarfeca
-        *hartie
+        *piatră
+        *foarfecă
+        *hârtie
 Jocul are trei runde. Pentru fiecare rundă poți modifica alegerea.\n',X).
 
 descrieCamera(4,cameraEE,X):-

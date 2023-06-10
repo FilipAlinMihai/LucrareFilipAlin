@@ -68,10 +68,10 @@ run:-
     send(F2, scrollbars, both),
     send(F2, size, size(425,250)),
     send(E, append, new(Com,  menu(department, cycle))),
-    send_list(Com, append, [nivel,energie,inventar,joc,pastreaza,
-    inspecteaza,cod,mananca,restart,salveaza,incarca,clasament,decizie,
-    optiuni,sudoku,viata,ajutor,arunca,foarfecahartiepiatra,
-    ghicitoare,parola,locatie,bandajare,repara]),
+    send_list(Com, append, [nivel,energie,inventar,joc,'P\u0103streaz\u0103',
+    'Inspecteaz\u0103',cod,'M\u0103n\u00E2nc\u0103',restart,'Salveaz\u0103','\u00CEncarc\u0103',clasament,decizie,
+    'Op\u021Biuni',sudoku,'Via\u021B\u0103',ajutor,'Arunc\u0103','Foarfec\u0103-H\u00E2rtie-Piatr\u0103',
+    ghicitoare,parola,'Loca\u021Bie',bandajare,'Repar\u0103']),
     send(E, append, new(Arg, text_item(in, 'Argument1')),right),
     send(E, append, new(Arg2, text_item(in, 'Argument2')),right),
     send(Com, width,20),
@@ -137,7 +137,8 @@ taiere(X,A1,A2,F):-
         trim(X, X1),
         trim(A1, A11),
         trim(A2, A22),
-        executor(X1,A11,A22,F),!.
+        transforma(A11,A111),
+        executor(X1,A111,A22,F),!.
 
 mutareInterfata(X,F):-
         seJoaca(Joc),
@@ -507,3 +508,14 @@ reguli2 :-
 raspundeCuRegula(N,E):-
         reguli2(N,R),
         modificareTextPrezentat3(E,R),!.
+
+transforma('x\u0219i0',xsi0):-!.
+transforma('recunoa\u0219te',recunoaste):-!.
+transforma('u\u0219or',usor):-!.
+transforma('neag\u0103',neaga):-!.
+transforma('m\u0103r',mar):-!.
+transforma('piatr\u0103',piatra):-!.
+transforma('foarfec\u0103',foarfeca):-!.
+transforma('h\u00E2rtie',hartie):-!.
+transforma('foarfec\u0103h\u00E2rtiepiatr\u0103',foarfecahartiepiatra):-!.
+transforma(X,X):-!.

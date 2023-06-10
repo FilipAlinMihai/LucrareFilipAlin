@@ -23,7 +23,7 @@ executor(X,A1,A2,F):-
         atom_concat(R8,R10,R11),
         modificareTextPrezentat(F,R11),
         !;
-        apartine(X,[pastreaza,ridica,colecteaza])  ->
+        apartine(X,[pastreaza,păstrează,'P\u0103streaz\u0103',ridica,colecteaza])  ->
         pastreaza(A1,R12),
         modificareTextPrezentat(F,R12),
         !;
@@ -36,19 +36,19 @@ executor(X,A1,A2,F):-
         incepeJoc(A1,R3),
         modificareTextPrezentat(F,R3),
         !;
-        apartine(X,[mananca,consuma])->
+        apartine(X,['M\u0103n\u00E2nc\u0103',mananca,consuma])->
         mananca(A1,R31),
         modificareTextPrezentat(F,R31),
         !;
-        X = foarfecahartiepiatra ->
+        X = 'Foarfec\u0103-H\u00E2rtie-Piatr\u0103' ->
         alege(A1,R),
         modificareTextPrezentat(F,R),
         !;
-        apartine(X,[inspecteaza,citeste,analizeaza]) ->
+        apartine(X,['Inspecteaz\u0103',inspecteaza,citeste,analizeaza]) ->
         inspecteaza(A1,R3),
         modificareTextPrezentat(F,R3),
         !;
-        apartine(X,[salveaza,salvare,save]) ->
+        apartine(X,['Salveaz\u0103',salveaza,salvare,save]) ->
         salveaza(A1),
         atom_concat("Joc salvat!\n",'',R),
         modificareTextPrezentat(F,R),
@@ -57,7 +57,7 @@ executor(X,A1,A2,F):-
         afisareClasament(A1,R),
         modificareTextPrezentat(F,R),
         !;
-        X = incarca, incarca(A1)->
+        X = '\u00CEncarc\u0103', incarca(A1)->
         locatieJucator(Juc),
         numarPlanCasa(NRPC),
         descrieCamera(NRPC,Juc,R1),
@@ -65,12 +65,12 @@ executor(X,A1,A2,F):-
         atom_concat(M1,R1,R),
         modificareTextPrezentat(F,R),
         !;
-        X = incarca, \+ incarca(A1) ->
+        X = '\u00CEncarc\u0103', \+ incarca(A1) ->
         eroareIncarcare(E1),
         atom_concat(E1,'',R),
         modificareTextPrezentat(F,R),
         !;
-        X = optiuni ->
+        X = 'Op\u021Biuni' ->
         directory_files('C:\\Users\\lenovo\\Documents\\Prolog\\LucrareFilipAlin\\salvari',[_,_|Fisiere]),
         scriefisiere(Fisiere,Scriere),
         atom_concat("Versiuni salvate!\n",Scriere,R),
@@ -82,7 +82,7 @@ executor(X,A1,A2,F):-
         sudoku(A11,A21,R),
         modificareTextPrezentat(F,R),
         !;
-        X = viata ->
+        X = 'Via\u021B\u0103' ->
         viata(R31),
         mesajViata(M2),
         atom_concat(M2,R31,R312),
@@ -105,7 +105,7 @@ executor(X,A1,A2,F):-
         restart(R),
         modificareTextPrezentat(F,R),
         !;
-        apartine(X,[arunca,renunta,elibereaza,drop]) ->
+        apartine(X,['Arunc\u0103',arunca,renunta,elibereaza,drop]) ->
         renunta(A1,R),
         modificareTextPrezentat(F,R),
         !;
@@ -124,11 +124,11 @@ executor(X,A1,A2,F):-
         bandajeaza(R),
         modificareTextPrezentat(F,R)
         ,!;
-        X = repara, A1 = lanterna ->
+        X = 'Repar\u0103', A1 = lanterna ->
         repara(R),
         modificareTextPrezentat(F,R)
         ,!;
-        X = locatie ->
+        X = 'Loca\u021Bie' ->
         locatieJucator(Loc),
         numarPlanCasa(NRPC),
         descrieCamera(NRPC,Loc,R1),
