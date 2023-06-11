@@ -19,6 +19,7 @@ stopD():-
     assert(stare(oprit)).
 
 decizie(recunoaste,R1,X):-
+    jocDilema(jucat),
     stare(pornit),
     coin(R),
     decizieSistem(R,L),
@@ -27,6 +28,7 @@ decizie(recunoaste,R1,X):-
     stopD(),!.
 
 decizie(neaga,R1,X):-
+    jocDilema(jucat),
     stare(pornit),
     coin(R),
     decizieSistem(R,L),
@@ -34,7 +36,7 @@ decizie(neaga,R1,X):-
     afisareSentinta(X,R1),
     stopD(),!.
 
-decizie(_,R,_):-atom_concat('','Jocul nu a început!\n',R).
+decizie(_,R,10):-atom_concat('','Jocul nu a început!\nSau răspunsul e incorect!\n',R),!.
 
 coin(R):-random(0,2,R).
 

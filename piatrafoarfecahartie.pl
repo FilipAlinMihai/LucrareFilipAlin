@@ -42,7 +42,7 @@ alege(X,Z2):-
     atom_concat(Z,V,Z2),!.
 
 alege(_,Z):-
-    atom_concat('Jocul nu a început\n','',Z),!.
+    atom_concat('Jocul nu a început sau răspunsul e invalid.\n','',Z),!.
 
 
 alegereSistem(R):-

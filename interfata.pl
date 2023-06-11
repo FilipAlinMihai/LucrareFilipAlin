@@ -196,6 +196,8 @@ mutareSliding(X,F):-
 
 
 aduagaPuncte(X,Y):-
+        X = 10 ->
+        atom_concat('','',Y),!;
         X = 0 ->
         adaugaEnergie(4,_),
         atom_concat('','Ai primit 4 puncte de energie!\n',Y),!;
@@ -517,5 +519,10 @@ transforma('m\u0103r',mar):-!.
 transforma('piatr\u0103',piatra):-!.
 transforma('foarfec\u0103',foarfeca):-!.
 transforma('h\u00E2rtie',hartie):-!.
+transforma('fhp',foarfecahartiepiatra):-!.
+transforma('nou\u0103','noua'):-!.
+transforma('hart\u0103','harta'):-!.
+transforma('lumin\u0103','lumina'):-!.
+transforma('\u00EEntuneric','intuneric'):-!.
 transforma('foarfec\u0103h\u00E2rtiepiatr\u0103',foarfecahartiepiatra):-!.
 transforma(X,X):-!.

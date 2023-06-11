@@ -1,5 +1,7 @@
 restart(X):-
         golire(),
+        stop(),
+        stopJ(),
         retract(ajutor2(_)),
         assert(ajutor2(disponibil)),
         retract(statusCautare(_)),

@@ -10,8 +10,8 @@ statusH(oprit).
 
 startH():-
     retract(statusH(_)),
-    stareNoua(),
-    assert(statusH(pornit)).
+    assert(statusH(pornit)),
+    stareNoua().
 
 stopH():-
     retract(statusH(_)),
@@ -153,6 +153,6 @@ construire(A,I,[1|T]):-
 
 
 numarNou(A):-
-    random(1,10,A),
     repeat,
+    random(1,10,A),
     A =\= 5,!.
