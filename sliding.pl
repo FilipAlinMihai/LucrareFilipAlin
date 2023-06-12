@@ -101,7 +101,7 @@ ajutor(R):-
       lista(L),
       startAstar(L,RR),
       egale(RR,erorr),
-      atom_concat('Imi pare rau nu te pot ajuta!','',R),
+      atom_concat('Îmi pare rău nu te pot ajuta!','',R),
       retract(ajutor2(_)),
       assert(ajutor2(indisponibil)),!.
 

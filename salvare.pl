@@ -106,11 +106,11 @@ salveaza(Fisier):-
 
 
 incarca(Fisier):-
-        restart(_),
         golire(),
         atom_concat('LucrareFilipAlin\\salvari\\',Fisier,Cale),
         atom_concat(Cale,'.txt',Cale1),
         exists_file(Cale1),
+        restart(_),
         see(Cale1),
         read(A),
         read(B),

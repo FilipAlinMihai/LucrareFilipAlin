@@ -75,17 +75,17 @@ intrebare([cum,pot,  comanda, comenzi, control,dificultate,dificultatea, nivel,
  greutate,usurinta, intensitate, argument ],
 'Pentru selectarea nivelului de dificultate se utilizează:
     comanda: Nivel cu argumentul : nivel dorit
-    sunt disponibile 4 opțiuni: usor, mediu, dificil și imposibil.').
+    sunt disponibile 4 opțiuni: ușor, mediu, dificil și imposibil.').
 
 intrebare([cum,pot, comanda, comenzi, control, argument,inventar,obiect,
 pastreaza,pastrez,ridica, pastra, plasa, colecta, colecteaza ],
 'Pentru plasarea unui obiect în inventar se utilizează:
-    comanda: Pastreaza cu argumentul: obiect dorit').
+    comanda: Pastrează cu argumentul: obiect dorit').
 
 intrebare([cum, pot, comanda, comenzi, control, argument,inventar,obiect,
 inspecteaza,inspecta, analizare, analiza, analizat, inspectie, descriere ],
 'Inspectează un obiect descoperit cu comanda
-    comanda: Inspecteaza cu argumentul: obiect dorit').
+    comanda: Inspectează cu argumentul: obiect dorit').
 
 intrebare([cum, pot, comanda, comenzi, control, argument,cod,scriere,scrie, introdu,
 introducere, introduce, completa,completare, completeaza ],
@@ -100,14 +100,14 @@ sudoku, joc,mutare, juca, argumente ],
 intrebare([cum, pot, comanda, comenzi, control, argument, repara, lanterna,
  fara, energie, ramane, consum ,consumata, consumare, liminat, utilizare,baterie,a ],
 'În cazul în care lanterna rămâne fără energie se utilizează: 
-    comanda: Repara cu argumentul: lanterna
+    comanda: Repară cu argumentul: lanterna
 Este necesara și o baterie.').
 
 intrebare([cum, pot, comanda, comenzi, control, argument,arunca, aruncare, renunta,
  inlaturare, golire, goli, eliberare,elibera,spatiu,inventar],
 'Există o limită de 6 obiecte pe care jucătorul le poate căra la un moment dat.
 Pentru renunțarea la un obiect din inventar se utilizează:
-    comanda: Arunca cu argumentul: obiect dorit').
+    comanda: Aruncă cu argumentul: obiect dorit').
 
 intrebare([poveste,plot,continut,despre,descriere,descriemi,
 descrie,descri, povesteste,jocul,explica,spunemi,scop,scopul,care,tinta],
@@ -127,32 +127,32 @@ Accesul în unele canere este restricționat.').
 intrebare([mini, jocuri, probleme , logice , provocari, puncte, extra ,recompense,
 ce, jocuri, sunt, disponibile, lista, disponibil],
 'Vei avea posibilitatea de a juca mini jocuri. Dacă reușești să câștigi vei primi recompense. 
-Sunt disponibile jocurile: x si 0, sudoku, sliding, foarfeca hartie piatra, hunter și dilema.
+Sunt disponibile jocurile: x și 0, sudoku, sliding, foarfecă hârtie piatră, hunter și dilema.
 Mini jocurile nu produc niciodată aceași variantă a jocului. ').
 
 intrebare([capcane, pericol, primejdie, pierdere, pierd, capcana, vitalitate],
 'Unele camere sunt periculoase. Ele conțin capcane și pot pune în pericol viața jucătorului.
-Prin comanda viața poți vedea care este starea ta curentă.').
+Prin comanda Viațp poți vedea care este starea ta curentă.').
 
 intrebare([dificultate,dificultatea, stabilire , stabilita, aleasa, 
 nivel, nivele, dicil, selectez, selectare, alege, alegere],
 'Inițial jucătorul trebuie să selecteze dificultatea.
-Există 4 nivele disponibile usor, mediu, dificil și imposibil. 
-Dificultatea e selectată prin comanda nivel cu un argument, acesta fiind nivelul ales.').
+Există 4 nivele disponibile ușor, mediu, dificil și imposibil. 
+Dificultatea e selectată prin comanda Nivel cu un argument, acesta fiind nivelul ales.').
 
 intrebare([restart, reincepe, reincepere, incepere, incercare, nou, noua , am, pierdut, murit, rejucare, rejuca],
-'Cu ajutorul comenzii restart jucătorul poate reseta toate elementele jocului
+'Cu ajutorul comenzii Restart jucătorul poate reseta toate elementele jocului
  ce au fost modificate, la starea inițială.').
 
 intrebare([salvare, retinere, mentine, salveaza, salva, incarcare,
  continuare,optiuni, pastrace, intrerupere, intrerupe,salvez],
 'Utilizatorul are posibilitatea de a salva progresul realizat prin comanda salvează.
 Aceasta reține într-un fișier (al cărui nume este introdus ca argument) toate datele rundei curente.
-Pentru a încărca un joc salvat  jucăorul utilizează comanda incarca urmată de numele fișierului dorit.
-Prin comanda opțiuni sunt prezentate variantele jocului ce au fost salvate și pot fi încărcate.').
+Pentru a încărca un joc salvat  jucăorul utilizează comanda Încarcă urmată de numele fișierului dorit.
+Prin comanda Opțiuni sunt prezentate variantele jocului ce au fost salvate și pot fi încărcate.').
 
 intrebare([clasament, concurs, competitie, ordine, ordonare,rezultate, castigare, castigator],
-'Este creat cate un clasament pentru fiecare nivel de dificultate.
+'Este creat câte un clasament pentru fiecare nivel de dificultate.
 După ce jocul a fost finalizat cu succes jucătorul introduce numele cu care va apărea în clasament.
 Clasamentul se bazează pe numărul de puncte de energie cu care jucatorul a terminat jocul.
 Cu cât numărul este mai mare cu atat jucătorul va fi mai sus în clasament.').
@@ -161,7 +161,7 @@ intrebare([limita, timp,restrictie,limitare, cronometru, cronometrat, cronometra
  finalifate,finalizeaza, finalizez, finalizare],
 'Trei dintre mini jocurile disponibile sunt cronometrate.
 Ele trebuie să fie rezolvate într-un număr prestabilit de secunde.
-După scurgerea timpului jocurile nu mai accepta mutări.
+După scurgerea timpului jocurile nu mai acceptă mutări.
 La fiecare mutare nouă se va specifica câte secunde au mai rămas până la închiderea jocului.
 Timpul pus la dispoziți jucătorului e calculat în funcție de joc și de nivelul de dificultate ales.').
 
@@ -170,19 +170,19 @@ intrebare([arunca, inventar,inventarul, plin, obiecte, limita, maxim, numar, pas
 Ele sunt obiecte comestibile, unelte utile precum lanterna sau bandaje sau 
 obiecte ce conțin indicii precum litere ale unor parole.
 Există o limită de obiecte pe care jucătorul le poate căra la un moment dat.
-Dacă inventarul este plin jucătorul poate scăpa de obiectele mai puțin importante prin comanda arunca.').
+Dacă inventarul este plin jucătorul poate scăpa de obiectele mai puțin importante prin comanda Aruncă.').
 
 
 intrebare([obiecte, gasite, obiect, mananca, consuma, comestibile,unelte , pastreaza, mar, bisciut],
-'Obiectele sunt plasate în inventar cu comanda pastreaza. 
-Obiectele comestibile pot fi consumate prin comanda mananca. ').
+'Obiectele sunt plasate în inventar cu comanda Păstrează. 
+Obiectele comestibile pot fi consumate prin comanda Mănâncă. ').
 
 intrebare([mini, joc , problema, logica, reguli, provocare  ],
-'Atunci când se dorește începerea unui joc se utilizează comanda joc urmată de jocul respectiv ca argument. 
+'Atunci când se dorește începerea unui joc se utilizează comanda Joc urmată de jocul respectiv ca argument. 
 Imediat după începerea unui joc vor fi prezentate și regulile și restricțiile acestuia. ').
 
 intrebare([harta, camere, parcure, parcurs, investigate, camera ],
-'Butonul harta prezintă jucătorului o hartă a părților din casă pe care lea vizitat în jocul curent.').
+'Butonul Hartă prezintă jucătorului o hartă a părților din casă pe care lea vizitat în jocul curent.').
 
 intrebare([intuneric, intunecat, intunecata, bezna,
  lumina, lanterna, sursa , lumineaza ],
@@ -193,7 +193,7 @@ După un anumit număr de utilizări lanterna rămâne fără energie și nu mai
 
 intrebare([cum, pot , vedea, mesajele, anterioare,sa, revin, 
 reveni, la , inainte, inapoi, raspuns, anterior, mesaj, raspunsul, intoarcere, tranzitie],
-'Două butoane Inainte și Inapoi permit circularea între ultimele trei mesaje afișate pe ecran.').
+'Două butoane Înainte și Înapoi permit circularea între ultimele trei mesaje afișate pe ecran.').
 
 
 intrebare([ce,se, intampla, am,de, ramas,fara, punct, energie,daca, raman, voi,
@@ -217,32 +217,32 @@ a îmbunătăți starea de sănătate a jucătorului. Bandajul nu apare în fiec
 Frecvența cu care acesta apare este determinată de nivlul de dificultate ales.').
 
 intrebare([harta, arata, ce, utilizare, rol, cum, pot, poate, utilizat, harti  ],
-'Butonul harta prezintă jucătorului o hartă a părților din casă pe care lea vizitat în jocul curent.
+'Butonul Hartă prezintă jucătorului o hartă a părților din casă pe care lea vizitat în jocul curent.
     Harta jocului poate să difere. ').
 
 intrebare([cum, pot, vedea, cate, litere, am,strans, adunat, colectat, parte, parola, din, ale, parolei ],
-'Prin comanda Parola Jucatorul poate vedea literele parole pe care lea descoperit.
-     Spre exemplu dacă au fost găsite literele 2 și 5 și aceste sunt T și G comanda parola va afișa *T**G.').
+'Prin comanda Parola jucătorul poate vedea literele parole pe care lea descoperit.
+     Spre exemplu dacă au fost găsite literele 2 și 5 și aceste sunt T și G comanda Parola va afișa *T**G.').
 
 intrebare([cum, pot, cheie,seif, preiau, prelua, pastra, accesa, ghicitoare, raspunde, raspuns ],
 'Pentru A prelua cheia din seif trebuie să răspunzi corect la o ghicitoare găsită în camerele casei. 
-     Scrie răspunsul cu comanda ghicitoare și răspunsul ca argument. ').
+     Scrie răspunsul cu comanda Ghicitoare și răspunsul ca argument. ').
 
 intrebare([rol, scop, functionalitatea, scopul, rolul, utilizare, intrebuintare,utoilizate, butoane, buton ,butoanele, interfata ],
-'Butoanele numerotate de la 1 la 9 sunt pentru jocul de x si 0 împotriva calculatorului. 
+'Butoanele numerotate de la 1 la 9 sunt pentru jocul de x și 0 împotriva calculatorului. 
 Pentru navigare utilizează butoanele N S E V. 
-Butoanele U D R L controleaza jocul sliding.').
+Butoanele U D R L controlează jocul sliding.').
 
 intrebare([comenzi, nu, necesita, argumente, nevoie, functioneaza, fara, argument],
 'Comenzi ce nu necesită argumente
     Inventar -- Listarea inventaruiui 
     Energie  -- Afișarea energiei curente
-    Viata    -- Afișarea stării de sănătate
+    Viață    -- Afișarea stării de sănătate
     Restart  -- Resetarea datelor jocului
-    Optiuni  -- Listarea fișierelor cu jocuri salvate 
+    Opțiuni  -- Listarea fișierelor cu jocuri salvate 
     Ajutor   -- Ajutor pentru jocul sliding 8
     Parola   -- Afișarea literelor din parolă descoperite
-    Locatie  -- Examinarea împrejurimilor jucătorului
+    Locație  -- Examinarea împrejurimilor jucătorului
     Bandajare-- Utilizarea unui bandaj pentru creștere nivelului de viață').
 
 intrebare([hunter,joc,jocul,joaca,joacă],
@@ -266,12 +266,12 @@ Ambii suspecți primesc aceași ofertă.
 Dacă unul dintre suspecți nu cooperează dar este trădat de complicele său acesta primește o pedeapsă mult mai lungă.
 Dacă ambii suspecți se acuză reciproc procurorii vor ști că au fost complici și astfel sentința se împarte.
 Ce decizie ai lua în locul unui deținut în aceste condiții?
-Când ai luat decizia finală execută comanda Decizie cu unul din argumentele recunoaste sau neaga.').
+Când ai luat decizia finală execută comanda Decizie cu unul din argumentele recunoaște sau neagă.').
 
 intrebare([foarfecahartiepiatra,foarfeca,hartie,piatra,joc,jocul,joaca,joacă],
-'Se joacă trei runde de foarfeca hartie piatra.
+'Se joacă trei runde de foarfecă hârtie piatră.
 Jucătorul poate să își modiifce alegerea înaintea oricărei dintre cele 3 runde.
-După start utilizează comanda Foarfecahartiepiatra cu unul din argumentele:
+După start utilizează comanda Foarfecă-Hârtie-Piatră cu unul din argumentele:
         *piatră
         *foarfecă
         *hârtie
@@ -295,7 +295,7 @@ Acest joc oferă o recompensă importantă. ').
 intrebare([sliding,puzzle,8,jocul,joc,joaca,joacă],
 'Pozițiile de la 0 la 8 trebuie ordonate crescător.
 Starea țintă este [0,1,2,3,4,5,6,7,8].
-Există o restricție. Doar cifra 0 poate face schimb de poziții cu vecinii sai. 
+Există o restricție. Doar cifra 0 poate face schimb de poziții cu vecinii săi. 
 Jocul este controlat prin butoanele D, R, L și U astfel: 
     R mută poziția 0 la dreapta, 
     L mută poziția 0 la stânga, 
@@ -306,7 +306,7 @@ Jocul este cronometrat.').
 intrebare([nivel],
 'Pentru selectarea nivelului de dificultate se utilizează:
     comanda: Nivel cu argumentul : nivel dorit
-    sunt disponibile 4 opțiuni: usor, mediu, dificil si imposibil.
+    sunt disponibile 4 opțiuni: ușor, mediu, dificil și imposibil.
 Nivelul de dificultate are un rol inportant în
     Determinarea dificultații minijocurilor.
     Determinarea punctelor de energie la start.').
@@ -323,22 +323,22 @@ intrebare([inventar],
 Ele sunt obiecte comestibile, unelte utile precum lanterna sau bandaje sau 
 obiecte ce conțin indicii precum litere ale unor parole.
 Există o limită de obiecte pe care jucătorul le poate căra la un moment dat.
-Dacă inventarul este plin jucătorul poate scăpa de obiectele mai puțin importante prin comanda arunca.
+Dacă inventarul este plin jucătorul poate scăpa de obiectele mai puțin importante prin comanda Aruncă.
 Pentru plasarea unui obiect în inventar se utilizează:
-    comanda: Pastreaza cu argumentul: obiect dorit').
+    comanda: Păstrează cu argumentul: obiect dorit').
 
 intrebare([incarca],
-'Pentru a încărca un joc salvat  jucătorul utilizează comanda incarca urmată de numele fișierului dorit.
+'Pentru a încărca un joc salvat  jucătorul utilizează comanda Încarcă urmată de numele fișierului dorit.
 Prin comanda opțiuni sunt prezentate variantele jocului ce au fost salvate și pot fi încărcate.').
 
 intrebare([decizie],
 'Prin comanda decizie este luată decizia finală în cazul jocului dilema prizonierului.
-Este utilizată comanda dilema cu unul din argumentele recunoaste sau neaga').
+Este utilizată comanda dilema cu unul din argumentele recunoaște sau neagă').
 
 intrebare([ajutor],
 'Sliding 8 este un  puzzle logic inclus în aplicație.
-Dacă jucătorul rămâne blocat încercând să rezolve această problema el poate utiliza comanda ajutor.
-Comanda ajutor este disponibilă doar pentru nivelele usor, mediu si dificil.
+Dacă jucătorul rămâne blocat încercând să rezolve această problema el poate utiliza comanda Ajutor.
+Comanda ajutor este disponibilă doar pentru nivelele ușor, mediu și dificil.
 Această opțiune oferă primele 4 mutări pe care utilizatorul trebuie să le facă pentru a câștiga.').
 
 intrebare([locatie],
@@ -354,7 +354,7 @@ El are un rol inportant în
 **Determinarea punctelor de energie la start.
 Pentru selectarea nivelului de dificultate se utilizează:
 **comanda: Nivel cu argumentul : nivel dorit
-**sunt disponibile 4 opțiuni: usor, mediu, dificil si imposibil.
+**sunt disponibile 4 opțiuni: ușor, mediu, dificil și imposibil.
 ').
 
 intrebare([este, prea, intuneric, aceasta, camera, intunecata],
@@ -368,12 +368,12 @@ intrebare([directia, aceasta, nu ,afla ,nimic],
 'Încerci să navighezi înspre o direcție greșită.
 În partea aceasta a camerei nu există nici o legătură cu o altă cameră.
 Încearcă o altă variantă de navigare.
-Utilizează comanda Locatie pentru a descoperi ce opțiuni ai.
+Utilizează comanda Locație pentru a descoperi ce opțiuni ai.
 ').
 
 intrebare([nu, acest, obiect ,inventar, rucsac],
 'Pentru a realiza o acțiune asupra unui obiect el trebuie să se afle în inventar.
-Astfel pentru comenzile mananca sau inspecteaza trebuie oferit
+Astfel pentru comenzile Mănâncă sau Inspectează trebuie oferit
 ca argument un obiect existent în inventar.
 ').
 
@@ -397,5 +397,5 @@ Utilizează comanda Restart pentru a începe o încercare nouă.
 ').
 
 intrebare([ai, jucat , acest, mini, joc, deja],
-'Pentru fiecare mini joc este disponibilă o singură încercare.
+'Pentru fiecare mini joc este disponibilă o singură Încercare.
 ').

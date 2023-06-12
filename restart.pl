@@ -101,5 +101,5 @@ restart(X):-
                               *Butonul E - direcția Est.
                               *Butonul W - direcția Vest.
                            Ai grijă de energi și sănătatea ta.
-                           Alege dificultatea dorită (usor, mediu, dificil, imposibil).
+                           Alege dificultatea dorită (ușor, mediu, dificil, imposibil).
                             ','',X),!.

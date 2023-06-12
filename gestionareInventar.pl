@@ -40,7 +40,7 @@ pastreaza(cheie,R1):-
 
 pastreaza(Y,X):-
     locatieObiect(Y,jucator),
-    atom_concat('Il avem deja !\n','',X),!.
+    atom_concat('\u00CEl avem deja !\n','',X),!.
 
 pastreaza(Y,R1):-
     locatieObiect(Y,X),

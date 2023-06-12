@@ -238,14 +238,14 @@ raspunde_la_Ghicitoare(X,R):-
     assert(raspunsGhicitoare(X)),
     raspunsCurent(Raspunsuri),
     apartineNou(X,Raspunsuri),
-    atom_concat('','Răspuns corect.\nIn interiorul seifului se afla o cheie!\n ',R),!.
+    atom_concat('','Răspuns corect.\nÎn interiorul seifului se află o cheie!\n ',R),!.
 
 raspunde_la_Ghicitoare(_,R):-
     locatieObiect(seif,jucator),
     atom_concat('','Răspuns incorect.',R),!.
 
 raspunde_la_Ghicitoare(_,R):-
-    atom_concat('','Raspunde la ghicitoare dupa ce ai luat seiful.',R),!.
+    atom_concat('','Raspunde la ghicitoare după ce ai luat seiful.',R),!.
 
 % Dupa consumarea unui obiect comestibil jucatorul primeste 5 puncte de
 % energie
@@ -328,8 +328,8 @@ codReal(aaaaa).
 
 mutaJucator(_,R):-
     amInceput(nu),
-    atom_concat('Nu ai selectat nivelul de dificultate!\n','Utilizează comanda: Nivel  Argument: nivelul ales .\n',T1),
-    atom_concat(T1,'Ai patru opțiuni: usor, mediu, dificil, imposibil\n',R),!.
+    atom_concat('Nu ai selectat nivelul de dificultate!\n','Utilizează comanda: Nivel  Argument: nivelul ales.\n',T1),
+    atom_concat(T1,'Ai patru opțiuni: ușor, mediu, dificil, imposibil.\n',R),!.
 
 % Daca jucatorul e mort el nu se mai poate deplasa intre camere
 mutaJucator(_,R):-
@@ -356,7 +356,7 @@ mutaJucator(X,R):-
     numarPlanCasa(NRH),
     legatura(NRH,X,L,Z),
     utilizareLanterna(0),
-    atom_concat('Lanterna a ramas fara baterii.\n','',R),!.
+    atom_concat('Lanterna a rămas fără baterii.\n','',R),!.
 
 mutaJucator(X,R):-
     amInceput(da),

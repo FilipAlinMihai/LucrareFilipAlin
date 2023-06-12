@@ -250,6 +250,6 @@ numaraLibere([_|T],R):-numaraLibere(T,R),!.
 numaraLiberex():-
     stare(X),
     numaraLibere(X,R),
-    write('Sunt libere x pozitii'),
+    write('Sunt libere x poziții'),
     write(R).
 

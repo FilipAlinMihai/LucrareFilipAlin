@@ -86,10 +86,10 @@ camere(4,1,4,cameraEN).
 camere(4,3,3,cameraNN).
 
 scrieLiber(R):-        R = '=============',!.
-scrieH(cameraNN,R):-    R = '===CAMERAX==',!.
-scrieH(cameraEN,R):-    R = '===CAMERAY==',!.
+scrieH(cameraNN,R):-    R = '===GARAJ====',!.
+scrieH(cameraEN,R):-    R = '===CINEMA===',!.
 scrieH(cameraWS,R):-    R = '===ATELIER==',!.
-scrieH(cameraES,R):-    R = '===OASPETI==',!.
+scrieH(cameraES,R):-    R = '===OASPEȚI==',!.
 scrieH(cameraWW,R):-    R = '====MARIA===',!.
 scrieH(cameraW,R):-     R = '====DIANA===',!.
 scrieH(hol,R):-         R = '====HOLL====',!.
@@ -98,8 +98,8 @@ scrieH(cameraEE,R):-    R = '===ANDREI===',!.
 scrieH(cameraCapcana1,R):-R = '===CAPCANE==',!.
 scrieH(cameraCapcana2,R):-R = '===CAPCANE==',!.
 scrieH(cameraNW,R):-      R = '==CAMERA-ZI=',!.
-scrieH(biblioteca,R):-    R = '=BIBLIOTECA=',!.
-scrieH(bucatarie,R):-     R = '==BUCATARIE=',!.
+scrieH(biblioteca,R):-    R = '=BIBLIOTECĂ=',!.
+scrieH(bucatarie,R):-     R = '==BUCĂTĂRIE=',!.
 scrieH(cameraNE,R):-      R = '====BOGDAN==',!.
 scrieH(debara,R):-        R = '===DEBARA===',!.
 scrieH(birou,R):-         R = '====BIROU===',!.
