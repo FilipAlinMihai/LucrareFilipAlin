@@ -71,7 +71,7 @@ executor(X,A1,A2,F):-
         modificareTextPrezentat(F,R),
         !;
         X = 'Op\u021Biuni' ->
-        directory_files('C:\\Users\\lenovo\\Documents\\Prolog\\LucrareFilipAlin\\salvari',[_,_|Fisiere]),
+        directory_files('LucrareFilipAlin\\salvari',[_,_|Fisiere]),
         scriefisiere(Fisiere,Scriere),
         atom_concat("Versiuni salvate!\n",Scriere,R),
         modificareTextPrezentat(F,R),

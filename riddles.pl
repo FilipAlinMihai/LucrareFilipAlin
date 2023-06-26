@@ -10,13 +10,13 @@ riddle(1,'Deși nu sunt diamant pe inel mă pui.\nCând vremea mea vine uși des
             ['cheie','Cheie']).
 riddle(2,'Tatăl lui Mihai are patru copii Andrei, Bogdan, Maria și ....',
             ['Mihai','mihai']).
-riddle(3,'Iti apartine tie dar prieteni tai il folosesc de fiecare data cand va iantalniti.',
+riddle(3,'Iți aparține ție dar prietenii tăi îl folosesc de fiecare dată când vă întâlniți.',
             ['numele','Numele']).
-riddle(4,'Domnul și doamna Popescu au șase fice. Fiecare fică are câte un frate. Câte persoane sunt în familia Popescu',
+riddle(4,'Domnul și doamna Popescu au șase fice. Fiecare fică are câte un frate. Câte persoane sunt în familia Popescu?',
             ['9','noua','Noua']).
-riddle(5,'Ce are 6 fețe toate diferite, are douazeci și unu de ochi dar nu poate vedea',
+riddle(5,'Ce are 6 fețe toate diferite, are douazeci și unu de ochi dar nu poate vedea?',
             ['Zar','zar']).
-riddle(6,'Am orașe dar nu am case am păduri dar nu am copaci, am rauri dar nu am pești. Ce sunt?',
+riddle(6,'Am orașe dar nu am case am păduri dar nu am copaci, am ramuri dar nu am pești. Ce sunt?',
             ['Harta','harta']).
 riddle(7,'Cu cât e mai mult cu atat e mai greu de văzut. Ce e?',
             ['Intuneric','intuneric']).

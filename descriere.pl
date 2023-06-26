@@ -1,6 +1,6 @@
 descrie(sliding,X):-
-    atom_concat('Mută pozițiile în ordine crescătoare \n','Doar 0 are dreptul de a se mișca\n', X1),
-    atom_concat(X1, 'Direcțiile de deplasare sunt: L-stânga, R-dreapta,U-sus și D-jos\n',X),!.
+    atom_concat('Mută pozițiile în ordine crescătoare.\n','Doar 0 are dreptul de a se mișca.\n', X1),
+    atom_concat(X1, 'Direcțiile de deplasare sunt: L-stânga, R-dreapta,U-sus și D-jos.\n',X),!.
 
 descrie(xsi0,X):-atom_concat('','Câștigă acest joc de x și 0 împotriva calculatorului!\n
 Utilizează butoanele numerotate.
@@ -122,7 +122,7 @@ La nord este camera lui Bogdan.\n',
 Poți juca Sudoku\n',T3),
 atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul sudoku.
 Rezolvă această problemă conform regulilor clasice de sudoku!
-Nu trebuie să existe duplicate pe linii coloane sau în pătratele de 3X3 delimitate.
+Nu trebuie să existe duplicate pe linii, coloane sau în pătratele de 3X3 delimitate.
 Argumentul1 poziția dorită Argumentul2 valoarea finală.\n',X).
 
 descrieCamera(1,cameraNE,X):-
@@ -170,14 +170,14 @@ La est se află biblioteca.\n',
 'Acesta porțiune a hărții nu este clară!\n',T1),
     atom_concat(T1,'Ai posibilitatea de a merge în 3 camere necunoscute la nord, vest și sud.\n', T2),
     atom_concat(T2, 'Ai mare grijă camerele acestea pot fi periculoase!\n
-Poți juca x și 0 !\n',T3),
+Poți juca x și 0!\n',T3),
 atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul xși0.
 Utilizează butoanele numerotate.
 Tu ai prima mutare.\n',X).
     
 
 descrieCamera(1,debara,X):-
-    atom_concat('','Te afli in debara.\n
+    atom_concat('','Te afli în debara.\n
 Ai o singură opțiune de deplasare. Întoarce-te în camera de zi.\n',X).
 
 descrieCamera(1,cameraCapcana1,X):-
@@ -189,7 +189,7 @@ descrieCamera(1,cameraCapcana2,X):-
 Viața ta e în pericol. \nÎntoarce-te repede în camera de zi.\n',X).
 
 descrieCamera(1,birou,X):-
-    atom_concat('','Te afli în birou ! \n
+    atom_concat('','Te afli în birou! \n
 La sud se află biblioteca.\n',X).
 
 descrieCamera(1,iesire,X):-
@@ -224,7 +224,7 @@ descrieCamera(2,cameraEE,X):-
     atom_concat('Te afli în camera lui Andrei. \n
 La nord este camera lui Bogdan.\n',
 'La vest se află camera lui Mihai.\n
-Poți juca Sudoku\n',T3),
+Poți juca Sudoku.\n',T3),
 atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul sudoku.
 Rezolvă această problemă conform regulilor clasice de sudoku!
 Nu trebuie să existe duplicate pe linii coloane sau în pătratele de 3X3 delimitate.
@@ -236,15 +236,15 @@ La vest se află atelierul.\n',X).
 
 descrieCamera(2,debara,X):-
     atom_concat('','Te afli în debara. \n
-Ai o singură opțiune de deplasare. Întoarce-te în camera de zi\n',X).
+Ai o singură opțiune de deplasare. Întoarce-te în camera de zi.\n',X).
 
 descrieCamera(2,cameraCapcana1,X):-
     atom_concat('','Te afli într-o cameră periculoasă plină de capcane.\n
-Viața ta e în pericol. \nÎntoarce-te repede în camera de zi\n',X).
+Viața ta e în pericol. \nÎntoarce-te repede în camera de zi.\n',X).
 
 descrieCamera(2,cameraCapcana2,X):-
     atom_concat('','Te afli într-o cameră periculoasă plină de capcane.\n
-Viața ta e în pericol. \nÎntoarce-te repede în camera de zi\n',X).
+Viața ta e în pericol. \nÎntoarce-te repede în camera de zi.\n',X).
 
 descrieCamera(2,cameraNW,X):-
     atom_concat('Te afli în camera de zi. \n
@@ -252,27 +252,27 @@ La est se află biblioteca.\n',
     'Acesta porțiune a hărții nu este clară!\n',T1),
     atom_concat(T1,'Ai posibilitatea de a merge în 3 camere necunoscute la nord, vest și sud.\n', T2),
     atom_concat(T2, 'Ai mare grijă camerele acestea pot fi periculoase!\n
-Poți juca x și 0 !\n',T3),
+Poți juca x și 0!\n',T3),
 atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul xși0.
 Utilizează butoanele numerotate.
 Tu ai prima mutare.\n',X).
 
 descrieCamera(2,cameraNE,X):-
     atom_concat('Te afli în camera lui Bogdan.\n
-La vest se afla bucătăria.\n',
+La vest se află bucătăria.\n',
 'La sud se află camera lui Andrei.\n
-Rezolvă dilema prizonierilor\n',T3),
+Rezolvă dilema prizonierilor.\n',T3),
 atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul dilema.\n',X).
 
 descrieCamera(2,birou,X):-
-    atom_concat('','Te afli în birou !, \n
+    atom_concat('','Te afli în birou! \n
 La sud se află biblioteca.\n',X).
 
 descrieCamera(2,biblioteca,X):-
     atom_concat('Te afli în bibliotecă. \n
-La Nord se află Biroul \n',
+La Nord se află Biroul. \n',
     'Ușa de la intrarea în birou are un lacăt!\n',T1),
-    atom_concat(T1,'Lacătul are un cod format din 5 litere\n',T2),
+    atom_concat(T1,'Lacătul are un cod format din 5 litere.\n',T2),
     atom_concat(T2,'La est e bucătăria.\n',T4),
     atom_concat(T4,'La vest e camera de zi.\n',T5),
     atom_concat(T5,'La sud e camera de cinema.\n\n',T6),
@@ -356,11 +356,11 @@ Ai o singură opțiune de deplasare. Întoarce-te în camera de zi.\n',X).
 
 descrieCamera(3,cameraCapcana1,X):-
     atom_concat('','Te afli într-o cameră periculoasă plină de capcane.\n
-Viața ta e în pericol. \nÎntoarce-te repede în camera de zi\n',X).
+Viața ta e în pericol. \nÎntoarce-te repede în camera de zi.\n',X).
 
 descrieCamera(3,cameraCapcana2,X):-
     atom_concat('','Te afli într-o cameră periculoasă plină de capcane.\n
-Viața ta e în pericol. \nÎntoarce-te repede în camera de zi\n',X).
+Viața ta e în pericol. \nÎntoarce-te repede în camera de zi.\n',X).
 
 descrieCamera(3,cameraNW,X):-
     atom_concat('Te afli în camera de zi. \n
@@ -368,7 +368,7 @@ La est se află bucătăria.\n',
     'Acesta porțiune a hărții nu este clară!\n',T1),
     atom_concat(T1,'Ai posibilitatea de a merge în 3 camere necunoscute la nord, vest și sud.\n', T2),
     atom_concat(T2, 'Ai mare grijă camerele acestea pot fi periculoase!\n
-Poți juca x și 0 !\n',T3),
+Poți juca x și 0!\n',T3),
 atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul xși0.
 Utilizează butoanele numerotate.
 Tu ai prima mutare.\n',X).
@@ -435,7 +435,7 @@ Fiecare mutare fie ea validă sau invalidă este contorizată.\n',X).
 %DESCRIERE HARTA 4
 descrieCamera(4,cameraNE,X):-
     atom_concat('Te afli în camera lui Bogdan.\n
-La vest se află bucataria.\n',
+La vest se află bucătăria.\n',
 'La sud se află camera lui Andrei.\n
 Rezolvă dilema prizonierilor.\n',T3),
 atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul dilema.\n',X).
@@ -458,7 +458,7 @@ La est se află holul de pornire.\n',X).
 descrieCamera(4,bucatarie,X):-
     atom_concat('Te afli în bucătărie.\n
 La vest este biblioteca.\n',
-'La est se află camera lui Bogdan.\nLa sud se află camera lui Mihai\n',X).
+'La est se află camera lui Bogdan.\nLa sud se află camera lui Mihai.\n',X).
 
 descrieCamera(4,biblioteca,X):-
     atom_concat('Te afli în bibliotecă. \n
@@ -479,11 +479,11 @@ Ai o singură opțiune de deplasare. Întoarce-te în camera de zi.\n',X).
 
 descrieCamera(4,cameraCapcana1,X):-
     atom_concat('','Te afli într-o cameră periculoasă plină de capcane.\n
-Viața ta e în pericol. \nÎntoarce-te repede în camera de zi\n',X).
+Viața ta e în pericol. \nÎntoarce-te repede în camera de zi.\n',X).
 
 descrieCamera(4,cameraCapcana2,X):-
     atom_concat('','Te afli într-o cameră periculoasă plină de capcane.\n
-Viața ta e în pericol. \nÎntoarce-te repede în camera de zi\n',X).
+Viața ta e în pericol. \nÎntoarce-te repede în camera de zi.\n',X).
 
 descrieCamera(4,cameraES,X):-
     atom_concat('Te afli în camera de oaspeți.\n','\nLa nord se află camera lui Andrei.\n',X).
@@ -492,7 +492,7 @@ descrieCamera(4,cameraES,X):-
 descrieCamera(4,cameraE,X):-
     atom_concat('Te afli în camera lui Mihai. \n
 La est se află camera lui Andrei.\n',
-'La nord este bucataria.
+'La nord este bucătăria.
 La sun este camera de cinema.\n
 Poți juca un joc de foarfecă hârtie piatră împotriva calculatorului.\n',T3),
 atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul foarfecăhârtiepiatră.
@@ -535,7 +535,7 @@ La est se află biblioteca.\n',
     'Acesta porțiune a hărții nu este clară!\n',T1),
     atom_concat(T1,'Ai posibilitatea de a merge în 3 camere necunoscute la nord, vest și sud.\n', T2),
     atom_concat(T2, 'Ai mare grijă camerele acestea pot fi periculoase!\n
-Poți juca x și 0 !\n',T3),
+Poți juca x și 0!\n',T3),
 atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul xși0.
 Utilizează butoanele numerotate.
 Tu ai prima mutare.\n',X).
@@ -544,7 +544,7 @@ descrieCamera(4,hol,X):-
     atom_concat('Te afli în Holul principal. \n
 La vest se află camera Dianei.
 La est se află Atelierul.\n', 
-'La sud este ieșirea\n',X).
+'La sud este ieșirea.\n',X).
 
 
 textStart(Textinitial):- atom_concat('','
@@ -583,17 +583,17 @@ comenziScurtatura(R):-atom_concat('','
                         **Completarea codului pentru acces în Birou
                             comanda: Cod argument: codul de 5 litere
                         **Salvarea jocului curent
-                            comanda: Salvează argument: nume fisier
+                            comanda: Salvează argument: nume fișier
                         **Încărcarea unui joc anterior
-                            comanda: Încarcă argument:  nume fisier
+                            comanda: Încarcă argument:  nume fișier
                         **Clasamentul jucătorilor pentru un anumit nivel
                             comanda: Clasament argument: nivel dorit
                         **Decizia pentru jocul dilema prizonierilor
-                            comanda: Decizie argument: recunoaste / neaga în funcție de hotărarea luată
+                            comanda: Decizie argument: recunoaște / neagă în funcție de hotărarea luată
                         **Mutare pentru jocul sudoku 
-                            comanda: Sudoku argument1: pozitia argument2: valoarea noua
+                            comanda: Sudoku argument1: pozitia argument2: valoarea nouă
                         **Raspuns la ghicitoare pentr deschiderea seifului
-                            comanda: Ghicitoare argument: raspuns
+                            comanda: Ghicitoare argument: răspuns
                         **Pentru jocul de foarfeca-hartie-piatra împotriva calculatorului
                             comanda: Foarfecă-Hârtie-Piatră argument: foarfecă, hârtie sau piatră
                         **În cazul în care lanterna rămâne fără energie 

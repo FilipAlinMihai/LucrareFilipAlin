@@ -81,7 +81,7 @@ run:-
     %send(E ,display, text(''),point(200, 10)),
     new(BTN1,button(executor, message(@prolog, taiere, Com?selection, Arg?selection,Arg2?selection, F2))),
     new(BTN2,button('\u00EEnapoi', message(@prolog, inapoi, F2))),
-    new(BTN3,button('\u00EEainte', message(@prolog, inainte, F2))),
+    new(BTN3,button('\u00EEnainte', message(@prolog, inainte, F2))),
     new(BTN4,button(zoom, message(@prolog, zoom))),
     new(BTN5,button(reguli, message(@prolog, reguli2))),
     new(BTN6,button(harta, message(@prolog, harta,F2))),

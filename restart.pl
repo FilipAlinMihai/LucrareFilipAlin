@@ -100,6 +100,6 @@ restart(X):-
                               *Butonul S - direcția Sud.
                               *Butonul E - direcția Est.
                               *Butonul W - direcția Vest.
-                           Ai grijă de energi și sănătatea ta.
+                           Ai grijă de energia și sănătatea ta.
                            Alege dificultatea dorită (ușor, mediu, dificil, imposibil).
                             ','',X),!.

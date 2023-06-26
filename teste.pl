@@ -118,10 +118,10 @@ test7():-
 test8():-
         descrieCamera(1,hol,X),
         egale(X,'Te afli în Holul principal. \n
-La nord se află biblioteca\nLa sud este ieșirea\nLa vest este camera Dianei\nLa est este camera lui Mihai\n'),
+La nord se află biblioteca.\nLa sud este ieșirea.\nLa vest se află camera Dianei.\nLa est se află camera lui Mihai.\n'),
         descrieCamera(2,hol,X1),
         egale(X1,'Te afli în Holul principal. \n
-La nord se află camera lui Mihai.\nLa sud este ieșirea\n'),
+La nord se află camera lui Mihai.\nLa sud este ieșirea.\n'),
         descrieCamera(3,hol,X2),
         egale(X2,'Te afli în Holul principal. \n
 La nord se află camera lui Andrei.\nLa sud este ieșirea.\n'),
@@ -167,9 +167,9 @@ test12():-
 test13():-
         procesareText('cum selectez nivelul de dificultate'),
         raspuns(R),
-        egale(R,'Pentru selectarea nivelului de dificultate se utilizeaza:
+        egale(R,'Pentru selectarea nivelului de dificultate se utilizează:
     comanda: Nivel cu argumentul : nivel dorit
-    sunt disponibile 4 optiuni: usor, mediu, dificil si imposibil.'),
+    sunt disponibile 4 opțiuni: ușor, mediu, dificil și imposibil.'),
         procesareText('ce se intampla daca raman fara puncte de energie'),
         raspuns(R1),
         egale(R1,'În cazul în care utilizatorul rămâne fără puncte de energie el nu mai poate naviga harta.
@@ -178,11 +178,11 @@ Pentru prevenirea acestei situații este recomandată câștigarea mini jocurilo
 Acestea acordă recompense precum punctele de energie.'),
         procesareText('cum pot juca un mini joc'),
         raspuns(R2),
-        egale(R2,'Pentru inceperea unui joc se va utiliza:
+        egale(R2,'Pentru începerea unui joc se va utiliza:
      comanda: Joc cu argumentul: jocul dorit
-Jocurile pot fi jucate doar in anumite camere.
-Atunci cand utilizatorul se afla intr-o asemena camera el este anuntat.
-Este indicat si jocul disponibil.'),
+Jocurile pot fi jucate doar în anumite camere.
+Atunci când utilizatorul se află într-o asemena camera el este anunțat.
+Este indicat și jocul disponibil.'),
         procesareText('nu ma pot misca'),
         raspuns(R3),
         egale(R3,'Există mai multe motive pentru care utilizatorul nu poate naviga harta.
