@@ -68,7 +68,7 @@ intrebare([cum, pot, juca, nou, comanda, comenzi, control,start, porni, pornire,
 'Pentru începerea unui joc se va utiliza:
      comanda: Joc cu argumentul: jocul dorit
 Jocurile pot fi jucate doar în anumite camere.
-Atunci când utilizatorul se află într-o asemena camera el este anunțat.
+Atunci când utilizatorul se află într-o asemena cameră el este anunțat.
 Este indicat și jocul disponibil.').
 
 intrebare([cum,pot,  comanda, comenzi, control,dificultate,dificultatea, nivel,
@@ -101,7 +101,7 @@ intrebare([cum, pot, comanda, comenzi, control, argument, repara, lanterna,
  fara, energie, ramane, consum ,consumata, consumare, liminat, utilizare,baterie,a ],
 'În cazul în care lanterna rămâne fără energie se utilizează: 
     comanda: Repară cu argumentul: lanterna
-Este necesara și o baterie.').
+Este necesară și o baterie.').
 
 intrebare([cum, pot, comanda, comenzi, control, argument,arunca, aruncare, renunta,
  inlaturare, golire, goli, eliberare,elibera,spatiu,inventar],
@@ -113,7 +113,7 @@ intrebare([poveste,plot,continut,despre,descriere,descriemi,
 descrie,descri, povesteste,jocul,explica,spunemi,scop,scopul,care,tinta],
 'Ești captiv în casa X. Ușa de la ieșire este încuiată.
 Poți cerceta casa dar fiecare tranziție între camere te costă energie. 
-Vei găsi obiecte, aceste pot fi folosite pentru a câștiga energie sau pentru alte activități.
+Vei găsi obiecte, acestea pot fi folosite pentru a câștiga energie sau pentru alte activități.
 Pentru navigare utilizează butoanele N S E V. 
 Accesul în unele canere este restricționat.
 Trebuie să evadezi.').
@@ -132,7 +132,7 @@ Mini jocurile nu produc niciodată aceași variantă a jocului. ').
 
 intrebare([capcane, pericol, primejdie, pierdere, pierd, capcana, vitalitate],
 'Unele camere sunt periculoase. Ele conțin capcane și pot pune în pericol viața jucătorului.
-Prin comanda Viațp poți vedea care este starea ta curentă.').
+Prin comanda Viață poți vedea care este starea ta curentă.').
 
 intrebare([dificultate,dificultatea, stabilire , stabilita, aleasa, 
 nivel, nivele, dicil, selectez, selectare, alege, alegere],
@@ -235,7 +235,7 @@ Butoanele U D R L controlează jocul sliding.').
 
 intrebare([comenzi, nu, necesita, argumente, nevoie, functioneaza, fara, argument],
 'Comenzi ce nu necesită argumente
-    Inventar -- Listarea inventaruiui 
+    Inventar -- Listarea inventarului 
     Energie  -- Afișarea energiei curente
     Viață    -- Afișarea stării de sănătate
     Restart  -- Resetarea datelor jocului
@@ -243,14 +243,14 @@ intrebare([comenzi, nu, necesita, argumente, nevoie, functioneaza, fara, argumen
     Ajutor   -- Ajutor pentru jocul sliding 8
     Parola   -- Afișarea literelor din parolă descoperite
     Locație  -- Examinarea împrejurimilor jucătorului
-    Bandajare-- Utilizarea unui bandaj pentru creștere nivelului de viață').
+    Bandajare-- Utilizarea unui bandaj pentru creșterea nivelului de viață').
 
 intrebare([hunter,joc,jocul,joaca,joacă],
 'Tabla de joc este umplută de pioni în 7 poziții din 9.
 Pe poziția marcată cu k se află un cal ce se mișcă în modul specific jocului de șah.
 Încearcă să capturezi toți pionii în 7 mișcări.
 Selectează pozițiia pe care dorești să se deplaseze calul.
-Fiecare mutare fie e validă sau invalidă este contorizată.
+Fiecare mutare fie ea validă sau invalidă este contorizată.
 Jocul este cronometrat.').
 
 intrebare([dilema, prizonierilor,prizonierului,joc,jocul,joaca,joacă],
@@ -263,7 +263,7 @@ O altă variantă este accea de a declara că nu știe nimic despre restul furtu
 Dacă suspectul își acuză complicele este posibil să primească o reducere a sentinței pentru cooperare.
 Dacă amândoi negagă acuzațiile judecătorul nu îi poate condamna la mai mult de un an de închisoare.
 Ambii suspecți primesc aceași ofertă.
-Dacă unul dintre suspecți nu cooperează dar este trădat de complicele său acesta primește o pedeapsă mult mai lungă.
+Dacă unul dintre suspecți nu cooperează și este trădat de complicele său primește o pedeapsă mai lungă.
 Dacă ambii suspecți se acuză reciproc procurorii vor ști că au fost complici și astfel sentința se împarte.
 Ce decizie ai lua în locul unui deținut în aceste condiții?
 Când ai luat decizia finală execută comanda Decizie cu unul din argumentele recunoaște sau neagă.').
@@ -320,7 +320,7 @@ Obiectele comestibile oferă și ele energie.').
 
 intrebare([inventar],
 'În camerele casei sunt distribuite în mod aleator obiecte.
-Ele sunt obiecte comestibile, unelte utile precum lanterna sau bandaje sau 
+Ele sunt obiecte comestibile, unelte utile precum lanterna, bandaje sau 
 obiecte ce conțin indicii precum litere ale unor parole.
 Există o limită de obiecte pe care jucătorul le poate căra la un moment dat.
 Dacă inventarul este plin jucătorul poate scăpa de obiectele mai puțin importante prin comanda Aruncă.

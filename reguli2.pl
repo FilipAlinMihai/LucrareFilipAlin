@@ -11,8 +11,8 @@ Pentru navigare utilizează butoanele N S E V.
 Accesul în unele canere este restricționat. ").
 
 reguli2(3,
-"Pentru fiecare nivel sunt oferite un numar fix de puncte.
-Fiecare deplasare între camere costa un punct.
+"Pentru fiecare nivel sunt oferite un număr fix de puncte.
+Fiecare deplasare între camere costă un punct.
 În cazul în care utilizatorul rămâne fără puncte de energie el nu mai poate naviga harta.
 În acest caz el poate consuma obiecte comestibile din inventar pentru energie.
 Pentru prevenirea acestei situații este recomandată câștigarea mini jocurilor.
@@ -44,16 +44,16 @@ Cu cât numărul este mai mare cu atât jucătorul va fi mai sus în clasament."
 
 reguli2(7,
 "Pentru a prelua cheia din seif trebuie sa răspunzi corect la o ghicitoare găsita în camerele casei. 
-scrie răspunsul cu comanda Ghicitoare și răspunsul ca argument. ").
+Scrie răspunsul cu comanda Ghicitoare și răspunsul ca argument. ").
 
 reguli2(8,
 "Utilizatorul are posibilitatea de a salva progresul realizat prin comanda Salvează.
 Aceasta reține într-un fișier (al cărui nume este introdus ca argument) toate datele rundei curente.
 Pentru a încărca un joc salvat  jucătorul utilizează comanda Încarcă urmată de numele fișierului dorit.
-Prin comandă Opțiuni sunt prezentate variantele jocului ce au fost salvate și pot fi îcărcate.").
+Prin comandă Opțiuni sunt prezentate variantele jocului ce au fost salvate și pot fi încărcate.").
 
 reguli2(9,
-" Cu ajutorul comenzii restart jucatorul poate reseta 
+" Cu ajutorul comenzii restart jucătorul poate reseta 
 toate elementele jocului ce au fost modificate la starea inițială.").
 
 reguli2(10,
@@ -65,15 +65,15 @@ Poți cerceta casa dar fiecare tranziție între camere te costă energie.
      Accesul în unele canere este restricționat. 
 Cel mai probail cheia de la ieșire se află în birou dar acesta este blocat de un lacăt. 
      Lacătul are o parolă de cinci litere. Este posibil să găsești parola în camerele casei. 
-     Atunci cand ai aflat toate literele parolei traverseaza harta până în bibliotecă.
-     Aici poti utiliza comanda Cod urmată de literele descoperite ca argument.").
+     Atunci cand ai aflat toate literele parolei traversează harta până în bibliotecă.
+     Aici poți utiliza comanda Cod urmată de literele descoperite ca argument.").
 
 reguli2(11,
 "               **Începere joc
                     comanda: Joc argument: jocul dorit
                 **Selectare nivel de dificultate
                     comanda: Nivel argument: nivel dorit
-                **Plasarea unui obiect in inventar
+                **Plasarea unui obiect în inventar
                     comanda: Păstrează argument: obiect dorit
                 **Renuntarea la un obiect din inventar
                     comanda: Aruncă argument: obiect dorit
@@ -84,19 +84,19 @@ reguli2(11,
                 **Completarea codului pentru acces în Birou
                     comanda: Cod argument: codul de 5 litere
                 **Salvarea jocului curent
-                    comanda: Salvează argument: nume fisier
+                    comanda: Salvează argument: nume fișier
                 **Încărcarea unui joc anterior
-                    comanda: Încarcă argument:  nume fisier
+                    comanda: Încarcă argument:  nume fișier
                 **Clasamentul jucătorilor pentru un anumit nivel
                     comanda: Clasament argument: nivel dorit
                 **Decizia pentru jocul dilema prizonierilor
-                    comanda: Decizie argument: recunoaste / neaga in functie de hotararea luata
+                    comanda: Decizie argument: recunoaște / neagă în funcție de hotărârea luată
                 **Mutare pentru jocul sudoku 
-                    comanda: Sudoku argument1: pozitia argument2: valoarea noua
-                **Răspuns la ghicitoare pentr deschiderea seifului
-                    comanda: Ghicitoare argument: raspuns
-                **Pentru jocul de foarfeca-hartie-piatra împotriva calculatorului
-                    comanda: Foarfecă-Hârtiepiatră argument: foarfecă, hârtie sau piatră
+                    comanda: Sudoku argument1: poziția argument2: valoarea nouă
+                **Răspuns la ghicitoare pentru deschiderea seifului
+                    comanda: Ghicitoare argument: răspuns
+                **Pentru jocul de foarfecă-hârtie-piatră împotriva calculatorului
+                    comanda: Foarfecă-Hârtie-Piatră argument: foarfecă, hârtie sau piatră
                 **În cazul în care lanterna rămane făra energie 
                     comanda: Repară argument: lanterna").
 
@@ -130,7 +130,7 @@ Frecvența cu care acesta apare este determinată de nivlul de dificultate ales.
 reguli2(15,
 "Butoanele numerotate de la 1 la 9 sunt pentru jocul de x și 0 împotriva calculatorului. 
 Pentru navigare utilizează butoanele N S E V. 
-Butoanele U D R L controleaza jocul sliding.").
+Butoanele U D R L controleaza jocul sliding 8.").
 
 reguli2(16,
 "Unele camere sunt periculoase. Ele conțin capcane și pot pune în pericol viața jucătorului.
