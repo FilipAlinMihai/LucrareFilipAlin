@@ -91,7 +91,7 @@ La Nord se află Biroul.\n',
     atom_concat(T6,'Poți juca un joc: sliding 8.\n',T3),
     atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul sliding.\n
 Mută pozițiile în ordine crescătoare. \nDoar 0 are dreptul de a se mișca.
-Direcțiile de deplasare sunt: L-stânga, R-dreapta,U-sus și D-jos.\n',X).
+Direcțiile de deplasare sunt: L-stânga, R-dreapta, U-sus și D-jos.\n',X).
 
 descrieCamera(1,hol,X):-
     atom_concat('Te afli în Holul principal. \n
@@ -279,7 +279,7 @@ La Nord se află Biroul. \n',
     atom_concat(T6,'Poți juca un joc: sliding 8.\n',T3),
     atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul sliding.\n
 Mută pozițiile în ordine crescătoare.\nDoar 0 are dreptul de a se mișca.
-Direcțiile de deplasare sunt: L-stânga, R-dreapta,U-sus și D-jos.\n',X).
+Direcțiile de deplasare sunt: L-stânga, R-dreapta, U-sus și D-jos.\n',X).
 
 descrieCamera(2,cameraNN,X):-
     atom_concat('Te afli în garaj.\n
@@ -336,7 +336,7 @@ Jocul are trei runde. Pentru fiecare rundă poți modifica alegerea.\n',X).
 
 descrieCamera(3,cameraEE,X):-
     atom_concat('Te afli în camera lui Andrei. \n
-La nord este camera lui Bogdan.\n',
+La nord este garajul.\n',
 'La vest se află camera lui Mihai.
 La sud se află holul principal.\n
 Poți juca Sudoku.\n',T3),
@@ -394,8 +394,8 @@ La Nord se află Biroul!\n',
     atom_concat(T5,'La sud e camera de oaspeți.\n\n',T6),
     atom_concat(T6,'Poți juca un joc: sliding 8.\n',T3),
     atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul sliding.\n
-Mută pozițiile în ordine crescătoare \nDoar 0 are dreptul de a se mișca.
-Direcțiile de deplasare sunt: L-stânga, R-dreapta,U-sus și D-jos.\n',X).
+Mută pozițiile în ordine crescătoare. \nDoar 0 are dreptul de a se mișca.
+Direcțiile de deplasare sunt: L-stânga, R-dreapta, U-sus și D-jos.\n',X).
 
 descrieCamera(3,cameraNN,X):-
     atom_concat('Te afli în garaj.\n
@@ -423,7 +423,7 @@ descrieCamera(3,cameraWW,X):-
     atom_concat('','Te afli în camera Mariei. \n
 La sud este camera Dianei.
 La vest este atelierul.
-La nord este Y.
+La nord este camera de cinema.
 Poți juca hunter.\n',T3),
 atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul hunter.
 Tabla de joc este umplută de pioni în 7 poziții din 9.
@@ -471,7 +471,7 @@ La nord se află Biroul.\n',
     atom_concat(T6,'Poți juca un joc: sliding 8.\n',T3),
     atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul sliding.\n
 Mută pozițiile în ordine crescătoare. \nDoar 0 are dreptul de a se mișca.
-Direcțiile de deplasare sunt: L-stânga, R-dreapta,U-sus și D-jos.\n',X).
+Direcțiile de deplasare sunt: L-stânga, R-dreapta, U-sus și D-jos.\n',X).
 
 descrieCamera(4,debara,X):-
     atom_concat('','Te afli în debara. \n
@@ -493,7 +493,7 @@ descrieCamera(4,cameraE,X):-
     atom_concat('Te afli în camera lui Mihai. \n
 La est se află camera lui Andrei.\n',
 'La nord este bucătăria.
-La sun este camera de cinema.\n
+La sud este camera de cinema.\n
 Poți juca un joc de foarfecă hârtie piatră împotriva calculatorului.\n',T3),
 atom_concat(T3,'Începe jocul prin comanda Joc cu argumentul foarfecăhârtiepiatră.
 După start utilizează comanda Foarfecă-Hârtie-Piatră cu unul din argumentele:

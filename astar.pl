@@ -264,7 +264,7 @@ start_timerA() :-
     thread_create(timer_threadA(), _, [detached(true)]).
 
 timer_threadA() :-
-    sleep(5),
+    sleep(4),
     (   true
     ->  call(stopAstar)
     ;   true

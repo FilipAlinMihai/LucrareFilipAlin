@@ -289,7 +289,7 @@ intrebare([xsi0 , x, si,0,o,jocul,joc,joaca,joacă],
 Captureaza 3 poziții consecutive pe linie coloană sau diagonală.
 Utilizatorul are prima mutare și joacă cu X.
 După fiecare mutare a utilizatorului calculatorul răspunde cu o mutare proprie.
-Mutările alternează până cand una din părți a câștigăt sau sa ajuns la remiză.
+Mutările alternează până când una din părți a câștigăt sau sa ajuns la remiză.
 Acest joc oferă o recompensă importantă. ').
 
 intrebare([sliding,puzzle,8,jocul,joc,joaca,joacă],
