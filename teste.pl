@@ -128,7 +128,7 @@ La nord se află camera lui Andrei.\nLa sud este ieșirea.\n'),
         descrieCamera(4,hol,X3),
         egale(X3,'Te afli în Holul principal. \n
 La vest se află camera Dianei.
-La est se află Atelierul.\nLa sud este ieșirea\n'),!.
+La est se află Atelierul.\nLa sud este ieșirea.\n'),!.
 
 test9():-
         dificultate(mediu,_),
@@ -181,7 +181,7 @@ Acestea acordă recompense precum punctele de energie.'),
         egale(R2,'Pentru începerea unui joc se va utiliza:
      comanda: Joc cu argumentul: jocul dorit
 Jocurile pot fi jucate doar în anumite camere.
-Atunci când utilizatorul se află într-o asemena camera el este anunțat.
+Atunci când utilizatorul se află într-o asemena cameră el este anunțat.
 Este indicat și jocul disponibil.'),
         procesareText('nu ma pot misca'),
         raspuns(R3),
