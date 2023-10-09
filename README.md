@@ -13,4 +13,8 @@ Sunt inmplementate mini jocuri din diverse categori ce dau recompente pentru joc
 Jocul plasează utilizatorul într-o casă în care singrura cale de ieșire este încuiată.
 Astfel apare obiectivul principal al jocului și anume evadarea.
 Înainte de orice acțiune utilizatorul trebuie să aleagă un nivel de dificultate.
-Pentru a face jocul mai competitiv există puncte de energie și la fiecare deplasare este pierdut câte un punct. Numărul de puncte de start este decis de jucător prin selectarea nuvelului de dificultate dorit. 
+Pentru a face jocul mai competitiv există puncte de energie și la fiecare deplasare este pierdut câte un punct.
+Numărul de puncte de start este decis de jucător prin selectarea nuvelului de dificultate dorit. 
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
